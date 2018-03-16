@@ -1,0 +1,80 @@
+%\documentclass[12pt,a4paper]{hsrthesis}
+\documentclass[ngerman,a4paper,12pt]{hsrthesis}
+\usepackage{babel}
+\nonstopmode
+
+\usepackage{listings}
+
+\usepackage{graphicx, color}
+\usepackage[utf8]{inputenc}
+
+
+\definecolor{olivegreen}{rgb}{0.33, 0.42, 0.18}
+\usepackage{attachfile}
+\usepackage{dirtytalk}
+
+
+\lstset{
+    	frame=single,
+    	breaklines=true,
+	basicstyle=\footnotesize,
+    	postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
+    	morecomment=[l][\color{olivegreen}]{\#},
+	morestring=[b][\color{blue}]\",
+morekeywords={SELECT,CONSTRUCT,DESCRIBE,ASK,WHERE,FROM,NAMED,PREFIX,BASE,OPTIONAL,FILTER,GRAPH,LIMIT,OFFSET,SERVICE,UNION,EXISTS,NOT,BINDINGS,MINUS,a},
+sensitive=true
+}
+
+%\usepackage[showframe]{geometry}
+%\usepackage[ngerman]{babel}
+           
+\usepackage{csquotes}
+\usepackage{graphicx}
+
+
+\makeindex
+
+% do this here, so you can \gls{...} to it
+%\input{index/glossar}
+%\makeglossaries
+
+
+\begin{document}
+
+\input{chapter/01title}
+
+\setlength{\oddsidemargin}{10mm} 
+\setlength{\evensidemargin}{10mm}
+\input{chapter/abstract}
+
+\tableofcontents
+
+
+% The main content
+%%%%%%%%%%%%%%%%%%
+%\input{chapter/02examples}
+
+
+\input{chapter/03introduction}
+% \input{chapter/04mychapter}
+% ...
+
+
+% List of figures & glossary
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\listoffigures
+\printglossary[style=altlist,title=Glossar]
+
+% Bibliography
+%%%%%%%%%%%%%%
+\bibliographystyle {alpha}
+\bibliography{index/bibliography}
+
+
+% Attached sources
+%%%%%%%%%%%%%%%%%%
+%\input{attachments/attachments}
+
+
+
+\end{document}
