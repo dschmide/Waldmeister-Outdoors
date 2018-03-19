@@ -22,8 +22,6 @@ sync(store, router)
 require('./assets/css/leaflet.js')
 require('./assets/css/leaflet.css')
 require('./assets/css/Leaflet.Editable.js')
-require('./assets/css/vegetationskarte_minimal.geojson')
-
 
 /* eslint-disable no-new */
 new Vue({
