@@ -38,7 +38,8 @@ export default {
     return {
       email:'',
       password:'',
-      error: null
+      error: null,
+      displayname:''
     }
   },
   methods: {

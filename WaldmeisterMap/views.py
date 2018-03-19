@@ -17,8 +17,6 @@ from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 
 from django.contrib.auth import get_user_model
-User = get_user_model()
-
 
 
 # ARCHIVE
