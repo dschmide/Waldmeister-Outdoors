@@ -5,7 +5,7 @@
 </template>
 <script>
 import AreaService from '@/services/AreaService'
-import Vegetation from '@/components/data/vegetationskarte_minimal.geojson'
+import Vegetation from '@/components/data/vegetationskarte_minimal.json'
 
 export default {
   data() {

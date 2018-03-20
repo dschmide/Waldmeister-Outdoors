@@ -11,6 +11,9 @@ from rest_framework_jwt.views import obtain_jwt_token
 #Djoser
 from django.urls import include, re_path
 
+#Swagger
+from rest_framework_swagger.views import get_swagger_view
+
 
 
 router = routers.DefaultRouter()
@@ -18,6 +21,9 @@ router = routers.DefaultRouter()
 # router.register(r'groups', views.GroupViewSet)
 #router.register(r'register', views.register)
 router.register(r'areas', views.UserAreaViewSet)
+
+#swagger
+schema_view = get_swagger_view(title='Waldmeister API')
 
 
 urlpatterns = [
@@ -42,5 +48,6 @@ urlpatterns = [
     url(r'^auth/', include('djoser.urls.authtoken')),
     url(r'^auth/', include('djoser.urls.jwt')),
     
-
+    #swagger
+    url(r'^swagger', schema_view)
 ]

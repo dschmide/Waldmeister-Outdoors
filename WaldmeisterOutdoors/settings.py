@@ -57,7 +57,10 @@ INSTALLED_APPS = [
     'corsheaders',
 
     #Djoser for custom user models
-    'djoser'
+    'djoser',
+
+    #swagger for api documentation
+    'rest_framework_swagger',
 ]
 
 REST_FRAMEWORK = {
