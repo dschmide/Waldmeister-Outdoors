@@ -4,11 +4,15 @@
       <v-dialog v-model="save_dialog" max-width="500px">
         <v-card>
           <v-card-title>
-            <span>Save Area</span>
+            <span>Create new Userarea</span>
             <v-spacer></v-spacer>
           </v-card-title>
+          <v-card-text>
+            <v-text-field label="Label" type="text" v-model="userAreaLabel"></v-text-field>
+          </v-card-text>
           <v-card-actions>
             <v-btn color="primary" flat @click.stop="save_dialog=false">Close</v-btn>
+            <v-btn color="primary" dark class="light-green" flat @click="save">Save</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -23,6 +27,7 @@ import Vegetation from '@/components/data/vegetationskarte_minimal.json'
 export default {
   data() {
     return {
+      userAreaLabel: "",
       vegetation: Vegetation,
       title: 'WaldmeisterMap',
       zoom: 13,
@@ -35,6 +40,43 @@ export default {
       widgets: false
     }
   },
+  methods: {
+    save() {
+      console.log(this.userAreaLabel)
+      var theArea = {
+        "label": this.userAreaLabel,
+        "public": false,
+        "polygon": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  47.44852243794931,
+                  8.744945526123049
+                ],
+                [
+                  47.42530003183073,
+                  8.729152679443361
+                ],
+                [
+                  47.416937456635445,
+                  8.770694732666017
+                ],
+                [
+                  47.44852243794931,
+                  8.744945526123049
+                ]
+              ]
+            ]
+          ]
+        },
+        "creator": 17
+      }
+      AreaService.postArea(theArea);
+    }
+  },
+
   async mounted() {
     console.log("Loading Vegetationsmap")
     console.log(this.vegetation);
