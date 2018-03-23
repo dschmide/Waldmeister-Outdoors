@@ -1,5 +1,18 @@
 <template>
   <div id="app">
+    <v-layout row justify-center>
+      <v-dialog v-model="save_dialog" max-width="500px">
+        <v-card>
+          <v-card-title>
+            <span>Save Area</span>
+            <v-spacer></v-spacer>
+          </v-card-title>
+          <v-card-actions>
+            <v-btn color="primary" flat @click.stop="save_dialog=false">Close</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-layout>
     <div id='map'></div>
   </div>
 </template>
@@ -15,6 +28,11 @@ export default {
       zoom: 13,
       center: [51.505, -0.09],
       url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+
+      save_dialog: false,
+      notifications: false,
+      sound: true,
+      widgets: false
     }
   },
   async mounted() {
@@ -126,10 +144,16 @@ export default {
       delete this.currentPolygon;
     });
 
+    var self = this;
+
     map.editTools.on('editable:drawing:commit', function(e) {
       console.log("stoppediting");
+
+      self.save_dialog = true;
+
       console.log(this.currentPolygon);
       console.log(this.currentPolygon.editor.tools.currentPolygon._latlngs);
+
     })
 
 
@@ -271,6 +295,14 @@ body {
   color: white;
   text-shadow: 1px 1px black;
   opacity: 0.4;
+}
+
+div.overlay--active {
+  z-index: 1000 !important
+}
+
+div.dialog__content__active {
+  z-index: 1000 !important
 }
 
 @import "~assets/css/vegetationskarte_minimal.geojson";
