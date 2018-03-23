@@ -70,8 +70,7 @@ export default {
               ]
             ]
           ]
-        },
-        "creator": 17
+        }
       }
       AreaService.postArea(theArea);
       this.save_dialog = false;
