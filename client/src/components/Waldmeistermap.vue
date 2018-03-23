@@ -74,6 +74,7 @@ export default {
         "creator": 17
       }
       AreaService.postArea(theArea);
+      this.save_dialog = false;
     }
   },
 
@@ -297,7 +298,6 @@ export default {
     for (val of this.MyAreas) {
       console.log(val.polygon.coordinates[0][0]);
 
-      /*
       var poly = L.polygon([
         [
           val.polygon.coordinates[0][0][0],
@@ -306,8 +306,18 @@ export default {
           val.polygon.coordinates[0][0][3]
         ]
       ]).addTo(map);
+
+      var label = L.marker(poly.getBounds().getCenter(), {
+        icon: L.divIcon({
+          className: 'AreaLabel',
+          html: val.label,
+          iconSize: [0, 0],
+          direction: 'auto'
+        })
+      }).addTo(map);
+
       poly.enableEdit();
-      */
+
     }
 
 
@@ -337,6 +347,12 @@ body {
   color: white;
   text-shadow: 1px 1px black;
   opacity: 0.4;
+}
+
+.AreaLabel {
+  color: red;
+  text-shadow: 1px 1px black;
+  opacity: 1;
 }
 
 div.overlay--active {
