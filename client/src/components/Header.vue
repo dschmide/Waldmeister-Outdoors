@@ -27,6 +27,13 @@
 
       <!-- routing with method -->
       <v-toolbar-items>
+        <v-btn 
+          flat 
+          dark
+          @click="navigateTo({name: 'about'})">
+          Login
+        </v-btn>
+
       <v-btn 
           v-if="!$store.state.isUserLoggedIn"
           flat 
