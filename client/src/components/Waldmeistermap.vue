@@ -9,6 +9,9 @@
           </v-card-title>
           <v-card-text>
             <v-text-field label="Label" type="text" v-model="userAreaLabel"></v-text-field>
+            Public Area:
+            <input type="checkbox" id="checkbox" v-model="checked">
+            <label for="checkbox"> {{ checked }}</label>
           </v-card-text>
           <v-card-actions>
             <v-btn color="primary" flat @click.stop="save_dialog=false">Close</v-btn>
@@ -24,9 +27,14 @@
 import AreaService from '@/services/AreaService'
 import Vegetation from '@/components/data/vegetationskarte_minimal.json'
 
+var myGeoJsonPoly = [];
+var myCoords
+var PolyCoordinates
+
 export default {
   data() {
     return {
+      checked: "",
       userAreaLabel: "",
       vegetation: Vegetation,
       title: 'WaldmeisterMap',
@@ -42,38 +50,22 @@ export default {
   },
   methods: {
     save() {
-      console.log(this.userAreaLabel)
+      console.log(myGeoJsonPoly)
+
+
       var theArea = {
         "label": this.userAreaLabel,
-        "public": false,
+        "public": this.checked,
         "polygon": {
           "type": "MultiPolygon",
           "coordinates": [
-            [
-              [
-                [
-                  47.44852243794931,
-                  8.744945526123049
-                ],
-                [
-                  47.42530003183073,
-                  8.729152679443361
-                ],
-                [
-                  47.416937456635445,
-                  8.770694732666017
-                ],
-                [
-                  47.44852243794931,
-                  8.744945526123049
-                ]
-              ]
-            ]
+            [myGeoJsonPoly]
           ]
         }
       }
       AreaService.postArea(theArea);
       this.save_dialog = false;
+      myGeoJsonPoly = [];
     }
   },
 
@@ -90,7 +82,7 @@ export default {
         maxZoom: 18,
         ext: 'png'
       }).addTo(map);
-
+    /*
     try {
       const AreasToDisplay = AreaService.getAreas({})
         .then((response) => {
@@ -101,6 +93,7 @@ export default {
       //console.log(response.error)
     }
     //console.log(response.data)
+    */
 
     L.NewPolygonControl = L.Control.extend({
 
@@ -186,19 +179,64 @@ export default {
       delete this.currentPolygon;
     });
 
+
     var self = this;
 
     map.editTools.on('editable:drawing:commit', function(e) {
-      console.log("stoppediting");
+      console.log("stoppedediting");
 
       self.save_dialog = true;
 
-      console.log(this.currentPolygon);
-      console.log(this.currentPolygon.editor.tools.currentPolygon._latlngs);
+      //console.log(this.currentPolygon);
+      //console.log(this.currentPolygon.editor.tools.currentPolygon._latlngs);
+      var type = e.layerType,
+        layer = e.layer;
+      // var PolyToSave = layer._latlngs;
+      // console.log(PolyToSave)
+      // var PolyCoords = layer.toGeoJSON();
+      // console.log(PolyCoords.geometry.coordinates)
+      // myPoly = layer.toGeoJSON();
+      // myCoords = layer.getLatLngs();
 
+      // PolyCoordinates = [];
+      // var latlngs = layer.getLatLngs();
+      // for (var i = 0; i < latlngs.length; i++) {
+      //   PolyCoordinates.push([latlngs[i].lng, latlngs[i].lat])
+      // }
+      // console.log("latlngs: " + latlngs);
+      // console.log("PushedCoordinates: " + PolyCoordinates);
+      var point = layer.getLatLngs();
+
+      //console.log(myGeoJsonPoly.geometry.coordinates);
+      console.log("before")
+      //console.log(myGeoJsonPoly.geometry.coordinates);
+      console.log(point);
+      //myGeoJsonPoly[0][myGeoJsonPoly[0].length] = myGeoJsonPoly[0][0]
+      //console.log("after");
+      //console.log(myGeoJsonPoly);
+
+
+      for (var i = 0; i < point[0].length; i++) {
+        myGeoJsonPoly.push([
+          point[0][i].lat,
+          point[0][i].lng
+        ]);
+        console.log("i " + i);
+        console.log(point[0][i]);
+        console.log(myGeoJsonPoly[i]);
+      }
+
+      myGeoJsonPoly
+        .push([
+          point[0][0].lat,
+          point[0][0].lng
+        ]);
+
+      console.log("after");
+      console.log(myGeoJsonPoly);
+
+      //console.log(myGeoJsonPoly.geometry.coordinates);
     })
-
-
 
     var vegetationsLayer = L.geoJson(this.vegetation, {
       style: function(feature) {
@@ -258,36 +296,6 @@ export default {
         }).addTo(map);
       }
     });
-
-    /*
-
-    }).addTo(map);
-      //bounding box auto
-    map.fitBounds(vegetationsLayer.getBounds());
-
-    var popup = L.popup();
-
-    //Handle click on map
-    function onMapClick(e) {
-      
-        popup
-            .setLatLng(e.latlng)
-            .setContent("You clicked the map at " + e.latlng.toString())
-            .openOn(map);
-            
-            //map.editTools.cancelDrawing();
-    }
-    map.on('click', onMapClick);
-
-    //Handle click on polygon
-    var onPolyClick = function(event){
-        //callFancyboxIframe('flrs.html')
-        //var label = event.target.feature.properties.EK72;
-        alert(event.target);
-    };
-    vegetationsLayer.on('click', onPolyClick);
-
-    */
 
     this.MyAreas = (await AreaService.getAreas()).data
 

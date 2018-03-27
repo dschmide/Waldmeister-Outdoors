@@ -17,6 +17,7 @@ from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 
 from django.contrib.auth import get_user_model
+from django.db.models import Q
 
 
 # ARCHIVE
@@ -80,8 +81,8 @@ class UserAreaViewSet(viewsets.ModelViewSet):
         print(self.request.user)
         if (self.request.user.is_authenticated):
             #return UserArea.objects.filter(creator = self.request.user | public = True)
-            #return UserArea.objects.filter( Q(creator=self.request.user) | Q(public=True) )
-            return UserArea.objects.filter(public = False)
+            return UserArea.objects.filter( Q(creator=self.request.user) | Q(public=True) )
+            #return UserArea.objects.filter(public = False)
         else:
             return UserArea.objects.filter(public = True)
         return None

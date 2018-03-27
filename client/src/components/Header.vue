@@ -31,7 +31,7 @@
           flat 
           dark
           @click="navigateTo({name: 'about'})">
-          Login
+          About
         </v-btn>
 
       <v-btn 
