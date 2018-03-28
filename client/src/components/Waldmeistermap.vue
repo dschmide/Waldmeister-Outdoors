@@ -73,7 +73,7 @@ export default {
     console.log("Loading Vegetationsmap")
     console.log(this.vegetation);
     var startPoint = [47.4348826, 8.7460494];
-    var map = L.map('map', { editable: true }).setView(startPoint, 13),
+    var map = L.map('map', { editable: true }).setView(startPoint, 15),
       tilelayer = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.{ext}', {
         maxZoom: 20,
         attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
@@ -238,8 +238,9 @@ export default {
       //console.log(myGeoJsonPoly.geometry.coordinates);
     })
 
-    var vegetationsLayer = L.geoJson(this.vegetation, {
-      style: function(feature) {
+
+    var myGeoJsonLayer = L.geoJSON(this.vegetation, {
+      style: function(feature){
         switch (feature.properties.EK72) {
           case '1':
             return { color: "#f2142b" };
@@ -283,19 +284,30 @@ export default {
             return { color: "#ece650" };
           case '11':
             return { color: "#008c4e" };
+
+          default:
+          return { color: "005800" };
         }
+
       },
+      "weight": 0.8,
+      "opacity": 0.66,
+
+      //Draws labels for the Polygons
       onEachFeature: function(feature, layer) {
         var label = L.marker(layer.getBounds().getCenter(), {
           icon: L.divIcon({
             className: 'propertyLabel',
             html: feature.properties.EK72,
-            iconSize: [0, 0],
+            iconSize: [20, 20],
             direction: 'auto'
           })
         }).addTo(map);
       }
-    });
+      
+    }).addTo(map);
+    myGeoJsonLayer.addData(this.vegetation);
+    
 
     this.MyAreas = (await AreaService.getAreas()).data
 
@@ -303,31 +315,59 @@ export default {
 
     var val;
     for (val of this.MyAreas) {
-      console.log(val.polygon.coordinates[0][0]);
-
+      //console.log(val.polygon.coordinates[0][0]);
+      var corner;
+      var polygonToAdd = [];
+      for (corner of val.polygon.coordinates[0][0]) {
+        //console.log("corner found " + val.label + corner);
+        polygonToAdd.push(corner);
+      }
+      console.log(polygonToAdd);
       var poly = L.polygon([
         [
-          val.polygon.coordinates[0][0][0],
-          val.polygon.coordinates[0][0][1],
-          val.polygon.coordinates[0][0][2],
-          val.polygon.coordinates[0][0][3]
+          polygonToAdd
         ]
-      ]).addTo(map);
+      ],
+      ).addTo(map);
 
-      var label = L.marker(poly.getBounds().getCenter(), {
-        icon: L.divIcon({
-          className: 'AreaLabel',
-          html: val.label,
-          iconSize: [0, 0],
-          direction: 'auto'
-        })
-      }).addTo(map);
+      if (val.public == true) {
+        var label = L.marker(poly.getBounds().getCenter(), {
+          icon: L.divIcon({
+            className: 'AreaLabelPublic',
+            html: val.label,
+            iconSize: [100, 0],
+            direction: 'auto',
+          })
+        }).addTo(map);
+      } else {
+        var label = L.marker(poly.getBounds().getCenter(), {
+          icon: L.divIcon({
+            className: 'AreaLabelPrivate',
+            html: val.label,
+            iconSize: [100, 0],
+            direction: 'auto'
+          })
+        }).addTo(map);
+      }
 
       poly.enableEdit();
 
     }
 
 
+    //MAP LEGEND
+    var legend = L.control({ position: 'topright' });
+
+    legend.onAdd = function(map) {
+
+      var div = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+        labels = [];
+
+      return div;
+    };
+
+    legend.addTo(map);
     //console.log(this.MyAreas[1].polygon.coordinates[0][0][0])
 
   }
@@ -350,14 +390,27 @@ body {
   width: 100%;
 }
 
-.propertyLabel {
-  color: white;
-  text-shadow: 1px 1px black;
-  opacity: 0.4;
+.leaflet-sidebar>.leaflet-control {
+  overflow-y: hidden;
 }
 
-.AreaLabel {
-  color: red;
+.propertyLabel {
+  color: white;
+  text-shadow: 0.5px 0.5px gray;
+  opacity: 0.8;
+}
+
+.cssPolygon{
+  color:green;
+}
+.AreaLabelPublic {
+  color: green;
+  text-shadow: 1px 1px black;
+  opacity: 1;
+}
+
+.AreaLabelPrivate {
+  color: yellow;
   text-shadow: 1px 1px black;
   opacity: 1;
 }
@@ -369,8 +422,6 @@ div.overlay--active {
 div.dialog__content__active {
   z-index: 1000 !important
 }
-
-@import "~assets/css/vegetationskarte_minimal.geojson";
 
 </style>
 <!-- <style lang="scss">
