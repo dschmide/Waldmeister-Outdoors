@@ -82,18 +82,6 @@ export default {
         maxZoom: 18,
         ext: 'png'
       }).addTo(map);
-    /*
-    try {
-      const AreasToDisplay = AreaService.getAreas({})
-        .then((response) => {
-          console.log("dataReceived")
-          console.log(response.data[0].polygon.coordinates)
-        })
-    } catch (error) {
-      //console.log(response.error)
-    }
-    //console.log(response.data)
-    */
 
     L.NewPolygonControl = L.Control.extend({
 
@@ -191,20 +179,6 @@ export default {
       //console.log(this.currentPolygon.editor.tools.currentPolygon._latlngs);
       var type = e.layerType,
         layer = e.layer;
-      // var PolyToSave = layer._latlngs;
-      // console.log(PolyToSave)
-      // var PolyCoords = layer.toGeoJSON();
-      // console.log(PolyCoords.geometry.coordinates)
-      // myPoly = layer.toGeoJSON();
-      // myCoords = layer.getLatLngs();
-
-      // PolyCoordinates = [];
-      // var latlngs = layer.getLatLngs();
-      // for (var i = 0; i < latlngs.length; i++) {
-      //   PolyCoordinates.push([latlngs[i].lng, latlngs[i].lat])
-      // }
-      // console.log("latlngs: " + latlngs);
-      // console.log("PushedCoordinates: " + PolyCoordinates);
       var point = layer.getLatLngs();
 
       //console.log(myGeoJsonPoly.geometry.coordinates);
@@ -231,14 +205,31 @@ export default {
           point[0][0].lat,
           point[0][0].lng
         ]);
-
-      console.log("after");
-      console.log(myGeoJsonPoly);
-
-      //console.log(myGeoJsonPoly.geometry.coordinates);
     })
 
+    //Show my location on map
+    var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
 
+function success(pos) {
+  var crd = pos.coords;
+
+  console.log('Your current position is:');
+  console.log(`Latitude : ${crd.latitude}`);
+  console.log(`Longitude: ${crd.longitude}`);
+  console.log(`More or less ${crd.accuracy} meters.`);
+}
+
+function error(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+}
+
+navigator.geolocation.getCurrentPosition(success, error, options);
+
+    //Add geojson Layer and styling
     var myGeoJsonLayer = L.geoJSON(this.vegetation, {
       style: function(feature){
         switch (feature.properties.EK72) {
@@ -328,6 +319,7 @@ export default {
           polygonToAdd
         ]
       ],
+
       ).addTo(map);
 
       if (val.public == true) {
@@ -350,11 +342,11 @@ export default {
         }).addTo(map);
       }
 
-      poly.enableEdit();
+      //poly.enableEdit();
 
     }
 
-
+            
     //MAP LEGEND
     var legend = L.control({ position: 'topright' });
 
