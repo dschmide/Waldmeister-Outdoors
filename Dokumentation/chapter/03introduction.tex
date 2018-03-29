@@ -2,29 +2,29 @@
 
 \chapter{Management summary}
 \section{Ausgangslage}
-Je nach Untergrund, Bodeneigenschaften, Gelände sowie Klima gedeihen unterschiedliche Typen von Wäldern. Diese Typen werden Waldstandorte genannt. Aktuell werden Karten, die im Auftrag des Kantons von Experten angefertigt wurden, nur in grossen Intervallen revidiert oder sind nicht öffentlich zugänglich.
-Einer der Gründe dafür sind u.a. die hohen Kosten, die eine Analyse im Feld mit sich bringt.
-Zudem ist die Erfassung und Nachführung geprägt von analogen Vorgängen, da die vorhandenen
-technischen Geräte und Programme für den Einsatz im Feld ungeeignet sind.
-Daher muss von Hand Niedergeschriebenes im Büro digitalisiert werden, bevor es an den
-Arbeitgeber geschickt werden und später auf kantonal isolierten Plattformen publiziert werden kann.
+Je nach Untergrund, Bodeneigenschaften, Gel\"ande sowie Klima gedeihen unterschiedliche Typen von W\"aldern. Diese Typen werden Waldstandorte genannt. Aktuell werden Karten, die im Auftrag des Kantons von Experten angefertigt wurden, nur in grossen Intervallen revidiert oder sind nicht \"offentlich zug\"anglich.
+Einer der Gr\"unde daf\"ur sind u.a. die hohen Kosten, die eine Analyse im Feld mit sich bringt.
+Zudem ist die Erfassung und Nachf\"uhrung gepr\"agt von analogen Vorg\"angen, da die vorhandenen
+technischen Ger\"ate und Programme f\"ur den Einsatz im Feld ungeeignet sind.
+Daher muss von Hand Niedergeschriebenes im B\"uro digitalisiert werden, bevor es an den
+Arbeitgeber geschickt werden und sp\"ater auf kantonal isolierten Plattformen publiziert werden kann.
 \section{Ziel der Arbeit}
 Die Erfassung und Publikation von Waldstandorten sollte vereinfacht und beschleunigt werden. Dabei
 sollen digitale Technologien eingesetzt werden wie Smartphone, GPS und Internet. Diese neuen
-Instrumente sollen entsprechend geschulten Nutzern die Erfassung von Waldstandorten sowie öffentliche und private Informationen in Form von Flächen und Punkten ermöglichen. Auf einer Karte wird mittels GPS die eigene
-Position ermittelt. Umliegende, bereits erfasste Waldstandorte, öffentliche Flächen anderer
-User und die eigenen privaten Flächen werden angezeigt. Diese Flächen können ebenfalls
-Wandstandorte beschreiben oder zusätzliche Informationen über den
-Standort beinhalten, z.B. eine speziell gekennzeichnete Beobachtungsfläche.
+Instrumente sollen entsprechend geschulten Nutzern die Erfassung von Waldstandorten sowie \"offentliche und private Informationen in Form von Fl\"achen und Punkten erm\"oglichen. Auf einer Karte wird mittels GPS die eigene
+Position ermittelt. Umliegende, bereits erfasste Waldstandorte, \"offentliche Fl\"achen anderer
+User und die eigenen privaten Fl\"achen werden angezeigt. Diese Fl\"achen k\"onnen ebenfalls
+Wandstandorte beschreiben oder zus\"atzliche Informationen \"uber den
+Standort beinhalten, z.B. eine speziell gekennzeichnete Beobachtungsfl\"ache.
 
 \section{Ergebnisse}
 Nach einer Evaluation eines Prototyps, erstellt mithilfe eines kommerziellen Produkts (vgl. Abbildung 2),
 und der Erstellung von Mockups, wurde ein eigenes Webapp “Waldmeister Outdoors” als Prototyp
 realisiert. Durch die Webapplikation kann die Arbeit der Experten
 erleichtert werden. Da die Waldstandort-Karte gleichzeitig im Web synchronisiert
-ist, wird darüber hinaus der Informationsaustausch unter allen Beteiligten erleichtert.
+ist, wird dar\"uber hinaus der Informationsaustausch unter allen Beteiligten erleichtert.
 \section{Ausblick}
-Grosse Teile der Schweiz sind noch nie kartiert worden, und viele Waldstandorte könnten sich unter dem Einfluss der Klimaerwärmung verändern. Die kontinuierliche Beobachtung solcher Standorte ist Forschungsgegenstand und die Arbeit im Feld ist unerlässlich. "Waldmeister Outdoors" kann im Berufsalltag sowie bei der Kommunikation mit Institutionen den Arbeitsfluss beschleunigen. Weitere Features wie die
+Grosse Teile der Schweiz sind noch unkartiert, und viele Waldstandorte k\"onnten sich unter dem Einfluss der Klimaerw\"armung ver\"andern. Die kontinuierliche Beobachtung solcher Standorte ist Forschungsgegenstand und die Arbeit im Feld ist unerl\"asslich. "Waldmeister Outdoors" kann im Berufsalltag sowie bei der Kommunikation mit Institutionen den Arbeitsfluss beschleunigen. Weitere Features wie die Verwendung von Plus Codes und offline-F\"ahigkeiten welche bei Verbindungsproblemen zum Einsatz kommen, bzw Benutzerfl\"achen automatisch synchronisieren sobald eine Verbindung besteht. Des weiteren bietet es sich an, dass sich User in Gruppen einklinken k\"onnen um unter sich Benutzerfl\"achen zu teilen und zu besprechen, bevor sie ver\"offentlicht werden. Ebenfalls sollten erstellte Fl\"achen von registrierten Benutzern und deren Gruppen ver\"andert und gel\"oscht werden k\"onnen, nachdem sie Erstellt wurden.
 
 \chapter{Motivation und Ausgangslage}
 \section{Ein mobiles App f\"ur Feldforschung im Wald}
@@ -51,27 +51,110 @@ Kartenmaterial sollte wenn m\"oglich permanent auf das Mobile Ger\"at geladen we
 
 \chapter{Technologies}
 \section{Progressive Webapp}
-Um das Werkzeug "Waldmeister - Outdoors" nicht auf eine Platform von Mobilen Ger\"aten zu beschr\"anken, setzt es auf die Prinzipien der Progressive Webapps (PWA). Es beschreibt eine Webseite welche viele Merkmale besitzt, welche bisher den nativen Apps vorbehalten waren. Eine PWA ist gewissermassen eine responsive Website, welche auch offline verwendet werden kann und schliesst dadurch eine zus\"atzliche Entwicklung einer nativen App, parallel zur Webseite \"uberfl\"ussig. Eine PWA erreicht diese offline F\"ahigkeiten durch den Einsatz von Service Workern; ein JavaScript welches von Web-Browsern im Hintergrund ausgef\"uhrt wird. Einmal online aufgerufen, k\"onnen die Inhalte beim n\"achsten Besuch der Seite auch dann angezeigt werden, wenn eine schlechte oder sogar gar keine Internetverbindung besteht (Offline-Betrieb). Auch die von nativen Apps bekannten Push-Benachrichtigungen sind mit Service Workern m\"oglich. \cite{ServiceWorkers} $\newline$
-Grundlegende Charakteristiken der PWA sind Offline Funktionalit\"at, Push Notifications, Add-To-Homescreen, jedoch ist keine Installation notwendig (beispielsweise \"uber den Apple Appstore oder Google Playstore). Verbreitete Mobile Browser wie Firefox und Google Chrome haben bereits eine vollst\"andige Unterst\"utzung von PWAs, Safari sollte dies bis Ende Februar 2018 ebenfalls implementiert haben und kann daher auch auf iOS verwendet werden.
+Um das Werkzeug "Waldmeister - Outdoors" nicht auf eine Platform von Mobilen Ger\"aten zu beschr\"anken (iOS oder Android), setzt es auf die Prinzipien der Progressive Webapps (PWA). Diese beschreiben eine Webseite welche viele Merkmale besitzt, welche bisher den nativen Apps vorbehalten waren. Eine PWA ist gewissermassen eine responsive Website, welche auch offline verwendet werden kann und schliesst dadurch eine zus\"atzliche Entwicklung einer nativen App, parallel zur Webseite \"uberfl\"ussig. Eine PWA erreicht diese offline F\"ahigkeiten durch den Einsatz von Service Workern; ein JavaScript welches von Web-Browsern im Hintergrund ausgef\"uhrt wird. Einmal online aufgerufen, k\"onnen die Inhalte beim n\"achsten Besuch der Seite auch dann angezeigt werden, wenn eine schlechte oder sogar gar keine Internetverbindung besteht (Offline-Betrieb). Auch die von nativen Apps bekannten Push-Benachrichtigungen sind mit Service Workern m\"oglich. \cite{ServiceWorkers} $\newline$
+Grundlegende Charakteristiken der PWA sind Offline Funktionalit\"at, Push Notifications, Add-To-Homescreen, jedoch ist keine Installation notwendig (beispielsweise \"uber den Apple Appstore oder Google Playstore). Verbreitete Mobile Browser wie Firefox und Google Chrome haben bereits eine vollst\"andige Unterst\"utzung von PWAs, Safari sollte dies bis Ende Februar 2018 ebenfalls implementiert haben und kann daher auch auf iOS verwendet werden. PWAs k\"onnen auf den Home-Screen des mobilen Ger\"ats hinzugef\"ugt werden.
 
 \section{ESRI / ArcGIS online}
-Technologien von ESRI und insbesondere ArcGIS online wurden recherchiert um einen funktionierenden Prototypen mit offline-caching zu erstellen. Hintergrundkarten (in Form einen Tile-Layers) k\"onnen auf dem Ger\"at zwischengespeichert werden, und die Erstellung und Synchronisation von editierbaren Vektorlayern funktioniert auch beim offline Betrieb. Vektorlayer k\"onnen Punkte, Pfade oder Fl\"achen beschreiben und k\"onnen offline erstellt werden und werden bei verf\"ugbaren Internetverbindung mit einem Server synchronisiert.
+Technologien von ESRI und insbesondere ArcGIS online wurden recherchiert um einen funktionierenden Prototypen mit offline-caching zu erstellen. Hintergrundkarten (in Form einen Tile-Layers) k\"onnen auf dem Ger\"at zwischengespeichert werden, und die Erstellung und Synchronisation von editierbaren Vektorlayern funktioniert auch beim offline Betrieb. Vektorlayer k\"onnen Punkte, Pfade oder Fl\"achen beschreiben und k\"onnen offline erstellt werden und werden bei verf\"ugbaren Internetverbindung mit einem Server synchronisiert. Dieses Verhalten kann bei einer PWA durch Service-Worker rekreiert werden.
 
 \section{Vue.JS}
-Vue.JS ist ein JavaScript framework welches sich zum Erstellen von Single-Page Webapplikationen eignet. Es wurde im Jahr 2013 erstmals ver\"offentlicht und wurde am 19. Dezember 2017 auf die aktuellsten Version 2.5.13 gepatcht. Vue.JS folgt einer Variation des Model-View-Controller Entwurfmusters genannt dem Model - View - ViewModel Muster. Wie auch das MVC folgt MVVM dient es der Trennung von Darstellung und der Logik der Benutzerschnittstelle. Dies erlaubt dem nutzenden Entwickler, die Struktur der Anwendung nach eigenen Anspr\"uchen zu richten.Entwickler beschreiben es daher als "less opinionated" im Vergleich zu anderen popul\"aren JavaScript Webframeworks wie Anglar.JS und React. Vue.JS kann von Entwicklern eingesetzt werden welche HTML und JavaScript beherrschen und erfordert keine weiteren Webtechnologien. Vue.JS setzt eine Webseite aus Instanzen und Komponenten, bzw Single File Components zusammen.
+Vue.JS ist ein JavaScript framework welches sich zum Erstellen von Single-Page Webapplikationen eignet. Es wurde im Jahr 2013 erstmals ver\"offentlicht und wurde am 19. Dezember 2017 auf die aktuellsten Version 2.5.13 gepatcht. Vue.JS folgt einer Variation des Model-View-Controller Entwurfmusters genannt dem Model - View - ViewModel Muster. Wie auch das MVC folgt MVVM dient es der Trennung von Darstellung und der Logik der Benutzerschnittstelle. Dies erlaubt dem nutzenden Entwickler, die Struktur der Anwendung nach eigenen Anspr\"uchen zu richten.Entwickler beschreiben es daher als "less opinionated" im Vergleich zu anderen popul\"aren JavaScript Webframeworks wie Anglar.JS und React. Vue.JS kann von Entwicklern eingesetzt werden welche HTML und JavaScript beherrschen und erfordert keine weiteren Webtechnologien. Vue.JS setzt eine Webseite aus Instanzen und Komponenten, bzw Single File Components zusammen. Single File Components sind bei VueJS welche Architekturprobleme von mittel bis grossen Webapps, welche vollst\"andig von JavaScript getrieben werden, zu verbessern versucht. Folgende Probleme tauchen dabei auf:
+$\newline$
+\begin{enumerate}
+\item Global definitions $\newline$
+Global definitions force unique names for every component
+\item String templates $\newline$
+String templates lack syntax highlighting and require ugly slashes for multiline HTML
+\item No CSS support $\newline$
+No CSS support means that while HTML and JavaScript are modularized into components, CSS is conspicuously left out
+\item No build step $\newline$
+No build step restricts us to HTML and ES5 JavaScript, rather than preprocessors like Pug (formerly Jade) and Babel
+\end{enumerate}
+$\newline$
+VueJS besagt, dass all diese Probleme von Single File Components (mit .vue extension) dank Werkzeugen wie Webpack und Browserify gel\"ost werden. Eine solche Komponente besteht auf HTML Template, JavaScript und CSS in einer eigenen, abgekapselten Datei. Durch das erzielt VueJS $\newline$
+
+\begin{enumerate}
+\item Complete syntax highlighting
+\item CommonJS modules
+\item und Component-scoped CSS
+\end{enumerate}
+
+Wem diese Idee Abkapselung nicht gef\"allt kann weiterhin ein CSS auslagern und in eine Komponente (innerhalb des HTML Templates) importieren: $\newline$
+\begin{lstlisting}
+<!-- my-component.vue -->
+<template>
+  <div>This will be pre-compiled</div>
+</template>
+<script src="./my-component.js"></script>
+<style src="./my-component.css"></style>
+\end{lstlisting}
+$\newline$
+
+\subsection{Separation of Concern}
+Das was ist mit Separation of Concern (SoC)? Eine logische Vorgehensweise bei Softwareengineering ist es, ein Computerprogramm in logische Abschnitte einzuteilen und zu separieren. Diese Teile sollten sich um einen Zweck oder Belangen (Concern) k\"ummern. Dies heisst jedoch nicht, dass die verschiedenen Dateitypen unbedingt in separaten Dateien aufgeteilt werden muss. In der modernen User Interface Entwicklung und den Entwicklern von VueJS ist es oft einfacher gefallen verschiedene Komponenten, welche lose gekoppelt sind, zu komponieren, statt sie auf drei riesigen Layern (HTML, JS und CSS) getrennt zu halten,  sie aber in den Komponenten zu verflechten. \cite{VueSFC} $\newline$
+Auf diesem Weg sind Komponenten (Template, die Logik und das Styling) sind zusammenh\"angender und auch einfacher zu warten, obwohl dies nicht den Prinzipien von SoC folgt. Traditionelles SoC unterteilt dies in die Gruppen der Zwecke Organisation (HTML), Pr\"asentation (CSS) und Interaktion und Verhalten (JavaScript)
+
 
 \subsection{Vue-Router}
-Der Vue-Router ist das Herzst\"uck einer Single-Page-Applikation (SPA). Der Vue-Router bestimmt unter welchen Routen welche Komponenten gerendert werden sollen. In der HTML Definition der Haupkomponente kann <router-view> als Platzhalter verwendet werden um die Komponenten anzuzeigen, welche abh\"angig von der momentanen Route an dieser Stelle angezeigt werden sollen. Ein Wechsel zwischen diesen Routen bewirkt kein Page-Reload, da dies von Vue.JS lediglich innerhalb derselben Page \"anderungen bewirkt und keine tats\"achlichen URL Aufrufe ausf\"uhrt.
+Der Vue-Router ist das Herzst\"uck einer Single-Page-Applikation (SPA). Der offizielle Vue-Router ist ein Client-seitiger Router welcher mithilfe der HTML5 History API voll funktionsf\"ahiges Client-side routing. $\newline$ In der HTML Definition der Haupkomponente kann <router-view> als Platzhalter verwendet werden um die Komponenten anzuzeigen, welche abh\"angig von der momentanen Route an dieser Stelle angezeigt werden sollen. Ein Wechsel zwischen diesen Routen bewirkt kein Page-Reload, da dies von Vue.JS lediglich innerhalb derselben Page \"anderungen bewirkt und keine tats\"achlichen URL Aufrufe ausf\"uhrt. $\newline$
+Der Vue Router wird innerhalb einer Hauptseite, welcher die Grundlage der Webseite darstellt, angezeigt. Methoden von Komponenten k\"onnen bewirken dass sich der Inhalt, welcher an der Stelle des Router-Views angezeigt wird, ver\"andert. Menupunkte im Header (z.B Register, Login, About, Map), bewirken mit .push() dass der Vue-Router mithilfe des index.js files die korrekten Komponenten an dieser Stelle anzeigt. Dies kann auch direkt \"uber eine URL Eingabe /register oder /login erfolgen, ohne dass der Aufruf \"uber eine interne Komponente ausgef\"uhrt werden muss. Die Datei index.js beinhaltet daher alle m\"oglichen Pfade welche von der Webapp aufgel\"ost werden und bestimmt die angezeigten Komponenten welche mit dieser Route verkn\"upft sind. $\newline$
+Alternativ k\"onnten die \"ahnlichen L\"osungen von Page.js oder Director als Third-Party Produkte an dieser Stelle integriert  werden, es ist jedoch empfohlen die offizielle Vue-Router Library zu verwenden.
 
 \subsection{VueX}
 VueX ist eine offizielle Erweiterung von Vue.JS und fungiert als Statusmanager. VueX arbeitet mit einem Store welcher die Zust\"ande aller Komponenten in einer Vue Applikation \"uber Regeln definiert. VueX besteht aus Actions, Mutations und States, und Aktionen k\"onnen in dieser Reihenfolge eine Auswirkung auf die Vue Komponenten haben. $\newline$
-VueX hat Vorteile bei mittel bis grossen Projekten welche auf dem Single-Page-Application Prinzip basieren. VueX bietet auch die M\"oglichkeit einen zentralen Store in kleinere Module aufzuteilen, jedes mit ihrer eigenen State, Mutations, Actions Werten.
+VueX hat Vorteile bei mittel bis grossen Projekten welche auf dem Single-Page-Application Prinzip basieren. VueX bietet auch die M\"oglichkeit einen zentralen Store in kleinere Module aufzuteilen, jedes mit ihrer eigenen State, Mutations, Actions Werten. $\newline$
+Da Komponenten in Vue abgekapselt sind, k\"onnen sie standardm\"assig nicht auf Daten zugreifen welche in anderen Komponenten definiert werden. Solche Daten m\"ussen per Store verf\"ugbar gemacht werden damit sie \"uber mehrere Instanzen geteilt werden k\"onnen. $\newline$
+
+\begin{lstlisting}
+const sourceOfTruth = {}
+
+const vmA = new Vue({
+  data: sourceOfTruth
+})
+
+const vmB = new Vue({
+  data: sourceOfTruth
+})
+\end{lstlisting}
+$\newline$
+
+Wird nun sourceOfTruth ver\"andert, wird sie in allen Komponenten, in welcher sie verwendet wird automatisch auf den neuen Stand gebracht. Dies kann in gr\"osseren Applikationen schnell un\"ubersichtlich werden, da jede Komponente diese sourceOfTruth ver\"andern kann, ohne eine nachvollziehbare Spur zu hinterlassen. Es wird daher empfohlen das Store Pattern von VueX zu implementieren, welche Ver\"anderungen am Store nur \"uber Mutationen zul\"asst. Somit wird es klarer zu welcher Zeit welche Mutationen aufgerufen werden k\"onnen und wie sie durchgef\"uhrt wurden:$\newline$
+
+\begin{lstlisting}
+var store = {
+  debug: true,
+  state: {
+    message: 'Hello!'
+  },
+  setMessageAction (newValue) {
+    if (this.debug) console.log('setMessageAction triggered with', newValue)
+    this.state.message = newValue
+  },
+  clearMessageAction () {
+    if (this.debug) console.log('clearMessageAction triggered')
+    this.state.message = ''
+  }
+}
+\end{lstlisting}
+$\newline$
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=1.25\textwidth]{vuex}
     \caption{Vuex Action-Mutations-State Diagram}
     \label{fig:mesh1}
 \end{figure}
+
+Komponenten k\"onnen auch private Zust\"ande haben, dies wird mit "privateState" erreicht. In diesem Fall muss der sharedState ebenfalls definiert werden.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.25\textwidth]{sharedstate}
+    \caption{Vuex private}
+    \label{fig:mesh2}
+\end{figure}
+
+Dies bewirkt dass eine Komponente nicht direkt einen Wert oder Zustand im Store ver\"andern kann, sondern dies \"uber einen Event ausf\"uhrt, welcher den Store selbst informiert welchen State es \"uber eine Mutation zu ver\"andern gilt.
 
 
 \subsection{Vuetify}
@@ -95,7 +178,7 @@ Um Geoinformationsdaten wie z.B. Polygone und Pfade korrekt zu speichern wird au
 Leaflet ist eine JavaScript Library welche es erm\"oglicht Map auf dem Client darzustellen. Es fokussiert sich auf Simplizit\"at, Performanz und ist sehr schlank, was einer PWA sehr entgegen kommt. Die Library ist nur 38 KB gross und erm\"oglicht es viele Features welche bei der Darstellung einer Map ben\"otigt wird zu verwenden. 
 
 \subsection{TileLayer}
-Der TileLayer fungiert als Hintergrundkarte welche dynamisch geladen wird. Je nach ben\"otigtem Kartenausschnitt werden die Tiles als .pngs geladen und auf der Karte dargestellt. Dies f\"uhrt dazu dass je nach Gr\"osse und Zoomstufe des Kartenausschnitts nur minimalen Datenaufwand bet\"atigt wird. Als Hintergrundkarte werden die "terrain" Tiles von "stamen-tiles" verwendet.
+Der TileLayer fungiert als Hintergrundkarte welche dynamisch geladen wird. Je nach ben\"otigtem Kartenausschnitt werden die Tiles als .pngs geladen und auf der Karte dargestellt. Dies f\"uhrt dazu dass je nach Gr\"osse und Zoomstufe des Kartenausschnitts nur minimalen Datenaufwand bet\"atigt wird. Als Hintergrundkarte werden die "Terrain" Tiles von "stamen-tiles" verwendet.
 
 \subsection{Leaflet editable}
 Damit die User neue Polygone, Punkte und Pfade erfassen k\"onnen ben\"otigt Leaflet das Plugin "Leaflet editable", welches es erm\"oglicht neue Objekte direkt auf der Map zu zeichnen, oder bestehende Objekte zu editieren. Sobald ein Objekt abgeschlossen ist, wird es per REST Schnittstelle an die Datenbank \"ubertragen. Der User hat die M\"oglichkeit de Objekt einen Namen als Label zuzuweisen, und es zwischen privat oder public zu wechseln. Jeder User hat nur Zugriff auf seine eigenen privaten Fl\"achen, bzw. Pfade und Punkte, ausser er w\"ahlt es diese zu Ver\"offentlichen, bzw "public" zu machen, damit sie alle User auf der Map sehen.
