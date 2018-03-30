@@ -11,8 +11,7 @@ import About from '@/components/About'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'root',
       component: Waldmeistermap
