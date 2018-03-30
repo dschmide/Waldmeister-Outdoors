@@ -209,9 +209,9 @@ export default {
 
     //Show my location on map
     var options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 0
+  enableHighAccuracy: false,
+  timeout: 60000,
+  maximumAge: Infinity
 };
 
 function success(pos) {
@@ -221,6 +221,10 @@ function success(pos) {
   console.log(`Latitude : ${crd.latitude}`);
   console.log(`Longitude: ${crd.longitude}`);
   console.log(`More or less ${crd.accuracy} meters.`);
+alert(`Latitude : ${crd.latitude}`);
+  alert(`Longitude: ${crd.longitude}`);
+  alert(`More or less ${crd.accuracy} meters.`);
+
 }
 
 function error(err) {
