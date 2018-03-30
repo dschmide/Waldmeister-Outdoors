@@ -9,15 +9,23 @@
         <v-text-field
               label="Displayname"
               v-model="displayname"
+              @keyup.enter="login" 
         ></v-text-field>
         <br>
         <v-text-field
               label="Password"
               type="password"
               v-model="password"
+              @keyup.enter="login" 
         ></v-text-field>
         <br>
-        <div class="error" v-html="error" />
+        <div class="error" v-if="error">
+          <ul>
+            <li v-if="error.data.username">Displayname: {{ error.data.username[0] }}</li>
+            <li v-if="error.data.password">Password: {{ error.data.password[0] }}</li>
+            <li v-if="error.data.non_field_errors">{{ error.data.non_field_errors[0] }}</li>
+          </ul>
+        </div>
         <br>
         <v-btn
           dark
@@ -44,7 +52,6 @@ export default {
   },
   methods: {
     async login(){
-      try{
         const Response = AuthenticationSevice.login({ 
             username: this.displayname, 
             password: this.password
@@ -57,18 +64,21 @@ export default {
             })
             console.log(response.data)
           })
-        } catch (error) {
-          console.log(response.token)
-        }
-        //console.log(response.data)
-      }
+          .catch((error) => {
+            this.error = error.response;
+            console.log("err");
+          })
     }
   }
+}
 </script>
 
 <style scoped>
-.error{
-   color:red;
- }
+
+.error {
+  color: white;
+  list-style:  none;
+  text-align: left;
+}
 
 </style>
