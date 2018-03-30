@@ -161,7 +161,7 @@ Dies bewirkt dass eine Komponente nicht direkt einen Wert oder Zustand im Store 
 Vuetify ist eine Vue.JS UI Framework welches das Frontend aus vielen, Material-Design basierten UI Bausteinen zusammenbaut.
 
 \section{Axios}
-Axios ist eine JavaScript library welche Promise-Based HTTP Requests, welche "Waldmeister-Outdoors" dazu verwendet mit dem Server zu kommunizieren. Axios erm\"oglicht es asynchrone HTTP requests zu REST Endpunkten abzusetzen oder CRUD Operationen auszuf\"uhren. Axios kann in puren JavaScript Projekten verwendet werden oder auch in Projekten welche auf Vue.JS basieren. Ein Promise-Objekt repr\"asentiert die in der Zukunft geschehende Komplettierung einer asynchronen Operation (oder deren Abbruch durch einen Fehler).
+Axios ist eine JavaScript library zur Erstellung von Promise-Based HTTP Requests, welche "Waldmeister-Outdoors" dazu verwendet mit dem Server zu kommunizieren. Axios erm\"oglicht es asynchrone HTTP requests zu REST Endpunkten abzusetzen oder Requests wie Create, Read, Update, Delete (CRUD) Operationen auszuf\"uhren. Axios kann in puren JavaScript Projekten verwendet werden oder auch in Projekten welche auf Vue.JS basieren. Ein Promise-Objekt repr\"asentiert die in der Zukunft geschehende Komplettierung einer asynchronen Operation (oder deren Abbruch durch einen Fehler).
 
 \section{Django}
 Als Server zur Verwaltung der User und der Daten welche die User generieren und ben\"otigen kommt Django zum Einsatz. Es ist ein Open-Source Webframework welches das Python Gegenst\"uck zu Ruby-On-Rails darstellt. Im Kern folgt es dem Model-View-Controller Prinzip, obwohl es eigene Namensgebung f\"ur diese Verwendet. Django verwendet eine PostgreSQL Datenbank um Daten persistent zu machen. Django wird ebenfalls dazu verwendet um User einen Account zu geben, damit nur sie Zugriff auf Ihre privaten Fl\"achen haben, bevor sie vom User ver\"offentlich werden.
@@ -254,10 +254,12 @@ Die Mockups wurden vor der Implementation erstellt um das Screendesign und Layou
 
 
 \section{UMLs}
-UML Diagramme geben Auskunft \"uber die Architektur und innere Abl\"aufe des Systems
+UML Diagramme geben Auskunft \"uber die Architektur und Abl\"aufe des Systems. Es ist eine grafische Repräsentation in Form von Diagrammen welche in der Sprache nach den Definitionen der "Unified Modeling Language" produziert sind. Sie bestimmt bei der Modellierung Beziehungen und Abhägigkeiten zwischen Begriffen und Notationen für diese Begriffe und statischen Strukturen und dynamischen Abläufen. Sie finden Verwendung und ist die dominierende Sprache für die Softwaresystem-Modellierung und dient zur Kommunikation von Ideen zwischen Projektauftraggeber, Softwareentwickler und Systemingenieuren. In den 90er Jahren wurde die erste Spezifikation unter dem Namen UML 1.x entwickelt und wurde im Jahr 2000 revidiert und wurde in UML2 umbenannt. Seit Februar 2008 liegt Version 2.2 in der finalen Version vor. Seit Juni 2015 wird die aktuellste Version 2.5 verwendet. $\newline$
+Hauptsächlich definiert die Sprache Aktionen, Aktivitäten, Allgemeines Verhalten, Anwendungsfälle, Informationsflüsse, Interaktionen, Klassen, Komponenten, Kompositionsstrukturen, Modelle, Profile, Schablonen, Verteilungen und Zustandsautomaten. Diese kommen Strukturdiagrammen und Verhaltensdiagramme zum Einsatz, wie u.a. dem Klassen und Komponentendiagramm, oder Aktivitätsdiagramm, Sequenzdiagramm, Kommunikationsdiagramm, etc... Die Grenzen zwischen den über vierzehn Diagrammtypen verlaufen weniger scharf. UML2 verbietet nicht, dass ein Diagramm grafische Elemente enthält, die eigentlich zu unterschiedlichen Diagrammtypen gehören. Elemente aus einem Strukturdiagramm und aus einem Verhaltensdiagramm können nach Anwendungsfall auf dem gleichen Diagramm dargestellt werden, falls damit eine besonders treffende Aussage zu einem Modell gemacht werden kann. $\newline$
+
 
 \subsection{Use Case - Diagramm}
-Das Diagram \ref{fig:uc1} zeigt auf welche M\"oglichkeiten ein User hat mit dem Werkzeug zu interagieren. Ein User welcher sich nicht registriert kann weder Fl\"achen generieren oder editieren und kann keine privaten Fl\"achen sehen. Er kann jedoch die Vegetationskundliche Karte und \"offentliche Fl\"achen aller anderen User sehen. Erst wenn er sich einloggt kann er seine eigenen privaten und \"offentlichen Fl\"achen editieren oder erstellen.
+Das Diagram \ref{fig:uc1} zeigt auf welche M\"oglichkeiten ein User hat mit dem Werkzeug zu interagieren. Ein User welcher sich nicht registriert kann weder Fl\"achen generieren oder editieren und kann keine privaten Fl\"achen sehen. Er kann jedoch die Vegetationskundliche Karte und \"offentliche Fl\"achen aller anderen User sehen. Nachdem er sich registriert und eingeloggt hat, kann er Fl\"achen erstellen und editieren. Diese teilen sich in öffentliche und private Benutzerflächen auf. Diese Option kann er während der Erfassung der geometrie der Fläche frei wählen. Standardmässig ist eine solche Fläche privat und wird nur durch Wunsch des Users öffentlich gemacht. Eine bereits erstellte Fläche kann aber im Nachhinein auf öffentlich umgeschaltet werden, nachdem sie z.B. die Geometrie und Position vom User finalisiert wurde. Dies ist vorallem nach Absprache zwischen anderen Experten denkbar, welche über Gruppen auch auf private, noch nicht öffentliche Benutzerflächen Zugriff haben um die Eigenschaften und Lage einer Fläche zu analysieren und über diese zu diskutieren.
 \begin{figure}[h]
 \centering
     \includegraphics[width=0.9\textwidth]{WaldmeisterMap_USECASE}
@@ -266,7 +268,7 @@ Das Diagram \ref{fig:uc1} zeigt auf welche M\"oglichkeiten ein User hat mit dem 
 \end{figure}
 
 \subsection{Klassendiagram, Datenbankdiagramm}
-Das Diagramm \ref{fig:cd1}  schildert die Relation und Ausbau der wichtigsten zwei Klassen des Systems.
+Das Diagramm \ref{fig:cd1}  schildert die Relation und Ausbau der wichtigsten Klassen des Systems. Dies zeigt dass Benutzerflächen nur von registrierten Users erstellt werden können und immer einem solchen Zugewiesen sind. Wird ein Benutzer aus dem System gelöscht, werden alle Flächen welche diesem Account zugeordnet sind aus dem System gelöscht. 
 
 \begin{figure}[h]
 \centering
