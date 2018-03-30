@@ -221,10 +221,6 @@ function success(pos) {
   console.log(`Latitude : ${crd.latitude}`);
   console.log(`Longitude: ${crd.longitude}`);
   console.log(`More or less ${crd.accuracy} meters.`);
-alert(`Latitude : ${crd.latitude}`);
-  alert(`Longitude: ${crd.longitude}`);
-  alert(`More or less ${crd.accuracy} meters.`);
-
 }
 
 function error(err) {
