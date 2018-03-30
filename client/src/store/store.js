@@ -10,6 +10,7 @@ export default new Vuex.Store({
     user: null,
     isUserLoggedIn: false,
     toggleVegetation: true,
+    toggleUserAreas: true,
   },
 
   mutations: {
@@ -34,6 +35,15 @@ export default new Vuex.Store({
       }
       console.log('Vegetation Toggled ' + state.toggleVegetation);
     },
+    toggleUserAreas(state) {
+      if (state.toggleUserAreas) {
+        state.toggleUserAreas = false
+      } else {
+        state.toggleUserAreas = true
+      }
+      console.log('Vegetation Toggled ' + state.toggleUserAreas);
+    },
+
 
   },
   actions: {
@@ -45,6 +55,10 @@ export default new Vuex.Store({
     },
     toggleVegetation({ commit }) {
       commit('toggleVegetation')
-    }
+    },
+    toggleUserAreas({ commit }) {
+      commit('toggleUserAreas')
+    },
+
   }
 })

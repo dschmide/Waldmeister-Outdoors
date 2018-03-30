@@ -116,7 +116,7 @@ export default {
     });
 
 
-
+    var UserAreaGroup = L.layerGroup();
 
     L.AddPolygonShapeControl = L.Control.extend({
 
@@ -175,7 +175,37 @@ export default {
             }
 
           });
-        container.style.display = 'inline';
+        container.style.display = 'block';
+        return container;
+      }
+    });
+
+    L.UserAreasControl = L.Control.extend({
+
+      options: {
+        position: 'topleft'
+      },
+
+      onAdd: function(map) {
+        var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar'),
+          link = L.DomUtil.create('a', '', container);
+
+        link.href = '#';
+        link.title = 'Toggle UserAreas Layer';
+        link.innerHTML = 'Areas';
+        L.DomEvent.on(link, 'click', L.DomEvent.stop)
+          .on(link, 'click', function() {
+            //map.editTools.startPolygon();
+            if (self.$store.state.toggleUserAreas) {
+              UserAreaGroup.clearLayers();
+              self.$store.dispatch('toggleUserAreas', null)
+            } else { 
+              DrawAllUserAreas()
+              self.$store.dispatch('toggleUserAreas', null)
+            }
+
+          });
+        container.style.display = 'block';
         return container;
       }
     });
@@ -183,6 +213,8 @@ export default {
     map.addControl(new L.NewPolygonControl());
     map.addControl(new L.AddPolygonShapeControl());
     map.addControl(new L.GeoJsonControl());
+    map.addControl(new L.UserAreasControl());
+
 
 
     map.on('layeradd', function(e) {
@@ -346,50 +378,57 @@ export default {
       myGeoJsonLayer.addData(self.vegetation);
     }
     
+    DrawAllUserAreas();
+    //DRAWS ALL POLYGONS
+    async function DrawAllUserAreas(){
+      self.MyAreas = (await AreaService.getAreas()).data
 
-    this.MyAreas = (await AreaService.getAreas()).data
+      
 
-    var val;
-    for (val of this.MyAreas) {
-      //console.log(val.polygon.coordinates[0][0]);
-      var corner;
-      var polygonToAdd = [];
-      for (corner of val.polygon.coordinates[0][0]) {
-        //console.log("corner found " + val.label + corner);
-        polygonToAdd.push(corner);
+      var val;
+      for (val of self.MyAreas) {
+        //console.log(val.polygon.coordinates[0][0]);
+        var corner;
+        var polygonToAdd = [];
+        for (corner of val.polygon.coordinates[0][0]) {
+          //console.log("corner found " + val.label + corner);
+          polygonToAdd.push(corner);
+        }
+        //console.log(polygonToAdd);
+        var poly = L.polygon([
+          [
+            polygonToAdd
+          ]
+        ],
+
+        ).addTo(UserAreaGroup);
+
+        if (val.public == true) {
+          var label = L.marker(poly.getBounds().getCenter(), {
+            icon: L.divIcon({
+              className: 'AreaLabelPublic',
+              html: val.label,
+              iconSize: [100, 0],
+              direction: 'auto',
+            })
+          }).addTo(UserAreaGroup);
+        } else {
+          var label = L.marker(poly.getBounds().getCenter(), {
+            icon: L.divIcon({
+              className: 'AreaLabelPrivate',
+              html: val.label,
+              iconSize: [100, 0],
+              direction: 'auto'
+            })
+          }).addTo(UserAreaGroup);
+        }
+        UserAreaGroup.addTo(map);
+        //poly.enableEdit();
+
       }
-      console.log(polygonToAdd);
-      var poly = L.polygon([
-        [
-          polygonToAdd
-        ]
-      ],
+    };
 
-      ).addTo(map);
-
-      if (val.public == true) {
-        var label = L.marker(poly.getBounds().getCenter(), {
-          icon: L.divIcon({
-            className: 'AreaLabelPublic',
-            html: val.label,
-            iconSize: [100, 0],
-            direction: 'auto',
-          })
-        }).addTo(map);
-      } else {
-        var label = L.marker(poly.getBounds().getCenter(), {
-          icon: L.divIcon({
-            className: 'AreaLabelPrivate',
-            html: val.label,
-            iconSize: [100, 0],
-            direction: 'auto'
-          })
-        }).addTo(map);
-      }
-
-      //poly.enableEdit();
-
-    }
+    
 
             
     //MAP LEGEND
