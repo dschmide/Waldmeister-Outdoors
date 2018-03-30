@@ -74,7 +74,11 @@ export default {
       this.$router.push({
         name:'root'
       })
-    }
+    },
+    toggleGeoJson() {
+      this.$store.dispatch('toggleVegetation', null)
+    },
+    
   }
 }
 </script>

@@ -20,7 +20,8 @@
         </v-card>
       </v-dialog>
     </v-layout>
-    <div id='map'></div>
+    <div id='map'>
+    </div>
   </div>
 </template>
 <script>
@@ -71,7 +72,7 @@ export default {
 
   async mounted() {
     console.log("Loading Vegetationsmap")
-    console.log(this.vegetation);
+    //console.log(this.vegetation);
     var startPoint = [47.4348826, 8.7460494];
     var map = L.map('map', { editable: true }).setView(startPoint, 15),
       tilelayer = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.{ext}', {
@@ -82,6 +83,9 @@ export default {
         maxZoom: 18,
         ext: 'png'
       }).addTo(map);
+      //Geolocation and Marker
+      map.locate({setView: true, maxZoom: 15, enableHighAccuracy:false, timeout:60000, maximumAge:Infinity});
+      
 
     L.NewPolygonControl = L.Control.extend({
 
@@ -95,7 +99,7 @@ export default {
 
         link.href = '#';
         link.title = 'Create a new polygon';
-        link.innerHTML = 'add';
+        link.innerHTML = 'Add';
         L.DomEvent.on(link, 'click', L.DomEvent.stop)
           .on(link, 'click', function() {
             map.editTools.startPolygon();
@@ -112,6 +116,8 @@ export default {
     });
 
 
+
+
     L.AddPolygonShapeControl = L.Control.extend({
 
       options: {
@@ -124,7 +130,7 @@ export default {
 
         link.href = '#';
         link.title = 'Create a new polygon';
-        link.innerHTML = 'edit';
+        link.innerHTML = 'Edit';
         L.DomEvent.on(link, 'click', L.DomEvent.stop)
           .on(link, 'click', function() {
             if (!map.editTools.currentPolygon) return;
@@ -141,11 +147,42 @@ export default {
         return container;
       }
     });
+    var self = this;
 
+    L.GeoJsonControl = L.Control.extend({
 
+      options: {
+        position: 'topleft'
+      },
+
+      onAdd: function(map) {
+        var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar'),
+          link = L.DomUtil.create('a', '', container);
+
+        link.href = '#';
+        link.title = 'Toggle Vegetation Layer';
+        link.innerHTML = 'Veg';
+        L.DomEvent.on(link, 'click', L.DomEvent.stop)
+          .on(link, 'click', function() {
+            //map.editTools.startPolygon();
+            if (self.$store.state.toggleVegetation) {
+              myGeoJsonLayer.clearLayers();
+              labelGroup.clearLayers();
+              self.$store.dispatch('toggleVegetation', null)
+            } else { 
+              myGeoJsonLayer.addData(self.vegetation);
+              self.$store.dispatch('toggleVegetation', null)
+            }
+
+          });
+        container.style.display = 'inline';
+        return container;
+      }
+    });
 
     map.addControl(new L.NewPolygonControl());
     map.addControl(new L.AddPolygonShapeControl());
+    map.addControl(new L.GeoJsonControl());
 
 
     map.on('layeradd', function(e) {
@@ -209,28 +246,32 @@ export default {
 
     //Show my location on map
     var options = {
-  enableHighAccuracy: false,
-  timeout: 60000,
-  maximumAge: Infinity
-};
+      enableHighAccuracy: false,
+      timeout: 60000,
+      maximumAge: Infinity
+    };
 
-function success(pos) {
-  var crd = pos.coords;
+    function success(pos) {
+      var crd = pos.coords;
 
-  console.log('Your current position is:');
-  console.log(`Latitude : ${crd.latitude}`);
-  console.log(`Longitude: ${crd.longitude}`);
-  console.log(`More or less ${crd.accuracy} meters.`);
-}
+      console.log('Your current position is:');
+      console.log(`Latitude : ${crd.latitude}`);
+      console.log(`Longitude: ${crd.longitude}`);
+      console.log(`More or less ${crd.accuracy} meters.`);
+      L.circle([crd.latitude, crd.longitude], crd.accuracy).addTo(map);
+      console.log("Added Marker");
+    }
 
-function error(err) {
-  console.warn(`ERROR(${err.code}): ${err.message}`);
-}
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
 
-navigator.geolocation.getCurrentPosition(success, error, options);
+    navigator.geolocation.getCurrentPosition(success, error, options);
 
     //Add geojson Layer and styling
-    var myGeoJsonLayer = L.geoJSON(this.vegetation, {
+    //var myGeoJsonLayer = L.geoJSON(this.vegetation, {
+    var labelGroup = L.layerGroup();
+    var myGeoJsonLayer = L.geoJSON(undefined, {
       style: function(feature){
         switch (feature.properties.EK72) {
           case '1':
@@ -283,6 +324,7 @@ navigator.geolocation.getCurrentPosition(success, error, options);
       },
       "weight": 0.8,
       "opacity": 0.66,
+      "editable": false,
 
       //Draws labels for the Polygons
       onEachFeature: function(feature, layer) {
@@ -293,16 +335,19 @@ navigator.geolocation.getCurrentPosition(success, error, options);
             iconSize: [20, 20],
             direction: 'auto'
           })
-        }).addTo(map);
+        }).addTo(labelGroup);
       }
       
     }).addTo(map);
-    myGeoJsonLayer.addData(this.vegetation);
+    labelGroup.addTo(map);
+
+
+    if (self.$store.state.toggleVegetation) {
+      myGeoJsonLayer.addData(self.vegetation);
+    }
     
 
     this.MyAreas = (await AreaService.getAreas()).data
-
-    //map.data.addGeoJson(vegetation);
 
     var val;
     for (val of this.MyAreas) {
@@ -388,8 +433,8 @@ body {
 
 .propertyLabel {
   color: white;
-  text-shadow: 0.5px 0.5px gray;
-  opacity: 0.8;
+  text-shadow: 2px 2px 2px black;
+  opacity: 1;
 }
 
 .cssPolygon{
