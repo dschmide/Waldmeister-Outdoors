@@ -51,9 +51,7 @@ export default {
   },
   methods: {
     save() {
-      console.log(myGeoJsonPoly)
-
-
+      //console.log(myGeoJsonPoly)
       var theArea = {
         "label": this.userAreaLabel,
         "public": this.checked,
@@ -71,7 +69,7 @@ export default {
   },
 
   async mounted() {
-    console.log("Loading Vegetationsmap")
+    console.log("Loading Vegetationmap")
     //console.log(this.vegetation);
     var startPoint = [47.4348826, 8.7460494];
     var map = L.map('map', { editable: true }).setView(startPoint, 15),
@@ -291,7 +289,7 @@ export default {
       console.log(`Longitude: ${crd.longitude}`);
       console.log(`More or less ${crd.accuracy} meters.`);
       L.circle([crd.latitude, crd.longitude], crd.accuracy).addTo(map);
-      console.log("Added Marker");
+      console.log("Added geolocation circle");
     }
 
     function error(err) {
@@ -355,7 +353,7 @@ export default {
 
       },
       "weight": 0.8,
-      "opacity": 0.66,
+      "opacity": 0.75,
       "editable": false,
 
       //Draws labels for the Polygons
@@ -481,13 +479,13 @@ body {
 }
 .AreaLabelPublic {
   color: green;
-  text-shadow: 1px 1px black;
+  text-shadow: 2px 2px 2px black;
   opacity: 1;
 }
 
 .AreaLabelPrivate {
   color: yellow;
-  text-shadow: 1px 1px black;
+  text-shadow: 2px 2px 2px black;
   opacity: 1;
 }
 
