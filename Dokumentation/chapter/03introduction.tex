@@ -1,7 +1,5 @@
 %03introduction.tex
 
-\usepackage{float}
-
 \chapter{Management summary}
 \section{Ausgangslage}
 Je nach Untergrund, Bodeneigenschaften, Gel\"ande sowie Klima gedeihen in der Schweiz unterschiedliche Typen von W\"aldern. Seit einigen Jahrzehnten werden diese Typen von Experten erhoben und kartiert. Es wurden dabei verschiedene typisierte Waldstandorte festgelegt. Aktuell werden Karten, die im Auftrag der Kantone von Experten angefertigt wurden, nur in grossen Intervallen revidiert, wobei sie oft auch nicht fl\"achendeckend vorhanden sind (z.B. in den Kantonen GR, VS, BE).
@@ -55,7 +53,12 @@ Kartenmaterial sollte wenn m\"oglich permanent auf das Mobile Ger\"at geladen we
 \clearpage
 \pagebreak
 
-\chapter{Technologien}
+\chapter{Anforderungen, Technologien}
+\section{Anforderungsspezifikationen}
+Die Software soll auf mobilen Ger\"aten sowie auf Desktop/Laptop Browsern benutzbar sein. Mobile Ger\"ate sind von der Leistung her meist schwach verglichen mit Desktopger\"aten. Server-side rendering kann dieses Problem weniger relevant machen, damit die Applikation nicht vollst\"andig vom Client berechnet werden muss. $\newline$
+Die Website ist darauf ausgelegt, dass sie im Chrome Browser verwendet wird, da Chrome der verbreitetste Browser auf Android Ger\"aten ist, und auch seine Desktop Version sehr zuverl\"assig funktioniert. Apple ger\"ate k\"onnen ebenfalls Chrome verwenden. Chrome befindet sich auf den Meisten Ger\"aten auf dem neusten Stand und unterst\"utzt daher die meisten Funktionen. $\newline$
+Als Testger\"ate werden ein Apple iPad und iPhone verwendet, ein Android Galaxy S5 und mehrere Macbook Pro und Air Laptops (ca. 2012 - 2016). $\newline$
+
 \section{Progressive Webapp}
 Um das Werkzeug "Waldmeister - Outdoors" nicht auf eine Plattform von Mobilen Ger\"aten zu beschr\"anken (iOS oder Android), setzt es auf die Prinzipien der Progressive Webapps (PWA). Diese beschreiben eine Website, die viele Merkmale besitzt, welche bisher den nativen Apps vorbehalten waren. Eine PWA ist gewissermassen eine responsive Website, welche auch offline verwendet werden kann. Sie schliesst dadurch eine zus\"atzliche Entwicklung einer nativen App, parallel zur Webseite \"uberfl\"ussig, da s\"amtliche Funktionen einer nativen App in der Webapp repliziert werden k\"onnen. Eine PWA erreicht diese offline F\"ahigkeiten durch den Einsatz von Service Workern; ein JavaScript, welches von Web-Browsern im Hintergrund ausgef\"uhrt wird. Einmal online aufgerufen, k\"onnen die Inhalte beim n\"achsten Besuch der Seite auch dann angezeigt werden, wenn eine schlechte oder sogar gar keine Internetverbindung besteht (Offline-Betrieb). Auch die von nativen Apps bekannten Push-Benachrichtigungen sind mit Service Workern m\"oglich. \cite{ServiceWorkers} $\newline$
 Grundlegende Charakteristiken der PWA sind Offline Funktionalit\"at, Push Notifications, Add-To-Homescreen, jedoch ist keine Installation notwendig (beispielsweise \"uber den Apple Appstore oder Google Playstore). Verbreitete Mobile Browser wie Firefox und Google Chrome haben bereits eine vollst\"andige Unterst\"utzung von PWAs, Safari sollte dies bis Ende Februar 2018 ebenfalls implementiert haben und kann daher auch auf iOS verwendet werden. PWAs k\"onnen auf den Home-Screen des mobilen Ger\"ats hinzugef\"ugt werden.
@@ -221,9 +224,6 @@ Danach k\"onnen die Funktionen von HTML 5, z.B navigator.geolocation.getCurrentP
 \pagebreak
 
 \chapter{Implementation}
-
-\section{Anforderungsspezifikation}
-Die Software soll auf mobilen Ger\"aten sowie auf Desktop/Laptop Browsern benutzbar sein. Mobile Ger\"ate sind von der Leistung her meist ihren
 
 \section{Mockup}
 Die Mockups wurden vor der Implementation erstellt, um Screendesign und Layout klarer zu definieren, bevor es um die technische Implementation von "Waldmeister - Outdoors" ging. In den Abbildungen 1 bis 9 kann man den Arbeitsschritt Einloggen und Erstellen einer neuen Fl\"ache und eines Points of Interests (POI) sehen. Zus\"atzlich sieht der User seine eigene Location auf der Map eingetragen und hat \"uber das Menu "My Places" Zugriff auf eine Liste seiner erstellten Fl\"achen. Ein Kontextmenu gibt bei der Anzeige eines bestimmten Objekts zus\"atzliche Informationen.
@@ -467,7 +467,9 @@ Benutzerfl\"achen werden \"uber die URL /WaldmeisterMap/api/areas/ als GET Reque
 \end{figure}
 
 \subsection{Tests}
-Tests des Front und Backends folgen noch
+Tests für Vue.JS wurden mit dem Test Framework Karma und Jasmin erstellt . Sie können über den Befehl "npm run test" ausgeführt werden. $\newline$
+
+Test für das Django werden mit dem standard Django module "unittest" erstellt
 
 \pagebreak
 
@@ -537,11 +539,22 @@ Sie basieren auf Open Location Code (OLC), ein open-source Projekt welches von G
 
 \section{Softwaredokumentation}
 \subsection{Installation}
-Um die Software zu verwenden kann die Anleitung auf dem GitHub verwendet werden.
+Um die App zu verwenden, sollte die Anleitung auf GitHub (Readme) verwendet werden. $\newline$
+
+Github Repo klonen $\newline$
+"npm install" $\newline$
+"npm start" im client folder startet den Vue-Server $\newline$
+"python manage.py runserver" im root folder started den Django Server $\newline$
+Damit Django die PostgreSQL Datenbank verwenden kann, müssen die Werte in der settings.py angepasst werden, oder eine Datenbank mit dem Namen dschwaldmeister, user Postgres und Port 5435 erstellt werden. Von PostgreSQL soll auch die Extension postgis erzeugt werden. $\newline$
+Mit "manage.py migrate" kann die Datenbank auf den neusten Stand gebracht werden, damit sie verwendet werden kann. $\newline$
+Die App kann im Browser unter der angezeigten Adresse des Vue-Servers aufgerufen werden. $\newline$
+
+
 
 \pagebreak
 
 \chapter{Links}
+\subsection{github und maps.zh}
 https://github.com/dschmide/Waldmeister $\newline$
 https://maps.zh.ch?topic=WaldVKZH&scale=18634&x=2706590.13&y=1251180.39&srid=2056
 
