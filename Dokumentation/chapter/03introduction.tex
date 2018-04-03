@@ -211,7 +211,7 @@ Der TileLayer fungiert als Hintergrundkarte, welche dynamisch geladen wird. Je n
 \subsection{GeoJson Layer, Vegetationskundliche Karte}
 Oberhalb der Hintergrundkarte wird ein GeoJson layer dargestellt, welcher die bereits bekannten Waldstandorte des Kantons darstellt. Er kann wahlweise ausgeblendet werden. Jedes Polygon dieses Layers wird durch ein Label beschriftet, welches den K\"urzel (EK72) dieses Waldstandorts beschreibt. Sie sind Ausdruck der Standorteigenschaften, und beziehen sich nicht auf die aktuelle
 Bestockung, sondern auf eine potentielle nat\"urliche Vegetation. Die Farbe des Polygons wird ebenfalls \"uber diese Bezeichnung definiert und ist Teil des Standards Ellenberg Kl\"otzli (EK72).$\newline$
-Diese Daten wurden vom Kanton Z\"urich bezogen und haben den Stand 31.12.1997. Viele Geometadaten haben jedoch den Stand 04. 04. 2011. $\newline$ Grundlage f\"ur die Digitalisierung bildeten masshaltige Folien aus der analogen Kartierung im Massstab 1:5'000. Der gr\"osste Teil wurde am damaligen Oberforstamt digitalisiert. Die Lagegenauigkeit ist c.a. 1 Meter. Die Daten wurden in der Form einer ESRI-Shapefile geliefert und mussten zuerst in das GeoJson Format transformiert werden, damit sie auf der Leaflet Map (als GeoJson Layer) dargestellt werden k\"onnen. Die Attribute (darunter die Kurzbezeichnung EK72) bleiben dabei erhalten
+Diese Daten wurden vom Kanton Z\"urich bezogen und haben den Stand 31.12.1997. Viele Geometadaten haben jedoch den Stand 04. 04. 2011. $\newline$ Grundlage f\"ur die Digitalisierung bildeten masshaltige Folien aus der analogen Kartierung im Massstab 1:5'000. Der gr\"osste Teil wurde am damaligen Oberforstamt digitalisiert. Die Lagegenauigkeit ist c.a. 1 Meter. Die Daten wurden in der Form einer ESRI-Shapefile geliefert und mussten zuerst in das GeoJson Format transformiert werden, damit sie auf der Leaflet Map (als GeoJson Layer) dargestellt werden k\"onnen. Die Attribute (darunter die Kurzbezeichnung EK72) bleiben dabei erhalten. \cite{ZHGeoM}
 
 \subsection{Leaflet editable}
 Damit die User neue Polygone, Punkte und Pfade erfassen k\"onnen, ben\"otigt Leaflet das Plugin "Leaflet editable", welches es erm\"oglicht, neue Objekte direkt auf der Map zu zeichnen, oder bestehende Objekte zu editieren. Der User hat die M\"oglichkeit, dem Objekt per Dialogbox einen Namen als Label zuzuweisen, und zwischen den Zust\"anden privat oder public zu wechseln. Jeder User hat nur Zugriff auf seine eigenen privaten Fl\"achen, bzw. Pfade und Punkte, ausser er w\"ahlt es diese zu ver\"offentlichen, bzw "public" zu machen, damit sie alle User auf der Map sehen. Private Benutzerfl\"achen beschreiben oft Orte, welche w\"ahrend der Feldarbeit von pers\"onlichem Nutzen sind, jedoch f\"ur andere Experten nicht von Interesse sind oder bewusst privat gehalten werden. $\newline$
@@ -368,6 +368,7 @@ Das Komponentendiagramm zeit die Beziehungen zwischen verschiedenen Komponenten 
 
 \subsection{VueJS Komponenten}
 Die Applikation "Waldmeister-Outdoors" setzt sich aus den Komponenten Register, Login, About, der WaldmeisterMap und einem Page Header zusammen. Dar\"uber hinaus bildet die Komponente "App.vue" die Basis, um den Page Header und Router-View Komponenten zu laden. $\newline$
+
 \subsection{WaldmeisterMap}
 Die Komponente WaldmeisterMap ist die Komponente, auf welcher die Leaflet Map und darauf die Layer Vegetationskarte (als geoJson) und der Layer f\"ur die Benutzerfl\"achen (als Polygone) dargestellt werden. Das leaflet Map Objekt beinhaltet auch die Kontrollbuttons, welche mit der Map assoziiert sind. Durch die Buttons 'Veg' und 'Areas' in der oberen linken Ecke der Map k\"onnen die GeoJson bzw die Benutzerfl\"achen ein - und ausgeschaltet werden. Dadurch werden die Layer, auf welchen sich die Polygone befinden gecleart und alle erstellten Labels von der Map gel\"oscht. Bet\"atigt der User den Button noch einmal, werden sie erneut erstellt. Sie sind standardm\"assig eingeschaltet und werden daher auch erstellt, wenn das Map Objekt auf die Page gemountet wird (beim Laden der WaldmeisterMap Komponente). Damit Label und Polygone der verschiedenen Layer separat ein und ausgeschaltet werden k\"onnen, werden sie zuerst in Gruppen unterteilt, bevor diese Gruppen auf die Map hinzugef\"ugt werden.$\newline$
 Oberhalb dieser zwei Buttons befindet sich der "Add" Button, welcher es dem User erm\"oglicht, eine neue Benutzerfl\"ache auf der Map einzutragen. Er kann, w\"ahrend er im Zeichnungsmodus ist, per click event dem Polygon einen neuen Eckpunkt anh\"angen. Klickt der User w\"ahrend des Zeichnungsmodus auf den ersten erstellten Eckpunkt, schliesst sich das Polygon und der User wird per Dialogbox aufgefordert, dem erstellten Objekt die ben\"otigten Attribute zuzuweisen (label, public). Dr\"uckt er in diesem Dialog auf "Save" wird die Fl\"ache an den Server geschickt und in der Datenbank gespeichert. $\newline$
@@ -375,7 +376,7 @@ Oberhalb dieser zwei Buttons befindet sich der "Add" Button, welcher es dem User
 \subsection{Login und Registrierung}
 Registrierung und Login werden als separate Komponenten aufgebaut, damit sie vom Vue-Router dargestellt werden k\"onnen. Sie beinhalten die Felder Username, Passwort und bei der Registration auch ein Email Feld, welches optional ist. Bei der erfolgreichen Registrierung wird von Djoser ein Benutzer angelegt und sein Passwort im verschl\"usselten Zustand hinterlegt. Loggt sich der Benutzer mit den korrekten Daten ein, erh\"alt er vom Server ein JWT (JSON Web Token), welches von Djoser basierend auf dem hinterlegten Accounts erstellt wird. Der Vue-Client Server hinterlegt dies in einem Store, damit es in verschiedenen Komponenten verwendet werden kann. Um sich dem Server gegen\"uber zu authentifizieren wird es bei einem Request mitgeschickt. Loggt er sich aus, wird dieses aus dem Store gel\"oscht und der User kann sich erneut oder unter einem anderen Benutzernamen einloggen. $\newline$
 Bei nicht erfolgreichen Versuchen einen Account zu erstellen oder sich einzuloggen, werden dem User diverse Fehlermeldungen angezeigt, welche Auskunft \"uber fehlerhafte Passworteingabe oder Benutzerdaten bei der Erstellung des Accounts geben. $\newline$
-Nach einem erfolgreichen Login wird der User per Vue-Router auf die Komponente WaldmeisterMap weitergeleitet und alle Benutzerfl\"achen vom Server angefordert, auf die er Zugriff hat. Der Server liefert per REST Interface alle \"offentlichen Benutzerfl\"achen, sowie die privaten Benutzerfl\"achen, welche diesem User zugeordnet sind. $\newline$
+Nach einem erfolgreichen Login wird der User per Vue-Router auf die Komponente WaldmeisterMap weitergeleitet und alle Benutzerfl\"achen vom Server angefordert, auf die er Zugriff hat. Der Server liefert per REST Interface alle \"offentlichen Benutzerfl\"achen, sowie die privaten Benutzerfl\"achen, welche diesem User zugeordnet sind. \cite{djoserpack} $\newline$
 
 \subesection{About}
 Die Komponente About enth\"alt wichtige informationen zu den Dargestellten Daten und beinhaltet die Links zu den nativen iOS und Android Apps, unter welchen das Nachschlagewerk "Waldmeister" erh\"altlich ist. Unterhalb des dargestellten Logos befinden sich ausserdem Informationen zum Projekt und den Rahmenbedingungen, unter welches es erstellt wurde. $\newline$
@@ -466,10 +467,13 @@ Benutzerfl\"achen werden \"uber die URL /WaldmeisterMap/api/areas/ als GET Reque
     \label{fig:swagger3}
 \end{figure}
 
-\subsection{Tests}
-Tests für Vue.JS wurden mit dem Test Framework Karma und Jasmin erstellt . Sie können über den Befehl "npm run test" ausgeführt werden. $\newline$
+\pagebreak
 
-Test für das Django werden mit dem standard Django module "unittest" erstellt
+\section{Tests}
+Tests für Vue.JS wurden mit dem Test Framework Karma und Jasmin erstellt . Sie können über den Befehl "npm run test" ausgeführt werden, aus dem "client" folder des Vue-Servers. $\newline$
+Getestet werden Komponenten, und deren Inhalt, welche von VueJS verwendet werden. $\newline$
+
+Test für das Django wurden mit dem standard Django module "unittest" erstellt
 
 \pagebreak
 
@@ -489,7 +493,7 @@ Alle Benutzeraccounts und deren Fl\"achen sind im Django Backend ersichtlich und
 
 \section{Verbesserungen, Weiterentwicklungen}
 \subsection{Automatische Standortbestimmung}
-Die automatische Bestimmung, in welchem Waldstandort sich ein User anhand der Geolocation befindet, ist ein w\"unschenswertes Feature, da es den User laufend dar\"uber informiert, in was f\"ur einem Waldtyp er sich befindet, ohne dass er dies durch einen Aufruf selbst ausf\"uhren muss. Dies kann erreicht werden durch eine periodische Abfrage der Geolocation, gekoppelt mit einer Berechnung in welchem GeoJson Polygon sich dieser Punkt befindet. Eine solche Berechnung ist zum Beispiel \"uber die Library geojson-geometries-lookup m\"oglich, welche alle Polygone aus einem GeoJson zur\"uckgibt, welche den gegebenen Punkt beinhalten. Danach kann aus dem EK72 Feld der K\"urzel ausgelesen und dem Benutzer angezeigt werden. $\newline$
+Die automatische Bestimmung, in welchem Waldstandort sich ein User anhand der Geolocation befindet, ist ein w\"unschenswertes Feature, da es den User laufend dar\"uber informiert, in was f\"ur einem Waldtyp er sich befindet, ohne dass er dies durch einen Aufruf selbst ausf\"uhren muss. Dies kann erreicht werden durch eine periodische Abfrage der Geolocation, gekoppelt mit einer Berechnung in welchem GeoJson Polygon sich dieser Punkt befindet. Eine solche Berechnung ist zum Beispiel \"uber die Library geojson-geometries-lookup m\"oglich, welche alle Polygone aus einem GeoJson zur\"uckgibt, welche den gegebenen Punkt beinhalten. Danach kann aus dem EK72 Feld der K\"urzel ausgelesen und dem Benutzer angezeigt werden. \cite{GeoLookup} $\newline$
 Um diesen Ablauf f\"ur den User so angenehm wie m\"oglich auszuf\"uhren k\"onnte er in der Toolbar in einen Tab wechseln, welcher keine Map, sondern lediglich die Information darstellt, in welcher Waldfl\"ache er sich befindet. Dies kann in einem gegebenen Intervall automatisch wiederholt werden. $\newline$
 
 \subsection{Editieren und L\"oschen von erstellten Benutzerfl\"achen}
@@ -537,8 +541,8 @@ Sie basieren auf Open Location Code (OLC), ein open-source Projekt welches von G
 
 \pagebreak
 
-\section{Softwaredokumentation}
-\subsection{Installation}
+\chapter{Softwaredokumentation}
+\section{Installation}
 Um die App zu verwenden, sollte die Anleitung auf GitHub (Readme) verwendet werden. $\newline$
 
 Github Repo klonen $\newline$
