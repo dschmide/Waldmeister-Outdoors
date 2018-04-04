@@ -5,7 +5,7 @@ python:
 
 env:
   global:
-  - PGPORT=5433
+  - PGPORT=5435
 
 virtualenv:
   system_site_packages: true
