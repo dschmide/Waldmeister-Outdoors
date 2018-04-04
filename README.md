@@ -4,9 +4,13 @@ Installation
 
 Clone Repository
 
-install dependencies 
+install dependencies (VueServer in client folder)
 
 npm install
+
+install python dependencies
+
+pip install -r requirements.txt
 
 start dev server (root folder) 
 
