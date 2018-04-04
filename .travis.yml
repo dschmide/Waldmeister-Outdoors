@@ -1,18 +1,16 @@
-language: generic
+language: python
 
-env:
-  - DJANGO_VERSION=2.0
+python: 3.4
 
 virtualenv:
   system_site_packages: true
 
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install python3
   - sudo apt-get build-dep python-gdal
 
 install:
-  - pip3 install -r requirements.txt --user
+  - pip install -r requirements.txt
 
 script: 
-  - python3 manage.py test WaldmeisterMap
+  - python manage.py test WaldmeisterMap
