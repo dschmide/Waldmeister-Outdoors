@@ -1,7 +1,4 @@
-django.contrib.gis
-rest_framework
-rest_framework_gis
-rest_framework.authtoken
-corsheaders
+djangorestframework
+djangorestframework-gis
 djoser
-rest_framework_swagger
+django-rest-swagger
