@@ -500,11 +500,11 @@ Testgetriebene Entwicklung (TDD) ist eine Methode zur Softwareentwicklung, welch
 \subsection{VueJS}
 Tests f\"ur Vue.JS wurden mit dem Test Runner Karma und dem Testframework Jasmine erstellt . Sie k\"onnen \"uber den Befehl "npm run test" ausgef\"uhrt werden, aus dem "client" folder des Vue-Servers. $\newline$
 Getestet werden Komponenten und deren Inhalt, welche von VueJS verwendet werden. $\newline$
-Damit Jasmin die tests ausf\"uhren kann, muss der Code von Webpack zuerst kompiliert werden. Danach wird er in einer Browserumgebung (z.B Chrome oder Firefox) ausgef\"uhrt und das Testframework sammelt die zu testenden Werte und Verhalten. Es vergleicht diese mit gegebenen Werten und Zust\"anden, welche vom Programmierer erwartet werden. Stimmen sie \"uberein, ist der Test bestanden. Stimmen sie nicht \"uberein, ist der Test gescheitert und Jasmine meldet einen Fehler.
+Damit Jasmin die Tests ausf\"uhren kann, muss der Code von Webpack zuerst kompiliert werden. Danach wird er in einer Browserumgebung (z.B Chrome oder Firefox) ausgef\"uhrt und das Testframework sammelt die zu testenden Werte und Verhalten. Es vergleicht diese mit gegebenen Werten und Zust\"anden, welche vom Programmierer erwartet werden. Stimmen sie \"uberein, ist der Test bestanden. Stimmen sie nicht \"uberein, ist der Test gescheitert und Jasmine meldet einen Fehler.
 
 \subsection{Django}
 Test f\"ur das Django wurden mit dem standard Django module "unittest" erstellt. Es wurden Tests zu Login, Registrierung und Erstellung von Benutzerfl\"achen erstellt. Es werden unvollst\"andige, fehlerhafte und nicht authorisierte Requests (zum Beispiel ohne sich einzuloggen) getestet. HTTP-Statuscode geben Auskunft \"uber die korrekte Ausf\"uhrung oder fehlerhaftes Verhalten des Servers. Sie werden verglichen mit zu erwartenden Codes und bestimmen auf diese Weise ob der Test bestanden oder gescheitert ist. $\newline$
-
+$\newline$
 Es wird getestet ob Email und Passwort vorhanden ist und ob die Anforderungen an die Werte erf\"ullt sind, ob Accounts und JWTs erstellt werden k\"onnen und ob Benutzerfl\"achen vom System korrekt erstellt werden. $\newline$
 Die Tests k\"onnen mit dem Befehl "python3 manage.py test WaldmeisterMap" ausgel\"ost werden. Fehlerhafte Test werden von Django gemeldet.
 
