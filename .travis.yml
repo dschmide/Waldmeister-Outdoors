@@ -7,6 +7,7 @@ env:
   - DJANGO_VERSION=2.0
 
 install:
+  - apt-get install gdal
   - pip install -r requirements.txt
 
 script: 
