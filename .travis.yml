@@ -3,6 +3,10 @@ language: python
 python: 
   - 3.4
 
+env:
+  global:
+  - PGPORT=5433
+
 virtualenv:
   system_site_packages: true
 
