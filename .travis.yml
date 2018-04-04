@@ -10,8 +10,11 @@ env:
 virtualenv:
   system_site_packages: true
 
-services:
-  - postgresql
+addons:
+   postgresql: "9.5"
+   apt:
+     packages:
+     - postgresql-9.5-postgis-2.3
 
 before_install:
   - sudo apt-get -qq update
