@@ -24,7 +24,7 @@ install:
   - pip install -r requirements.txt
 
 before_script:
-  - psql -U postgres -c "create extension postgis"
+  - psql -p 5435  -U postgres -c "create extension postgis"
 
 script: 
   - python manage.py test WaldmeisterMap
