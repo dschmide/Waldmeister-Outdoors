@@ -8,7 +8,7 @@ env:
 
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install gdal
+  - sudo apt-get build-dep python-gdal
 
 install:
   - pip install -r requirements.txt
