@@ -4,3 +4,4 @@ djangorestframework
 djangorestframework-gis
 djoser
 django-rest-swagger
+psycopg2
