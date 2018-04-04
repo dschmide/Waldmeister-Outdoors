@@ -1,7 +1,4 @@
-language: python
-
-python:
-  - "3.6"
+language: generic
 
 env:
   - DJANGO_VERSION=2.0
@@ -11,6 +8,7 @@ virtualenv:
 
 before_install:
   - sudo apt-get -qq update
+  - sudo aüt-get install python3
   - sudo apt-get build-dep python-gdal
 
 install:
