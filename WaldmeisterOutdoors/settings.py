@@ -27,7 +27,7 @@ SECRET_KEY = 'pg)uoo^sn=l-e7x1dg-g4znf)u_tc=_4mwqz!f+1tlx3%)wzm!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 #AUTH_USER_MODEL = 'WaldmeisterMap.RegisteredUser'
@@ -129,7 +129,7 @@ DATABASES = {
         'NAME': 'dschwaldmeister',
         'USER': 'postgres',
         'PASSWORD': '',
-        'HOST': '127.0.0.1',
+        'HOST': 'db',
         'PORT': '5432',
         }
     

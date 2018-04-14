@@ -1,0 +1,21 @@
+version: '2'
+services:
+        db:
+                image: mdillon/postgis
+                environment:
+                        POSTGRES_DB: dschwaldmeister
+                restart: always
+        service:
+                build: .
+                command: bash -c "python3 manage.py migrate --noinput && python3 manage.py runserver 0.0.0.0:8000"
+                ports:
+                        - "8000:8000"
+                depends_on:
+                        - db
+        client:
+                build: client
+                command: npm run dev
+                ports:
+                        - "8080:8080"
+                depends_on:
+                        - service
