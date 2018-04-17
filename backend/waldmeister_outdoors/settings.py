@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 import environ
 
-env = environ.Env(DEBUG=(bool, False),) # set default values and casting
+env = environ.Env(DEBUG=(bool, False),)  # set default values and casting
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -30,9 +30,6 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 
-
-#AUTH_USER_MODEL = 'waldmeister_map.RegisteredUser'
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,26 +39,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'waldmeister_map.apps.WaldmeistermapConfig',
-    'waldmeister_map',
     'django.contrib.gis',
 
-    #Rest Framework
+    # Rest Framework
     'rest_framework',
     'rest_framework_gis',
-
-    #Token Authorization
+    # Token Authorization
     'rest_framework.authtoken',
-    #'rest_auth',
-
-    #CORS header whitelisting
+    # 'rest_auth',
+    # CORS header whitelisting
     'corsheaders',
-
-    #Djoser for custom user models
-    'djoser',
-
-    #swagger for api documentation
+    # swagger for api documentation
     'rest_framework_swagger',
+
+    'waldmeister_map',
 ]
 
 REST_FRAMEWORK = {
@@ -79,12 +70,12 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #Test disabled csrf
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    # Test disabled csrf
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #CORS header whitelisting
+    # CORS header whitelisting
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
 ]
@@ -95,7 +86,7 @@ CORS_ORIGIN_WHITELIST = (
     '127.0.0.1:8080',
     'localhost:8080'
 )
-#Override all CORS
+# Override all CORS
 CORS_ORIGIN_ALLOW_ALL = True
 
 
@@ -104,7 +95,9 @@ ROOT_URLCONF = 'waldmeister_outdoors.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "templates"),],
+        'DIRS': [
+            os.path.join(BASE_DIR, "templates"),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,7 +117,7 @@ WSGI_APPLICATION = 'waldmeister_outdoors.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-        'default': env.db(),
+    'default': env.db(),
 }
 
 
@@ -163,15 +156,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-
 STATIC_URL = '/api/static/'
-
-# import os.path
-
-# PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-
-# STATICFILES_DIRS = (
-#     os.path.join(PROJECT_ROOT, 'static'),
-# )
-# STATIC_URL = '/static/'
-STATICFILES_DIRS = ( os.path.join('static'), )
+STATICFILES_DIRS = (
+    os.path.join('static'),
+)

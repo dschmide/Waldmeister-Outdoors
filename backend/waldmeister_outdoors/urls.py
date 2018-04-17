@@ -14,15 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf.urls import include, url
-from django.urls import path
 from django.contrib import admin
+from django.contrib.auth import get_user_model
+from django.urls import path
+from rest_framework import routers
 from waldmeister_map.views import index
 
-#Rest Framework
-from django.contrib.auth import get_user_model
 User = get_user_model()
-from rest_framework import routers
-
 
 router = routers.DefaultRouter()
 
@@ -34,12 +32,9 @@ urlpatterns = [
             path('waldmeister-map/', include('waldmeister_map.urls')),
             url(r'^$', index, name='index'),
 
-            #Rest Framework
+            # Rest Framework
             url(r'^', include(router.urls)),
-            #url(r'^api-auth/', include('rest_framework.urls'))
             url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework_auth')),
         ])
      )
 ]
-
-

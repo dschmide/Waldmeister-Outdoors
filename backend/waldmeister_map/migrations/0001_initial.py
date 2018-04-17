@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('label', models.CharField(max_length=50)),
                 ('public', models.BooleanField()),
                 ('polygon', django.contrib.gis.db.models.fields.MultiPolygonField(srid=4326)),
-                ('creator', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('creator', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),  # noqa
             ],
             options={
                 'ordering': ('creator',),
