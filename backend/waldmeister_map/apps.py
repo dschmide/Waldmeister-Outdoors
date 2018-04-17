@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class WaldmeistermapConfig(AppConfig):
+class WaldmeisterMapConfig(AppConfig):
     name = 'waldmeister_map'
