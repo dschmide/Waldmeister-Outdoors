@@ -1,18 +1,17 @@
-language: generic
+sudo: required
 
-env:
-  - DJANGO_VERSION=2.0
+services:
+  - docker
 
-virtualenv:
-  system_site_packages: true
+language: python
 
-before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install python3
-  - sudo apt-get build-dep python-gdal
+python:
+  - 3.6
+
 
 install:
-  - sudo pip install -r requirements.txt
+  - pip install -U docker-compose
+  - docker-compose build backend
 
-script: 
-  - python manage.py test WaldmeisterMap
+script:
+  - docker-compose run --rm backend ./manage.py test WaldmeisterMap
