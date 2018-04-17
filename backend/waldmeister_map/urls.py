@@ -1,12 +1,9 @@
-#urls.py in WaldmeisterMap
+#urls.py in waldmeister_map
 
 from django.conf.urls import url, include
 from rest_framework import routers
-#from WaldmeisterMap import views
+#from waldmeister_map import views
 from . import views
-
-#JWT Token
-from rest_framework_jwt.views import obtain_jwt_token
 
 #Djoser
 from django.urls import include, re_path
@@ -27,13 +24,13 @@ schema_view = get_swagger_view(title='Waldmeister API')
 
 
 urlpatterns = [
-	#/WaldmeisterMap/
+	#/waldmeister_map/
     url(r'^$', views.index, name='index'),
 
     #Rest test
 	url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    #WaldmeisterMap/map
+    #waldmeister_map/map
     #url(r'^/Map/', views.map, name='map')
 
     #url(r'^register', views.register, name='register'),

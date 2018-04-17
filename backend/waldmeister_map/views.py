@@ -4,9 +4,9 @@ from django.views.decorators.csrf import csrf_exempt
 
 #Serializers
 #from django.contrib.auth.models import User, Group
-from WaldmeisterMap.serializers import AreaSerializer
-from WaldmeisterMap.models import UserArea
-#from WaldmeisterMap.serializers import RegisteredUserSerializer
+from waldmeister_map.serializers import AreaSerializer
+from waldmeister_map.models import UserArea
+#from waldmeister_map.serializers import RegisteredUserSerializer
 
 
 #Django rest framework
@@ -23,7 +23,7 @@ from django.db.models import Q
 # ARCHIVE
 # Create your views here.
 # def index(request):
-# 	return HttpResponse("<h1> WaldmeisterMap</h1>")
+# 	return HttpResponse("<h1> waldmeister_map</h1>")
 
 
 #Register return

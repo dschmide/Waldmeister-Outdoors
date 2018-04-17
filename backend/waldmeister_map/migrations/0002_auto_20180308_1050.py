@@ -7,7 +7,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('WaldmeisterMap', '0001_initial'),
+        ('waldmeister_map', '0001_initial'),
     ]
 
     operations = [

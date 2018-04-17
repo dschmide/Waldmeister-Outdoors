@@ -1,4 +1,4 @@
 from django.apps import AppConfig
 
 class WaldmeistermapConfig(AppConfig):
-    name = 'WaldmeisterMap'
+    name = 'waldmeister_map'

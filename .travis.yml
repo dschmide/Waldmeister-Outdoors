@@ -14,4 +14,4 @@ install:
   - docker-compose build backend
 
 script:
-  - docker-compose run --rm backend ./manage.py test WaldmeisterMap
+  - docker-compose run --rm backend ./manage.py test waldmeister_map
