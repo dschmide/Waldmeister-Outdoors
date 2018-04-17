@@ -32,21 +32,26 @@ sensitive=true
            
 \usepackage{csquotes}
 \usepackage{graphicx}
+\usepackage[acronyms]{glossaries}
+\usepackage{a4wide}
 
 
 \makeindex
 
 % do this here, so you can \gls{...} to it
-%\input{index/glossar}
-%\makeglossaries
+\input{index/glossar}
+\makeglossaries
 
 
 \begin{document}
+\sffamily
+\setlength{\oddsidemargin}{0mm} 
+\setlength{\evensidemargin}{0mm}
 
 \input{chapter/01title}
 
-\setlength{\oddsidemargin}{10mm} 
-\setlength{\evensidemargin}{10mm}
+
+
 \input{chapter/abstract}
 
 \tableofcontents
@@ -65,7 +70,12 @@ sensitive=true
 % List of figures & glossary
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \listoffigures
-\printglossary[style=altlist,title=Glossar]
+%\printglossary[type=\acronymtype,title=Abkürzungsverzeichnis,style=long]
+
+%\printglossary[type=\acronymtype]
+\pagebreak
+\input{chapter/glossary}
+
 
 % Bibliography
 %%%%%%%%%%%%%%
