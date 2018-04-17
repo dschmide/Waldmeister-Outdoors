@@ -1,14 +1,17 @@
-"Waldmeister-Outdoors" ist eine Applikation, welche es ermöglicht, Waldstandorte in der Schweiz zu erforschen und zu erfassen.
+# Waldmeister-Outdoors
 
-Installation
+"Waldmeister-Outdoors" ist eine Applikation, welche es ermöglicht, 
+Waldstandorte in der Schweiz zu erforschen und zu erfassen.
+
+## Installation
 
 Clone Repository
 
-install dependencies (VueServer in client folder)
+install dependencies (VueServer in `client` folder)
 
 npm install
 
-install python dependencies
+install python dependencies (`backend` folder)
 
 pip install -r requirements.txt
 
