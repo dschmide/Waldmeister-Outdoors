@@ -1,9 +1,9 @@
 #from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from WaldmeisterMap.models import UserArea
+from waldmeister_map.models import UserArea
 from django.contrib.auth import get_user_model
 User = get_user_model()
-#from WaldmeisterMap.models import RegisteredUser
+#from waldmeister_map.models import RegisteredUser
 
 
 # class UserSerializer(serializers.HyperlinkedModelSerializer):

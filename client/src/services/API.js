@@ -4,7 +4,7 @@ import store from '@/store/store'
 
 export default () => {
   var service = {
-    baseURL: 'http://127.0.0.1:8000/WaldmeisterMap/',
+    baseURL: '/api/waldmeister-map/',
     headers: {}
   }
   console.log(store.state.token)
