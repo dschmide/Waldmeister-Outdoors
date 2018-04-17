@@ -83,7 +83,7 @@ export default {
       }).addTo(map);
       //Geolocation and Marker
       map.locate({setView: true, maxZoom: 15, enableHighAccuracy:false, timeout:60000, maximumAge:Infinity});
-      
+
 
     L.NewPolygonControl = L.Control.extend({
 
@@ -167,7 +167,7 @@ export default {
               myGeoJsonLayer.clearLayers();
               labelGroup.clearLayers();
               self.$store.dispatch('toggleVegetation', null)
-            } else { 
+            } else {
               myGeoJsonLayer.addData(self.vegetation);
               self.$store.dispatch('toggleVegetation', null)
             }
@@ -197,7 +197,7 @@ export default {
             if (self.$store.state.toggleUserAreas) {
               UserAreaGroup.clearLayers();
               self.$store.dispatch('toggleUserAreas', null)
-            } else { 
+            } else {
               DrawAllUserAreas()
               self.$store.dispatch('toggleUserAreas', null)
             }
@@ -367,7 +367,7 @@ export default {
           })
         }).addTo(labelGroup);
       }
-      
+
     }).addTo(map);
     labelGroup.addTo(map);
 
@@ -375,13 +375,13 @@ export default {
     if (self.$store.state.toggleVegetation) {
       myGeoJsonLayer.addData(self.vegetation);
     }
-    
+
     DrawAllUserAreas();
     //DRAWS ALL POLYGONS
     async function DrawAllUserAreas(){
       self.MyAreas = (await AreaService.getAreas()).data
 
-      
+
 
       var val;
       for (val of self.MyAreas) {
@@ -426,9 +426,9 @@ export default {
       }
     };
 
-    
 
-            
+
+
     //MAP LEGEND
     var legend = L.control({ position: 'topright' });
 
