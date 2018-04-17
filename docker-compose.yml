@@ -38,7 +38,6 @@ services:
       - "5432"
     networks:
       - default
-  # TODO: change api-calls (backend) to /api and include them in the ./secured-local-nginx/proxy.conf config
   nginx-https-proxy:
     image: nginx:stable-alpine
     volumes:
