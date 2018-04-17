@@ -5,7 +5,7 @@ services:
     volumes:
       - ./client/src:/app/src
     ports:
-      - "8081:8080"
+      - "8080:8080"
     networks:
       - default
   backend: &backend
@@ -45,6 +45,6 @@ services:
       - ./secured-local-nginx/proxy.conf:/etc/nginx/conf.d/default.conf
       - ./secured-local-nginx/ssl:/etc/nginx/ssl
     ports:
-      - 8080:443
+      - 8443:443
 networks:
   default:

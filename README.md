@@ -5,9 +5,12 @@ Waldstandorte in der Schweiz zu erforschen und zu erfassen.
 
 ## Usage (with docker and docker-compose)
 
-After a `docker-compose up --build` visit `http://localhost:8000`
-for the backend, and `http://localhost:8080` for the
-frontend.
+After a `docker-compose up --build` visit `https://localhost:8443`.
+Under `https://localhost:8443/api` the backend/api is running.
+
+If you need to debug one of either backend or frontend, see
+the `docker-compose.yml` file for the port that these applications
+are running on.
 
 ### Prerequisites
 
