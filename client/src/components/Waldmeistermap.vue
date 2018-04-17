@@ -54,7 +54,7 @@ export default {
       //console.log(myGeoJsonPoly)
       var theArea = {
         "label": this.userAreaLabel,
-        "public": this.checked,
+        "public": !!this.checked,
         "polygon": {
           "type": "MultiPolygon",
           "coordinates": [
