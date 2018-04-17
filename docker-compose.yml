@@ -1,0 +1,42 @@
+version: '3.5'
+services:
+  frontend:
+    build: client
+    volumes:
+      - ./client/src:/app/src
+    ports:
+      - "8080:8080"
+    networks:
+      - default
+  backend: &backend
+    build: backend
+    command: python manage.py runserver 0.0.0.0:8000
+    environment:
+      DEBUG: 'on'
+      # Development ONLY!!! This key should be hidden on production setup, never share this!
+      SECRET_KEY: 'pg)uoo^sn=l-e7x1dg-g4znf)u_tc=_4mwqz!f+1tlx3%)wzm!'
+      DATABASE_URL: postgis://wald:meischter@db:5432/waldmeister
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app/
+    links:
+      - "db:db"
+    networks:
+      - default
+  migrate:
+    <<: *backend
+    command: python manage.py migrate
+    ports: []
+  db:
+    image: mdillon/postgis
+    environment:
+      POSTGRES_USER: wald
+      POSTGRES_PASSWORD: meischter
+      POSTGRES_DB: waldmeister
+    expose:
+      - "5432"
+    networks:
+      - default
+networks:
+  default:

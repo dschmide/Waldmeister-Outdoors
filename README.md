@@ -3,30 +3,33 @@
 "Waldmeister-Outdoors" ist eine Applikation, welche es ermöglicht, 
 Waldstandorte in der Schweiz zu erforschen und zu erfassen.
 
-## Installation
+## Usage (with docker and docker-compose)
 
-Clone Repository
+After a `docker-compose up --build` visit `http://localhost:8000`
+for the backend, and `http://localhost:8080` for the
+frontend.
 
-install dependencies (VueServer in `client` folder)
+### Prerequisites
 
-npm install
+* Docker and docker-compose setup on your local machine.
 
-install python dependencies (`backend` folder)
 
-pip install -r requirements.txt
+### Setup
 
-start dev server (root folder) 
+Use `docker-compose build --pull` to build and update existing images. 
 
-python3 manage.py runserver
+### Start
 
-start Vue-Server (client folder) 
+Use `docker-compose up` to start the applications. If you want to start
+the services in the background, use `docker-compose up -d` and 
+`docker-compose logs -f` to display the logs. For details on how to use 
+docker-compose, refer to the compose documentation.
 
-npm start
+### Create a superuser
 
-Once the Servers are running, you can visit the site using the URL displayed on the Vue-Server window
+Run `docker-compose run --rm backend python manage.py createsuperuser`
+to create a superuser for this instance.
 
-Migrate database 
+### Database
 
-python3 manage.py migrate
-
-For this Project, a PostgreSQL is used by Django. Either create a database called "dschwaldmeister" with port 5435 and username Postgres, or change the values in the settings.py file within the Django directory.
+The database is being started automatically when using docker-compose.
