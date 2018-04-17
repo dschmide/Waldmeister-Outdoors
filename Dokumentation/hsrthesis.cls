@@ -46,18 +46,20 @@
 % Titlepage
 %%%%%%%%%%%
 
+\sffamily
 \if@titlepage
 	\renewcommand{\maketitle}{
 		\begin{titlepage}
 		% Logos
 		\begin{picture}(0,200)(0,-100)
-      		\put(-60, -30){\includegraphics[height=30mm]{images/hsrlogo.png}}
+      		\put(-60, -30){\includegraphics[height=30mm]{images/hsrmse.png}}
 		\end{picture}
 
 		% title
 		\begin{center}
 			\Large\thesistype , \departement\\[2ex]
-			\huge\thesistitle\\[2ex]
+			\huge\thesistitle\\
+			\Large\thesissubtitle\\[2ex]
 			\large\school\\[1ex]
 			\normalsize\term\\
 			\normalsize\thedate
