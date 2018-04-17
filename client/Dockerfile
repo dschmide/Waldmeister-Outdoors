@@ -7,4 +7,4 @@ ADD . /app
 
 EXPOSE 8080
 
-CMD npm run dev
+CMD npm install && npm run dev
