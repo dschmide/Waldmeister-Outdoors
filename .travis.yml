@@ -8,11 +8,16 @@ language: python
 python:
   - 3.6
 
+addons:
+  apt:
+    firefox: latest
 
 install:
   - pip install -U docker-compose
   - docker-compose build backend
+  - (cd client && npm install)
 
 script:
   - docker-compose run --rm backend flake8 .
   - docker-compose run --rm backend ./manage.py test waldmeister_map
+  - (cd client && MOZ_HEADLESS=1 npm test)
