@@ -1,0 +1,12 @@
+version: '3.5'
+services:
+  frontend:
+    image: waldmeister/map-frontend
+    build:
+      context: client
+      dockerfile: Dockerfile.production
+  backend: &backend
+    image: waldmeister/map-api
+    build: backend
+networks:
+  default:

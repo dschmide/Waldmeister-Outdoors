@@ -1,0 +1,11 @@
+FROM node:9-alpine as builder
+WORKDIR /app
+ADD ./package*.json /app/
+RUN npm install
+ADD . /app
+RUN npm run build
+
+
+FROM nginx:alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+CMD ["nginx", "-g", "daemon off;"]

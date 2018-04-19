@@ -160,3 +160,19 @@ STATIC_URL = '/api/static/'
 STATICFILES_DIRS = (
     os.path.join('static'),
 )
+
+MINIO_STORAGE_ENDPOINT = env.str('MINIO_ENDPOINT', default=None)
+MINIO_STORAGE_ACCESS_KEY = env.str('MINIO_ACCESS_KEY', default=None)
+MINIO_STORAGE_SECRET_KEY = env.str('MINIO_SECRET_KEY', default=None)
+
+if MINIO_STORAGE_ENDPOINT and MINIO_STORAGE_ACCESS_KEY and MINIO_STORAGE_SECRET_KEY:
+    INSTALLED_APPS.append('minio_storage')
+    STATIC_ROOT = './static-files/'
+
+    MINIO_STORAGE_USE_HTTPS = env.bool('MINIO_USE_HTTPS', default=True)
+    MINIO_STORAGE_MEDIA_BUCKET_NAME = "django-media"
+    MINIO_STORAGE_AUTO_CREATE_MEDIA_BUCKET = True
+    MINIO_STORAGE_STATIC_BUCKET_NAME = "django-static"
+    MINIO_STORAGE_AUTO_CREATE_STATIC_BUCKET = True
+    DEFAULT_FILE_STORAGE = "minio_storage.storage.MinioMediaStorage"
+    STATICFILES_STORAGE = "minio_storage.storage.MinioStaticStorage"

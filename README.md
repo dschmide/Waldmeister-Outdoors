@@ -55,3 +55,16 @@ to create a superuser for this instance.
 ### Database
 
 The database is being started automatically when using docker-compose.
+
+## Deploying
+
+### Build and push new images
+
+* `docker-compose -f docker-compose.push.yml build --pull`
+* `docker-compose -f docker-compose.push.yml push`
+
+### Deploy on server
+
+Using your choice of server, deploy the service using
+the images `waldmeister/map-frontend` for the frontend
+and `waldmeister/map-api` for the backend.
