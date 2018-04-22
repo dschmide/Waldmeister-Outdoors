@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <v-layout row justify-center>
-      <v-dialog v-model="save_dialog" max-width="500px">
+      <v-dialog v-model="saveDialog" max-width="500px">
         <v-card>
           <v-card-title>
             <span>Create new Userarea</span>
@@ -14,7 +14,7 @@
             <label for="checkbox"> {{ checked }}</label>
           </v-card-text>
           <v-card-actions>
-            <v-btn color="primary" flat @click.stop="save_dialog=false">Close</v-btn>
+            <v-btn color="primary" flat @click.stop="saveDialog=false">Close</v-btn>
             <v-btn color="primary" dark class="light-green" flat @click="save">Save</v-btn>
           </v-card-actions>
         </v-card>
@@ -28,9 +28,25 @@
 import AreaService from '@/services/AreaService'
 import Vegetation from '@/components/data/vegetationskarte_minimal.json'
 
+const startPoint = [47.4348826, 8.7460494];
+const attributionForMap = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+const tileLayerURL = 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.{ext}'
+
+const PolygonButtonTextIdle = 'Create'
+const PolygonButtonTextEditing = 'Edit'
+const ToggleVegetationButtonLabel= 'Veg'
+
+var geolocationOptions = {
+  enableHighAccuracy: false,
+  timeout: 60000,
+  maximumAge: Infinity
+};
+
 var myGeoJsonPoly = [];
 var myCoords
 var PolyCoordinates
+
+
 
 export default {
   data() {
@@ -43,15 +59,15 @@ export default {
       center: [51.505, -0.09],
       url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
 
-      save_dialog: false,
+      saveDialog: false,
       notifications: false,
       sound: true,
       widgets: false
     }
   },
   methods: {
+    // This Function sends a drawn polygon to the server
     save() {
-      //console.log(myGeoJsonPoly)
       var theArea = {
         "label": this.userAreaLabel,
         "public": !!this.checked,
@@ -63,41 +79,58 @@ export default {
         }
       }
       AreaService.postArea(theArea);
-      this.save_dialog = false;
+      this.saveDialog = false;
       myGeoJsonPoly = [];
     }
   },
 
   async mounted() {
-    console.log("Loading Vegetationmap")
-    //console.log(this.vegetation);
-    var startPoint = [47.4348826, 8.7460494];
+    //Show my location on map
+    navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError, geolocationOptions);
+
+    function geoLocationSuccess(pos) {
+      var crd = pos.coords;
+
+      console.log('Your current position is:');
+      console.log(`Latitude : ${crd.latitude}`);
+      console.log(`Longitude: ${crd.longitude}`);
+      console.log(`More or less ${crd.accuracy} meters.`);
+      //Draws the circle
+      //TODO: change outline
+      L.circle([crd.latitude, crd.longitude], crd.accuracy).addTo(map);
+    }
+
+    function geoLocationError(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+
+
+    // init the map
     var map = L.map('map', { editable: true }).setView(startPoint, 15),
-      tilelayer = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.{ext}', {
-        maxZoom: 20,
-        attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      tilelayer = L.tileLayer(tileLayerURL, {
+        attribution: attributionForMap,
         subdomains: 'abcd',
         minZoom: 0,
         maxZoom: 18,
         ext: 'png'
       }).addTo(map);
-      //Geolocation and Marker
-      map.locate({setView: true, maxZoom: 15, enableHighAccuracy:false, timeout:60000, maximumAge:Infinity});
 
+    var UserAreaGroup = L.layerGroup();
+    //Geolocation and Marker 
+    //Here the browser attempts to return a geolocation and asks the user for permission
+    map.locate({setView: true, maxZoom: 15, enableHighAccuracy:false, timeout:60000, maximumAge:Infinity});
 
+    //Add the Polygon Control for drawing Polygons to the map
     L.NewPolygonControl = L.Control.extend({
-
       options: {
         position: 'topleft'
       },
-
       onAdd: function(map) {
         var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar'),
           link = L.DomUtil.create('a', '', container);
-
         link.href = '#';
         link.title = 'Create a new polygon';
-        link.innerHTML = 'Add';
+        link.innerHTML = PolygonButtonTextIdle;
         L.DomEvent.on(link, 'click', L.DomEvent.stop)
           .on(link, 'click', function() {
             map.editTools.startPolygon();
@@ -112,23 +145,20 @@ export default {
         return container;
       }
     });
+    map.addControl(new L.NewPolygonControl());
 
-
-    var UserAreaGroup = L.layerGroup();
-
+    //This adds the functionality to edit existing polygon shapes on the map
     L.AddPolygonShapeControl = L.Control.extend({
-
       options: {
         position: 'topleft'
       },
-
       onAdd: function(map) {
         var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar'),
           link = L.DomUtil.create('a', '', container);
 
         link.href = '#';
         link.title = 'Create a new polygon';
-        link.innerHTML = 'Edit';
+        link.innerHTML = PolygonButtonTextEditing;
         L.DomEvent.on(link, 'click', L.DomEvent.stop)
           .on(link, 'click', function() {
             if (!map.editTools.currentPolygon) return;
@@ -145,24 +175,25 @@ export default {
         return container;
       }
     });
+    map.addControl(new L.AddPolygonShapeControl());
+
+    // make closure of this in function
     var self = this;
 
+    //Creates and adds a button to toggle visibility of the VegetationsLayer
     L.GeoJsonControl = L.Control.extend({
-
       options: {
         position: 'topleft'
       },
-
       onAdd: function(map) {
         var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar'),
           link = L.DomUtil.create('a', '', container);
 
         link.href = '#';
         link.title = 'Toggle Vegetation Layer';
-        link.innerHTML = 'Veg';
+        link.innerHTML = ToggleVegetationButtonLabel;
         L.DomEvent.on(link, 'click', L.DomEvent.stop)
           .on(link, 'click', function() {
-            //map.editTools.startPolygon();
             if (self.$store.state.toggleVegetation) {
               myGeoJsonLayer.clearLayers();
               labelGroup.clearLayers();
@@ -171,19 +202,18 @@ export default {
               myGeoJsonLayer.addData(self.vegetation);
               self.$store.dispatch('toggleVegetation', null)
             }
-
           });
         container.style.display = 'block';
         return container;
       }
     });
+    map.addControl(new L.GeoJsonControl());
 
+    //Creates a button to toggle visibility of UserAreas
     L.UserAreasControl = L.Control.extend({
-
       options: {
         position: 'topleft'
       },
-
       onAdd: function(map) {
         var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar'),
           link = L.DomUtil.create('a', '', container);
@@ -201,105 +231,62 @@ export default {
               DrawAllUserAreas()
               self.$store.dispatch('toggleUserAreas', null)
             }
-
           });
         container.style.display = 'block';
         return container;
       }
     });
-
-    map.addControl(new L.NewPolygonControl());
-    map.addControl(new L.AddPolygonShapeControl());
-    map.addControl(new L.GeoJsonControl());
     map.addControl(new L.UserAreasControl());
 
-
-
+    //Whenever a new Polygon gets added to the map, it makes the Polygon editable
     map.on('layeradd', function(e) {
-      if (e.layer instanceof L.Polygon) e.layer.on('click', L.DomEvent.stop).on('click', e.layer.toggleEdit);
+      if (e.layer instanceof L.Polygon) {
+        e.layer.on('click', L.DomEvent.stop).on('click', e.layer.toggleEdit);
+      }
     });
 
+    //Whenever a Polygon gets removed from the map, disable editing
     map.on('layerremove', function(e) {
-      if (e.layer instanceof L.Polygon) e.layer.off('click', L.DomEvent.stop).off('click', e.layer.toggleEdit);
+      if (e.layer instanceof L.Polygon) {
+        e.layer.off('click', L.DomEvent.stop).off('click', e.layer.toggleEdit);
+      }
     });
 
-
+    //When attempting to draw a new Polygon, disable editing on all other active polygons
     map.editTools.on('editable:enable', function(e) {
-      if (this.currentPolygon) this.currentPolygon.disableEdit();
+      if (this.currentPolygon) {
+        this.currentPolygon.disableEdit();
+      }
       this.currentPolygon = e.layer;
       this.fire('editable:enabled');
     });
 
+    //When the user stops drawing an active polygon, discard it
     map.editTools.on('editable:disable', function(e) {
       delete this.currentPolygon;
     });
 
-
-    var self = this;
-
+    //This function finishes the drawing operation when the user closes the polygon shape
     map.editTools.on('editable:drawing:commit', function(e) {
       console.log("stoppedediting");
-
-      self.save_dialog = true;
-
-      //console.log(this.currentPolygon);
-      //console.log(this.currentPolygon.editor.tools.currentPolygon._latlngs);
-      var type = e.layerType,
-        layer = e.layer;
+      self.saveDialog = true;
+      var type = e.layerType, layer = e.layer;
       var point = layer.getLatLngs();
-
-      //console.log(myGeoJsonPoly.geometry.coordinates);
-      console.log("before")
-      //console.log(myGeoJsonPoly.geometry.coordinates);
-      console.log(point);
-      //myGeoJsonPoly[0][myGeoJsonPoly[0].length] = myGeoJsonPoly[0][0]
-      //console.log("after");
-      //console.log(myGeoJsonPoly);
-
 
       for (var i = 0; i < point[0].length; i++) {
         myGeoJsonPoly.push([
           point[0][i].lat,
           point[0][i].lng
         ]);
-        console.log("i " + i);
-        console.log(point[0][i]);
-        console.log(myGeoJsonPoly[i]);
       }
-
-      myGeoJsonPoly
-        .push([
-          point[0][0].lat,
-          point[0][0].lng
-        ]);
+      //Closes the shape by adding the first point at the end
+      myGeoJsonPoly.push([
+        point[0][0].lat,
+        point[0][0].lng
+      ]);
     })
 
-    //Show my location on map
-    var options = {
-      enableHighAccuracy: false,
-      timeout: 60000,
-      maximumAge: Infinity
-    };
-
-    function success(pos) {
-      var crd = pos.coords;
-
-      console.log('Your current position is:');
-      console.log(`Latitude : ${crd.latitude}`);
-      console.log(`Longitude: ${crd.longitude}`);
-      console.log(`More or less ${crd.accuracy} meters.`);
-      L.circle([crd.latitude, crd.longitude], crd.accuracy).addTo(map);
-      console.log("Added geolocation circle");
-    }
-
-    function error(err) {
-      console.warn(`ERROR(${err.code}): ${err.message}`);
-    }
-
-    navigator.geolocation.getCurrentPosition(success, error, options);
-
-    //Add geojson Layer and styling
-    //var myGeoJsonLayer = L.geoJSON(this.vegetation, {
+    //Draws the VegetationLayer
     var labelGroup = L.layerGroup();
     var myGeoJsonLayer = L.geoJSON(undefined, {
       style: function(feature){
@@ -371,7 +358,6 @@ export default {
     }).addTo(map);
     labelGroup.addTo(map);
 
-
     if (self.$store.state.toggleVegetation) {
       myGeoJsonLayer.addData(self.vegetation);
     }
@@ -380,9 +366,6 @@ export default {
     //DRAWS ALL POLYGONS
     async function DrawAllUserAreas(){
       self.MyAreas = (await AreaService.getAreas()).data
-
-
-
       var val;
       for (val of self.MyAreas) {
         //console.log(val.polygon.coordinates[0][0]);
@@ -421,14 +404,8 @@ export default {
           }).addTo(UserAreaGroup);
         }
         UserAreaGroup.addTo(map);
-        //poly.enableEdit();
-
       }
     };
-
-
-
-
     //MAP LEGEND
     var legend = L.control({ position: 'topright' });
 

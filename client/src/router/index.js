@@ -1,10 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Waldmeistermap from '@/components/Waldmeistermap'
-import Waldmeistermap2 from '@/components/WaldmeistermapCopy'
 import About from '@/components/About'
 
 
@@ -36,6 +34,5 @@ export default new Router({
       name: 'about',
       component: About
     }
-
   ]
 })

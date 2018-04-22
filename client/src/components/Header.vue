@@ -16,16 +16,6 @@
     </v-toolbar-items> -->
 
     <v-spacer></v-spacer>
-
-    <!-- Routing with router-link
-    <v-toolbar-items>
-      <router-link to="register">
-        <v-btn flat dark>
-          Sign Up
-        </v-btn>
-      </router-link> -->
-
-      <!-- routing with method -->
       <v-toolbar-items>
         <v-btn 
           flat 
