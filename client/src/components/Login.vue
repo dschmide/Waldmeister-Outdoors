@@ -65,6 +65,7 @@ export default {
             console.log(response.data)
           })
           .catch((error) => {
+            // Catches and displays the error messages if necessary
             this.error = error.response;
             console.log("err");
           })

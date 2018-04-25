@@ -65,10 +65,6 @@ export default {
         name:'about'
       })
     },
-    toggleGeoJson() {
-      this.$store.dispatch('toggleVegetation', null)
-    },
-    
   }
 }
 </script>

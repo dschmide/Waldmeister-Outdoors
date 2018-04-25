@@ -35,6 +35,7 @@ const tileLayerURL = 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/
 const PolygonButtonTextIdle = 'Create'
 const PolygonButtonTextEditing = 'Edit'
 const ToggleVegetationButtonLabel= 'Veg'
+const ToggleUserAreasLabel = "UA"
 
 var geolocationOptions = {
   enableHighAccuracy: false,
@@ -66,7 +67,7 @@ export default {
     }
   },
   methods: {
-    // This Function sends a drawn polygon to the server
+    // This Function sends a drawn polygon to the server and closes the save dialog
     save() {
       var theArea = {
         "label": this.userAreaLabel,
@@ -84,13 +85,12 @@ export default {
     }
   },
 
+  // This code is executed when the component is mounted on the page
   async mounted() {
     //Show my location on map
     navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError, geolocationOptions);
-
     function geoLocationSuccess(pos) {
       var crd = pos.coords;
-
       console.log('Your current position is:');
       console.log(`Latitude : ${crd.latitude}`);
       console.log(`Longitude: ${crd.longitude}`);
@@ -105,7 +105,7 @@ export default {
     }
 
 
-    // init the map
+    // init the map object
     var map = L.map('map', { editable: true }).setView(startPoint, 15),
       tilelayer = L.tileLayer(tileLayerURL, {
         attribution: attributionForMap,
@@ -120,7 +120,7 @@ export default {
     //Here the browser attempts to return a geolocation and asks the user for permission
     map.locate({setView: true, maxZoom: 15, enableHighAccuracy:false, timeout:60000, maximumAge:Infinity});
 
-    //Add the Polygon Control for drawing Polygons to the map
+    //Add the Polygon Control Button for drawing Polygons on the map
     L.NewPolygonControl = L.Control.extend({
       options: {
         position: 'topleft'
@@ -147,7 +147,7 @@ export default {
     });
     map.addControl(new L.NewPolygonControl());
 
-    //This adds the functionality to edit existing polygon shapes on the map
+    //This button is shown while the user is drawing or editing a polygon
     L.AddPolygonShapeControl = L.Control.extend({
       options: {
         position: 'topleft'
@@ -177,10 +177,10 @@ export default {
     });
     map.addControl(new L.AddPolygonShapeControl());
 
-    // make closure of this in function
+    // make closure of this
     var self = this;
 
-    //Creates and adds a button to toggle visibility of the VegetationsLayer
+    // Creates and adds a button to toggle visibility of the VegetationsLayer
     L.GeoJsonControl = L.Control.extend({
       options: {
         position: 'topleft'
@@ -209,7 +209,7 @@ export default {
     });
     map.addControl(new L.GeoJsonControl());
 
-    //Creates a button to toggle visibility of UserAreas
+    // Creates a button to toggle visibility of UserAreas
     L.UserAreasControl = L.Control.extend({
       options: {
         position: 'topleft'
@@ -220,10 +220,9 @@ export default {
 
         link.href = '#';
         link.title = 'Toggle UserAreas Layer';
-        link.innerHTML = 'Areas';
+        link.innerHTML = ToggleUserAreasLabel;
         L.DomEvent.on(link, 'click', L.DomEvent.stop)
           .on(link, 'click', function() {
-            //map.editTools.startPolygon();
             if (self.$store.state.toggleUserAreas) {
               UserAreaGroup.clearLayers();
               self.$store.dispatch('toggleUserAreas', null)
@@ -419,8 +418,6 @@ export default {
       return div;
     };
     legend.addTo(map);
-    //console.log(this.MyAreas[1].polygon.coordinates[0][0][0])
-
   }
 
 }

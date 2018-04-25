@@ -78,8 +78,8 @@ export default {
           })
         })
         .catch((error) => {
+          // Catches & displays the error messages if necessary
           this.error = error.response;
-          console.log("err");
         })
       }
     }
