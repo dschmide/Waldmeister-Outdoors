@@ -25,7 +25,6 @@ export default {
 }
 </script>
 
-
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -37,18 +36,4 @@ export default {
 }
 
 @import './assets/leaflet.css'
-/*
-.input-group--text-field input{
-  border-bottom: 1px solid black;
-}
-
-Global CSS styles here (unscoped)
-.toolbar__title{
-  color: white;
-}
-
-.btn__content{
-  color: white;
-}
-*/
 </style>

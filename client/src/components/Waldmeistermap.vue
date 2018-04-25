@@ -290,6 +290,8 @@ export default {
     var labelGroup = L.layerGroup();
     var myGeoJsonLayer = L.geoJSON(undefined, {
       style: function(feature){
+        //This switch determines the color of the polygons for the Vegetationlayer
+        //TODO; include special characters
         switch (feature.properties.EK72) {
           case '1':
             return { color: "#f2142b" };
@@ -343,7 +345,7 @@ export default {
       "opacity": 0.75,
       "editable": false,
 
-      //Draws labels for the Polygons
+      //Draws labels for the Polygons of the Vegetationlayer
       onEachFeature: function(feature, layer) {
         var label = L.marker(layer.getBounds().getCenter(), {
           icon: L.divIcon({
@@ -363,19 +365,16 @@ export default {
     }
 
     DrawAllUserAreas();
-    //DRAWS ALL POLYGONS
+    //This function retrieves and draws all Userareas and their labels
     async function DrawAllUserAreas(){
       self.MyAreas = (await AreaService.getAreas()).data
       var val;
       for (val of self.MyAreas) {
-        //console.log(val.polygon.coordinates[0][0]);
         var corner;
         var polygonToAdd = [];
         for (corner of val.polygon.coordinates[0][0]) {
-          //console.log("corner found " + val.label + corner);
           polygonToAdd.push(corner);
         }
-        //console.log(polygonToAdd);
         var poly = L.polygon([
           [
             polygonToAdd
@@ -384,6 +383,7 @@ export default {
 
         ).addTo(UserAreaGroup);
 
+        //Draws all labels for the Userareas
         if (val.public == true) {
           var label = L.marker(poly.getBounds().getCenter(), {
             icon: L.divIcon({
@@ -406,6 +406,7 @@ export default {
         UserAreaGroup.addTo(map);
       }
     };
+
     //MAP LEGEND
     var legend = L.control({ position: 'topright' });
 
@@ -417,7 +418,6 @@ export default {
 
       return div;
     };
-
     legend.addTo(map);
     //console.log(this.MyAreas[1].polygon.coordinates[0][0][0])
 
