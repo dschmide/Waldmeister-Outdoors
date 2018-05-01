@@ -1,23 +1,22 @@
 sudo: required
-
 services:
-  - docker
-
+- docker
 language: python
-
 python:
-  - 3.6
-
+- 3.6
 addons:
   apt:
     firefox: latest
-
 install:
-  - pip install -U docker-compose
-  - docker-compose build backend
-  - (cd client && npm install)
-
+- pip install -U docker-compose
+- docker-compose build backend
+- "(cd client && npm install)"
 script:
-  - docker-compose run --rm backend flake8 .
-  - docker-compose run --rm backend ./manage.py test waldmeister_map
-  - (cd client && MOZ_HEADLESS=1 npm test)
+- docker-compose run --rm backend flake8 .
+- docker-compose run --rm backend ./manage.py test waldmeister_map
+- "(cd client && MOZ_HEADLESS=1 npm test)"
+env:
+  matrix:
+    secure: vGWAXFAJPNsgEcJltQmZlfyBH6+MZ0N2qMiJV6Lot+Ew9mQinZ+ZZOC7Bjiil/PLe6B65QO0t1L+IpKgLq7SOw30MlcQPP3IDaqqmE+aqm1GdikotN8OlkMHbhwM7fAWhCk4WF2JXrs/77eOv15hYTtxc5Nm7OH5BYyLDYf2gE0ZCKw+Wj2urR3ivsivHLAoIU9f8MpciNANK/DnHuXRka0sQw40NICUUvM7SDZC10gTkuvI9/TTQ5hFC7hHsXcIns49V8St9UHv98o6P5vyFMFpK2V9A0x5iKvldZg2sOsBNJoQX9Kb7vnkKuOx2CcdKWSd1HTwviw+VJmAfiT4Gwy3CorzdMupu6cUB1Qj1uEJVe/vRlIDTZ6HCJuGi7B6NYCRHGzC2wkSukhK8FLBE0y1mS/qF5/dBRwehPAB/YRpA4tDdxk50eOkuq+1SG+T5vgZOe+b66khOEvQ5+No8wEFWMD/nrpaAnIwBIPYWVdP9W8rJ7nopamc1aI3ahujErlMzCSqRUg/Nk2rQn1NXD1Dp4B/DjrEYTyw9i7WvwqiTLE288Fg0zy/9FTI2nqI4EI8Bj7flCkqZRkI61EPoONh00lcF9vU/LzNrWSX2o0iF/998nhLUdXsfI9o1e52mtsJgrtCltFtevSMMwcCoC7oFPIcZtYMeJnFWNGJai4=
+  global:
+    secure: P5o36bgclpdQlRFavyjmY1WW72bT2mig9tihQhYPeiVcOXHVUVzLal3ba2/izeaBHu50xZ8ESegmz+UMhx3jrxFZJcnPpyt+cFteTQATXDmMIaxTdhvOnjNTdPUJU0dtuSmWOe3hq4RExdgG4xWFmvchenGLXSEXL5y4FhSkOAL6p/eoKMnCeEMehPMT7nICPSPAolmK2ox6LZ7Hn1YTcmMKajon0/7mHf4ELSKpr2yQBSt4KhANMHOUu34qEWeH388rxCaXOn9pHVNbZIHN1n2cxTzD/YUXTYeYFqg5lfOJ1SUM3sxeIMlQJvqOwKHG0Sy6SINkxaxCxlqfrlD+Gb+fEgIE/UPXGgeij/5XfWyQ7KR5LFi7rsuiCuoHKmIn8HIWnysKoGzo2PleMcPJpnS4IDem6Mqz3eL7+OxnlqsS2d5MFuZX0LSEuwpsdQ4KYvlk90jpzHre+/p+u42crlKTlbFrtenm0LmAYkpW1EZJHlT9dqSmZuG9K80kOMxhkHJhKB3TN8W9az8TGOpxKVJU+WJdond/mkBByrS6Gj66o1jmDLMJDEbGdaMefTCszcyW0zZoL/4/HBiAkIMzNdjKoSu0cjbGyldW1TmVbYgeY8OtmU6c6/XrYI5Blse5Z0aWpjARvKXAmgbtn4Dj4nu7gaJXVPzFVT7Sr13rpQM=

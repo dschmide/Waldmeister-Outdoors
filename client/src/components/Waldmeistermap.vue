@@ -97,7 +97,9 @@ export default {
       console.log(`More or less ${crd.accuracy} meters.`);
       //Draws the circle
       //TODO: change outline
-      L.circle([crd.latitude, crd.longitude], crd.accuracy).addTo(map);
+      L.circle([crd.latitude, crd.longitude], crd.accuracy, {color:'white',opacity:0,fillColor: 'blue',fillOpacity:.15}).addTo(map);
+      L.circle([crd.latitude, crd.longitude], 10, {color:'white',opacity:1,fillColor: 'blue',fillOpacity:.7}).addTo(map);
+      
     }
 
     function geoLocationError(err) {
