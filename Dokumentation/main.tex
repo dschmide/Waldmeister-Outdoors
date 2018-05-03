@@ -1,5 +1,5 @@
 %\documentclass[12pt,a4paper]{hsrthesis}
-\documentclass[ngerman,a4paper,12pt]{hsrthesis}
+\documentclass[ngerman, a4paper,12pt]{hsrthesis}
 \usepackage{babel}
 \nonstopmode
 
@@ -42,7 +42,6 @@ sensitive=true
 \input{index/glossar}
 \makeglossaries
 
-
 \begin{document}
 \sffamily
 \setlength{\oddsidemargin}{0mm} 
@@ -51,7 +50,7 @@ sensitive=true
 \input{chapter/01title}
 
 
-
+\renewcommand\thesection{\arabic{section}}
 \input{chapter/abstract}
 
 \tableofcontents
@@ -60,6 +59,7 @@ sensitive=true
 % The main content
 %%%%%%%%%%%%%%%%%%
 %\input{chapter/02examples}
+
 
 
 \input{chapter/03introduction}
