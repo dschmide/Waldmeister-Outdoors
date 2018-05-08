@@ -32,7 +32,7 @@ const startPoint = [47.4348826, 8.7460494];
 const attributionForMap = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 const tileLayerURL = 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.{ext}'
 
-const PolygonButtonTextIdle = 'Create'
+const PolygonButtonTextIdle = 'Add'
 const PolygonButtonTextEditing = 'Edit'
 const ToggleVegetationButtonLabel= 'Veg'
 const ToggleUserAreasLabel = "UA"
@@ -95,6 +95,7 @@ export default {
       console.log(`Latitude : ${crd.latitude}`);
       console.log(`Longitude: ${crd.longitude}`);
       console.log(`More or less ${crd.accuracy} meters.`);
+
       //Draws the circle
       //TODO: change outline
       L.circle([crd.latitude, crd.longitude], crd.accuracy, {color:'white',opacity:0,fillColor: 'blue',fillOpacity:.15}).addTo(map);
@@ -118,6 +119,7 @@ export default {
       }).addTo(map);
 
     var UserAreaGroup = L.layerGroup();
+
     //Geolocation and Marker 
     //Here the browser attempts to return a geolocation and asks the user for permission
     map.locate({setView: true, maxZoom: 15, enableHighAccuracy:false, timeout:60000, maximumAge:Infinity});
@@ -179,7 +181,7 @@ export default {
     });
     map.addControl(new L.AddPolygonShapeControl());
 
-    // make closure of this
+    // make closure of "this"
     var self = this;
 
     // Creates and adds a button to toggle visibility of the VegetationsLayer
