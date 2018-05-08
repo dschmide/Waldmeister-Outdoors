@@ -29,7 +29,7 @@ import AreaService from '@/services/AreaService'
 import Vegetation from '@/components/data/vegetationskarte_minimal.json'
 
 const startPoint = [47.4348826, 8.7460494];
-const attributionForMap = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+const attributionForMap = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> and <a href="https://maps.zh.ch">maps.zh.ch</a>'
 const tileLayerURL = 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.{ext}'
 
 const PolygonButtonTextIdle = 'Add'
