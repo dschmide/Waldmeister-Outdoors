@@ -18,4 +18,4 @@ class AreaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserArea
-        fields = ('label', 'public', 'polygon', 'creator')
+        fields = ('label', 'public', 'polygon', 'creator', 'id')

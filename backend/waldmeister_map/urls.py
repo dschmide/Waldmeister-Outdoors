@@ -12,8 +12,6 @@ schema_view = get_swagger_view(title='Waldmeister API')
 
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
-
     # Rest api
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),

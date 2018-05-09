@@ -1,15 +1,7 @@
 from django.db.models import Q
-from django.shortcuts import render
 from rest_framework import viewsets
 from waldmeister_map.models import UserArea
 from waldmeister_map.serializers import AreaSerializer
-
-
-def index(request):
-    context = {
-        'days': [1, 2, 3, 4],
-    }
-    return render(request, 'map.html', context)
 
 
 class UserAreaViewSet(viewsets.ModelViewSet):
