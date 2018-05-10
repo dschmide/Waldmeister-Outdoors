@@ -87,7 +87,7 @@ export default {
     }
   },
 
-  // This code is executed when the component is mounted on the page
+  // This code is executed when the Waldmeistermap.vue is mounted on the page
   async mounted() {
     //Show my location on map
     navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError, geolocationOptions);
@@ -168,6 +168,95 @@ export default {
           .on(link, 'click', function() {
             if (!map.editTools.currentPolygon) return;
             map.editTools.currentPolygon.editor.newShape();
+          });
+        container.style.display = 'none';
+        map.editTools.on('editable:enabled', function(e) {
+          container.style.display = 'block';
+        });
+        map.editTools.on('editable:disable', function(e) {
+          container.style.display = 'none';
+        });
+
+        return container;
+      }
+    });
+    map.addControl(new L.AddPolygonShapeControl());
+
+    //This button is shown while the user is editing a polygon and can delete it
+    L.AddPolygonShapeControl = L.Control.extend({
+      options: {
+        position: 'topleft'
+      },
+      onAdd: function(map) {
+        var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar'),
+          link = L.DomUtil.create('a', '', container);
+
+        link.href = '#';
+        link.title = 'Delete the current Polygon';
+        link.innerHTML = "Delete";
+        L.DomEvent.on(link, 'click', L.DomEvent.stop)
+          .on(link, 'click', function() {
+            //Return the id of the currentPolygon
+            console.log(map.editTools.currentPolygon)
+            var idOfPoly = AllUserAreas.findIndex(function(x) { return x === map.editTools.currentPolygon; })
+            console.log("foundPolyid: " + idOfPoly);
+            //Delete existing polygon
+            //create button to delete
+            AreaService.deleteArea(idOfPoly)
+            //todo: redraw all UserAreas
+          });
+        container.style.display = 'none';
+        map.editTools.on('editable:enabled', function(e) {
+          container.style.display = 'block';
+        });
+        map.editTools.on('editable:disable', function(e) {
+          container.style.display = 'none';
+        });
+
+        return container;
+      }
+    });
+    map.addControl(new L.AddPolygonShapeControl());
+
+    //This button is shown while the user is editing a polygon and can update it
+    L.AddPolygonShapeControl = L.Control.extend({
+      options: {
+        position: 'topleft'
+      },
+      onAdd: function(map) {
+        var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar'),
+          link = L.DomUtil.create('a', '', container);
+
+        link.href = '#';
+        link.title = 'Update the current Polygon';
+        link.innerHTML = "Update";
+        L.DomEvent.on(link, 'click', L.DomEvent.stop)
+          .on(link, 'click', function() {
+            //Return the id of the currentPolygon
+            console.log(map.editTools.currentPolygon)
+            var idOfPoly = AllUserAreas.findIndex(function(x) { return x === map.editTools.currentPolygon; })
+            console.log("foundPolyid: " + idOfPoly);
+            //Delete existing polygon
+            //create button to delete
+            //todo: generate current polygon
+            var updatedPolygon = []
+            var layer = map.editTools.currentPolygon;
+            console.log(map.editTools.currentPolygon)
+            var point = layer.getLatLngs();
+
+            for (var i = 0; i < point[0].length; i++) {
+              updatedPolygon.push([
+                point[0][i].lat,
+                point[0][i].lng
+              ]);
+            }
+            //Closes the shape by adding the first point at the end
+            updatedPolygon.push([
+              point[0][0].lat,
+              point[0][0].lng
+            ]);
+            AreaService.updateArea(updatedPolygon, idOfPoly)
+            //todo: redraw all UserAreas
           });
         container.style.display = 'none';
         map.editTools.on('editable:enabled', function(e) {
@@ -263,13 +352,6 @@ export default {
       }
       this.currentPolygon = e.layer;
       this.fire('editable:enabled');
-
-      console.log(this.currentPolygon)
-      var idOfPoly = AllUserAreas.findIndex(function(x) { return x === e.layer; })
-      console.log("foundPolyid: " + idOfPoly);
-      //Delete existing polygon
-      //create button to delete
-      AreaService.deleteArea(idOfPoly)
     });
 
     //When the user stops drawing an active polygon, discard it
@@ -282,7 +364,7 @@ export default {
     map.editTools.on('editable:drawing:commit', function(e) {
       console.log("stoppedediting");
       self.saveDialog = true;
-      var type = e.layerType, layer = e.layer;
+      var layer = e.layer;
       var point = layer.getLatLngs();
 
       for (var i = 0; i < point[0].length; i++) {
@@ -402,7 +484,7 @@ export default {
         //Add polygon to arraylist
         AllUserAreas[val.id] = poly;
         var idOfPoly = AllUserAreas.findIndex(function(x) { return x === poly; })
-        console.log("foundPolyid: " + idOfPoly);
+        //console.log("foundPolyid: " + idOfPoly);
 
         //Draws all labels for the Userareas
         if (val.public == true) {
