@@ -11,7 +11,7 @@ export default {
     return Api().delete('/api/areas/' + id)
   },
   updateArea(userAreas, id) {
-    return Api().delete('/api/areas/' + id, userAreas)
+    return Api().update('/api/areas/' + id, userAreas)
   }
 }
 

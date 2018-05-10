@@ -47,6 +47,8 @@ var myGeoJsonPoly = [];
 var myCoords
 var PolyCoordinates
 
+var AllUserAreas = []
+
 
 
 export default {
@@ -97,7 +99,6 @@ export default {
       console.log(`More or less ${crd.accuracy} meters.`);
 
       //Draws the circle
-      //TODO: change outline
       L.circle([crd.latitude, crd.longitude], crd.accuracy, {color:'white',opacity:0,fillColor: 'blue',fillOpacity:.15}).addTo(map);
       L.circle([crd.latitude, crd.longitude], 10, {color:'white',opacity:1,fillColor: 'blue',fillOpacity:.7}).addTo(map);
       
@@ -262,12 +263,20 @@ export default {
       }
       this.currentPolygon = e.layer;
       this.fire('editable:enabled');
+
+      console.log(this.currentPolygon)
+      var idOfPoly = AllUserAreas.findIndex(function(x) { return x === e.layer; })
+      console.log("foundPolyid: " + idOfPoly);
+      //Delete existing polygon
+      //create button to delete
+      AreaService.deleteArea(idOfPoly)
     });
 
     //When the user stops drawing an active polygon, discard it
     map.editTools.on('editable:disable', function(e) {
       delete this.currentPolygon;
     });
+
 
     //This function finishes the drawing operation when the user closes the polygon shape
     map.editTools.on('editable:drawing:commit', function(e) {
@@ -367,7 +376,9 @@ export default {
       myGeoJsonLayer.addData(self.vegetation);
     }
 
+    //Draws all UserAreas now
     DrawAllUserAreas();
+
     //This function retrieves and draws all Userareas and their labels
     async function DrawAllUserAreas(){
       self.MyAreas = (await AreaService.getAreas()).data
@@ -378,6 +389,8 @@ export default {
         for (corner of val.polygon.coordinates[0][0]) {
           polygonToAdd.push(corner);
         }
+        //ID test
+        console.log("This UserAreas id: " + val.id)
         var poly = L.polygon([
           [
             polygonToAdd
@@ -385,6 +398,11 @@ export default {
         ],
 
         ).addTo(UserAreaGroup);
+
+        //Add polygon to arraylist
+        AllUserAreas[val.id] = poly;
+        var idOfPoly = AllUserAreas.findIndex(function(x) { return x === poly; })
+        console.log("foundPolyid: " + idOfPoly);
 
         //Draws all labels for the Userareas
         if (val.public == true) {
