@@ -125,6 +125,7 @@ export default {
     //Here the browser attempts to return a geolocation and asks the user for permission
     map.locate({setView: true, maxZoom: 15, enableHighAccuracy:false, timeout:60000, maximumAge:Infinity});
 
+    //Init the buttons on the map
     //Add the Polygon Control Button for drawing Polygons on the map
     L.NewPolygonControl = L.Control.extend({
       options: {
@@ -193,7 +194,7 @@ export default {
 
         link.href = '#';
         link.title = 'Delete the current Polygon';
-        link.innerHTML = "Delete";
+        link.innerHTML = "Del";
         L.DomEvent.on(link, 'click', L.DomEvent.stop)
           .on(link, 'click', function() {
             //Return the id of the currentPolygon
@@ -229,7 +230,7 @@ export default {
 
         link.href = '#';
         link.title = 'Update the current Polygon';
-        link.innerHTML = "Update";
+        link.innerHTML = "Upd";
         L.DomEvent.on(link, 'click', L.DomEvent.stop)
           .on(link, 'click', function() {
             //Return the id of the currentPolygon
@@ -255,6 +256,7 @@ export default {
               point[0][0].lat,
               point[0][0].lng
             ]);
+            //todo: open dialog box to edit details
             AreaService.updateArea(updatedPolygon, idOfPoly)
             //todo: redraw all UserAreas
           });
@@ -277,7 +279,7 @@ export default {
     // Creates and adds a button to toggle visibility of the VegetationsLayer
     L.GeoJsonControl = L.Control.extend({
       options: {
-        position: 'topleft'
+        position: 'topright'
       },
       onAdd: function(map) {
         var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar'),
@@ -306,7 +308,7 @@ export default {
     // Creates a button to toggle visibility of UserAreas
     L.UserAreasControl = L.Control.extend({
       options: {
-        position: 'topleft'
+        position: 'topright'
       },
       onAdd: function(map) {
         var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar'),
@@ -345,7 +347,7 @@ export default {
       }
     });
 
-    //When attempting to draw a new Polygon, disable editing on all other active polygons
+    //When attempting to draw a new Polygon, disable editing of all other active polygons
     map.editTools.on('editable:enable', function(e) {
       if (this.currentPolygon) {
         this.currentPolygon.disableEdit();
@@ -359,10 +361,10 @@ export default {
       delete this.currentPolygon;
     });
 
-
     //This function finishes the drawing operation when the user closes the polygon shape
     map.editTools.on('editable:drawing:commit', function(e) {
       console.log("stoppedediting");
+      //open the dialog box to save the UserArea
       self.saveDialog = true;
       var layer = e.layer;
       var point = layer.getLatLngs();
@@ -463,6 +465,7 @@ export default {
 
     //This function retrieves and draws all Userareas and their labels
     async function DrawAllUserAreas(){
+      UserAreaGroup.clearLayers();
       self.MyAreas = (await AreaService.getAreas()).data
       var val;
       for (val of self.MyAreas) {
@@ -484,7 +487,6 @@ export default {
         //Add polygon to arraylist
         AllUserAreas[val.id] = poly;
         var idOfPoly = AllUserAreas.findIndex(function(x) { return x === poly; })
-        //console.log("foundPolyid: " + idOfPoly);
 
         //Draws all labels for the Userareas
         if (val.public == true) {
@@ -576,6 +578,3 @@ div.dialog__content__active {
 }
 
 </style>
-<!-- <style lang="scss">
-@import './assets/leaflet.css';
-</style> -->
