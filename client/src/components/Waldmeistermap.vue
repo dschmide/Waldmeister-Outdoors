@@ -19,6 +19,24 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
+      <v-dialog v-model="updateDialogBox" max-width="500px">
+        <v-card>
+          <v-card-title>
+            <span>Update existing Userarea</span>
+            <v-spacer></v-spacer>
+          </v-card-title>
+          <v-card-text>
+            <v-text-field label="Label" type="text" v-model="userAreaLabel"></v-text-field>
+            Public Area:
+            <input type="checkbox" id="checkbox" v-model="checked">
+            <label for="checkbox"> {{ checked }}</label>
+          </v-card-text>
+          <v-card-actions>
+            <v-btn color="primary" flat @click.stop="updateDialogBox=false">Close</v-btn>
+            <v-btn color="primary" dark class="light-green" flat @click="update">Update</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </v-layout>
     <div id='map'>
     </div>
@@ -46,6 +64,7 @@ var geolocationOptions = {
 var myGeoJsonPoly = [];
 var myCoords
 var PolyCoordinates
+var currentIdOfPolygon
 
 var AllUserAreas = []
 
@@ -54,7 +73,7 @@ var AllUserAreas = []
 export default {
   data() {
     return {
-      checked: "",
+      checked: false,
       userAreaLabel: "",
       vegetation: Vegetation,
       title: 'WaldmeisterMap',
@@ -63,6 +82,7 @@ export default {
       url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
 
       saveDialog: false,
+      updateDialogBox: false,
       notifications: false,
       sound: true,
       widgets: false
@@ -83,6 +103,22 @@ export default {
       }
       AreaService.postArea(theArea);
       this.saveDialog = false;
+      myGeoJsonPoly = [];
+    },
+    update() {
+      var theArea = {
+        "label": this.userAreaLabel,
+        "public": !!this.checked,
+        "polygon": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [myGeoJsonPoly]
+          ]
+        }
+      }
+      console.log(currentIdOfPolygon)
+      AreaService.updateArea(theArea, currentIdOfPolygon);
+      this.updateDialogBox = false;
       myGeoJsonPoly = [];
     }
   },
@@ -219,6 +255,9 @@ export default {
     });
     map.addControl(new L.AddPolygonShapeControl());
 
+    // make closure of "this"
+    var self = this;
+
     //This button is shown while the user is editing a polygon and can update it
     L.AddPolygonShapeControl = L.Control.extend({
       options: {
@@ -232,7 +271,7 @@ export default {
         link.title = 'Update the current Polygon';
         link.innerHTML = "Upd";
         L.DomEvent.on(link, 'click', L.DomEvent.stop)
-          .on(link, 'click', function() {
+          .on(link, 'click', async function() {
             //Return the id of the currentPolygon
             console.log(map.editTools.currentPolygon)
             var idOfPoly = AllUserAreas.findIndex(function(x) { return x === map.editTools.currentPolygon; })
@@ -240,24 +279,36 @@ export default {
             //Delete existing polygon
             //create button to delete
             //todo: generate current polygon
-            var updatedPolygon = []
-            var layer = map.editTools.currentPolygon;
-            console.log(map.editTools.currentPolygon)
-            var point = layer.getLatLngs();
+            myGeoJsonPoly = []
+            console.log("return existing Area...")
+            var ExistingPoly = (await AreaService.getOneArea(idOfPoly)).data
+            console.log(ExistingPoly)
+            currentIdOfPolygon = idOfPoly;
 
-            for (var i = 0; i < point[0].length; i++) {
-              updatedPolygon.push([
-                point[0][i].lat,
-                point[0][i].lng
+            self.userAreaLabel = ExistingPoly.label;
+            self.checked = ExistingPoly.checked;
+
+            var layer = map.editTools.currentPolygon;
+            console.log(layer);
+            var point = layer.getLatLngs();
+            console.log("thepoint: ");
+            console.log(point);
+
+            for (var i = 0; i < point[0][0].length; i++) {
+              myGeoJsonPoly.push([
+                point[0][0][i].lat,
+                point[0][0][i].lng
               ]);
             }
             //Closes the shape by adding the first point at the end
-            updatedPolygon.push([
-              point[0][0].lat,
-              point[0][0].lng
+            myGeoJsonPoly.push([
+              point[0][0][0].lat,
+              point[0][0][0].lng
             ]);
-            //todo: open dialog box to edit details
-            AreaService.updateArea(updatedPolygon, idOfPoly)
+            //Open the update DialogBox
+            console.log("myGeoJsonPoly before opening");
+            console.log(myGeoJsonPoly);
+            self.updateDialogBox = true;
             //todo: redraw all UserAreas
           });
         container.style.display = 'none';
@@ -273,8 +324,7 @@ export default {
     });
     map.addControl(new L.AddPolygonShapeControl());
 
-    // make closure of "this"
-    var self = this;
+    
 
     // Creates and adds a button to toggle visibility of the VegetationsLayer
     L.GeoJsonControl = L.Control.extend({
@@ -380,7 +430,10 @@ export default {
         point[0][0].lat,
         point[0][0].lng
       ]);
+    console.log("MakeNewPoly: ");
+    console.log(myGeoJsonPoly);
     })
+
 
     //Draws the VegetationLayer
     var labelGroup = L.layerGroup();

@@ -12,7 +12,10 @@ export default {
   },
   updateArea(userAreas, id) {
     return Api().put('/api/areas/' + id, userAreas)
-  }
+  },
+  getOneArea(id) {
+    return Api().get('/api/areas/' + id)
+  },
 }
 
 
