@@ -276,9 +276,7 @@ export default {
             console.log(map.editTools.currentPolygon)
             var idOfPoly = AllUserAreas.findIndex(function(x) { return x === map.editTools.currentPolygon; })
             console.log("foundPolyid: " + idOfPoly);
-            //Delete existing polygon
-            //create button to delete
-            //todo: generate current polygon
+
             myGeoJsonPoly = []
             console.log("return existing Area...")
             var ExistingPoly = (await AreaService.getOneArea(idOfPoly)).data
@@ -286,7 +284,7 @@ export default {
             currentIdOfPolygon = idOfPoly;
 
             self.userAreaLabel = ExistingPoly.label;
-            self.checked = ExistingPoly.checked;
+            self.checked = ExistingPoly.public;
 
             var layer = map.editTools.currentPolygon;
             console.log(layer);
