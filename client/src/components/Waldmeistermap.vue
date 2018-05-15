@@ -68,7 +68,54 @@ var currentIdOfPolygon
 
 var AllUserAreas = []
 
+//This function retrieves and draws all Userareas and their labels
+async function DrawAllUserAreas(){
+  UserAreaGroup.clearLayers();
+  self.MyAreas = (await AreaService.getAreas()).data
+  var val;
+  for (val of self.MyAreas) {
+    var corner;
+    var polygonToAdd = [];
+    for (corner of val.polygon.coordinates[0][0]) {
+      polygonToAdd.push(corner);
+    }
+    //ID test
+    //console.log("This UserAreas id: " + val.id)
+    var poly = L.polygon([
+      [
+        polygonToAdd
+      ]
+    ],
 
+    ).addTo(UserAreaGroup);
+
+    //Add polygon to arraylist
+    AllUserAreas[val.id] = poly;
+    var idOfPoly = AllUserAreas.findIndex(function(x) { return x === poly; })
+
+    //Draws all labels for the Userareas
+    if (val.public == true) {
+      var label = L.marker(poly.getBounds().getCenter(), {
+        icon: L.divIcon({
+          className: 'AreaLabelPublic',
+          html: val.label,
+          iconSize: [100, 0],
+          direction: 'auto',
+        })
+      }).addTo(UserAreaGroup);
+    } else {
+      var label = L.marker(poly.getBounds().getCenter(), {
+        icon: L.divIcon({
+          className: 'AreaLabelPrivate',
+          html: val.label,
+          iconSize: [100, 0],
+          direction: 'auto'
+        })
+      }).addTo(UserAreaGroup);
+    }
+    UserAreaGroup.addTo(map);
+  }
+};
 
 export default {
   data() {
@@ -105,6 +152,7 @@ export default {
       this.saveDialog = false;
       myGeoJsonPoly = [];
     },
+    // This function updates an existing UserArea and is called when the User presses update
     update() {
       var theArea = {
         "label": this.userAreaLabel,
@@ -189,7 +237,7 @@ export default {
     });
     map.addControl(new L.NewPolygonControl());
 
-    //This button is shown while the user is drawing or editing a polygon
+    // This button is shown while the user is drawing or editing a polygon
     L.AddPolygonShapeControl = L.Control.extend({
       options: {
         position: 'topleft'
@@ -304,7 +352,7 @@ export default {
               point[0][0][0].lng
             ]);
             //Open the update DialogBox
-            console.log("myGeoJsonPoly before opening");
+            console.log("myGeoJsonPoly before updating");
             console.log(myGeoJsonPoly);
             self.updateDialogBox = true;
             //todo: redraw all UserAreas
@@ -514,54 +562,7 @@ export default {
     //Draws all UserAreas now
     DrawAllUserAreas();
 
-    //This function retrieves and draws all Userareas and their labels
-    async function DrawAllUserAreas(){
-      UserAreaGroup.clearLayers();
-      self.MyAreas = (await AreaService.getAreas()).data
-      var val;
-      for (val of self.MyAreas) {
-        var corner;
-        var polygonToAdd = [];
-        for (corner of val.polygon.coordinates[0][0]) {
-          polygonToAdd.push(corner);
-        }
-        //ID test
-        console.log("This UserAreas id: " + val.id)
-        var poly = L.polygon([
-          [
-            polygonToAdd
-          ]
-        ],
-
-        ).addTo(UserAreaGroup);
-
-        //Add polygon to arraylist
-        AllUserAreas[val.id] = poly;
-        var idOfPoly = AllUserAreas.findIndex(function(x) { return x === poly; })
-
-        //Draws all labels for the Userareas
-        if (val.public == true) {
-          var label = L.marker(poly.getBounds().getCenter(), {
-            icon: L.divIcon({
-              className: 'AreaLabelPublic',
-              html: val.label,
-              iconSize: [100, 0],
-              direction: 'auto',
-            })
-          }).addTo(UserAreaGroup);
-        } else {
-          var label = L.marker(poly.getBounds().getCenter(), {
-            icon: L.divIcon({
-              className: 'AreaLabelPrivate',
-              html: val.label,
-              iconSize: [100, 0],
-              direction: 'auto'
-            })
-          }).addTo(UserAreaGroup);
-        }
-        UserAreaGroup.addTo(map);
-      }
-    };
+    
 
     //MAP LEGEND
     var legend = L.control({ position: 'topright' });
