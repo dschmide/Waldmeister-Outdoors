@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
 
     'waldmeister_map',
+    # dry permissions package
+    'dry_rest_permissions',
 ]
 
 REST_FRAMEWORK = {

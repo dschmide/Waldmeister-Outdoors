@@ -15,9 +15,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   // cheap-module-eval-source-map is faster for development
   devtool: config.dev.devtool,
   watchOptions: {
-    poll: 1000,
+    poll: 5000,
     aggregateTimeout: 300
-  }
+  },
 
   // these devServer options should be customized in /config/index.js
   devServer: {

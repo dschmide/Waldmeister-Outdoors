@@ -2,9 +2,12 @@ from django.db.models import Q
 from rest_framework import viewsets
 from waldmeister_map.models import UserArea
 from waldmeister_map.serializers import AreaSerializer
+# DRY Permission package
+from dry_rest_permissions.generics import DRYPermissions
 
 
 class UserAreaViewSet(viewsets.ModelViewSet):
+    permission_classes = (DRYPermissions,)
     queryset = UserArea.objects.all()
 
     def get_queryset(self):

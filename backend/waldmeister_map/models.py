@@ -12,3 +12,29 @@ class UserArea(models.Model):
 
     class Meta:
         ordering = ('creator',)
+
+    @staticmethod
+    def has_read_permission(request):
+        return True
+
+    def has_object_read_permission(self, request):
+        return True
+
+    @staticmethod
+    def has_create_permission(request):
+        print("create with permissions")
+        return request.user.is_authenticated
+
+    @staticmethod
+    def has_write_permission(request):
+        """
+        We can remove the has_create_permission
+        """
+        return True
+
+    def has_object_write_permission(self, request):
+        print("request user")
+        print(request.user)
+        print("object owner")
+        print(self.creator)
+        return request.user == self.creator
