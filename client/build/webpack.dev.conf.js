@@ -14,20 +14,25 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   },
   // cheap-module-eval-source-map is faster for development
   devtool: config.dev.devtool,
-  
+  watchOptions: {
+    poll: 1000,
+    aggregateTimeout: 300
+  }
+
   // these devServer options should be customized in /config/index.js
   devServer: {
     clientLogLevel: 'warning',
     historyApiFallback: true,
     hot: true,
-    host: process.env.HOST || config.dev.host,
-    port: process.env.PORT || config.dev.port,
+    host: process.env.HOST ||  config.dev.host,
+    port: process.env.PORT ||  config.dev.port,
     open: config.dev.autoOpenBrowser,
     overlay: config.dev.errorOverlay ? {
       warnings: false,
       errors: true,
     } : false,
     publicPath: config.dev.assetsPublicPath,
+    public: "0.0.0.0:8443",
     proxy: config.dev.proxyTable,
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
@@ -37,7 +42,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
-    }), 
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
     new webpack.NoEmitOnErrorsPlugin(),
@@ -66,9 +71,8 @@ module.exports = new Promise((resolve, reject) => {
         compilationSuccessInfo: {
           messages: [`Your application is running here: https://${config.dev.host}:${port}`],
         },
-        onErrors: config.dev.notifyOnErrors
-        ? utils.createNotifierCallback()
-        : undefined
+        onErrors: config.dev.notifyOnErrors ?
+          utils.createNotifierCallback() : undefined
       }))
 
       resolve(devWebpackConfig)

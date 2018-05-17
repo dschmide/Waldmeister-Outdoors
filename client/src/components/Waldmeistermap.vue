@@ -53,7 +53,7 @@ const tileLayerURL = 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/
 const PolygonButtonTextIdle = 'Add'
 const PolygonButtonTextEditing = 'Edit'
 const ToggleVegetationButtonLabel= 'Veg'
-const ToggleUserAreasLabel = "UA"
+const ToggleUserAreasLabel = "UAs"
 
 var geolocationOptions = {
   enableHighAccuracy: false,
