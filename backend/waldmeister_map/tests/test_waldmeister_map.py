@@ -98,5 +98,5 @@ class UserTests(TestCase):
         )
         print("token: ")
         # print(response.context_data)
-        print(response.context['token'])
+        # print(response.context['token'])
         self.assertEqual(response.status_code, 200)
