@@ -10,12 +10,12 @@ class Areas(TestCase):
         response = c.get(self.base_url + '/api/areas/')
         self.assertEqual(response.status_code, 200)
 
-    def test_area(self):
+    def test_area_wrongdata_notloggedin(self):
         # Create an instance of a POST request.
         c = Client()
         response = c.post(self.base_url + '/api/areas/', {'username': 'testuser3'})
         print(response.content)
-        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.status_code, 401)
 
     def test_area_correct_notloggedin(self):
         # Create an instance of a POST request.
@@ -33,7 +33,7 @@ class Areas(TestCase):
             }
         )
         print(response.content)
-        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.status_code, 401)
 
 
 class UserTests(TestCase):
@@ -67,3 +67,19 @@ class UserTests(TestCase):
             self.base_url + '/auth/users/create/', {'username': 'testuser3', 'password': '1234ASDF', 'email': 'asdfgh'}
         )
         self.assertEqual(response.status_code, 400)
+
+    def test_login_correct(self):
+        # Create an instance of a POST request.
+        c = Client()
+        # Create a User
+        response = c.post(
+            self.base_url + '/auth/users/create/',
+            {'username': 'testuser3', 'password': '1234ASDF', 'email': 'asdfghj@gmail.com'}
+        )
+        # Login with the same User, get a token
+        response = c.post(
+            self.base_url + '/auth/jwt/create/', {'username': 'testuser3', 'password': '1234ASDF'}
+        )
+        print("token: ")
+        print(response.content)
+        self.assertEqual(response.status_code, 200)
