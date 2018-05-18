@@ -8,19 +8,12 @@ export default {
     return Api().post('/api/areas/', userAreas)
   },
   deleteArea(id) {
-    return Api().delete('/api/areas/' + id)
+    return Api().delete('/api/areas/' + id + '/')
   },
   updateArea(userAreas, id) {
-    return Api().put('/api/areas/' + id, userAreas)
+    return Api().put('/api/areas/' + id + '/', userAreas)
   },
   getOneArea(id) {
-    return Api().get('/api/areas/' + id)
+    return Api().get('/api/areas/' + id + '/')
   },
 }
-
-
-/* Example
-AuthenticationService.register({
-	email: 'testmail@gmail'
-})
-*/

@@ -83,3 +83,20 @@ class UserTests(TestCase):
         print("token: ")
         print(response.content)
         self.assertEqual(response.status_code, 200)
+
+    def test_login_correct_post_area(self):
+        # Create an instance of a POST request.
+        c = Client()
+        # Create a User
+        response = c.post(
+            self.base_url + '/auth/users/create/',
+            {'username': 'testuser3', 'password': '1234ASDF', 'email': 'asdfghj@gmail.com'}
+        )
+        # Login with the same User, get a token
+        response = c.post(
+            self.base_url + '/auth/jwt/create/', {'username': 'testuser3', 'password': '1234ASDF'}
+        )
+        print("token: ")
+        # print(response.context_data)
+        print(response.context['token'])
+        self.assertEqual(response.status_code, 200)
