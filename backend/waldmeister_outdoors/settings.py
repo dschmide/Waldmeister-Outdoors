@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     # swagger for api documentation
     'rest_framework_swagger',
 
-    'waldmeister_map',
+    # 'waldmeister_map',
+    'waldmeister_map.apps.WaldmeisterMapConfig',
     # dry permissions package
     'dry_rest_permissions',
 ]

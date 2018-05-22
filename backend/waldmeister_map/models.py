@@ -4,6 +4,14 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
+class Vegetation(models.Model):
+    ek72 = models.CharField(max_length=10)
+    geom = models.MultiPolygonField(srid=4326)
+
+    def __str__(self):
+        return self.ek72
+
+
 class UserArea(models.Model):
     label = models.CharField(max_length=50)
     public = models.BooleanField()

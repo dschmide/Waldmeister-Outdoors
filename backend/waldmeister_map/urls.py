@@ -7,6 +7,7 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register(r'areas', views.UserAreaViewSet)
+router.register(r'vegetation', views.VegetationViewSet)
 
 schema_view = get_swagger_view(title='Waldmeister API')
 
@@ -22,4 +23,5 @@ urlpatterns = [
 
     # swagger
     url(r'^swagger', schema_view)
+
 ]

@@ -136,7 +136,10 @@ export default {
   // This code is executed when the Waldmeistermap.vue is mounted on the page
   async mounted() {
     //Show my location on map
+    //todo setinterval
+    var CircleGroup = L.layerGroup();
     navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError, geolocationOptions);
+    
     function geoLocationSuccess(pos) {
       var crd = pos.coords;
       console.log('Your current position is:');
@@ -145,13 +148,39 @@ export default {
       console.log(`More or less ${crd.accuracy} meters.`);
 
       //Draws the circle
-      L.circle([crd.latitude, crd.longitude], crd.accuracy, {color:'white',opacity:0,fillColor: 'blue',fillOpacity:.15}).addTo(map);
-      L.circle([crd.latitude, crd.longitude], 10, {color:'white',opacity:1,fillColor: 'blue',fillOpacity:.7}).addTo(map);
-      
-    }
+      CircleGroup.clearLayers();
+      L.circle([crd.latitude, crd.longitude], crd.accuracy, {color:'white',opacity:0,fillColor: 'blue',fillOpacity:.15}).addTo(CircleGroup);
+      L.circle([crd.latitude, crd.longitude], 10, {color:'white',opacity:1,fillColor: 'blue',fillOpacity:.7}).addTo(CircleGroup);
+      CircleGroup.addTo(map)
 
+      // determine if in vegetation polygon
+      var SuccessPolygon = getInPolygon(crd.latitude, crd.longitude);
+      getcorrectPoly(47.214298, 8.687110)
+
+      if (SuccessPolygon) {
+        var myVegetation = SuccessPolygon.EK72;
+        console.log("you're in polygon: " + myVegetation);
+      }else{
+        console.log("you're not in a polygon: ");
+      }
+      
+
+      setTimeout(function(){ navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError, geolocationOptions); }, 10000);
+
+    }
+    async function getInPolygon(lat, lng) {
+      //check if mypos is in any polygon of Vegetation
+      AreaService.getVegetationFromPosition(lat, lng)
+      let thePolygonthatsucceeds = undefined;
+      return thePolygonthatsucceeds
+    }    
+    async function getcorrectPoly(lat,lng){
+      AreaService.getVegetationFromPosition(lat, lng)
+    }
     function geoLocationError(err) {
       console.warn(`ERROR(${err.code}): ${err.message}`);
+      setTimeout(function(){ navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError, geolocationOptions); }, 10000);
+      console.log("gettingLocationError");
     }
 
 
