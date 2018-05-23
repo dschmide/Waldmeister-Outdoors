@@ -46,8 +46,8 @@
 import AreaService from '@/services/AreaService'
 import Vegetation from '@/components/data/vegetationskarte_minimal.json'
 
-const startPoint = [47.4348826, 8.7460494];
-const attributionForMap = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> and <a href="https://maps.zh.ch">maps.zh.ch</a>'
+const startPoint = [47.233498, 8.736205];
+const attributionForMap = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &vert; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &vert; <a href="https://maps.zh.ch">maps.zh.ch</a>'
 const tileLayerURL = 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.{ext}'
 
 const PolygonButtonTextIdle = 'Add'
@@ -173,32 +173,20 @@ export default {
         DisplayForestLink.innerHTML = SuccessPolygon;        
       }
 
-
-      
-
-      setTimeout(function(){ navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError, geolocationOptions); }, 10000);
+      setTimeout(function(){ navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError, geolocationOptions); }, 5000);
 
     }
     async function getInPolygon(lat, lng) {
       //check if mypos is in any polygon of Vegetation
       let response = await (AreaService.getVegetationFromPosition(lat, lng))
       if (response.data.length > 0) {
-        console.log(response.data.length)
-        console.log(response)
         let VegNumber = response.data[0].ek72
         return VegNumber
       }else{
         return 0;
       }
     }    
-    async function getcorrectPoly(lat,lng){
-      AreaService.getVegetationFromPosition(lat, lng)
-      .then( (response) => {
-        let VegNumber = response.data[0].ek72
-        console.log(VegNumber)
-      })
-      
-    }
+
     function geoLocationError(err) {
       console.warn(`ERROR(${err.code}): ${err.message}`);
       setTimeout(function(){ navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError, geolocationOptions); }, 10000);
@@ -222,8 +210,178 @@ export default {
     //Here the browser attempts to return a geolocation and asks the user for permission
     map.locate({setView: true, maxZoom: 15, enableHighAccuracy:false, timeout:60000, maximumAge:Infinity});
 
-    //Init the buttons on the map
-    //Add the Button that displays the current Forest
+
+    // make closure of "this"
+    var self = this;
+
+    //These buttons are only shown when the user is logged in
+    //Add the Polygon Control Button for drawing Polygons on the map
+    if (this.$store.state.isUserLoggedIn) {
+      console.log('Draw The buttons, User logged in');
+    
+      L.NewPolygonControl = L.Control.extend({
+        options: {
+          position: 'topleft'
+        },
+        onAdd: function(map) {
+          var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar'),
+            link = L.DomUtil.create('a', '', container);
+          link.href = '#';
+          link.title = 'Create a new polygon';
+          link.innerHTML = PolygonButtonTextIdle;
+          L.DomEvent.on(link, 'click', L.DomEvent.stop)
+            .on(link, 'click', function() {
+              map.editTools.startPolygon();
+            });
+          container.style.display = 'block';
+          map.editTools.on('editable:enabled', function(e) {
+            container.style.display = 'none';
+          });
+          map.editTools.on('editable:disable', function(e) {
+            container.style.display = 'block';
+          });
+          return container;
+        }
+      });
+      map.addControl(new L.NewPolygonControl());
+    
+      // This button is shown while the user is drawing or editing a polygon
+      L.AddPolygonShapeControl = L.Control.extend({
+        options: {
+          position: 'topleft'
+        },
+        onAdd: function(map) {
+          var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar'),
+            link = L.DomUtil.create('a', '', container);
+
+          link.href = '#';
+          link.title = 'Create a new polygon';
+          link.innerHTML = PolygonButtonTextEditing;
+          L.DomEvent.on(link, 'click', L.DomEvent.stop)
+            .on(link, 'click', function() {
+              if (!map.editTools.currentPolygon) return;
+              map.editTools.currentPolygon.editor.newShape();
+            });
+          container.style.display = 'none';
+          map.editTools.on('editable:enabled', function(e) {
+            container.style.display = 'block';
+          });
+          map.editTools.on('editable:disable', function(e) {
+            container.style.display = 'none';
+          });
+
+          return container;
+        }
+      });
+      map.addControl(new L.AddPolygonShapeControl());
+
+      //This button is shown while the user is editing a polygon and can delete it
+      L.AddPolygonShapeControl = L.Control.extend({
+        options: {
+          position: 'topleft'
+        },
+        onAdd: function(map) {
+          var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar'),
+            link = L.DomUtil.create('a', '', container);
+
+          link.href = '#';
+          link.title = 'Delete the current Polygon';
+          link.innerHTML = "Del";
+          L.DomEvent.on(link, 'click', L.DomEvent.stop)
+            .on(link, 'click', function() {
+              //Return the id of the currentPolygon
+              console.log(map.editTools.currentPolygon)
+              var idOfPoly = AllUserAreas.findIndex(function(x) { return x === map.editTools.currentPolygon; })
+              console.log("foundPolyid: " + idOfPoly);
+              //Delete existing polygon
+              //create button to delete
+              var self = this;
+              AreaService.deleteArea(idOfPoly)
+              .then( (response) => {
+                DrawAllUserAreas();
+              });   
+              //todo: redraw all UserAreas
+            });
+          container.style.display = 'none';
+          map.editTools.on('editable:enabled', function(e) {
+            container.style.display = 'block';
+          });
+          map.editTools.on('editable:disable', function(e) {
+            container.style.display = 'none';
+          });
+
+          return container;
+        }
+      });
+      map.addControl(new L.AddPolygonShapeControl());  
+
+      //This button is shown while the user is editing a polygon and can update it
+      L.AddPolygonShapeControl = L.Control.extend({
+        options: {
+          position: 'topleft'
+        },
+        onAdd: function(map) {
+          var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar'),
+            link = L.DomUtil.create('a', '', container);
+
+          link.href = '#';
+          link.title = 'Update the current Polygon';
+          link.innerHTML = "Upd";
+          L.DomEvent.on(link, 'click', L.DomEvent.stop)
+            .on(link, 'click', async function() {
+              //Return the id of the currentPolygon
+              console.log(map.editTools.currentPolygon)
+              var idOfPoly = AllUserAreas.findIndex(function(x) { return x === map.editTools.currentPolygon; })
+              console.log("foundPolyid: " + idOfPoly);
+
+              myGeoJsonPoly = []
+              console.log("return existing Area...")
+              var ExistingPoly = (await AreaService.getOneArea(idOfPoly)).data
+              console.log(ExistingPoly)
+              currentIdOfPolygon = idOfPoly;
+
+              self.userAreaLabel = ExistingPoly.label;
+              self.checked = ExistingPoly.public;
+
+              var layer = map.editTools.currentPolygon;
+              console.log(layer);
+              var point = layer.getLatLngs();
+              console.log("thepoint: ");
+              console.log(point);
+
+              for (var i = 0; i < point[0][0].length; i++) {
+                myGeoJsonPoly.push([
+                  point[0][0][i].lat,
+                  point[0][0][i].lng
+                ]);
+              }
+              //Closes the shape by adding the first point at the end
+              myGeoJsonPoly.push([
+                point[0][0][0].lat,
+                point[0][0][0].lng
+              ]);
+              //Open the update DialogBox
+              console.log("myGeoJsonPoly before updating");
+              console.log(myGeoJsonPoly);
+              self.updateDialogBox = true;
+              //todo: redraw all UserAreas
+            });
+          container.style.display = 'none';
+          map.editTools.on('editable:enabled', function(e) {
+            container.style.display = 'block';
+          });
+          map.editTools.on('editable:disable', function(e) {
+            container.style.display = 'none';
+          });
+
+          return container;
+        }
+      });
+      map.addControl(new L.AddPolygonShapeControl());
+    }
+    
+    // These buttons are always shown - even for users that arent logged in
+    //Add the Panel that displays the current Forest
     L.DisplayForest = L.Control.extend({
       options: {
         position: 'topright'
@@ -240,173 +398,6 @@ export default {
       }
     });
     map.addControl(new L.DisplayForest());
-
-        console.log("Lnk" +  DisplayForestLink);
-    //Add the Polygon Control Button for drawing Polygons on the map
-    L.NewPolygonControl = L.Control.extend({
-      options: {
-        position: 'topleft'
-      },
-      onAdd: function(map) {
-        var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar'),
-          link = L.DomUtil.create('a', '', container);
-        link.href = '#';
-        link.title = 'Create a new polygon';
-        link.innerHTML = PolygonButtonTextIdle;
-        L.DomEvent.on(link, 'click', L.DomEvent.stop)
-          .on(link, 'click', function() {
-            map.editTools.startPolygon();
-          });
-        container.style.display = 'block';
-        map.editTools.on('editable:enabled', function(e) {
-          container.style.display = 'none';
-        });
-        map.editTools.on('editable:disable', function(e) {
-          container.style.display = 'block';
-        });
-        return container;
-      }
-    });
-    map.addControl(new L.NewPolygonControl());
-
-    // This button is shown while the user is drawing or editing a polygon
-    L.AddPolygonShapeControl = L.Control.extend({
-      options: {
-        position: 'topleft'
-      },
-      onAdd: function(map) {
-        var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar'),
-          link = L.DomUtil.create('a', '', container);
-
-        link.href = '#';
-        link.title = 'Create a new polygon';
-        link.innerHTML = PolygonButtonTextEditing;
-        L.DomEvent.on(link, 'click', L.DomEvent.stop)
-          .on(link, 'click', function() {
-            if (!map.editTools.currentPolygon) return;
-            map.editTools.currentPolygon.editor.newShape();
-          });
-        container.style.display = 'none';
-        map.editTools.on('editable:enabled', function(e) {
-          container.style.display = 'block';
-        });
-        map.editTools.on('editable:disable', function(e) {
-          container.style.display = 'none';
-        });
-
-        return container;
-      }
-    });
-    map.addControl(new L.AddPolygonShapeControl());
-
-    //This button is shown while the user is editing a polygon and can delete it
-    L.AddPolygonShapeControl = L.Control.extend({
-      options: {
-        position: 'topleft'
-      },
-      onAdd: function(map) {
-        var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar'),
-          link = L.DomUtil.create('a', '', container);
-
-        link.href = '#';
-        link.title = 'Delete the current Polygon';
-        link.innerHTML = "Del";
-        L.DomEvent.on(link, 'click', L.DomEvent.stop)
-          .on(link, 'click', function() {
-            //Return the id of the currentPolygon
-            console.log(map.editTools.currentPolygon)
-            var idOfPoly = AllUserAreas.findIndex(function(x) { return x === map.editTools.currentPolygon; })
-            console.log("foundPolyid: " + idOfPoly);
-            //Delete existing polygon
-            //create button to delete
-            var self = this;
-            AreaService.deleteArea(idOfPoly)
-            .then( (response) => {
-              DrawAllUserAreas();
-            });   
-            //todo: redraw all UserAreas
-          });
-        container.style.display = 'none';
-        map.editTools.on('editable:enabled', function(e) {
-          container.style.display = 'block';
-        });
-        map.editTools.on('editable:disable', function(e) {
-          container.style.display = 'none';
-        });
-
-        return container;
-      }
-    });
-    map.addControl(new L.AddPolygonShapeControl());
-
-    // make closure of "this"
-    var self = this;
-
-    //This button is shown while the user is editing a polygon and can update it
-    L.AddPolygonShapeControl = L.Control.extend({
-      options: {
-        position: 'topleft'
-      },
-      onAdd: function(map) {
-        var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar'),
-          link = L.DomUtil.create('a', '', container);
-
-        link.href = '#';
-        link.title = 'Update the current Polygon';
-        link.innerHTML = "Upd";
-        L.DomEvent.on(link, 'click', L.DomEvent.stop)
-          .on(link, 'click', async function() {
-            //Return the id of the currentPolygon
-            console.log(map.editTools.currentPolygon)
-            var idOfPoly = AllUserAreas.findIndex(function(x) { return x === map.editTools.currentPolygon; })
-            console.log("foundPolyid: " + idOfPoly);
-
-            myGeoJsonPoly = []
-            console.log("return existing Area...")
-            var ExistingPoly = (await AreaService.getOneArea(idOfPoly)).data
-            console.log(ExistingPoly)
-            currentIdOfPolygon = idOfPoly;
-
-            self.userAreaLabel = ExistingPoly.label;
-            self.checked = ExistingPoly.public;
-
-            var layer = map.editTools.currentPolygon;
-            console.log(layer);
-            var point = layer.getLatLngs();
-            console.log("thepoint: ");
-            console.log(point);
-
-            for (var i = 0; i < point[0][0].length; i++) {
-              myGeoJsonPoly.push([
-                point[0][0][i].lat,
-                point[0][0][i].lng
-              ]);
-            }
-            //Closes the shape by adding the first point at the end
-            myGeoJsonPoly.push([
-              point[0][0][0].lat,
-              point[0][0][0].lng
-            ]);
-            //Open the update DialogBox
-            console.log("myGeoJsonPoly before updating");
-            console.log(myGeoJsonPoly);
-            self.updateDialogBox = true;
-            //todo: redraw all UserAreas
-          });
-        container.style.display = 'none';
-        map.editTools.on('editable:enabled', function(e) {
-          container.style.display = 'block';
-        });
-        map.editTools.on('editable:disable', function(e) {
-          container.style.display = 'none';
-        });
-
-        return container;
-      }
-    });
-    map.addControl(new L.AddPolygonShapeControl());
-
-    
 
     // Creates and adds a button to toggle visibility of the VegetationsLayer
     L.GeoJsonControl = L.Control.extend({
@@ -465,14 +456,14 @@ export default {
     });
     map.addControl(new L.UserAreasControl());
 
-    //Whenever a new Polygon gets added to the map, it makes the Polygon editable
+    // Whenever a new Polygon is added to the map, this makes the Polygon editable
     map.on('layeradd', function(e) {
       if (e.layer instanceof L.Polygon) {
         e.layer.on('click', L.DomEvent.stop).on('click', e.layer.toggleEdit);
       }
     });
 
-    //Whenever a Polygon gets removed from the map, disable editing
+    // Whenever a Polygon is removed from the map, disable editing
     map.on('layerremove', function(e) {
       if (e.layer instanceof L.Polygon) {
         e.layer.off('click', L.DomEvent.stop).off('click', e.layer.toggleEdit);
@@ -566,6 +557,111 @@ export default {
             return { color: "#ece650" };
           case '11':
             return { color: "#008c4e" };
+          case '12a':
+            return { color: "#96bc31" };
+          case '12c':
+            return { color: "#cccd87" };
+          case '12t':
+            return { color: "#75a336" };
+          case '12e':
+            return { color: "#c2ca1d" };
+          case '12g':
+            return { color: "#008c45" };
+          case '13a':
+            return { color: "#8ead8b" };
+          case '13g':
+            return { color: "#759d68" };
+          case '14':
+            return { color: "#fedc00" };
+
+          case '14w':
+            return { color: "#ffc21c" };
+          case '15':
+            return { color: "#faa74b" };
+          case '15w':
+            return { color: "#ffc34b" };
+          case '16':
+            return { color: "#feca05" };
+          case '17':
+            return { color: "#fcae18" };
+          case '18':
+            return { color: "#5e433a" };
+          case '19':
+            return { color: "#854337" };
+          case '20':
+            return { color: "#008c45" };
+
+          case '22':
+            return { color: "#a0b79a" };
+          case '23':
+            return { color: "#9ea99b" };
+          case '24':
+            return { color: "#8a9287" };
+          case '25':
+            return { color: "#6d756a" };
+          case '26a':
+            return { color: "#0092d7" };
+          case '26e':
+            return { color: "#48a6dc" };
+          case '26f':
+            return { color: "#1391cc" };
+          case '26g':
+            return { color: "#017ebe" };
+
+          case '27a':
+            return { color: "#01a0e2" };
+          case '27f':
+            return { color: "#0094da" };
+          case '28':
+            return { color: "#7969cc" };
+          case '29a':
+            return { color: "#8a82b5" };
+          case '29':
+            return { color: "#7a69cf" };
+          case '30':
+            return { color: "#8171ba" };
+          case '31':
+            return { color: "#554bab" };
+          case '32':
+            return { color: "#6a4aab" };
+
+          case '35a':
+            return { color: "#f05922" };
+          case '35c':
+            return { color: "#f68357" };
+          case '38':
+            return { color: "#f05922" };
+          case '39':
+            return { color: "#f27022" };
+          case '40':
+            return { color: "#f26e23" };
+          case '41':
+            return { color: "#f26e23" };
+          case '43':
+            return { color: "#1f419b" };
+          case '44':
+            return { color: "#575a8d" };
+
+          case '45':
+            return { color: "#6c1b77" };
+          case '46':
+            return { color: "#6c1b77" };
+          case '48':
+            return { color: "#6c1b77" };
+          case '49':
+            return { color: "#6c1b77" };
+          case '61':
+            return { color: "#fcba63" };
+          case '62':
+            return { color: "#fba51c" };
+          case '63':
+            return { color: "#fba51c" };
+          case '64':
+            return { color: "#fba51c" };
+          case '65':
+            return { color: "#fba51c" };
+          case '66':
+            return { color: "#f38121" };
 
           default:
           return { color: "005800" };

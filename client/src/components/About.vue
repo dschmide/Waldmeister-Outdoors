@@ -21,6 +21,8 @@
             <a href="https://itunes.apple.com/bn/app/waldmeister/id825753160?mt=8">App Store iOS App</a>
             <br>
             <a href="https://play.google.com/store/apps/details?id=bgu_schmider.waldmeister">Google Playstore für Android App</a>
+            <br>
+            <a href="/api/static/legende.pdf" target='_blank'>Legende als PDF anzeigen</a>
             </div>
           </div>
         </div>
