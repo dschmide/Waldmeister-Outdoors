@@ -15,7 +15,7 @@ schema_view = get_swagger_view(title='Waldmeister API')
 urlpatterns = [
     # Rest api
     url(r'^api/', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),  # noqa
 
     url(r'^auth/', include('djoser.urls')),
     url(r'^auth/', include('djoser.urls.authtoken')),

@@ -68,6 +68,8 @@ var currentIdOfPolygon
 
 var AllUserAreas = []
 
+var DisplayForestLink
+
 
 
 export default {
@@ -140,7 +142,7 @@ export default {
     var CircleGroup = L.layerGroup();
     navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError, geolocationOptions);
     
-    function geoLocationSuccess(pos) {
+    async function geoLocationSuccess(pos) {
       var crd = pos.coords;
       console.log('Your current position is:');
       console.log(`Latitude : ${crd.latitude}`);
@@ -154,15 +156,24 @@ export default {
       CircleGroup.addTo(map)
 
       // determine if in vegetation polygon
-      var SuccessPolygon = getInPolygon(crd.latitude, crd.longitude);
-      getcorrectPoly(47.214298, 8.687110)
+      //var SuccessPolygon = (await getInPolygon(47.21490162751083, 8.691289296839386));
+      //var SuccessPolygon = (await getInPolygon(47.255682388507054, 8.732877597212793));
+      var SuccessPolygon = (await getInPolygon(crd.latitude, crd.longitude));
 
-      if (SuccessPolygon) {
-        var myVegetation = SuccessPolygon.EK72;
-        console.log("you're in polygon: " + myVegetation);
+
+      if (SuccessPolygon != 0) {
+        console.log("you're in: " + SuccessPolygon);
+
       }else{
-        console.log("you're not in a polygon: ");
+        console.log("you're not in a forest");
       }
+
+      console.log(DisplayForestLink);
+      if (DisplayForestLink) {
+        DisplayForestLink.innerHTML = SuccessPolygon;        
+      }
+
+
       
 
       setTimeout(function(){ navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError, geolocationOptions); }, 10000);
@@ -170,12 +181,23 @@ export default {
     }
     async function getInPolygon(lat, lng) {
       //check if mypos is in any polygon of Vegetation
-      AreaService.getVegetationFromPosition(lat, lng)
-      let thePolygonthatsucceeds = undefined;
-      return thePolygonthatsucceeds
+      let response = await (AreaService.getVegetationFromPosition(lat, lng))
+      if (response.data.length > 0) {
+        console.log(response.data.length)
+        console.log(response)
+        let VegNumber = response.data[0].ek72
+        return VegNumber
+      }else{
+        return 0;
+      }
     }    
     async function getcorrectPoly(lat,lng){
       AreaService.getVegetationFromPosition(lat, lng)
+      .then( (response) => {
+        let VegNumber = response.data[0].ek72
+        console.log(VegNumber)
+      })
+      
     }
     function geoLocationError(err) {
       console.warn(`ERROR(${err.code}): ${err.message}`);
@@ -201,6 +223,25 @@ export default {
     map.locate({setView: true, maxZoom: 15, enableHighAccuracy:false, timeout:60000, maximumAge:Infinity});
 
     //Init the buttons on the map
+    //Add the Button that displays the current Forest
+    L.DisplayForest = L.Control.extend({
+      options: {
+        position: 'topright'
+      },
+      onAdd: function(map) {
+        var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar');
+        DisplayForestLink = L.DomUtil.create('a', '', container);
+        DisplayForestLink.href = '#';
+        DisplayForestLink.title = 'Your Current Forest Type';
+        DisplayForestLink.innerHTML = '0';
+
+        container.style.display = 'block';
+        return container;
+      }
+    });
+    map.addControl(new L.DisplayForest());
+
+        console.log("Lnk" +  DisplayForestLink);
     //Add the Polygon Control Button for drawing Polygons on the map
     L.NewPolygonControl = L.Control.extend({
       options: {

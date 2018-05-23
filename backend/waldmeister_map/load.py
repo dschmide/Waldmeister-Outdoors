@@ -7,7 +7,7 @@ vegetation_mapping = {
     'geom': 'MULTIPOLYGON25D',
 }
 
-world_shp = os.path.abspath(os.path.join(os.path.dirname(__file__), "../static/src/WALDVEGETATIONSKARTE_F_polygon.shp"))
+world_shp = os.path.abspath(os.path.join(os.path.dirname(__file__), "../static/src/WALDVEGETATIONSKARTE_F_polygon.shp"))  # noqa
 
 
 def run(verbose=True):
@@ -15,6 +15,6 @@ def run(verbose=True):
 
     lm = LayerMapping(
         Vegetation, world_shp, vegetation_mapping,
-        transform=False, encoding='iso-8859-1',
+        transform=True, encoding='iso-8859-1',
     )
     lm.save(strict=True, verbose=verbose)
