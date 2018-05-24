@@ -18,10 +18,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='UserArea',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')), # noqa
                 ('label', models.CharField(max_length=50)),
                 ('public', models.BooleanField()),
-                ('polygon', django.contrib.gis.db.models.fields.MultiPolygonField(srid=4326)),
+                ('polygon', django.contrib.gis.db.models.fields.MultiPolygonField(srid=4326)), # noqa
                 ('creator', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),  # noqa
             ],
             options={

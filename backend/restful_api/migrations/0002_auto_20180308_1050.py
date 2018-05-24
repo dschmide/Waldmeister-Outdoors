@@ -7,13 +7,13 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('waldmeister_map', '0001_initial'),
+        ('restful_api', '0001_initial'),
     ]
 
     operations = [
         migrations.AlterField(
             model_name='userarea',
             name='polygon',
-            field=django.contrib.gis.db.models.fields.MultiPolygonField(srid=4326, verbose_name=4326),
+            field=django.contrib.gis.db.models.fields.MultiPolygonField(srid=4326, verbose_name=4326), # noqa
         ),
     ]

@@ -1,13 +1,13 @@
 from django.db.models import Q
 from rest_framework import viewsets
-from waldmeister_map.models import UserArea
-from waldmeister_map.serializers import AreaSerializer
+from restful_api.models import UserArea
+from restful_api.serializers import AreaSerializer
 # DRY Permission package
 from dry_rest_permissions.generics import DRYPermissions
 
 # Contains Point
-from waldmeister_map.models import Vegetation
-from waldmeister_map.serializers import VegetationSerializer
+from restful_api.models import Vegetation
+from restful_api.serializers import VegetationSerializer
 
 from django.contrib.gis.geos import Polygon
 from django.contrib.gis.geos import Point

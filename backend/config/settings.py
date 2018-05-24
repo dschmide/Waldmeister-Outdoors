@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
 
     # 'waldmeister_map',
-    'waldmeister_map.apps.WaldmeisterMapConfig',
+    'restful_api.apps.WaldmeisterMapConfig',
     # dry permissions package
     'dry_rest_permissions',
 ]
@@ -81,7 +81,7 @@ CORS_ORIGIN_WHITELIST = (
 CORS_ORIGIN_ALLOW_ALL = True
 
 
-ROOT_URLCONF = 'waldmeister_outdoors.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -101,7 +101,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'waldmeister_outdoors.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database

@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from waldmeister_map.models import UserArea
-from waldmeister_map.models import Vegetation
+from restful_api.models import UserArea
+from restful_api.models import Vegetation
 
 from django.contrib.auth import get_user_model
 User = get_user_model()

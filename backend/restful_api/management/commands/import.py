@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 import os
 from django.contrib.gis.utils import LayerMapping
-from waldmeister_map.models import Vegetation
+from restful_api.models import Vegetation
 
 
 class Command(BaseCommand):

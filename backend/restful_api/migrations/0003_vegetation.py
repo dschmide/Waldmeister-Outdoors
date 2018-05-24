@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('waldmeister_map', '0002_auto_20180308_1050'),
+        ('restful_api', '0002_auto_20180308_1050'),
     ]
 
     operations = [
