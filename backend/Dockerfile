@@ -5,7 +5,7 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
-RUN apt-get update && apt-get install -y libgdal-dev gcc python3-dev
+RUN apt-get update && apt-get install -y libgdal-dev gcc python3-dev libevent-dev
 RUN pip install "gdal>=1.10,<1.11" --global-option=build_ext --global-option="-I/usr/include/gdal/"
 
 COPY requirements.txt /tmp/requirements.txt
