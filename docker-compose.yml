@@ -26,7 +26,7 @@ services:
       - default
   migrate:
     <<: *backend
-    command: python manage.py migrate
+    command: bash -c "python manage.py migrate && python manage.py import"
     ports: []
   db:
     image: mdillon/postgis

@@ -17,7 +17,6 @@ export default {
     return Api().get('/api/areas/' + id + '/')
   },
   getVegetationFromPosition(lat, lng) {
-    return Api().get('/api/vegetation/?lat=' + lat + '&lng=' + lng
-)
+    return Api().get('/api/vegetation/?lat=' + lat + '&lng=' + lng)
   }
 }

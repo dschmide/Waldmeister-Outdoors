@@ -9,7 +9,6 @@ from dry_rest_permissions.generics import DRYPermissions
 from waldmeister_map.models import Vegetation
 from waldmeister_map.serializers import VegetationSerializer
 
-from django.contrib.gis.geos import MultiPolygon
 from django.contrib.gis.geos import Polygon
 from django.contrib.gis.geos import Point
 
@@ -25,9 +24,10 @@ class UserAreaViewSet(viewsets.ModelViewSet):
             return UserArea.objects.filter(Q(creator=self.request.user) | Q(public=True))  # noqa
         return UserArea.objects.filter(public=True)
     serializer_class = AreaSerializer
+    http_method_names = ['get', 'put', 'delete', 'post']
 
 
-class VegetationViewSet(viewsets.ModelViewSet):
+class VegetationViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Vegetation.objects.all()
 
     def get_queryset(self):
