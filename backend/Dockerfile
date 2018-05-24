@@ -5,10 +5,10 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
-RUN apt-get update && apt-get install -y libgdal-dev gcc python3-dev libevent-dev
+RUN apt-get update && apt-get install -y libgdal-dev gcc
 RUN pip install "gdal==2.3.0" --global-option=build_ext --global-option="-I/usr/include/gdal/"
 
-COPY requirements.txt /tmp/requirements.txt
+ADD requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
 
 # Force the binary layer of the stdout and stderr streams (which is available as their buffer attribute) to be unbuffered. The text I/O layer will still be line-buffered if writing to the console, or block-buffered if redirected to a non-interactive file.
