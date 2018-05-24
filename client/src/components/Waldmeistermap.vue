@@ -513,7 +513,6 @@ export default {
     var myGeoJsonLayer = L.geoJSON(undefined, {
       style: function(feature){
         //This switch determines the color of the polygons for the Vegetationlayer
-        //TODO; include special characters
         switch (feature.properties.EK72) {
           case '1':
             return { color: "#f2142b" };
@@ -693,7 +692,6 @@ export default {
 
     //Redraw map
     this.$on("redrawMap", function(){
-      console.log("dialogboxUpdate closed")
       DrawAllUserAreas();
     })
 
