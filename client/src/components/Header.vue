@@ -33,20 +33,20 @@
           Sign Up
         </v-btn>
         <v-btn 
-
           v-if="$store.state.isUserLoggedIn"
           flat 
           dark
           @click="logout">
           LogOut
         </v-btn>
-        <v-btn 
-          v-if="$store.state.isUserLoggedIn"
+        <div class="text-xs-center header-chip">
+          <v-chip
           flat
           dark
-          outline>
-          {{ this.$store.state.user }}
-        </v-btn>
+          v-if="$store.state.isUserLoggedIn"
+          >{{ this.$store.state.user }}
+          </v-chip>
+        </div>
     </v-toolbar-items>
   </v-toolbar>
 </template>
@@ -75,5 +75,9 @@ export default {
 }
 .home:hover {
   color: #EEEEEE;
+}
+
+.header-chip{
+  margin-top: 8px;
 }
 </style>

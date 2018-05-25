@@ -35,10 +35,12 @@ Grosse Teile der Schweiz sind noch unkartiert, und viele Waldstandorte k\"onnten
 
 \section{Stand der Technik}
 \subsection{GIS-Browser}
+Ein GIS-Browser, wie er von den verschiedenen Kanton in der Schweiz eingesetzt wird, ist ein read-only Archiv, bestehend aus öffentlich zugänglichen Daten. 
 \subsection{ArcGIS online}
 Technologien von ESRI (Environmental Systems Research Institute) und insbesondere ArcGIS (GIS; Geografisches Informationssystem) online wurden recherchiert, um einen funktionierenden Prototypen mit offline-caching zu erstellen. Hintergrundkarten (in Form eines Tile-Layers) k\"onnen auf dem Ger\"at zwischengespeichert werden. Die Erstellung von editierbaren Vektorlayern funktioniert auch beim offline Betrieb und k\"onnen sp\"ater, sobald wieder eine stabile Internetverbindung besteht, synchronisiert werden. Dieses Verhalten kann bei einer PWA durch Service-Worker rekreiert werden.$\newline$
 Ein GeoJSON (Geo JavaScript Object Notation) file kann ebenfalls auf der online Plattform von ArcGIS hochgeladen werden und danach auf der Map dargestellt werden. Das Layer Styling kann so konfiguriert werden, dass die Farbe eines Polygons dem Typ des jeweiligen Waldstandorts entspricht.
 \subsection{Defizite}
+Ein GIS-Browser wie z.B. vom Kanton Zürich bietet keine Möglichkeit die eigene in Betracht zu ziehen, um damit den Kartenausschnitt zu bestimmen oder genauer noch, den aktuellen Waldstandortstyp per GPS zu bestimmen. Auch ist es nicht möglich, persönliche Notizen oder Flächen wie Beobachtungsflächen zu definieren, damit sie während der Arbeit im Feld verwendet werden können. Dies liegt daran, dass sich ein User nicht identifizieren kann und alle Benutzer als anonym behandelt werden.
 
 \section{Bewertung}
 \subsection{Kriterien}
@@ -202,7 +204,10 @@ Dies bewirkt, dass eine Komponente nicht direkt einen Wert oder Zustand im Store
 \section{Design}
 \subsection{Architektur}
 \subsection{Objektkatalog}
+Waldstandort: Eine Fläche auf der Erdoberfläche, welche einen Walddarstellt $\newline$
+Waldstandortstyp: Einer von vielen Typen, welcher einen Waldstandort einen bestimmten Typ zuordnet. Meist wird hier der Kürzel aus den Definitionen von ek72 verwendet, z.B. Kürzel "7e". Der volle Name des Waldstandortstyps "7e" ist "Waldmeister-Buchenwald mit Hornstrauch"
 \subsection{Package Struktur}
+Der Source-Code von "Waldmeister-Outdoors" ist auf GitHub unter "https://github.com/dschmide/Waldmeister-Outdoors" erhätlich. Die Paket-Struktur des Projekts ist
 \subsection{Sequenz-Diagramm}
 \subsection{UI Design}
 \subsubsection{Mockups}
