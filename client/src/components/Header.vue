@@ -26,7 +26,6 @@
         </v-btn>
 
         <v-btn 
-
           v-if="!$store.state.isUserLoggedIn"
           flat 
           dark
@@ -41,6 +40,13 @@
           @click="logout">
           LogOut
         </v-btn>
+        <v-btn 
+          v-if="$store.state.isUserLoggedIn"
+          flat
+          dark
+          outline>
+          {{ this.$store.state.user }}
+        </v-btn>
     </v-toolbar-items>
   </v-toolbar>
 </template>
@@ -54,6 +60,7 @@ export default {
     logout() {
       this.$store.dispatch('setToken', null)
       this.$store.dispatch('setUser', null)
+      localStorage.removeItem("jwt")
       this.$router.push({
         name:'login'
       })

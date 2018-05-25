@@ -16,6 +16,7 @@ export default new Vuex.Store({
   mutations: {
     setToken(state, token) {
       state.token = token
+      localStorage.setItem("jwt", token)
       if (token) {
         state.isUserLoggedIn = true
       } else {
@@ -35,6 +36,7 @@ export default new Vuex.Store({
       }
       console.log('Vegetation Toggled ' + state.toggleVegetation);
     },
+    
     toggleUserAreas(state) {
       if (state.toggleUserAreas) {
         state.toggleUserAreas = false

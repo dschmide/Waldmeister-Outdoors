@@ -459,7 +459,10 @@ export default {
     // Whenever a new Polygon is added to the map, this makes the Polygon editable
     map.on('layeradd', function(e) {
       if (e.layer instanceof L.Polygon) {
-        e.layer.on('click', L.DomEvent.stop).on('click', e.layer.toggleEdit);
+        console.log(e.layer)
+        if(e.layer.options.className != "VegetationArea") {
+          e.layer.on('click', L.DomEvent.stop).on('click', e.layer.toggleEdit);
+        }
       }
     });
 
@@ -670,6 +673,7 @@ export default {
       "weight": 0.8,
       "opacity": 0.75,
       "editable": false,
+      "className": "VegetationArea",
 
       //Draws labels for the Polygons of the Vegetationlayer
       onEachFeature: function(feature, layer) {
@@ -718,8 +722,10 @@ export default {
           [
             polygonToAdd
           ]
-        ],
-
+        ], 
+        {
+          "className": "UserArea",
+        },
         ).addTo(UserAreaGroup);
 
         //Add polygon to arraylist
