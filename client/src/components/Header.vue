@@ -8,13 +8,6 @@
       </span>
     </v-toolbar-title>
 
-    <!-- TODO Goto Map
-    <v-toolbar-items>
-      <v-btn flat dark>
-        Map
-      </v-btn>
-    </v-toolbar-items> -->
-
     <v-spacer></v-spacer>
       <v-toolbar-items>
         <v-btn 
@@ -62,7 +55,7 @@ export default {
       this.$store.dispatch('setToken', null)
       this.$store.dispatch('setUser', null)
       this.$router.push({
-        name:'about'
+        name:'login'
       })
     },
   }

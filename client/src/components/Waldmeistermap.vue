@@ -775,7 +775,7 @@ body {
 
 #map {
   position: absolute;
-  top: 0;
+  top: 56px;
   bottom: 0;
   right: 0;
   left: 0;

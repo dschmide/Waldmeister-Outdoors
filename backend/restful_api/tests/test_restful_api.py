@@ -13,7 +13,7 @@ class Areas(TestCase):
     def test_area_wrongdata_notloggedin(self):
         # Create an instance of a POST request.
         c = Client()
-        response = c.post(self.base_url + '/api/areas/', {'username': 'testuser3'})
+        response = c.post(self.base_url + '/api/areas/', {'username': 'testuser3'})  # noqa
         print(response.content)
         self.assertEqual(response.status_code, 401)
 
@@ -42,13 +42,13 @@ class UserTests(TestCase):
     def test_auth_ok_nomail(self):
         # Create an instance of a POST request.
         c = Client()
-        response = c.post(self.base_url + '/auth/users/create/', {'username': 'testuser', 'password': '1234ASDF'})
+        response = c.post(self.base_url + '/auth/users/create/', {'username': 'testuser', 'password': '1234ASDF'})  # noqa
         self.assertEqual(response.status_code, 201)
 
     def test_auth_badpw(self):
         # Create an instance of a POST request.
         c = Client()
-        response = c.post(self.base_url + '/auth/users/create/', {'username': 'testuser2', 'password': 'asdf'})
+        response = c.post(self.base_url + '/auth/users/create/', {'username': 'testuser2', 'password': 'asdf'})  # noqa
         self.assertEqual(response.status_code, 400)
 
     def test_auth_ok_withmail(self):
@@ -56,7 +56,7 @@ class UserTests(TestCase):
         c = Client()
         response = c.post(
             self.base_url + '/auth/users/create/',
-            {'username': 'testuser3', 'password': '1234ASDF', 'email': 'asdfghj@gmail.com'}
+            {'username': 'testuser3', 'password': '1234ASDF', 'email': 'asdfghj@gmail.com'}  # noqa
         )
         self.assertEqual(response.status_code, 201)
 
@@ -64,7 +64,7 @@ class UserTests(TestCase):
         # Create an instance of a POST request.
         c = Client()
         response = c.post(
-            self.base_url + '/auth/users/create/', {'username': 'testuser3', 'password': '1234ASDF', 'email': 'asdfgh'}
+            self.base_url + '/auth/users/create/', {'username': 'testuser3', 'password': '1234ASDF', 'email': 'asdfgh'}  # noqa
         )
         self.assertEqual(response.status_code, 400)
 
@@ -74,11 +74,11 @@ class UserTests(TestCase):
         # Create a User
         response = c.post(
             self.base_url + '/auth/users/create/',
-            {'username': 'testuser3', 'password': '1234ASDF', 'email': 'asdfghj@gmail.com'}
+            {'username': 'testuser3', 'password': '1234ASDF', 'email': 'asdfghj@gmail.com'}  # noqa
         )
         # Login with the same User, get a token
         response = c.post(
-            self.base_url + '/auth/jwt/create/', {'username': 'testuser3', 'password': '1234ASDF'}
+            self.base_url + '/auth/jwt/create/', {'username': 'testuser3', 'password': '1234ASDF'}  # noqa
         )
         print("token: ")
         print(response.content)
@@ -90,11 +90,11 @@ class UserTests(TestCase):
         # Create a User
         response = c.post(
             self.base_url + '/auth/users/create/',
-            {'username': 'testuser3', 'password': '1234ASDF', 'email': 'asdfghj@gmail.com'}
+            {'username': 'testuser3', 'password': '1234ASDF', 'email': 'asdfghj@gmail.com'}  # noqa
         )
         # Login with the same User, get a token
         response = c.post(
-            self.base_url + '/auth/jwt/create/', {'username': 'testuser3', 'password': '1234ASDF'}
+            self.base_url + '/auth/jwt/create/', {'username': 'testuser3', 'password': '1234ASDF'}  # noqa
         )
         print("token: ")
         # print(response.context_data)

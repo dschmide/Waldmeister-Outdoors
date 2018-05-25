@@ -13,7 +13,7 @@ install:
 - "(cd client && npm install)"
 script:
 - docker-compose run --rm backend flake8 .
-- docker-compose run --rm backend ./manage.py test waldmeister_map
+- docker-compose run --rm backend ./manage.py test restful_api
 - "(cd client && MOZ_HEADLESS=1 npm test)"
 - docker-compose -f docker-compose.push.yml build --pull
 - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_ACCOUNT" --password-stdin
