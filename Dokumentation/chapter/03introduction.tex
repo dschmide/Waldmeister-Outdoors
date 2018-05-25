@@ -207,7 +207,10 @@ Dies bewirkt, dass eine Komponente nicht direkt einen Wert oder Zustand im Store
 Waldstandort: Eine Fläche auf der Erdoberfläche, welche einen Walddarstellt $\newline$
 Waldstandortstyp: Einer von vielen Typen, welcher einen Waldstandort einen bestimmten Typ zuordnet. Meist wird hier der Kürzel aus den Definitionen von ek72 verwendet, z.B. Kürzel "7e". Der volle Name des Waldstandortstyps "7e" ist "Waldmeister-Buchenwald mit Hornstrauch"
 \subsection{Package Struktur}
-Der Source-Code von "Waldmeister-Outdoors" ist auf GitHub unter "https://github.com/dschmide/Waldmeister-Outdoors" erhätlich. Die Paket-Struktur des Projekts ist
+Der Source-Code von "Waldmeister-Outdoors" ist auf GitHub unter "https://github.com/dschmide/Waldmeister-Outdoors" erhätlich. Die Paket-Struktur des Projekts ist in die Teile "backen", "client", "Dokumentation" und "secured-local-nginx" aufgeteilt.
+$\newline$
+screenshots
+
 \subsection{Sequenz-Diagramm}
 \subsection{UI Design}
 \subsubsection{Mockups}
@@ -321,8 +324,41 @@ Um Continuous mit automated build und testing zu realisieren, habe ich Travis ve
 \end{figure}
 
 \section{Manuelle Tests}
+\subsection{User-Szenario}
+Das User-Szenario ist ein möglicher Interaktionsablauf eines Users, welcher die Webapp "Waldmeister-Outdoors" verwendet. Es ist in die verschiedenen Schritte eingeteilt, welcher der User durchführt.
+
+1. Aufrufen der URL $\newline$
+2. Scrollen, Zoomen der Map auf einen beliebigen Bereich $\newline$
+3. Aufruf der "About" Seite $\newline$
+4. Öffnen der Map-Legende in einem separaten Tab $\newline$
+5. Registrierung eines neuen Users, Eingabe von Benutzernamen und Passwort $\newline$
+6. Login mit dem neu erstellten Benutzers $\newline$
+7. Erstellung einer neuen privaten Benutzerfläche $\newline$
+8. Updaten der gerade erstellten Benutzerfläche $\newline$
+9. Erstellen einer neuen öffentlicher Benutzerfläche $\newline$
+10. Erstellen einer zweiten öffnentlicher Benutzerfläche $\newline$
+11. Löschen einer erstellten Benutzerfläche $\newline$
+12. Ausloggen des Benutzers $\newline$
+13. Registrierung eines zweiten Benutzers $\newline$
+14. Einloggen des zweiten Benutzers $\newline$
+15. Löschungsversuch einer öffentlichen Benutzerfläche, welche vom ersten Nutzer erstellt wurde $\newline$
+16. Erstellen einer öffentlichen Benutzerfläche $\newline$
+17. Updaten der erstellen Benutzerfläche, wechseln des Labels und öffentlich auf privat $\newline$
+
 \subsection{Testfälle}
+Testfall A: $\newline$
+Aufruf der URL $\newline$
+Erwartet: Laden der Webapp$\newline$
+Erfüllt: Ja/Nein$\newline$
+$\newline$
+Testfall B:$\newline$
+Scrollen und Zoomen der Map$\newline$
+Erwartet: Map scrollt durch drag & drop, zoomen durch Mousewheel oder Zoom Buttons
+Erfüllt: Ja/Nein
+
+
 \subsection{Ziel}
+
 \subsection{Reproduktion}
 
 \section{Resultate und Weiterentwicklung}
@@ -335,11 +371,16 @@ Um Continuous mit automated build und testing zu realisieren, habe ich Travis ve
 \subsubsection{GitHub}
 
 \subsection{Meilensteinplanung}
+Meilensteine beschreiben Wichtige geplante Daten im Projektablauf. Im Projekt "Waldmeister-Outdoors" gibt es folgende Meilensteine:
+
+1. Refactoring der Codebase, 2.5.
+
 \subsection{Releases}
 \subsection{Issues}
 \subsection{Prototypen}
 \subsection{Prozessmodell}
 \subsubsection{Scrum}
+
 
 \subsection{Aufwandschätzung}
 \subsubsection{Zeitplan}
