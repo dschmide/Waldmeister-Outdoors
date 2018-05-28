@@ -69,16 +69,28 @@ Ein GIS-Browser wie z.B. vom Kanton Zürich bietet keine Möglichkeit die eigene i
 \section{Vision}
 
 \section{Anforderungsspezifikationen}
-\subsection{Must-Haves}
-\subsection{Optional}
 \subsection{Use-Cases}
-\subsection{Funktionale Anforderungen}
+W\"ahrend der Feldforschung kann es sehr hilfreich sein, auf bereits kategorisierte Waldfl\"achen Zugriff zu haben um sich am Standort zu orientieren. Dieses Material ist oft in einem Kantonalen Portal z.B. https://maps.zh.ch erh\"altlich, es ist jedoch nur selten kompatibel mit mobilen Ger\"aten, interagieren nicht mit dem GPS des Smartphones oder die Websiten sind schwer zu navigieren. "Waldmeister - Outdoors" soll einem gezielten Zweck dienen und nicht mit Kartenmaterial \"uberladen werden. Der Zugriff auf die Vegetationskundlichen Karten sollte vereinfacht und die Navigation beschleunigt werden. $\newline$
+Der \"uber GPS ermittelte eigene Standort soll dazu beitragen in dem die eigene Position in der Karte eingetragen werden soll und die Map darauf zentriert wird. Zus\"atzlich soll es m\"oglich sein, dies \"uber einen bestimmten Intervall zu wiederholen, bzw. die eigene Position als Pfad zu speichern. Diese Funktionen sind jedoch stark abh\"angig von der Genauigkeit des GPS, welche innerhalb eines Waldes relativ oft ungenau sein kann, und sollten daher deaktivierbar sein.
+\subsection{Must-Haves}
+Als must-haves werden Funktionale Anforderungen beschrieben, welche zentrale Funktionen beschreiben, welche ein User mit der Applikation durchführen möchte. Dazu gehören die Navigation der Map und dem Erstellen und Editieren von Benutzerflächen.
+\subsection{Optional}
+Als optionale Anforderung wurde das Automatische Anzeige des Waldstandorttyps bezeichnet.
 \subsection{Nicht-funktionale Anforderungen}
 \subsection{Weitere Funktionen und Anforderungen}
 \subsection{Detailspezifikationen}
 
 \section{Analyse}
 \subsection{Klassendiagramm}
+Das Diagramm \ref{fig:cd1}  schildert die Relation und den Ausbau der wichtigsten Klassen des Systems. Dies zeigt, dass Benutzerfl\"achen nur von registrierten Users erstellt werden k\"onnen und immer einem solchen zugewiesen sind. Wird ein Benutzer aus dem System gel\"oscht, werden alle Fl\"achen welche diesem Account zugeordnet sind , ebenfalls aus dem System gel\"oscht. 
+
+\begin{figure}[h]
+\centering
+    \includegraphics[width=0.5\textwidth]{ClassDiagram2}
+    \caption{Klassendiagramm}
+    \label{fig:cd1}
+\end{figure}
+
 \subsection{Domain Modell}
 \subsection{Objektkatalog}
 
