@@ -3,25 +3,6 @@
 "Waldmeister-Outdoors" ist eine Applikation, welche es ermöglicht, 
 Waldstandorte in der Schweiz zu erforschen und zu erfassen.
 
-## TODO - next steps
-
-The most likely next steps to advance towards completion of the application:
-
-### Frontend
-
-* Use something like `https://www.npmjs.com/package/vuejs-jwt`
-  or follow the guide at `https://hackernoon.com/jwt-authentication-in-vue-js-and-django-rest-framework-part-1-c40c5c0d4f6e`
-* Make the interface work
-* Usability (when can what be pressed? What is possible as anonymous User?)
-* Get everything working that is on the page
-* move from static geojson to API
-
-### Backend
-
-* Remove templates and use API calls for frontend interaction
-* Clean up the code and add the required functionality to interact
-  with the frontend
-
 ## Usage (with docker and docker-compose)
 
 After a `docker-compose up --build` visit `https://localhost:8443`.
