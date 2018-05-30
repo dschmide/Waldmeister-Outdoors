@@ -68,20 +68,32 @@ Ein GIS-Browser wie z.B. vom Kanton Zürich bietet keine Möglichkeit die eigene P
 
 \section{Umsetzungskonzept}
 \subsection{Lösungsansätze}
+Webapp (3-Tier Architektur wegen Lernaspekten), Micro-Services, REST-Schnittstelle,  
+Native App (Plattformabhängig)
 \subsubsection{Backend}
 Client und Backend sollen Daten per API Abfragen austauschen.
+Server als Webservice
 \subsubsection{Frontend}
+Frontend-Client als Webapp
 \subsubsection{Datenbank}
+Postgres
+SQ-Lite
 \subsubsection{JavaScript Libraries}
+Vue, Single-Page App
+Leaflet, open-source für Map
+Google Maps (Vor-Nachteile)
 \subsubsection{Python Pakete}
+Django
 \subsubsection{Werkzeuge und Tools}
-
+Sublime, Eslint, Flake8, GitHub
 \subsubsection{Testing}
+\subsubsection{
 
 \section{Resultate}
 \subsection{Zielerreichung}
 \subsection{Ausblick und Weiterentwicklung}
 \subsection{Persönliche Berichte}
+Gdal
 \subsection{Danksagungen}
 \clearpage
 \pagebreak
@@ -403,14 +415,23 @@ Als Datenbank wird PostgreSQL 10 verwendet. Die Datenbank Verbindungsdetails sin
 \section{Automatische Testverfahren}
 Testgetriebene Entwicklung (TDD) ist eine Methode zur Softwareentwicklung, welche oft bei der agilen Entwicklung von Computerprogrammen eingesetzt wird. Bei TDD erstellt der Programmierer Software-Tests, um das korrekte Verhalten von Softwarekomponenten zu planen und zu \"uberpr\"ufen. Unit Tests (auch als Unittest oder als Komponententest bezeichnet), werden verwendet um die funktionalen Einzelteile eines Softwareprojekts zu pr\"ufen. 
 
-\subsection{Jasmine}
+\subsection{Django}
+Test f\"ur das Django wurden mit dem standard Django module "unittest" erstellt. Es wurden Tests zu Login, Registrierung und Erstellung von Benutzerfl\"achen erstellt. Es werden unvollst\"andige, fehlerhafte und nicht authorisierte Requests (zum Beispiel ohne sich einzuloggen) getestet. HTTP-Statuscode geben Auskunft \"uber die korrekte Ausf\"uhrung oder fehlerhaftes Verhalten des Servers. Sie werden verglichen mit zu erwartenden Codes und bestimmen auf diese Weise ob der Test bestanden oder gescheitert ist. $\newline$
+$\newline$
+Es wird getestet ob Email und Passwort vorhanden ist und ob die Anforderungen an die Werte erf\"ullt sind, ob Accounts und JWTs erstellt werden k\"onnen und ob Benutzerfl\"achen vom System korrekt erstellt werden. $\newline$
+Die Tests k\"onnen mit dem Befehl "python3 manage.py test WaldmeisterMap" ausgel\"ost werden. Fehlerhafte Test werden von Django gemeldet.
+
 \subsection{Karma}
 Tests f\"ur Vue.JS wurden mit dem Test Runner Karma und dem Testframework Jasmine erstellt . Sie k\"onnen \"uber den Befehl "npm run test" ausgef\"uhrt werden, aus dem "client" folder des Vue-Servers. $\newline$
 Getestet werden Komponenten und deren Inhalt, welche von VueJS verwendet werden. $\newline$
 Damit Jasmin die Tests ausf\"uhren kann, muss der Code von Webpack zuerst kompiliert werden. Danach wird er in einer Browserumgebung (z.B Chrome oder Firefox) ausgef\"uhrt und das Testframework sammelt die zu testenden Werte und Verhalten. Es vergleicht diese mit gegebenen Werten und Zust\"anden, welche vom Programmierer erwartet werden. Stimmen sie \"uberein, ist der Test bestanden. Stimmen sie nicht \"uberein, ist der Test gescheitert und Jasmine meldet einen Fehler.
 
-\subsection{Travis}
-\subsubsection{Continuous Integration}
+\subsection{Linter}
+\subsubsection{Eslint}
+\subsubsection{flake8}
+
+\subsection{Continuous Integration}
+\subsubsection{Travis}
 Um Continuous mit automated build und testing zu realisieren, habe ich Travis verwendet. Die Software Travis CI wurde 2011 in Berlin erstellt und 2013 ver\"offentlicht. Auf der Website travis-ci.org wird das Repo, welches auf Github gehostet wird, verkn\"upft. Jedes mal wenn auf das remote Repo gepusht wird, f\"uhrt Travis die config in Form einer .yaml Datei aus, welche im root folder des Repos hinterlegt ist. Sie installiert alle Programme und Dependancies auf einer Linux Maschine und testet ob der Build in der aktuellen Version funktioniert. Es entsteht eine Version History mit dazugeh\"orender config. Travis meldet, ob der Build und die Tests erfolgreich durchgef\"uhrt werden konnten. Dies geschieht auch auf separaten Branches des Projekts.
 
 \begin{figure}[H]
@@ -484,6 +505,22 @@ Alle Benutzeraccounts und deren Fl\"achen sind im Django Backend ersichtlich und
 
 \section{Projektmanagement}
 \subsection{Allgemeines}
+
+\subsection{Prozessmodell}
+Scrum wurde eingesetzt um bei der Entwicklung des Projekts agil vorzugehen. Transparenz, Überprüfung, Anpassung
+Vereinfachte Form von Scrum
+Sprints: Meetings (2-Wöchentlich, Wöchentlich, Intervalle)
+
+Grund: Auf Issues reagieren sobald sie auftauchen und sie einfliessen lassen
+In Scrum werden die Anforderungen in Form von Eigenschaften aus der Anwendersicht formuliert.
+Während eines Sprints sind keine Änderungen erlaubt, die das Sprintziel beeinflussen.
+Product Backlog (github)
+
+Sprint-Reviews (Emails, Drei Punkte)
+
+Docker-Deployment bei Sprintende (als Testsystem ?)
+
+
 \subsubsection{GitHub}
 
 \subsection{Meilensteinplanung}
@@ -494,24 +531,28 @@ Meilensteine beschreiben Wichtige geplante Daten im Projektablauf. Im Projekt "W
 3. Feature Freeze / Feature Demo 23.5. $\newline$
 4. Abgabe Projekt 8.6. $\newline$
 
+Bild, Gantt Diagramm
+
 \subsection{Releases}
 Als Release wird das Deployment der Webapp auf den Produktions Server bezeichnet. Grundsätzlich wird die Webapp auf einem Lokalen Testserver entwickelt und getestet. Bei einem Release wird die Lauffähige Webapp auf das Livesystem portiert und öffentlichen Usern zugänglich gemacht.
 \subsection{Issues}
 Während dem Projekt und insbesondere während der Projektplanungsphase werden Issues erfasst, welche geplante Schritte, Funktionen oder Arbeitsschritte beschreiben.
 \subsection{Prototypen}
-\subsection{Prozessmodell}
-\subsubsection{Scrum}
+
 
 
 \subsection{Aufwandschätzung}
+An Stakeholder
 \subsubsection{Zeitplan}
-\subsubsection{Projektplan}
+Anzahl Tage in der Woche, Anzahl Wochen, Gesamtaufwand
+An Stakeholder (ähnlich Meilensteinplanung)
 
 \subsection{Risiken}
-\subsubsection{Deadlines}
-\subsubsection{Technologien}
-\subsubsection{Frameworks}
-\subsubsection{Mobile Limits}
+Technologien
+Frameworks$\newline$
+Mobile Limits $\newline$
+Anzahl Objekte auf der Map, Performanceeinbussen $\newline$
+Gps-Empfang und Internetempfang
 
 \section{Projektmonitoring}
 \subsection{Soll-Ist-Zeitvergleich}
