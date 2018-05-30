@@ -30,11 +30,11 @@ Grosse Teile der Schweiz sind noch unkartiert, und viele Waldstandorte k\"onnten
 \section{Einf\"uhrung}
 
 \subsection{Problemstellung, Vision}
-Arbeit im Feld ist, wie bei der Kartierung von Waldstandorten unerlässlich ist, wird in allen Fällen komplementiert von Arbeit, welche ausschliesslich im Büro erledigt wird. Für viele Programme existieren ausschliesslich Desktop-Lösungen, welche auf mobilen Geräten nicht verwendet werden können. Wie im Management Summary beschrieben, müssen oft Arbeitsschritte im Büro wiederholt werden oder von Hand Niedergeschriebenes am Computer digitalisiert werden. Könnten diese Informationen bereits während der Feldarbeit digital festgehalten werde, würde dies die Arbeit sehr verkürzen und den Informationsaustausch zwischen verschiedenen Personen und Teams einfacher gestalten.
+Arbeit im Feld ist, wie bei der Kartierung von Waldstandorten unerl\"asslich ist, wird in allen F\"allen komplementiert von Arbeit, welche ausschliesslich im B\"uro erledigt wird. F\"ur viele Programme existieren ausschliesslich Desktop-L\"osungen, welche auf mobilen Ger\"aten nicht verwendet werden k\"onnen. Wie im Management Summary beschrieben, m\"ussen oft Arbeitsschritte im B\"uro wiederholt werden oder von Hand Niedergeschriebenes am Computer digitalisiert werden. K\"onnten diese Informationen bereits w\"ahrend der Feldarbeit digital festgehalten werde, w\"urde dies die Arbeit sehr verk\"urzen und den Informationsaustausch zwischen verschiedenen Personen und Teams einfacher gestalten.
 
 \subsection{Ziele und Unterziele}
-Ziel ist es, eine Webapp zu gestalten, welche es dem User erlaubt bestehende Waldstandorte zu erforschen und nach belieben neue Flächen, welche Waldstandorte beschreiben können, zu erfassen. Dies soll auf einem mobilen Gerät möglich sein, welches im Feld verwendet wird. Die so erhobenen Daten sollen auf einem zentralen Server gespeichert werden und sofort dem User selbst sowie anderen Benutzern wieder zur Verfügung gestellt werden. Daten, welche so im Feld eingegeben wurden, können danach im Büro weiterbearbeitet werden. Um dies zu realisieren, wird eine Webapp mit einer Map erstellt, welche je nach User unterschiedliche Informationen auf der Map darstellt. Daten werden vom Client zum Backend übermittelt und in einer Datenbank persistent gemacht, damit sie von einem anderen Gerät oder von einem anderen User zu einem späteren Zeitpunkt zur Verfügung stehen. $\newline$
-Das technische Grundgerüst der App besteht aus einem Client-Server, welcher dem User das Frontend liefert, ein Backend, welches Daten vom User empfängt und speichert sowie dem User ermöglicht einen Account zu erstellen. Zum Backend gehört ebenfalls eine Datenbank, in welchem sämtliche Informationen zu den Waldstandorten und Registrierten Usern gespeichert wird. $\newline$
+Ziel ist es, eine Webapp zu gestalten, welche es dem User erlaubt bestehende Waldstandorte zu erforschen und nach belieben neue Fl\"achen, welche Waldstandorte beschreiben k\"onnen, zu erfassen. Dies soll auf einem mobilen Ger\"at m\"oglich sein, welches im Feld verwendet wird. Die so erhobenen Daten sollen auf einem zentralen Server gespeichert werden und sofort dem User selbst sowie anderen Benutzern wieder zur Verf\"ugung gestellt werden. Daten, welche so im Feld eingegeben wurden, k\"onnen danach im B\"uro weiterbearbeitet werden. Um dies zu realisieren, wird eine Webapp mit einer Map erstellt, welche je nach User unterschiedliche Informationen auf der Map darstellt. Daten werden vom Client zum Backend \"ubermittelt und in einer Datenbank persistent gemacht, damit sie von einem anderen Ger\"at oder von einem anderen User zu einem sp\"ateren Zeitpunkt zur Verf\"ugung stehen. $\newline$
+Das technische Grundger\"ust der App besteht aus einem Client-Server, welcher dem User das Frontend liefert, ein Backend, welches Daten vom User empf\"angt und speichert sowie dem User erm\"oglicht einen Account zu erstellen. Zum Backend geh\"ort ebenfalls eine Datenbank, in welchem s\"amtliche Informationen zu den Waldstandorten und Registrierten Usern gespeichert wird. $\newline$
 Ziel ist es, dass die Map auf allen Ger\"aten dargestellt wird und nach erfolgreichem Login Fl\"achen in Form von Polygonen direkt auf der Map erstellt werden k\"onnen. Sie werden vom Backend persistent gemacht und mit dem eingeloggten Benutzer verkn\"upft. Der User kann danach auch auf anderen Ger\"aten auf diese erstellten Fl\"achen zugreifen und sie mit anderen Benutzern teilen.$\newline$
 
 \subsection{Rahmenbedingungen}
@@ -47,7 +47,7 @@ Als Testger\"ate werden ein Apple iPad und iPhone verwendet, ein Android Galaxy 
 
 \section{Stand der Technik}
 \subsection{GIS-Browser}
-Ein GIS-Browser, wie er von den verschiedenen Kanton in der Schweiz eingesetzt wird, ist ein read-only Archiv, bestehend aus öffentlich zugänglichen Daten. 
+Ein GIS-Browser, wie er von den verschiedenen Kanton in der Schweiz eingesetzt wird, ist ein read-only Archiv, bestehend aus \"offentlich zug\"anglichen Daten. 
 \subsection{ArcGIS online}
 Technologien von ESRI (Environmental Systems Research Institute) und insbesondere ArcGIS online (GIS; Geografisches Informationssystem) wurden recherchiert, um einen funktionierenden Prototypen mit offline-caching zu erstellen. Hintergrundkarten (in Form eines Tile-Layers) k\"onnen auf dem Ger\"at zwischengespeichert werden. Die Erstellung von editierbaren Vektorlayern funktioniert auch im offline Betrieb und k\"onnen sp\"ater, sobald wieder eine stabile Internetverbindung besteht, synchronisiert werden. Dieses Verhalten kann bei einer Webapp durch Service-Worker rekreiert werden.$\newline$
 Ein GeoJSON (Geo JavaScript Object Notation) file kann ebenfalls auf der online Plattform von ArcGIS hochgeladen werden und danach auf der Map dargestellt werden. Das Layer Styling kann so konfiguriert werden, dass die Farbe eines Polygons dem Typ des jeweiligen Waldstandorts entspricht.
@@ -60,16 +60,16 @@ $\newline$
 \end{figure}
 
 \subsection{Defizite}
-Ein GIS-Browser wie z.B. vom Kanton Zürich bietet keine Möglichkeit die eigene Position in Betracht zu ziehen, um damit den Kartenausschnitt zu bestimmen oder genauer noch, den aktuellen Waldstandortstyp per GPS zu bestimmen. Auch ist es nicht möglich, persönliche Notizen oder Flächen wie Beobachtungsflächen zu definieren, damit sie während der Arbeit im Feld verwendet werden können. Dies liegt daran, dass sich ein User nicht identifizieren kann, und daher alle Benutzer bei jedem Besuch als anonym behandelt werden.
+Ein GIS-Browser wie z.B. vom Kanton Z\"urich bietet keine M\"oglichkeit die eigene Position in Betracht zu ziehen, um damit den Kartenausschnitt zu bestimmen oder genauer noch, den aktuellen Waldstandortstyp per GPS zu bestimmen. Auch ist es nicht m\"oglich, pers\"onliche Notizen oder Fl\"achen wie Beobachtungsfl\"achen zu definieren, damit sie w\"ahrend der Arbeit im Feld verwendet werden k\"onnen. Dies liegt daran, dass sich ein User nicht identifizieren kann, und daher alle Benutzer bei jedem Besuch als anonym behandelt werden.
 
 \section{Bewertung}
 \subsection{Kriterien}
 \subsection{Schlussfolgerungen}
 
 \section{Umsetzungskonzept}
-\subsection{Lösungsansätze}
+\subsection{L\"osungsans\"atze}
 Webapp (3-Tier Architektur wegen Lernaspekten), Micro-Services, REST-Schnittstelle,  
-Native App (Plattformabhängig)
+Native App (Plattformabh\"angig)
 \subsubsection{Backend}
 Client und Backend sollen Daten per API Abfragen austauschen.
 Server als Webservice
@@ -80,19 +80,18 @@ Postgres
 SQ-Lite
 \subsubsection{JavaScript Libraries}
 Vue, Single-Page App
-Leaflet, open-source für Map
+Leaflet, open-source f\"ur Map
 Google Maps (Vor-Nachteile)
 \subsubsection{Python Pakete}
 Django
 \subsubsection{Werkzeuge und Tools}
 Sublime, Eslint, Flake8, GitHub
 \subsubsection{Testing}
-\subsubsection{
 
 \section{Resultate}
 \subsection{Zielerreichung}
 \subsection{Ausblick und Weiterentwicklung}
-\subsection{Persönliche Berichte}
+\subsection{Pers\"onliche Berichte}
 Gdal
 \subsection{Danksagungen}
 \clearpage
@@ -107,7 +106,7 @@ Gdal
 W\"ahrend der Feldforschung kann es sehr hilfreich sein, auf bereits kategorisierte Waldfl\"achen Zugriff zu haben um sich am Standort zu orientieren. Dieses Material ist oft in einem Kantonalen Portal z.B. https://maps.zh.ch erh\"altlich, es ist jedoch nur selten kompatibel mit mobilen Ger\"aten, interagieren nicht mit dem GPS des Smartphones oder die Websiten sind schwer zu navigieren. "Waldmeister - Outdoors" soll einem gezielten Zweck dienen und nicht mit Kartenmaterial \"uberladen werden. Der Zugriff auf die Vegetationskundlichen Karten sollte vereinfacht und die Navigation beschleunigt werden. $\newline$
 Der \"uber GPS ermittelte eigene Standort soll dazu beitragen in dem die eigene Position in der Karte eingetragen werden soll und die Map darauf zentriert wird. Zus\"atzlich soll es m\"oglich sein, dies \"uber einen bestimmten Intervall zu wiederholen, bzw. die eigene Position als Pfad zu speichern. Diese Funktionen sind jedoch stark abh\"angig von der Genauigkeit des GPS, welche innerhalb eines Waldes relativ oft ungenau sein kann, und sollten daher deaktivierbar sein.
 \subsection{Must-Haves}
-Als must-haves werden Funktionale Anforderungen beschrieben, welche zentrale Funktionen beschreiben, welche ein User mit der Applikation durchführen möchte. Dazu gehören die Navigation der Map und dem Erstellen und Editieren von Benutzerflächen.
+Als must-haves werden Funktionale Anforderungen beschrieben, welche zentrale Funktionen beschreiben, welche ein User mit der Applikation durchf\"uhren m\"ochte. Dazu geh\"oren die Navigation der Map und dem Erstellen und Editieren von Benutzerfl\"achen.
 \subsection{Optional}
 Als optionale Anforderung wurde das Automatische Anzeige des Waldstandorttyps bezeichnet.
 \subsection{Nicht-funktionale Anforderungen}
@@ -251,10 +250,10 @@ Dies bewirkt, dass eine Komponente nicht direkt einen Wert oder Zustand im Store
 \section{Design}
 \subsection{Architektur}
 \subsection{Objektkatalog}
-Waldstandort: Eine Fläche auf der Erdoberfläche, welche einen Walddarstellt $\newline$
-Waldstandortstyp: Einer von vielen Typen, welcher einen Waldstandort einen bestimmten Typ zuordnet. Meist wird hier der Kürzel aus den Definitionen von ek72 verwendet, z.B. Kürzel "7e". Der volle Name des Waldstandortstyps "7e" ist "Waldmeister-Buchenwald mit Hornstrauch"
+Waldstandort: Eine Fl\"ache auf der Erdoberfl\"ache, welche einen Walddarstellt $\newline$
+Waldstandortstyp: Einer von vielen Typen, welcher einen Waldstandort einen bestimmten Typ zuordnet. Meist wird hier der K\"urzel aus den Definitionen von ek72 verwendet, z.B. K\"urzel "7e". Der volle Name des Waldstandortstyps "7e" ist "Waldmeister-Buchenwald mit Hornstrauch"
 \subsection{Package Struktur}
-Der Source-Code von "Waldmeister-Outdoors" ist auf GitHub unter "https://github.com/dschmide/Waldmeister-Outdoors" erhätlich. Die Paket-Struktur des Projekts ist in die Teile "backen", "client", "Dokumentation" und "secured-local-nginx" aufgeteilt.
+Der Source-Code von "Waldmeister-Outdoors" ist auf GitHub unter "https://github.com/dschmide/Waldmeister-Outdoors" erh\"atlich. Die Paket-Struktur des Projekts ist in die Teile "backen", "client", "Dokumentation" und "secured-local-nginx" aufgeteilt.
 $\newline$
 screenshots
 
@@ -457,36 +456,36 @@ Um Continuous mit automated build und testing zu realisieren, habe ich Travis ve
 
 \section{Manuelle Tests}
 \subsection{User-Szenario}
-Das User-Szenario ist ein möglicher Interaktionsablauf eines Users, welcher die Webapp "Waldmeister-Outdoors" verwendet. Es ist in die verschiedenen Schritte eingeteilt, welcher der User durchführt.
+Das User-Szenario ist ein m\"oglicher Interaktionsablauf eines Users, welcher die Webapp "Waldmeister-Outdoors" verwendet. Es ist in die verschiedenen Schritte eingeteilt, welcher der User durchf\"uhrt.
 
 1. Aufrufen der URL $\newline$
 2. Scrollen, Zoomen der Map auf einen beliebigen Bereich $\newline$
 3. Aufruf der "About" Seite $\newline$
-4. Öffnen der Map-Legende in einem separaten Tab $\newline$
+4. \"Offnen der Map-Legende in einem separaten Tab $\newline$
 5. Registrierung eines neuen Users, Eingabe von Benutzernamen und Passwort $\newline$
 6. Login mit dem neu erstellten Benutzers $\newline$
-7. Erstellung einer neuen privaten Benutzerfläche $\newline$
-8. Updaten der gerade erstellten Benutzerfläche $\newline$
-9. Erstellen einer neuen öffentlicher Benutzerfläche $\newline$
-10. Erstellen einer zweiten öffnentlicher Benutzerfläche $\newline$
-11. Löschen einer erstellten Benutzerfläche $\newline$
+7. Erstellung einer neuen privaten Benutzerfl\"ache $\newline$
+8. Updaten der gerade erstellten Benutzerfl\"ache $\newline$
+9. Erstellen einer neuen \"offentlicher Benutzerfl\"ache $\newline$
+10. Erstellen einer zweiten \"offnentlicher Benutzerfl\"ache $\newline$
+11. L\"oschen einer erstellten Benutzerfl\"ache $\newline$
 12. Ausloggen des Benutzers $\newline$
 13. Registrierung eines zweiten Benutzers $\newline$
 14. Einloggen des zweiten Benutzers $\newline$
-15. Löschungsversuch einer öffentlichen Benutzerfläche, welche vom ersten Nutzer erstellt wurde $\newline$
-16. Erstellen einer öffentlichen Benutzerfläche $\newline$
-17. Updaten der erstellen Benutzerfläche, wechseln des Labels und öffentlich auf privat $\newline$
+15. L\"oschungsversuch einer \"offentlichen Benutzerfl\"ache, welche vom ersten Nutzer erstellt wurde $\newline$
+16. Erstellen einer \"offentlichen Benutzerfl\"ache $\newline$
+17. Updaten der erstellen Benutzerfl\"ache, wechseln des Labels und \"offentlich auf privat $\newline$
 
-\subsection{Testfälle}
+\subsection{Testf\"alle}
 Testfall A: $\newline$
 Aufruf der URL $\newline$
 Erwartet: Laden der Webapp$\newline$
-Erfüllt: Ja/Nein$\newline$
+Erf\"ullt: Ja/Nein$\newline$
 $\newline$
 Testfall B:$\newline$
 Scrollen und Zoomen der Map$\newline$
 Erwartet: Map scrollt durch drag & drop, zoomen durch Mousewheel oder Zoom Buttons
-Erfüllt: Ja/Nein
+Erf\"ullt: Ja/Nein
 
 
 \subsection{Ziel}
@@ -495,25 +494,25 @@ Erfüllt: Ja/Nein
 
 \section{Resultate und Weiterentwicklung}
 \subsection{Resultate}
-User k\"onnen mittels der Webapp Waldmeister-Outdoors die Vegetationskundliche Karte erforschen und diese mit Ihrem momentanen Standort abgleichen. User k\"onnen, nachdem sie sich registriert haben, private und \"offentliche Benutzerfl\"achen erfassen und sie auf einem zentralen Server hinterlegen. Dies können sowohl bisher nicht erfasste Waldstandorte, oder pers\"onliche Orte und Fl\"achen beschreiben, welche f\"ur Sie im Arbeitsalltag relevant sind. Solche Benutzerflächen können sie zwischen verschiedenen Ger\"aten (Im Feld und im B\"uro) abrufen oder mit anderen Personen teilen, sobald sie die Fl\"ache \"offentlich und daher von allen Usern abrufbar machen. $\newline$
+User k\"onnen mittels der Webapp Waldmeister-Outdoors die Vegetationskundliche Karte erforschen und diese mit Ihrem momentanen Standort abgleichen. User k\"onnen, nachdem sie sich registriert haben, private und \"offentliche Benutzerfl\"achen erfassen und sie auf einem zentralen Server hinterlegen. Dies k\"onnen sowohl bisher nicht erfasste Waldstandorte, oder pers\"onliche Orte und Fl\"achen beschreiben, welche f\"ur Sie im Arbeitsalltag relevant sind. Solche Benutzerfl\"achen k\"onnen sie zwischen verschiedenen Ger\"aten (Im Feld und im B\"uro) abrufen oder mit anderen Personen teilen, sobald sie die Fl\"ache \"offentlich und daher von allen Usern abrufbar machen. $\newline$
 Ebenfalls wurde erreicht die Geolocation auf der Karte darzustellen. Dies ist im Arbeitsalltag eine grosse Hilfe, und dient zur schnellen Orientierung und Auffindung von bestimmten eingetragenen Fl\"achen und Orten im Feld. $\newline$
 Die Webapp kann sowohl auf Desktop Browsern wie von mobilen Ger\"aten verwendet werden und verh\"alt sich dank Vue.js responsive auf eine \"Anderung des Viewports, zum Beispiel wenn der Screen eines mobilen Ger\"ats w\"ahrend der Verwendung gedreht wird. $\newline$
-Der Vegetationslayer und Benutzerflächen-Layer und deren Label k\"onnen ein - und ausgeblendet werden, was zur \"Ubersicht beitragen kann. $\newline$
+Der Vegetationslayer und Benutzerfl\"achen-Layer und deren Label k\"onnen ein - und ausgeblendet werden, was zur \"Ubersicht beitragen kann. $\newline$
 Alle Benutzeraccounts und deren Fl\"achen sind im Django Backend ersichtlich und k\"onnen als Superuser ver\"andert oder gel\"oscht werden. Wird ein Benutzer aus der Datenbank gel\"oscht, werden alle von ihm erstellten Benutzerfl\"achen ebenfalls automatisch gel\"oscht. Alle Passw\"orter von Benutzeraccounts werden gehasht in der Datenbank gespeichert. $\newline$
-\subsection{Möglichkeiten der Weiterentwicklung}
+\subsection{M\"oglichkeiten der Weiterentwicklung}
 \subsection{Vorgehen}
 
 \section{Projektmanagement}
 \subsection{Allgemeines}
 
 \subsection{Prozessmodell}
-Scrum wurde eingesetzt um bei der Entwicklung des Projekts agil vorzugehen. Transparenz, Überprüfung, Anpassung
+Scrum wurde eingesetzt um bei der Entwicklung des Projekts agil vorzugehen. Transparenz, \"Uberpr\"ufung, Anpassung
 Vereinfachte Form von Scrum
-Sprints: Meetings (2-Wöchentlich, Wöchentlich, Intervalle)
+Sprints: Meetings (2-W\"ochentlich, W\"ochentlich, Intervalle)
 
 Grund: Auf Issues reagieren sobald sie auftauchen und sie einfliessen lassen
 In Scrum werden die Anforderungen in Form von Eigenschaften aus der Anwendersicht formuliert.
-Während eines Sprints sind keine Änderungen erlaubt, die das Sprintziel beeinflussen.
+W\"ahrend eines Sprints sind keine \"Anderungen erlaubt, die das Sprintziel beeinflussen.
 Product Backlog (github)
 
 Sprint-Reviews (Emails, Drei Punkte)
@@ -531,21 +530,21 @@ Meilensteine beschreiben Wichtige geplante Daten im Projektablauf. Im Projekt "W
 3. Feature Freeze / Feature Demo 23.5. $\newline$
 4. Abgabe Projekt 8.6. $\newline$
 
-Bild, Gantt Diagramm
+Bild, Gantt PDF
 
 \subsection{Releases}
-Als Release wird das Deployment der Webapp auf den Produktions Server bezeichnet. Grundsätzlich wird die Webapp auf einem Lokalen Testserver entwickelt und getestet. Bei einem Release wird die Lauffähige Webapp auf das Livesystem portiert und öffentlichen Usern zugänglich gemacht.
+Als Release wird das Deployment der Webapp auf den Produktions Server bezeichnet. Grunds\"atzlich wird die Webapp auf einem Lokalen Testserver entwickelt und getestet. Bei einem Release wird die Lauff\"ahige Webapp auf das Livesystem portiert und \"offentlichen Usern zug\"anglich gemacht.
 \subsection{Issues}
-Während dem Projekt und insbesondere während der Projektplanungsphase werden Issues erfasst, welche geplante Schritte, Funktionen oder Arbeitsschritte beschreiben.
+W\"ahrend dem Projekt und insbesondere w\"ahrend der Projektplanungsphase werden Issues erfasst, welche geplante Schritte, Funktionen oder Arbeitsschritte beschreiben.
 \subsection{Prototypen}
 
 
 
-\subsection{Aufwandschätzung}
+\subsection{Aufwandsch\"atzung}
 An Stakeholder
 \subsubsection{Zeitplan}
 Anzahl Tage in der Woche, Anzahl Wochen, Gesamtaufwand
-An Stakeholder (ähnlich Meilensteinplanung)
+An Stakeholder (\"ahnlich Meilensteinplanung)
 
 \subsection{Risiken}
 Technologien
@@ -571,21 +570,21 @@ Damit Django die PostgreSQL Datenbank verwenden kann, m\"ussen die Werte in der 
 Mit "manage.py migrate" kann die Datenbank auf den neusten Stand gebracht werden, damit sie verwendet werden kann. $\newline$
 Die App kann im Browser unter der angezeigten Adresse des Vue-Servers aufgerufen werden. $\newline$
 
-Alternativ kann das Projekt mit dem Befehl "docker-compose build" in Dockercontainern gebuildet und mit "docker-compose up" ausgeführt werden. $\newline$
+Alternativ kann das Projekt mit dem Befehl "docker-compose build" in Dockercontainern gebuildet und mit "docker-compose up" ausgef\"uhrt werden. $\newline$
 Das Projekt ist im Internet unter https://waldmeistermap.sifs0003.infs.ch/#/ deployt.
 
 \subsection{Tutorial, Handbuch}
 Registrierung: $\newline$
-Um einen neuen Benutzer zu registrieren, muss ein bereits eingeloggter user sich ausloggen. Danach kann mit der Schaltfläche "Register" ein neuer Account erstellt werden. Username und Passwort werden benötigt, Email ist optional und kann leer gelassen werden.
+Um einen neuen Benutzer zu registrieren, muss ein bereits eingeloggter user sich ausloggen. Danach kann mit der Schaltfl\"ache "Register" ein neuer Account erstellt werden. Username und Passwort werden ben\"otigt, Email ist optional und kann leer gelassen werden.
 $\newline$
-Fläche Erstellen:$\newline$
-Ein eingeloggter User hat die Möglichkeit eine Neue Benutzerfläche zu erstellen. Um dies zu tun, muss er auf die Schaltfläche "Add" auf der linken Seite, unterhalb der Zoom Buttons klicken. Im Editiermodus kann er durch Klicks auf die Map neue Eckpunkte zu einem Polygon hinzufügen. Er kann die Fläche schliessen, in dem er auf den ersten erstellten Eckpunkt klickt. Es öffnet sich eine Dialogbox, in welchem der User der erstellten Fläche einen Namen geben kann, welcher auf der Map erscheint. In dieser Dialogbox kann der User auch entscheiden, ob die Fläche öffentlich (für alle sichtbar) oder privat dargestellt werden soll (nur für den User sichtbar, welcher die Fläche erstellt hat).
+Fl\"ache Erstellen:$\newline$
+Ein eingeloggter User hat die M\"oglichkeit eine Neue Benutzerfl\"ache zu erstellen. Um dies zu tun, muss er auf die Schaltfl\"ache "Add" auf der linken Seite, unterhalb der Zoom Buttons klicken. Im Editiermodus kann er durch Klicks auf die Map neue Eckpunkte zu einem Polygon hinzuf\"ugen. Er kann die Fl\"ache schliessen, in dem er auf den ersten erstellten Eckpunkt klickt. Es \"offnet sich eine Dialogbox, in welchem der User der erstellten Fl\"ache einen Namen geben kann, welcher auf der Map erscheint. In dieser Dialogbox kann der User auch entscheiden, ob die Fl\"ache \"offentlich (f\"ur alle sichtbar) oder privat dargestellt werden soll (nur f\"ur den User sichtbar, welcher die Fl\"ache erstellt hat).
 
-Fläche Bearbeiten:$\newline$
-Um eine bereits erstellte Fläche zu bearbeiten und zu verändern muss die zu ändernde Fläche angewählt werden, während der User, welcher die Fläche erstellt hat, eingeloggt ist. Nur der User, der die Benutzerfläche erstellt hat, kann diese Verändern oder Updaten. Im Bearbeitungsmodus kann der User die Eckpunkte des Polygons beliebig verschieben. Durch einen Klick auf die Schaltfläche "Upd" (Update), öffnet sich die Dialogbox, um der Benutzerfläche einen neuen Namen zu geben, oder Ihren Zustand von öffentlich oder privat zu wechseln.
+Fl\"ache Bearbeiten:$\newline$
+Um eine bereits erstellte Fl\"ache zu bearbeiten und zu ver\"andern muss die zu \"andernde Fl\"ache angew\"ahlt werden, w\"ahrend der User, welcher die Fl\"ache erstellt hat, eingeloggt ist. Nur der User, der die Benutzerfl\"ache erstellt hat, kann diese Ver\"andern oder Updaten. Im Bearbeitungsmodus kann der User die Eckpunkte des Polygons beliebig verschieben. Durch einen Klick auf die Schaltfl\"ache "Upd" (Update), \"offnet sich die Dialogbox, um der Benutzerfl\"ache einen neuen Namen zu geben, oder Ihren Zustand von \"offentlich oder privat zu wechseln.
 
 \subsection{Referenzhandbuch}
-Vegetationslayer: Erster Layer oberhalb der Hintergrundkarte, welcher auf der Map dargestellt wird. Enthält eingefärbte Polygone mit Labels welche einen Waldstandortstyp beschreiben. Die Daten, welche auf dem Vegetationslayer dargestellt werden, basieren auf der "Vegetationskundliche Kartierung der Wälder im Kanton Zürich", bzw. der "Waldvegetationskarte".
+Vegetationslayer: Erster Layer oberhalb der Hintergrundkarte, welcher auf der Map dargestellt wird. Enth\"alt eingef\"arbte Polygone mit Labels welche einen Waldstandortstyp beschreiben. Die Daten, welche auf dem Vegetationslayer dargestellt werden, basieren auf der "Vegetationskundliche Kartierung der W\"alder im Kanton Z\"urich", bzw. der "Waldvegetationskarte".
 
 
 
