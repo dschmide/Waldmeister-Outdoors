@@ -58,7 +58,7 @@ const ToggleUserAreasLabel = "UAs"
 var geolocationOptions = {
   enableHighAccuracy: false,
   timeout: 60000,
-  maximumAge: Infinity
+  maximumAge: 5000
 };
 
 var myGeoJsonPoly = [];
@@ -189,7 +189,7 @@ export default {
 
     function geoLocationError(err) {
       console.warn(`ERROR(${err.code}): ${err.message}`);
-      setTimeout(function(){ navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError, geolocationOptions); }, 10000);
+      setTimeout(function(){ navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError, geolocationOptions); }, 5000);
       console.log("gettingLocationError");
     }
 

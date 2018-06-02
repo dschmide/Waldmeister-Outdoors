@@ -1,6 +1,6 @@
 %03introduction.tex
 \renewcommand\thesection{\arabic{section}}
-\chapter{Management summary}
+\chapter{Management Summary}
 \section{Problemstellung}
 Je nach Untergrund, Bodeneigenschaften, Gel\"ande sowie Klima gedeihen in der Schweiz unterschiedliche Typen von W\"aldern. Seit einigen Jahrzehnten werden diese Typen von Experten erhoben und kartiert. Es wurden dabei verschiedene typisierte Waldstandorte festgelegt. Aktuell werden Karten, die im Auftrag der Kantone von Experten angefertigt wurden, nur in grossen Intervallen revidiert, wobei sie oft auch nicht fl\"achendeckend vorhanden sind (z.B. in den Kantonen GR, VS, BE).
 Einer der Gr\"unde daf\"ur sind u.a. die hohen Kosten, die eine Analyse im Feld mit sich bringt.
@@ -15,14 +15,36 @@ sollen digitale Technologien eingesetzt werden wie Smartphone, GPS und Internet.
 Instrumente sollen entsprechend geschulten Nutzern die Erfassung von Waldstandorten erm\"oglichen sowie \"offentliche und private Informationen in Form von Fl\"achen und Punkten. Auf einer Basis - Karte wird mittels GPS die eigene
 Position angezeigt. Dar\"uber werden umliegende, bereits erfasste Waldstandorte, \"offentliche Fl\"achen anderer sowie die eigenen, privaten Fl\"achen dargestellt. Diese Fl\"achen k\"onnen Waldstandorte beschreiben oder aber zus\"atzliche Informationen \"uber den Standort beinhalten, z.B. eine speziell gekennzeichnete Beobachtungsfl\"ache.
 
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.7\textwidth]{WaldmeisterMap_USECASE}
+    \caption{Use Cases}
+    \label{fig:uc1}
+\end{figure}
+
+
 \section{Ergebnisse}
 Nach einer Evaluation eines Prototyps, erstellt mithilfe eines kommerziellen Produkts,
 und der Erstellung von Mockups, wurde ein eigenes Webapp 'Waldmeister Outdoors' realisiert. Durch diese App kann die Arbeit der Experten erleichtert werden. Da die Waldstandort-Karte gleichzeitig im Web synchronisiert
 ist, wird dar\"uber hinaus der Informationsaustausch unter allen Beteiligten erleichtert. Die Webapp wurde f\"ur mobile Ger\"ate optimiert und die gew\"unschten Funktionen wurden umgesetzt. Registrierte Benutzer k\"onnen Benutzerfl\"achen in Form von Polygonen direkt auf der angezeigten Map erstellen, mit zus\"atzlichen Informationen versehen und auf einem Server speichern.
 
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.3\textwidth]{esri-Waldvegetation2}
+    \caption{ESRI Webapp Collector for ArcGIS}
+    \label{fig:es1}
+\end{figure}
+
 \section{Ausblick}
 Grosse Teile der Schweiz sind noch unkartiert, und viele Waldstandorte k\"onnten sich unter dem Einfluss der Klimaerw\"armung ver\"andern. Die kontinuierliche Beobachtung solcher Standorte ist Forschungsgegenstand und die Arbeit im Feld ist unerl\"asslich. "Waldmeister - Outdoors" kann im Berufsalltag sowie bei der Kommunikation mit Institutionen den Arbeitsfluss beschleunigen. Weitere Features wie die Verwendung von Plus Codes und offline-F\"ahigkeiten welche bei Verbindungsproblemen zum Einsatz kommen, bzw. Benutzerfl\"achen automatisch synchronisieren, sobald eine Verbindung besteht. Des weiteren bietet es sich an, dass sich User in Gruppen einklinken k\"onnen, um unter sich Benutzerfl\"achen zu teilen und zu besprechen, bevor sie ver\"offentlicht werden. Ebenfalls sollten erstellte Fl\"achen von registrierten Benutzern und deren Gruppen ver\"andert und gel\"oscht werden k\"onnen, nachdem sie erstellt wurden. $\newline$
 "Waldmeister - Outdoors" hat das Potential in der Schweiz ein verbreitetes Tool zur Kartierung und Beobachtung von Waldfl\"achen zu werden und stellt eine bereits gefragte Erweiterung der beliebten "Waldmeister" App f\"ur mobile Ger\"ate dar.
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=1\textwidth]{RietBeobachtung3}
+    \caption{Erfassung einer neuen Benutzerfl\"ache}
+    \label{fig:es2}
+\end{figure}
 
 \renewcommand\thesection{\thechapter.\arabic{section}}
 
@@ -30,10 +52,12 @@ Grosse Teile der Schweiz sind noch unkartiert, und viele Waldstandorte k\"onnten
 \section{Einf\"uhrung}
 
 \subsection{Problemstellung, Vision}
-Arbeit im Feld ist, wie bei der Kartierung von Waldstandorten unerl\"asslich ist, wird in allen F\"allen komplementiert von Arbeit, welche ausschliesslich im B\"uro erledigt wird. F\"ur viele Programme existieren ausschliesslich Desktop-L\"osungen, welche auf mobilen Ger\"aten nicht verwendet werden k\"onnen. Wie im Management Summary beschrieben, m\"ussen oft Arbeitsschritte im B\"uro wiederholt werden oder von Hand Niedergeschriebenes am Computer digitalisiert werden. K\"onnten diese Informationen bereits w\"ahrend der Feldarbeit digital festgehalten werde, w\"urde dies die Arbeit sehr verk\"urzen und den Informationsaustausch zwischen verschiedenen Personen und Teams einfacher gestalten.
+Arbeit im Feld ist, wie sie bei der Kartierung von Waldstandorten unerl\"asslich ist, wird in allen F\"allen komplementiert von Arbeit, welche ausschliesslich im B\"uro erledigt werden kann. F\"ur viele Programme existieren ausschliesslich Desktop-L\"osungen, welche auf mobilen Ger\"aten nicht verwendet werden k\"onnen. Wie im Management Summary beschrieben, m\"ussen oft Arbeitsschritte im B\"uro wiederholt werden oder von Hand Niedergeschriebenes am Computer digitalisiert werden. K\"onnten diese Informationen bereits w\"ahrend der Feldarbeit digital festgehalten werde, w\"urde dies die Arbeit sehr verk\"urzen und den Informationsaustausch zwischen verschiedenen Personen und Teams einfacher gestalten. $\newline$
+K\"onnen sich Personen und Teams untereinander bereits w\"ahrend der Arbeit im Feld \"uber Standorte austauschen, welche es zu kartieren gilt, können sie sich freier und schneller im Feld organisieren und orientieren und so grossflächige Projekte schneller bearbeiten. $\newline$
+Kommt es zu einem späteren Zeitpunkt zu einer Revision von bereits kartierten Flächen, kann bestehendes Kartenmaterial den Experten zur Verfügung gestellt werden, welches sie auf Mobilen Geräten gleich im Feld analysieren und gegebenenfalls bearbeiten können. Dies steht in einem starken Kontrast zum bestehenden Arbeitsfluss, welcher auf analogen Medien beruht.
 
 \subsection{Ziele und Unterziele}
-Ziel ist es, eine Webapp zu gestalten, welche es dem User erlaubt bestehende Waldstandorte zu erforschen und nach belieben neue Fl\"achen, welche Waldstandorte beschreiben k\"onnen, zu erfassen. Dies soll auf einem mobilen Ger\"at m\"oglich sein, welches im Feld verwendet wird. Die so erhobenen Daten sollen auf einem zentralen Server gespeichert werden und sofort dem User selbst sowie anderen Benutzern wieder zur Verf\"ugung gestellt werden. Daten, welche so im Feld eingegeben wurden, k\"onnen danach im B\"uro weiterbearbeitet werden. Um dies zu realisieren, wird eine Webapp mit einer Map erstellt, welche je nach User unterschiedliche Informationen auf der Map darstellt. Daten werden vom Client zum Backend \"ubermittelt und in einer Datenbank persistent gemacht, damit sie von einem anderen Ger\"at oder von einem anderen User zu einem sp\"ateren Zeitpunkt zur Verf\"ugung stehen. $\newline$
+Ziel ist es, eine Webapp zu gestalten, welche es dem User erlaubt bestehende Waldstandorte zu erforschen und nach belieben neue Fl\"achen, welche Waldstandorte beschreiben k\"onnen, zu erfassen. Dies soll auf einem mobilen Ger\"at m\"oglich sein, welche im Feld verwendet werden. Die so erhobenen Daten sollen auf einem zentralen Server gespeichert werden und sofort dem User selbst sowie anderen Benutzern wieder zur Verf\"ugung gestellt werden. Daten, welche so im Feld eingegeben wurden, k\"onnen auch im B\"uro weiterbearbeitet werden. Um dies zu realisieren, wird eine Webapp mit einer Map erstellt, welche je nach User unterschiedliche Informationen auf der Map darstellt. Daten werden vom Client zum Backend \"ubermittelt und in einer Datenbank persistent gemacht, damit sie von einem anderen Ger\"at aus oder von einem anderen User jederzeit zur Verf\"ugung stehen. $\newline$
 Das technische Grundger\"ust der App besteht aus einem Client-Server, welcher dem User das Frontend liefert, ein Backend, welches Daten vom User empf\"angt und speichert sowie dem User erm\"oglicht einen Account zu erstellen. Zum Backend geh\"ort ebenfalls eine Datenbank, in welchem s\"amtliche Informationen zu den Waldstandorten und Registrierten Usern gespeichert wird. $\newline$
 Ziel ist es, dass die Map auf allen Ger\"aten dargestellt wird und nach erfolgreichem Login Fl\"achen in Form von Polygonen direkt auf der Map erstellt werden k\"onnen. Sie werden vom Backend persistent gemacht und mit dem eingeloggten Benutzer verkn\"upft. Der User kann danach auch auf anderen Ger\"aten auf diese erstellten Fl\"achen zugreifen und sie mit anderen Benutzern teilen.$\newline$
 
@@ -48,21 +72,17 @@ Als Testger\"ate werden ein Apple iPad und iPhone verwendet, ein Android Galaxy 
 \section{Stand der Technik}
 \subsection{GIS-Browser}
 Ein GIS-Browser, wie er von den verschiedenen Kanton in der Schweiz eingesetzt wird, ist ein read-only Archiv, bestehend aus \"offentlich zug\"anglichen Daten. 
-\subsection{ArcGIS online}
+
+\subsection{Collector for ArcGIS}
 Technologien von ESRI (Environmental Systems Research Institute) und insbesondere ArcGIS online (GIS; Geografisches Informationssystem) wurden recherchiert, um einen funktionierenden Prototypen mit offline-caching zu erstellen. Hintergrundkarten (in Form eines Tile-Layers) k\"onnen auf dem Ger\"at zwischengespeichert werden. Die Erstellung von editierbaren Vektorlayern funktioniert auch im offline Betrieb und k\"onnen sp\"ater, sobald wieder eine stabile Internetverbindung besteht, synchronisiert werden. Dieses Verhalten kann bei einer Webapp durch Service-Worker rekreiert werden.$\newline$
 Ein GeoJSON (Geo JavaScript Object Notation) file kann ebenfalls auf der online Plattform von ArcGIS hochgeladen werden und danach auf der Map dargestellt werden. Das Layer Styling kann so konfiguriert werden, dass die Farbe eines Polygons dem Typ des jeweiligen Waldstandorts entspricht.
 $\newline$
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{esriprototyp}
-    \caption{Prototyp mit ArcGIS online}
-    \label{fig:mesh1}
-\end{figure}
 
 \subsection{Defizite}
 Ein GIS-Browser wie z.B. vom Kanton Z\"urich bietet keine M\"oglichkeit die eigene Position in Betracht zu ziehen, um damit den Kartenausschnitt zu bestimmen oder genauer noch, den aktuellen Waldstandortstyp per GPS zu bestimmen. Auch ist es nicht m\"oglich, pers\"onliche Notizen oder Fl\"achen wie Beobachtungsfl\"achen zu definieren, damit sie w\"ahrend der Arbeit im Feld verwendet werden k\"onnen. Dies liegt daran, dass sich ein User nicht identifizieren kann, und daher alle Benutzer bei jedem Besuch als anonym behandelt werden.
 
 \section{Bewertung}
+
 \subsection{Kriterien}
 \subsection{Schlussfolgerungen}
 
@@ -99,32 +119,39 @@ Gdal
 
 
 \chapter{Teil 2 - SW-Projektdokumentation}
-\section{Vision}
+\section{\"Uberblick}
 
-\section{Anforderungsspezifikationen}
+
+\section{Anforderungsspezifikation}
 \subsection{Use-Cases}
-W\"ahrend der Feldforschung kann es sehr hilfreich sein, auf bereits kategorisierte Waldfl\"achen Zugriff zu haben um sich am Standort zu orientieren. Dieses Material ist oft in einem Kantonalen Portal z.B. https://maps.zh.ch erh\"altlich, es ist jedoch nur selten kompatibel mit mobilen Ger\"aten, interagieren nicht mit dem GPS des Smartphones oder die Websiten sind schwer zu navigieren. "Waldmeister - Outdoors" soll einem gezielten Zweck dienen und nicht mit Kartenmaterial \"uberladen werden. Der Zugriff auf die Vegetationskundlichen Karten sollte vereinfacht und die Navigation beschleunigt werden. $\newline$
+W\"ahrend der Feldforschung kann es sehr hilfreich sein, auf bereits kartierte Waldfl\"achen Zugriff zu haben um sich am Standort zu orientieren. Dieses Material ist oft in einem Kantonalen Portal z.B. https://maps.zh.ch erh\"altlich, es ist jedoch nur selten kompatibel mit mobilen Ger\"aten, interagieren nicht mit dem GPS des Smartphones oder die Websiten sind schwer zu navigieren. "Waldmeister - Outdoors" soll einem gezielten Zweck dienen und nicht mit Kartenmaterial \"uberladen werden. Der Zugriff auf die Vegetationskundlichen Karten sollte vereinfacht und die Navigation beschleunigt werden. $\newline$
+
 Der \"uber GPS ermittelte eigene Standort soll dazu beitragen in dem die eigene Position in der Karte eingetragen werden soll und die Map darauf zentriert wird. Zus\"atzlich soll es m\"oglich sein, dies \"uber einen bestimmten Intervall zu wiederholen, bzw. die eigene Position als Pfad zu speichern. Diese Funktionen sind jedoch stark abh\"angig von der Genauigkeit des GPS, welche innerhalb eines Waldes relativ oft ungenau sein kann, und sollten daher deaktivierbar sein.
+
 \subsection{Must-Haves}
-Als must-haves werden Funktionale Anforderungen beschrieben, welche zentrale Funktionen beschreiben, welche ein User mit der Applikation durchf\"uhren m\"ochte. Dazu geh\"oren die Navigation der Map und dem Erstellen und Editieren von Benutzerfl\"achen.
+Als must-haves werden Funktionale Anforderungen beschrieben, welche zentrale Funktionen beschreiben, welche ein User mit der Applikation durchf\"uhren m\"ochte. Dazu geh\"oren die Navigation der Map und dem Erstellen und Editieren von Benutzerfl\"achen. Ein Login, bzw Registrierungsvorgang ist dabei unerlässlich, damit sich User authentifizieren können, auf welches Kartenmaterial sie Zugriff haben. Bei Benutzerflächen wird hierbei unter persönlichen (privaten) und öffentlichen Benutzerflächen unterschieden.
+
 \subsection{Optional}
-Als optionale Anforderung wurde das Automatische Anzeige des Waldstandorttyps bezeichnet.
+Als optionale Anforderung wurde das Automatische Anzeige des Waldstandorttyps bezeichnet. Neben der Map, welche Alle Waldstandorte am geografisch korrekten Ort darstellt, ist eine Ortsbasierte Anzeige des momentanen Waldstandortstypen hilfreich bei der Arbeit im Feld. Diese Anzeige besteht daraus, die GPS Position des Geräts zu verwenden, um in einer Datenbank zu ermitteln, ob sich der Punkt innerhalb eines bereits erfassten Waldstandorts liegt. Dies reduziert den Datenaufwand, welcher aufkommt um die Hintergrundkarte und alle umliegenden Waldstandorte auf das (mobile) Gerät zu übertragen.
+
 \subsection{Nicht-funktionale Anforderungen}
+Die Software soll auf mobilen Ger\"aten sowie auf Desktop/Laptop Browsern benutzbar sein. Mobile Ger\"ate sind von der Leistung her meist schwach verglichen mit Desktopger\"aten. Server-side rendering kann dieses Problem weniger relevant machen, damit die Applikation nicht vollst\"andig vom Client berechnet werden muss. $\newline$
+Die Website ist darauf ausgelegt, dass sie im Chrome Browser verwendet wird, da Chrome der verbreitetste Browser auf Android Ger\"aten ist, und auch seine Desktop Version sehr zuverl\"assig funktioniert. Apple ger\"ate k\"onnen ebenfalls Chrome verwenden. Chrome befindet sich auf den Meisten Ger\"aten auf dem neusten Stand und unterst\"utzt daher die meisten Funktionen. $\newline$
+Als Testger\"ate werden ein Apple iPad und iPhone verwendet, ein Android Galaxy S5 und mehrere Macbook Pro und Air Laptops (ca. 2012 - 2016). $\newline$
+Ziel ist es, dass die Map auf allen Ger\"aten dargestellt wird und nach erfolgreichem Login Fl\"achen in Form von Polygonen direkt auf der Map erstellt werden k\"onnen. Sie werden vom Backend persistent gemacht und mit dem eingeloggten Benutzer verkn\"upft. Der User kann danach auch auf anderen Ger\"aten auf diese erstellten Fl\"achen zugreifen und sie mit anderen Benutzern teilen.$\newline$
 \subsection{Weitere Funktionen und Anforderungen}
-\subsection{Detailspezifikationen}
 
 \section{Analyse}
-\subsection{Klassendiagramm}
+\subsection{Domain Modell}
 Das Diagramm \ref{fig:cd1}  schildert die Relation und den Ausbau der wichtigsten Klassen des Systems. Dies zeigt, dass Benutzerfl\"achen nur von registrierten Users erstellt werden k\"onnen und immer einem solchen zugewiesen sind. Wird ein Benutzer aus dem System gel\"oscht, werden alle Fl\"achen welche diesem Account zugeordnet sind , ebenfalls aus dem System gel\"oscht. 
 
 \begin{figure}[h]
 \centering
     \includegraphics[width=0.5\textwidth]{ClassDiagram2}
-    \caption{Klassendiagramm}
+    \caption{Domain Modell}
     \label{fig:cd1}
 \end{figure}
 
-\subsection{Domain Modell}
 
 \section{Technologien}
 \subsection{Django}
@@ -245,6 +272,7 @@ Komponenten k\"onnen auch private Zust\"ande haben, dies wird mit "privateState"
 Dies bewirkt, dass eine Komponente nicht direkt einen Wert oder Zustand im Store ver\"andern kann, sondern dies einen Event aufruft. Dieser informiert den Store welchen State es \"uber eine Mutation zu ver\"andern gilt.
 
 \subsubsection{Docker}
+Docker wird dazu verwendet, um die fertige Webapp Plattformunabhängig laufen zu lassen. Es wird sowohl beim lokalen builden der Webapp verwendet, sowie auch in der deployten Form, auf einem Linux-basierten Server. Docker garantiert, dass sich alle benötigten Systeme gleich verhalten, da sie in einer virtualisierten Form (einem Docker-Container) laufen.
 
 
 \section{Design}
@@ -258,6 +286,46 @@ $\newline$
 screenshots
 
 \subsection{Sequenz-Diagramm}
+Die folgenden Sequenzdiagramme geben detaillierten Einblick in den Ablauf des Registrierung - und Loginvorgangs, sowie das Laden der Public und Private Areas und deren Darstellung im Client. $\newline$
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.9\textwidth]{Sequenz_DiagrammRegister}
+    \caption{Sequenzdiagramm, Register}
+    \label{fig:sd1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.9\textwidth]{Sequenz_DiagrammLogin}
+    \caption{Sequenzdiagramm, Login}
+    \label{fig:sd2}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.9\textwidth]{Sequenz_DiagrammPublicAreas}
+    \caption{Sequenzdiagramm, Public Areas}
+    \label{fig:sd3}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.9\textwidth]{Sequenz_DiagrammMyAreas}
+    \caption{Sequenzdiagramm, My Areas}
+    \label{fig:sd4}
+\end{figure}
+
+\subsection{Komponentendiagramm}
+
+Das Komponentendiagramm zeit die Beziehungen zwischen verschiedenen Komponenten der Webapp. Die Waldmeistermap bezieht Daten \"uber verschiedene Interfaces welche auf der Map dargestellt oder verwendet werden.$\newline$
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=1\textwidth]{umlwaldmeister}
+    \caption{Komponentendiagramm, Waldmeister Map}
+    \label{fig:kdwm}
+\end{figure}
 
 
 \subsection{UI Design}
@@ -268,76 +336,74 @@ Die Mockups wurden vor der Implementation erstellt, um Screendesign und Layout k
 
 \begin{figure}[H]
 \centering
-    \includegraphics[width=0.7\textwidth]{mockup1-1}
-    \caption{Mockup Screen 1}
+    \includegraphics[width=0.29\textwidth]{mockup1-1}
+    \caption{Mockup Screen 1, Anzeige des Eigenen Standorts auf der Map}
     \label{fig:mesh1}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-    \includegraphics[width=0.7\textwidth]{mockup1-2}
-    \caption{Mockup Screen 2}
+    \includegraphics[width=0.29\textwidth]{mockup1-2}
+    \caption{Mockup Screen 2, öffnen des Menus, Login}
     \label{fig:mesh2}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-    \includegraphics[width=0.7\textwidth]{mockup1-3}
-    \caption{Mockup Screen 3}
+    \includegraphics[width=0.29\textwidth]{mockup1-3}
+    \caption{Mockup Screen 3, Eingeben der Accountdetails}
     \label{fig:mesh3}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-    \includegraphics[width=0.7\textwidth]{mockup1-4}
-    \caption{Mockup Screen 4}
+    \includegraphics[width=0.29\textwidth]{mockup1-4}
+    \caption{Mockup Screen 4, Map Ansicht nach dem Login}
     \label{fig:mesh4}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-    \includegraphics[width=0.7\textwidth]{mockup1-5}
-    \caption{Mockup Screen 5}
+    \includegraphics[width=0.29\textwidth]{mockup1-5}
+    \caption{Mockup Screen 5, Erfassung eines Points of Interests}
     \label{fig:mesh5}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-    \includegraphics[width=0.7\textwidth]{mockup1-6}
-    \caption{Mockup Screen 6}
+    \includegraphics[width=0.29\textwidth]{mockup1-6}
+    \caption{Mockup Screen 6, Erfassung einer Benutzerfläche}
     \label{fig:mesh6}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-    \includegraphics[width=0.7\textwidth]{mockup1-7}
-    \caption{Mockup Screen 7}
+    \includegraphics[width=0.29\textwidth]{mockup1-7}
+    \caption{Mockup Screen 7, Auflistung aller Benutzerflächen dieses Users}
     \label{fig:mesh7}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-    \includegraphics[width=0.7\textwidth]{mockup1-8}
-    \caption{Mockup Screen 8}
+    \includegraphics[width=0.29\textwidth]{mockup1-8}
+    \caption{Mockup Screen 8, Detailansicht eines selektierten Points of Interests}
     \label{fig:mesh8}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-    \includegraphics[width=0.7\textwidth]{mockup1-9}
-    \caption{Mockup Screen 9}
+    \includegraphics[width=0.29\textwidth]{mockup1-9}
+    \caption{Mockup Screen 9, Detailansicht einer selektierten Benutzerfläche}
     \label{fig:mesh9}
 \end{figure}
 
-\section{Implementation und Test}
-\subsection{Implementation}
-\subsubsection{Technische Implementation}
-\subsubsection{API und Datenquellen}
+\pagebreak
 
-\subsubsection{Vue Komponenten}
+\section{Implementation}
+\subsection{Vue Komponenten}
 Die Applikation "Waldmeister - Outdoors" setzt sich aus den Komponenten Register, Login, About, der WaldmeisterMap und einem Page Header zusammen. Dar\"uber hinaus bildet die Komponente "App.vue" die Basis, um den Page Header und Router-View Komponenten zu laden. $\newline$
-\subsubsection{Registrierung und Login}
 
+\subsubsection{Registrierung und Login}
 Registrierung und Login wurden als separate Single-File-Komponenten aufgebaut, damit sie vom Vue-Router dargestellt werden k\"onnen. Sie beinhalten die Felder Username, Passwort und bei der Registrierung auch ein Email Feld, welches optional ist. Bei der erfolgreichen Registrierung wird von Djoser ein Benutzer angelegt und sein Passwort im verschl\"usselten Zustand hinterlegt. Loggt sich der Benutzer mit den korrekten Daten ein, erh\"alt er vom Server ein JWT (JSON Web Token), welches von Djoser basierend auf dem hinterlegten Accounts erstellt wird. Der Vue-Client Server hinterlegt dies in einem Store, damit es in verschiedenen Komponenten verwendet werden kann. Um sich dem Server gegen\"uber zu authentifizieren wird es bei einem Request mitgeschickt. Loggt er sich aus, wird dieses aus dem Store gel\"oscht. Der User kann sich erneut oder unter einem anderen Benutzernamen und Passwort einloggen. $\newline$
 Bei nicht erfolgreichen Versuchen, einen Account zu erstellen oder sich einzuloggen, werden dem User diverse Fehlermeldungen angezeigt, welche Auskunft \"uber fehlerhafte Passworteingabe oder Benutzerdaten bei der Erstellung des Accounts geben. $\newline$
 Nach einem erfolgreichen Login wird der User per Vue-Router auf die Komponente WaldmeisterMap weitergeleitet und alle Benutzerfl\"achen werden vom Server angefordert, auf die er Zugriff hat. Der Server liefert per REST Interface alle \"offentlichen Benutzerfl\"achen, sowie die privaten Benutzerfl\"achen, welche diesem User zugeordnet sind. \cite{djoserpack} $\newline$
@@ -357,7 +423,7 @@ Hier wird auch dem Kanton Z\"urich gedankt f\"ur die Nutzungsrechte der Daten "V
     \label{fig:aboutscreen}
 \end{figure}
 
-\subsubsection{Frontend}
+\subsubsection{Frontend Design}
 Das User Interface wurde gr\"osstenteils mit Vuetify realisiert, welches die \"aussere Erscheinung der Komponenten Header, Registrierung, Login, About, etc... bestimmt. Es wurde auf das Farbschema der existierenden Waldmeister App angepasst und eignet sich um eine Webapp responsive zu gestalten, damit sie auf mobilen Ger\"aten ebenfalls korrekt dargestellt wird. $\newline$
 Weitere Teile, vor allem Elemente welche sich auf der Leaflet Map befinden, wurden mit CSS Styling aufgewertet. Der GeoJSON Layer, welcher die Fl\"achen der Waldstandorte anzeigt, wird durch CSS dazu verwendet jedes Polygon auf diesem Layer aufgrund von einem Property des Polygons einzuf\"arben. Dieses Property ist die EK72 Kennzahl, bzw. K\"urzel. Jedem dieser K\"urzel kann eine bestimmte Farbe zugewiesen werden, welche als hexadezimale, 6-tellige Zahl im Code repr\"asentiert wird. Jedes Polygon erh\"alt dar\"uber hinaus auch ein Label, welches dieses K\"urzel ebenfalls darstellt. Diese Property Label haben eine weisse Schrift, sind nicht transparent und haben einen 2 Pixel weiten Schatten, damit sie sich von der Hintergrundfarbe abheben.$\newline$
 
@@ -391,14 +457,41 @@ Die Buttons welche den Zeichungsmodus starten oder beenden oder Ebenen ein- und 
 
 Die "Save" Dialogbox wird nur angezeigt, wenn eine gezeichnete Fl\"ache durch einen Klick auf den ersten gezeichneten Eckpunkt geschlossen wird. Durch den "Save" Button innerhalb der Dialogbox werden die Werte f\"ur Label und Public \"ubernommen und das gezeichnete Polygon wird per REST Schnittstelle an den Server geschickt, damit es in der Datenbank gespeichert wird.
 
-\subsubsection{Axios Requests}
+\subsection{API}
 Diese Anfragen werden vom Client \"uber eine Axios API abgesetzt. Nach der Initialisierung des Axios Services wird eine Base Url bestimmt, welche auf das Backend im Django Server zielt. Mit jedem Request, welches \"uber diesen Service ausgef\"uhrt wird, wird auch das im Store hinterlegte JWT Token mitgeschickt, sofern es existiert. Falls nicht, wird der User als nicht autorisiert identifiziert.
 Neben der Authentication Service, welcher die Methoden Register und Login ausl\"osen kann, besteht der AreaService, welcher per getAreas und postAreas Benutzerfl\"achen vom Server anfordern oder an den Server schicken kann, damit sie in der Datenbank erstellt werden. Die Erstellung von neuen Fl\"achen ist jedoch nur m\"oglich, wenn der User sich eingeloggt hat.$\newline$
 Abh\"angig vom Request f\"ugt Axios Service eine URL-Endung an die Basisurl an, damit Django per Routingsystem erfassen kann um welche Art Request es sich handelt. Post Requests innerhalb des AuthenticationServices kommunizieren mit den Djoser definierten URL-Endungen /auth/users/create (um beispielsweise einen neuen Benutzer zu registieren). Diesem Post Request werden die credentials mitgeschickt, welche vom User im Client eingegeben wurden. Dieses credentials-Objekt besteht aus username, password und email. Sie werden als JSON Objekt an den Django Server geschickt.$\newline$
 Neben dem AuthenticationService regelt der AreaService per get und post requests \"uber die URL-Endungen '/api/areas/' Requests bez\"uglich Benutzerfl\"achen.
 Axios kommuniziert mit dem Server \"uber eine REST-Schnittstelle. Benutzerfl\"achen werden per Get-Request an den Client \"ubertragen, neu erfasste Benutzerfl\"achen werden \"uber einen Post-Request als JSON Objekte an den Server \"ubertragen. Django deserialisiert diese JSON Objekte und speichert sie anschliessend in der PostgreSQL Datenbank. $\newline$
 
-\subsubsection{Database Models}
+\subsubsection{API Dokumentation, Swagger}
+Die API Dokumentation wurde mit dem Python Package Swagger implementiert und kann \"uber die URL WaldmeisterMap/swagger/ aufgerufen werden. Sie gibt Information \"uber alle verf\"ugbaren API Requests und deren Funktionen. Die API gliedert sich in die URLs der Benutzeraccount Erstellung (WaldmeisterMap/auth/) und die API Requests welche f\"ur die Erstellung von Benutzerfl\"achen zust\"andig sind (WaldmeisterMap/api/areas/). $\newline$
+Benutzeraccounts werden vom Python Package Djoser erstellt. Dieses Package beinhaltet unter anderem die URL /WaldmeisterMap/auth/users/create/, welches mit den Attributen "email, username, password" einen neuen User in der Datenbank registriert. Nach der erfolgreichen Registrierung kann \"uber die URL /WaldmeisterMap/auth/token/create/ ein JWT Token vom Server angefordert werden. Dieser Request hat die Attribute "username, password". Stimmen die Werte mit einem existierenden Account in der Datenbank \"uberein, wird dem Client als Antwort ein JWT Token geliefert, welches der Client mit darauffolgenden Requests mitschicken kann, damit der Server den User mit einem registrierten User in der Datenbank verkn\"upfen kann. JWT Tokens laufen nach einer bestimmten Zeit ab oder z.B. wenn der Django Server sich neu initialisiert. Ein JWT Token kann \"uber die URL /WaldmeisterMap/auth/jwt/refresh/ erneuert werden, in dem das existierende Token im POST Request mitgeschickt wird.
+$\newline$
+Benutzerfl\"achen werden \"uber die URL /WaldmeisterMap/api/areas/ als GET Request abgefragt. Der Request liefert anhand vom eingeloggten oder nicht eingeloggten User \"offentliche Fl\"achen, bzw. auch die privaten Fl\"achen des authentifizierten Users, welche unter seinem Account in der Datenbank gespeichert sind. \"Uber die gleiche URL kann mit einem POST Request eine neue Benutzerfl\"ache in der Datenbank erstellt werden. \"Uber die URLs /WaldmeisterMap/api/areas/id kann auf eine spezifische, existierende Benutzerfl\"ache die Requests GET, DELETE, PATCH und PUT ausgef\"uhrt werden, um diese bestehende Benutzerfl\"ache zu bearbeiten, bzw. zu l\"oschen. Sie wird \"uber die URL-Endung "id" referenziert.
+
+\begin{figure}[h]
+\centering
+    \includegraphics[width=1\textwidth]{swagger1}
+    \caption{Swagger API Authorization}
+    \label{fig:swagger1}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+    \includegraphics[width=1\textwidth]{swagger2}
+    \caption{Swagger API UserAreas}
+    \label{fig:swagger2}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+    \includegraphics[width=1\textwidth]{swaggerdetails}
+    \caption{Swagger API user create Details}
+    \label{fig:swagger3}
+\end{figure}
+
+\subsection{Database}
 Die Benutzerfl\"achen werden von Django durch ein Django-Dabatase-Model beschrieben und haben die Attribute "label, public, polygon und creator".  Label ist ein Feld welches aus Charakteren und Ziffern besteht. Die Maximall\"ange ist auf 50 Zeichen gesetzt, kann aber beliebig erh\"oht werden. $\newline$
 Das Feld 'public' ist ein Boolean Wert, welcher bestimmt, ob eine Fl\"ache \"offentlich oder privat gehandhabt wird. $\newline$
 'polygon' beinhaltet die Geometrie, die Art der Fl\"ache und das Format, in welcher sie in der Datenbank gespeichert wird. Die Geometrie ist Teil des polygon field und beinhaltet ein Array welches Punkte in Longitude / Latitude Paaren enth\"alt, die die Ecken des Polygons beschreiben. Dies k\"onnen beliebig viele sein und im Falle eines Multipolygons kann dieses Feld auch mehrere Arrays beinhalten, welche wiederum ein einzelnes Polygon beschreiben. \"Uberschneiden sich mehrere Polygone entstehen "Inseln", welche nicht zu der Fl\"ache des Multipolygons geh\"oren.$\newline$
@@ -406,16 +499,16 @@ Also Koordinatensystem wird das System WGS84 mit der SRID 4326 verwendet. \site{
 
 \subsubsection{Database, PostgreSQL}
 Nachdem die Datenbank Modelle von Django definiert wurden, m\"ussen sie \"uber einen migrate Befehl in die PostgreSQL Datenbank \"ubertragen werden, damit sie erstellt werden. F\"ur die Kommunikation zwischen Django und PostgreSQL wird das Python Package Psycopg2 verwendet. Dieses Package ist der verbreitetste PostgreSQL Datenbank Adaptor f\"ur die Python Programmiersprache. $\newline$
-Als Datenbank wird PostgreSQL 10 verwendet. Die Datenbank Verbindungsdetails sind in der Python settings.py Datei eingetragen. Waldmeister-Outdoors wird versuchen, auf eine lokale Datenbank mit dem Namen 'dschwaldmeister' zuzugreifen. Username ist postgres und der Port ist auf 5435 gesetzt, um Komplikationen mit anderen lokalen PostgreSQL Installationen zu vermeiden. Die "Engine" wurde ebenfalls auf 'django.contrib.gis.db.backends.postgis' ge\"andert, da postgis auf der Datenbank verwendet wird und als Extension installiert werden muss. Mit psql \"uber die Konsole oder PGAdmin4 k\"onnen auf die lokale PostgreSQL Datenbank zugegriffen, Daten manuell gel\"oscht oder eingetragen werden.
+Als Datenbank wird PostgreSQL 10 verwendet. Die Datenbank Verbindungsdetails sind in der Python settings.py Datei eingetragen. Waldmeister-Outdoors wird versuchen, auf eine lokale Datenbank mit dem Namen 'dschwaldmeister' zuzugreifen. Username ist postgres und der Port ist standardmässig auf 5432 gesetzt. Die "Engine" wurde ebenfalls auf 'django.contrib.gis.db.backends.postgis' ge\"andert, da postgis auf der Datenbank verwendet wird und als Extension installiert werden muss. Mit psql \"uber die Konsole oder PGAdmin4 k\"onnen auf die lokale PostgreSQL Datenbank zugegriffen, Daten manuell gel\"oscht oder eingetragen werden.
 
-\subsubsection{Kartenmaterial}
-\subsubsection{etc.}
+\subsection{Kartenmaterial}
+Die Daten für den Vegetationslayer wurden vom Kanton Zürich (maps.zh.ch) übernommen und werden von der Webapp als Polygone auf der Leaflet Map dargestellt. Sie werden vom Django Backend nach erfolgreichem starten des Servers in die Datenbank geladen. 
 
-\section{Automatische Testverfahren}
+\section{Tests}
 Testgetriebene Entwicklung (TDD) ist eine Methode zur Softwareentwicklung, welche oft bei der agilen Entwicklung von Computerprogrammen eingesetzt wird. Bei TDD erstellt der Programmierer Software-Tests, um das korrekte Verhalten von Softwarekomponenten zu planen und zu \"uberpr\"ufen. Unit Tests (auch als Unittest oder als Komponententest bezeichnet), werden verwendet um die funktionalen Einzelteile eines Softwareprojekts zu pr\"ufen. 
 
 \subsection{Django}
-Test f\"ur das Django wurden mit dem standard Django module "unittest" erstellt. Es wurden Tests zu Login, Registrierung und Erstellung von Benutzerfl\"achen erstellt. Es werden unvollst\"andige, fehlerhafte und nicht authorisierte Requests (zum Beispiel ohne sich einzuloggen) getestet. HTTP-Statuscode geben Auskunft \"uber die korrekte Ausf\"uhrung oder fehlerhaftes Verhalten des Servers. Sie werden verglichen mit zu erwartenden Codes und bestimmen auf diese Weise ob der Test bestanden oder gescheitert ist. $\newline$
+Test f\"ur das Django wurden mit dem standard Django Modul "unittest" erstellt. Es wurden Tests zu Login, Registrierung und Erstellung von Benutzerfl\"achen erstellt. Es werden unvollst\"andige, fehlerhafte und nicht authorisierte Requests (zum Beispiel ohne sich einzuloggen) getestet. HTTP-Statuscode geben Auskunft \"uber die korrekte Ausf\"uhrung oder fehlerhaftes Verhalten des Servers. Sie werden verglichen mit zu erwartenden Codes und bestimmen auf diese Weise ob der Test bestanden oder gescheitert ist. $\newline$
 $\newline$
 Es wird getestet ob Email und Passwort vorhanden ist und ob die Anforderungen an die Werte erf\"ullt sind, ob Accounts und JWTs erstellt werden k\"onnen und ob Benutzerfl\"achen vom System korrekt erstellt werden. $\newline$
 Die Tests k\"onnen mit dem Befehl "python3 manage.py test WaldmeisterMap" ausgel\"ost werden. Fehlerhafte Test werden von Django gemeldet.
@@ -456,25 +549,27 @@ Um Continuous mit automated build und testing zu realisieren, habe ich Travis ve
 
 \section{Manuelle Tests}
 \subsection{User-Szenario}
-Das User-Szenario ist ein m\"oglicher Interaktionsablauf eines Users, welcher die Webapp "Waldmeister-Outdoors" verwendet. Es ist in die verschiedenen Schritte eingeteilt, welcher der User durchf\"uhrt.
-
+Das User-Szenario ist ein m\"oglicher Interaktionsablauf eines Users, welcher die Webapp "Waldmeister-Outdoors" verwendet. Es ist in die verschiedenen Schritte eingeteilt, welcher der User durchf\"uhrt. $\newline$
+$\newline$
 1. Aufrufen der URL $\newline$
-2. Scrollen, Zoomen der Map auf einen beliebigen Bereich $\newline$
+2. Pan & Zoom der Map auf einen beliebigen Bereich $\newline$
 3. Aufruf der "About" Seite $\newline$
 4. \"Offnen der Map-Legende in einem separaten Tab $\newline$
 5. Registrierung eines neuen Users, Eingabe von Benutzernamen und Passwort $\newline$
-6. Login mit dem neu erstellten Benutzers $\newline$
+6. Login mit dem neu erstellten Benutzer $\newline$
 7. Erstellung einer neuen privaten Benutzerfl\"ache $\newline$
 8. Updaten der gerade erstellten Benutzerfl\"ache $\newline$
 9. Erstellen einer neuen \"offentlicher Benutzerfl\"ache $\newline$
 10. Erstellen einer zweiten \"offnentlicher Benutzerfl\"ache $\newline$
-11. L\"oschen einer erstellten Benutzerfl\"ache $\newline$
+11. L\"oschen einer \"offentlicher Benutzerfl\"ache $\newline$
 12. Ausloggen des Benutzers $\newline$
-13. Registrierung eines zweiten Benutzers $\newline$
-14. Einloggen des zweiten Benutzers $\newline$
-15. L\"oschungsversuch einer \"offentlichen Benutzerfl\"ache, welche vom ersten Nutzer erstellt wurde $\newline$
-16. Erstellen einer \"offentlichen Benutzerfl\"ache $\newline$
-17. Updaten der erstellen Benutzerfl\"ache, wechseln des Labels und \"offentlich auf privat $\newline$
+13. Aufruf der Map im ausgeloggtem Zustand $\newline$
+14. Anzeige der \"offentlichen Benutzerfl\"ache $\newline$
+15. Registrierung eines zweiten Benutzers $\newline$
+16. Einloggen des zweiten Benutzers $\newline$
+17. L\"oschungsversuch einer \"offentlichen Benutzerfl\"ache, welche vom ersten Nutzer erstellt wurde $\newline$
+18. Erstellen einer \"offentlichen Benutzerfl\"ache $\newline$
+19. Updaten der erstellen Benutzerfl\"ache, wechseln des Labels und \"offentlich auf privat $\newline$
 
 \subsection{Testf\"alle}
 Testfall A: $\newline$
@@ -498,12 +593,37 @@ User k\"onnen mittels der Webapp Waldmeister-Outdoors die Vegetationskundliche K
 Ebenfalls wurde erreicht die Geolocation auf der Karte darzustellen. Dies ist im Arbeitsalltag eine grosse Hilfe, und dient zur schnellen Orientierung und Auffindung von bestimmten eingetragenen Fl\"achen und Orten im Feld. $\newline$
 Die Webapp kann sowohl auf Desktop Browsern wie von mobilen Ger\"aten verwendet werden und verh\"alt sich dank Vue.js responsive auf eine \"Anderung des Viewports, zum Beispiel wenn der Screen eines mobilen Ger\"ats w\"ahrend der Verwendung gedreht wird. $\newline$
 Der Vegetationslayer und Benutzerfl\"achen-Layer und deren Label k\"onnen ein - und ausgeblendet werden, was zur \"Ubersicht beitragen kann. $\newline$
-Alle Benutzeraccounts und deren Fl\"achen sind im Django Backend ersichtlich und k\"onnen als Superuser ver\"andert oder gel\"oscht werden. Wird ein Benutzer aus der Datenbank gel\"oscht, werden alle von ihm erstellten Benutzerfl\"achen ebenfalls automatisch gel\"oscht. Alle Passw\"orter von Benutzeraccounts werden gehasht in der Datenbank gespeichert. $\newline$
+Alle Benutzeraccounts und deren Fl\"achen sind im Django Backend ersichtlich und k\"onnen als Superuser ver\"andert oder gel\"oscht werden. Wird ein Benutzer aus der Datenbank gel\"oscht, werden alle von ihm erstellten Benutzerfl\"achen ebenfalls automatisch gel\"oscht. Alle Passw\"orter von Benutzeraccounts werden verschlüsselt in der Datenbank gespeichert. $\newline$
+Zur automatischen bestimmung des Ortabhängigen Waldstandorttyps wurde eine separate API entwickelt. Der Client schickt die Koordinaten als Argumente im API Request mit, und erhält vom Backend eine Response, welche beinhaltet ob an diesem Ort ein Waldstandort eingetragen ist. Der Server berechnet dies anhand der Geometrien (Polygone) des Vegetationslayers. Befindet sich der Punkt innerhalb eines Polygons wird der Waldstandortstyp zurück an den Client geschickt. Dies Funktioniert auch, wenn der User sich ausserhalb der sichtbaren Map befindet, da diese Berechnung auf dem ganzen Datensatz des Vegetationslayers ausgeführt wird.
+
 \subsection{M\"oglichkeiten der Weiterentwicklung}
+\subsubsection{Auflistung der Benutzerfl\"achen}
+Um die Lokalisierung von bereits erstellten Benutzerfl\"achen zu erleichtern, w\"are es von Vorteil, diese in einer geordneten Liste darzustellen, z.B. in alphabetischer Reihenfolge oder nach ihrem Erstellungsdatum. Klickt der User auf eine dieser Listeneintr\"age, w\"urde die Map auf die Lage dieser Fl\"ache fokussieren. $\newline$
+Eine solche Auflistung w\"are als aufklappbares Menu denkbar, welches sich \"uber einen Button im Header der Applikation auf - und zuklappen l\"asst.
+
+\subsubsection{Plus Codes}
+Plus Codes k\"onnen verwendet werden, um Koordinaten in eine Zeichenfolge umzuwandeln. Es wird dazu verwendet, einem Ort auf der Welt gewissermassen eine Adresse zu geben, \"ahnlich wie eine Strassenadresse. Statt einen Punkt in geografische Breite und L\"ange zu beschreiben, ist die Zeichenfolge lediglich 7 oder 11 stellig (Eine Stelle ist dabei immer das namengebende + oder - Zeichen, welches die Zeichenkette auch von internationalen Postleitzahlen abhebt). Je nachdem, ob der Code einen Ort lokal oder weltweit beschreibt, k\"onnen die vier ersten Ziffern weggelassen werden, da es ersichtlich ist, um welche weltweite Region (ca. 100 Kilometern) es sich handelt. Dies funktioniert \"ahnlich wie eine Vorwahl bei Telefonnummern, welche regional nicht ben\"otigt wird. Die vollst\"andige Zeichenfolge beschreibt einen Ort auf dem Planeten mit einer Genauigkeit von 14 auf 14 Metern. Es kann jedoch ein weiteres Zeichen angeh\"angt werden, um die Genaugkeit auf drei auf drei Meter zu erh\"ohen. Plus Codes beschreiben immer eine Fl\"ache, keinen genauen Punkt.$\newline$
+Plus Codes k\"onnen offline en- oder dekodiert werden.  \cite{PluCo} $\newline$
+Sie basieren auf Open Location Code (OLC), ein open-source Projekt welches von Google in Z\"urich entwickelt wurde. Das Projekt ist auf Github gehostet unter https://github.com/google/open-location-code. Es existieren Libraries f\"ur JavaScript wie auch Python. $\newline$
+"Waldmeister - Outdoors" kann diese Codes gebrauchen, damit Experten unter sich einfacher Geolocations austauschen k\"onnen. Die Webapp kann jeder Fl\"ache einen solchen Code zuweisen, nachdem die Benutzerfl\"ache vom User erstellt wurde. Der Code repr\"asentiert das geometrische Zentrum der Benutzerfl\"ache, welches von Leaflet berechnet wird.
+
+\subsubsection{Gruppen}
+User von Waldmeister-Outdoors sollen Gruppen erstellen k\"onnen und andere Benutzer einladen, um Fl\"achen unter sich zu teilen. Dies hat zum Vorteil, dass die Benutzerfl\"achen nicht \"offentlich abrufbar, aber innerhalb einer Gruppe sichtbar sind. Die Gruppe kann so \"uber mehrere Ger\"ate gleichzeitig \"uber eine Benutzerfl\"ache diskutieren oder sie auch bearbeiten, bevor sie ver\"offentlicht wird. $\newline$
+Das Kreieren, Betreten oder Verlassen einer Gruppe sollte m\"oglichst einfach \"uber einen Punkt im Menu m\"oglich sein. Der User, welcher die Gruppe erstellt hat, sollte dabei Einladungen verschicken bzw. Gruppenmitglieder wieder aus der eigenen Gruppe l\"oschen k\"onnen. Denkbar ist auch, anderen Gruppenmitgliedern Rechte zu erteilen, andere User einzuladen.
+
+\subsubsection{Pfade und Orte}
+Neben Fl\"achen k\"onnen auch Pfade und Orte eine unterst\"utzende Funktion im Feld darstellen. Um Pfade zu erstellen k\"onnen beispielsweise vergangene geolocations des Users zu einem Pfad zusammengef\"ugt werden, welcher die zur\"uckgelegte Strecke darstellt. Mithilfe von Timestamps w\"are es m\"oglich, den Tagesablauf zu protokollieren und sie mit einer T\"atigkeit an einem Ort zu verkn\"upfen. $\newline$
+Orte, sogenannte Points of Interests (PoI), k\"onnten Teammitglieder oder andere Experten auf bestimmte Indikatoren, wichtige \"ortliche Gegebenheiten hinweisen, den Standort des n\"achstgelegenen Parkplatzes oder eine unterbrochene Zufahrtsstrasse kennzeichnen. Diese Orte m\"ussen nicht durch eine Fl\"ache beschrieben werden, sondern nur durch einen einzigen zweidimensionalen Punkt. $\newline$
+Zu Orten, bzw auch Fl\"achen k\"onnte ein Bild hochgeladen werden, um die Stelle genauer zu kennzeichnen, oder um mit anderen Experten \"uber den Standort zu diskutieren.
+
+\subsubsection{Export von erfassten Benutzerflächen}
+Um die Handhabung von erhobenen Daten zu erleichtern, wäre die Möglichkeit alle erstellten Benutzerflächen eines Users (oder Gruppe) in einem speziellen Format zu exportieren, damit sie auf alternativen Wegen ausgetauscht und verschickt werden können.
+
 \subsection{Vorgehen}
 
 \section{Projektmanagement}
 \subsection{Allgemeines}
+
 
 \subsection{Prozessmodell}
 Scrum wurde eingesetzt um bei der Entwicklung des Projekts agil vorzugehen. Transparenz, \"Uberpr\"ufung, Anpassung
@@ -547,11 +667,9 @@ Anzahl Tage in der Woche, Anzahl Wochen, Gesamtaufwand
 An Stakeholder (\"ahnlich Meilensteinplanung)
 
 \subsection{Risiken}
-Technologien
-Frameworks$\newline$
+Technologien & Frameworks$\newline$
 Mobile Limits $\newline$
 Anzahl Objekte auf der Map, Performanceeinbussen $\newline$
-Gps-Empfang und Internetempfang
 
 \section{Projektmonitoring}
 \subsection{Soll-Ist-Zeitvergleich}

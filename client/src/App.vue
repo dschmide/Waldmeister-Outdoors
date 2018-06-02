@@ -35,5 +35,9 @@ export default {
   margin-top: 0;
 }
 
+div.container {
+  margin-top: 56px;
+}
+
 @import './assets/leaflet.css'
 </style>
