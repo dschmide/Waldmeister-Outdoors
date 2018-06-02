@@ -1,6 +1,6 @@
 <template>
   <v-layout column>
-    <v-flex xs6 offset-xs3>
+    <v-flex md6 offset-md3 xs12>
       <div class="white elevation-2">
       <v-toolbar flar dense class="light-green" dark>
       <v-toolbar-title>Register</v-toolbar-title>
