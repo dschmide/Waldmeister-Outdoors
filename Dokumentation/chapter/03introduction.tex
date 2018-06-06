@@ -36,7 +36,7 @@ ist, wird dar\"uber hinaus der Informationsaustausch unter allen Beteiligten erl
 \end{figure}
 
 \section{Ausblick}
-Grosse Teile der Schweiz sind noch unkartiert, und viele Waldstandorte k\"onnten sich unter dem Einfluss der Klimaerw\"armung ver\"andern. Die kontinuierliche Beobachtung solcher Standorte ist Forschungsgegenstand von Forstingenieuren. Die Arbeit im Feld ist unerl\"asslich. "Waldmeister - Outdoors" kann im Berufsalltag sowie bei der Kommunikation mit Institutionen den Arbeitsfluss beschleunigen. Weitere Features können dazukommen, wie die Verwendung von Plus Codes und offline-F\"ahigkeiten welche bei Verbindungsproblemen zum Einsatz kommen, bzw. Benutzerfl\"achen automatisch synchronisieren, sobald eine Verbindung besteht. Des weiteren bietet es sich an, dass sich User in Gruppen einklinken k\"onnen, um unter sich Benutzerfl\"achen zu teilen und zu besprechen, bevor sie ver\"offentlicht werden. Ebenfalls sollten erstellte Fl\"achen von registrierten Benutzern und deren Gruppen ver\"andert und gel\"oscht werden k\"onnen, nachdem sie erstellt wurden. $\newline$
+Grosse Teile der Schweiz sind noch unkartiert, und viele Waldstandorte k\"onnten sich unter dem Einfluss der Klimaerw\"armung ver\"andern. Die kontinuierliche Beobachtung solcher Standorte ist Forschungsgegenstand von Forstingenieuren. Die Arbeit im Feld ist unerl\"asslich. "Waldmeister - Outdoors" kann im Berufsalltag sowie bei der Kommunikation mit Institutionen den Arbeitsfluss beschleunigen. Weitere Features k\"onnen dazukommen, wie die Verwendung von Plus Codes und offline-F\"ahigkeiten welche bei Verbindungsproblemen zum Einsatz kommen, bzw. Benutzerfl\"achen automatisch synchronisieren, sobald eine Verbindung besteht. Des weiteren bietet es sich an, dass sich User in Gruppen einklinken k\"onnen, um unter sich Benutzerfl\"achen zu teilen und zu besprechen, bevor sie ver\"offentlicht werden. Ebenfalls sollten erstellte Fl\"achen von registrierten Benutzern und deren Gruppen ver\"andert und gel\"oscht werden k\"onnen, nachdem sie erstellt wurden. $\newline$
 "Waldmeister - Outdoors" hat das Potential in der Schweiz ein verbreitetes Tool zur Kartierung und Beobachtung von Waldfl\"achen zu werden und stellt eine bereits gefragte Erweiterung der beliebten "Waldmeister" App f\"ur mobile Ger\"ate dar.
 
 \begin{figure}[H]
@@ -57,8 +57,8 @@ K\"onnen sich Personen und Teams untereinander bereits w\"ahrend der Arbeit im F
 Kommt es zu einem sp\"ateren Zeitpunkt zu einer Revision von bereits kartierten Fl\"achen, kann bestehendes Kartenmaterial den Experten zur Verf\"ugung gestellt werden, welches sie auf mobilen Ger\"aten gleich im Feld analysieren und gegebenenfalls bearbeiten k\"onnen. Dies steht in einem starken Kontrast zum bestehenden Arbeitsfluss, welcher auf analogen Medien beruht.
 
 \subsection{Ziele und Unterziele}
-Ziel ist es, eine Webapp zu gestalten, welche es dem User erlaubt, bestehende Waldstandorte zu erforschen und nach Belieben neue Fl\"achen, welche Waldstandorte beschreiben k\"onnen, zu erfassen. Dies soll auf einem mobilen Ger\"at m\"oglich sein, welches im Feld verwendet wird. Die so erhobenen Daten sollen auf einem zentralen Server gespeichert und sofort dem User selbst sowie anderen Benutzern wieder zur Verf\"ugung gestellt werden. Daten, welche so im Feld eingegeben wurden, k\"onnen auch im B\"uro weiterbearbeitet werden. Um dies zu realisieren, wird eine Webapp mit einer Map erstellt, welche je nach User unterschiedliche Informationen auf der Map darstellt. Daten werden vom Client zum Backend \"ubermittelt und in einer Datenbank persistent gemacht, damit sie von einem anderen Ger\"at aus oder von einem anderen User jederzeit zur Verf\"ugung stehen. $\newline$
-Das technische Grundger\"ust der App besteht aus einem Client-Server, welcher dem User das Frontend liefert, und einem Backend, welches Daten vom User empf\"angt und speichert. Ausserdem ermöglicht es dem User auch einen Account zu erstellen. Zum Backend geh\"ort ebenfalls eine Datenbank, in welchem s\"amtliche Informationen zu den Waldstandorten und registrierten Usern gespeichert wird. $\newline$
+Ziel ist es, eine Webapp zu gestalten, welche es dem User erlaubt, bestehende Waldstandorte zu erforschen und nach Belieben neue Fl\"achen, welche Waldstandorte beschreiben k\"onnen, zu erfassen und zu editieren. Dies soll auf einem mobilen Ger\"at m\"oglich sein, welches im Feld verwendet wird. Die so erhobenen Daten sollen auf einem zentralen Server gespeichert und sofort dem User selbst sowie anderen Benutzern wieder zur Verf\"ugung gestellt werden. Daten, welche so im Feld eingegeben wurden, k\"onnen auch im B\"uro weiterbearbeitet werden. Um dies zu realisieren, wird eine Webapp mit einer Map erstellt, welche abh\"angig vom User dynamische Informationen auf der Map darstellt. 
+Das technische Grundger\"ust der App besteht aus einem Client-Server, welcher dem User das Frontend liefert, und einem Backend, welches Daten vom User empf\"angt und speichert. Daten, welche von Usern erstellt werden, sollen an das Backend \"ubermittelt und in einer Datenbank persistent gemacht werden, damit sie von einem anderen Ger\"at aus oder von einem anderen User jederzeit zur Verf\"ugung stehen. Ausserdem erm\"oglicht es diese Architektur dem User einen Account zu erstellen und sich zu authentifizieren. $\newline$
 Ziel ist es, dass die Map auf allen Ger\"aten dargestellt wird und dass nach erfolgreichem Login Fl\"achen in Form von Polygonen direkt auf der Map erstellt werden k\"onnen. Sie werden vom Backend persistent gemacht und mit dem eingeloggten Benutzer verkn\"upft. Der User kann danach auch auf anderen Ger\"aten auf diese erstellten Fl\"achen zugreifen und sie mit anderen Benutzern teilen.$\newline$
 
 \subsection{Rahmenbedingungen}
@@ -67,22 +67,22 @@ Die Website ist darauf ausgelegt, dass sie im Chrome Browser verwendet wird, da 
 Als Testger\"ate werden ein Apple iPad und iPhone verwendet, ein Android Galaxy S5 und mehrere Macbook Pro und Air Laptops (ca. Baujahr 2010 - 2016). $\newline$
 
 \subsection{Vorgehen, Aufbau der Arbeit}
-Es wurde eine Full-Stack Webapp aufbauend aus Frontend, Backend und Datenbank erstellt. Nach der Festlegung des Frontends wurde ein geeignetes Backend eruiert und die Datenbankanbindung für das Backend festgelegt. $\newline$
-Als Frontend Framework wurde VueJS zur Erstellung von Single-Page-Applikationen gewählt. Als Backend kommt Django zum Einsatz, welches sich eignet um API Abfragen für das Frontend bereitzustellen. PostgreSQL wurde als Datenbank gewählt. $\newline$
-Als erstes wurde das Loginsystem erstellt und im Frontend die verschiedenen Single-File-Komponenten entwickelt, damit User einen Account Registrieren und sich gegenüber dem Backend authentifizieren können. $\newline$
-Nachdem die Map Komponente erstellt wurde, konnten per API Abfragen die Benutzerflächen geladen werden, welche im eingeloggtem bzw. nicht-eingeloggtem Zustand angezeigt werden. $\newline$
-Danach wurden die Features implementiert und das Docker-Deployment vervollständigt.
+Es wurde eine Full-Stack Webapp aufbauend aus Frontend, Backend und Datenbank erstellt. Nach der Festlegung des Frontends wurde ein geeignetes Backend eruiert und die Datenbankanbindung f\"ur das Backend festgelegt. $\newline$
+Als Frontend Framework wurde VueJS zur Erstellung von Single-Page-Applikationen gew\"ahlt. Als Backend kommt Django zum Einsatz, welches sich eignet um API Abfragen f\"ur das Frontend bereitzustellen. PostgreSQL wurde als Datenbank gew\"ahlt. $\newline$
+Als erstes wurde das Loginsystem erstellt und im Frontend die verschiedenen Single-File-Komponenten entwickelt, damit User einen Account Registrieren und sich gegen\"uber dem Backend authentifizieren k\"onnen. $\newline$
+Nachdem die Map Komponente erstellt wurde, konnten per API Abfragen die Benutzerfl\"achen geladen werden, welche im eingeloggtem bzw. nicht-eingeloggtem Zustand angezeigt werden. $\newline$
+Danach wurden die Features implementiert und das Docker-Deployment vervollst\"andigt.
 
 \pagebreak
 \section{Stand der Technik}
 \subsection{GIS-Browser}
-Ein GIS-Browser, wie er von den verschiedenen Kanton in der Schweiz eingesetzt wird, ist ein read-only Archiv, bestehend aus \"offentlich zug\"anglichen Daten. Es können verschidene Overlays ausgewählt werden, welche auf der Karte dargestellt werden, darunter auch die Vegetationskundliche Karte, auf welche in der Waldmeister-Outdoors Applikation zurückgegriffen wird. 
+Ein GIS-Browser, wie er von den verschiedenen Kanton in der Schweiz eingesetzt wird, ist ein read-only Archiv, bestehend aus \"offentlich zug\"anglichen Daten. Es k\"onnen verschidene Overlays ausgew\"ahlt werden, welche auf der Karte dargestellt werden, darunter auch die Vegetationskundliche Karte, auf welche in der Waldmeister-Outdoors Applikation zur\"uckgegriffen wird. 
 
 \subsection{Collector for ArcGIS}
 Technologien von ESRI (Environmental Systems Research Institute) und insbesondere ArcGIS online (GIS; Geografisches Informationssystem) wurden recherchiert, um einen funktionierenden Prototypen mit offline-caching zu erstellen. Hintergrundkarten (in Form eines Tile-Layers) k\"onnen auf dem Ger\"at zwischengespeichert werden. Die Erstellung von editierbaren Vektorlayern funktioniert auch im offline Betrieb und k\"onnen sp\"ater, sobald wieder eine stabile Internetverbindung besteht, synchronisiert werden. Dieses Verhalten kann bei einer Webapp durch Service-Worker rekreiert werden.$\newline$
 Ein GeoJSON (Geo JavaScript Object Notation) file kann ebenfalls auf der online Plattform von ArcGIS hochgeladen werden und danach auf der Map dargestellt werden. Das Layer Styling kann so konfiguriert werden, dass die Farbe eines Polygons dem Typ des jeweiligen Waldstandorts entspricht.
 $\newline$
-Die Map und deren Inhalt wird im online Tool https://geodata4edu.hsr.ch/ erstellt. Danach kann sie in der App Collector for ArcGIS (native App) verwendet werden. Feature Layer (oder gehostete Feature Layer) wie Areas und Points of Interest sind editierbar und synchronisieren mit dem Server sobald eine Internetverbindung besteht.
+Die Map und deren Inhalt wird im online Tool \href{https://geodata4edu.hsr.ch/}{geodata4edu} erstellt. Danach kann sie in der App Collector for ArcGIS (native App) verwendet werden. Feature Layer (oder gehostete Feature Layer) wie Areas und Points of Interest sind editierbar und synchronisieren mit dem Server sobald eine Internetverbindung besteht.
 
 \begin{figure}[H]
     \centering
@@ -92,7 +92,7 @@ Die Map und deren Inhalt wird im online Tool https://geodata4edu.hsr.ch/ erstell
 \end{figure}
 
 \subsection{Defizite}
-Ein GIS-Browser, wie z.B. vom Kanton Z\"urich zur Verfügung gestellt, bietet keine M\"oglichkeit, die eigene Position in Betracht zu ziehen, um damit den Kartenausschnitt zu bestimmen oder genauer noch, den aktuellen Waldstandortstyp per GPS zu bestimmen. Auch ist es nicht m\"oglich, pers\"onliche Notizen oder Fl\"achen wie Beobachtungsfl\"achen definieren, damit sie w\"ahrend der Arbeit im Feld verwendet werden k\"onnen. Dies liegt daran, dass sich ein User nicht identifizieren kann, und daher alle Benutzer bei jedem Besuch als anonym behandelt werden. Nur durch ein Loginsystem kann sich ein User gegenüber der Webseite gegenüber identifizieren und hat Zugriff auf von Ihm erstellten Informationen.$\newline$
+Ein GIS-Browser, wie z.B. vom Kanton Z\"urich zur Verf\"ugung gestellt, bietet keine M\"oglichkeit, die eigene Position in Betracht zu ziehen, um damit den Kartenausschnitt zu bestimmen oder genauer noch, den aktuellen Waldstandortstyp per GPS zu bestimmen. Auch ist es nicht m\"oglich, pers\"onliche Notizen oder Fl\"achen wie Beobachtungsfl\"achen definieren, damit sie w\"ahrend der Arbeit im Feld verwendet werden k\"onnen. Dies liegt daran, dass sich ein User nicht identifizieren kann, und daher alle Benutzer bei jedem Besuch als anonym behandelt werden. Nur durch ein Loginsystem kann sich ein User gegen\"uber der Webseite gegen\"uber identifizieren und hat Zugriff auf von Ihm erstellten Informationen.$\newline$
 Obwohl Collector for ArcGIS als ein sehr vielf\"altiges Werkzeug verwendet werden kann, hat es viele Nachteile, vorallem in Kombination ArcGIS online. Die Erstellung einer Map (Hintergrundkarte und Konfiguration der Feature Layer) ist sehr umst\"andlich und f\"ur User, welche sich nicht mit den Tools auskennen, nicht ersichtlich. Zum Beispiel mussten gewisse Layer, damit sie korrekt funktionierten, mithilfe der Webseite developers.arcgis.com/ erstellt werden, um sie danach in der Map, welche auf ArcGIS online zusammengeklickt wird, zu importieren. Auf developers.arcgis muss zum Erstellen dieser Layer ein Enterprise Account benutzt werden, welcher eine Organization URL ben\"otigt. Da diese Layer in der ArcGIS online Map und danach in der mobile App "Collector for ArcGIS" verwender werden, ben\"otigen auch Enduser diesen Login, was eine Verbreitung der App verunm\"oglicht. Benutzer, welche keinen Enterprise Login haben, k\"onnen bei ArcGIS online lediglich "Public Accounts" erstellen. Diese sind aber in der Funktionalit\"at eingeschr\"ankt.
 
 \section{Bewertung}
@@ -100,10 +100,10 @@ Obwohl Collector for ArcGIS als ein sehr vielf\"altiges Werkzeug verwendet werde
 Funktionalit\"at $\newline$
 Maps.zh.ch eignet sich sehr gut um Zugriff auf das sehr umfangreiche Kartenmaterial-Archiv des Kantons zu erhalten. Die Karten sind jedoch als read-only Archiv eingerichtet und auf der Map, welche von maps.zh.ch bereitgestellt wird, lassen sich keine digitalen Anmerkungen, Kommentare oder eigene Fl\"achen oder Points of Interests anbringen. Informationen \"uber eine spezifische Eigenschaft der aktuellen Position im Feld zu erhalten, kann jedoch sehr zeitintensiv sein, da die richtige Karte eingeblendet werden muss und auf der Map manuell an den richtigen Ort hingepant und hineingezoomt werden muss. Da die eigene Position auf der Map nicht ersichtlich ist, muss oft die eigene Position in einem anderen Tool berechnet werden (zum Beispiel Google Maps), um danach per Informationen \"uber einen gew\"ahlten Ort zu erhalten. Maps.zh.ch stellt keine API bereit, welche es erm\"oglicht, Abfragen zu einen gegebenen Ort auszuf\"uhren oder Kartenmaterial wie zum Beispiel die Waldvegetationskarte auf einer anderen Map darzustellen. Kartenmaterial muss gekauft und darf nur unter Einhaltung der Nutzungsbedingungen verwendet werden. $\newline$
 $\newline$
-Eine native App wie "Collector for ArcGIS" eignet sich, um eine Datensammler Applikation zu erstellen. Das Loginsystem sollte jedoch vereinfacht werden und keine Accounts ben\"otigen, welche an andere Unternehmen gebunden sind. Die Webapp Waldmeister-Outdoors soll ein eigenständiges Projekt werden, welches keine Vorkonfigurierten Map Eigeschaften beinhaltet, welche von in einem Web-Editor wie ArcGIS online erstellt worden sind.
+Eine native App wie "Collector for ArcGIS" eignet sich, um eine Datensammler Applikation zu erstellen. Das Loginsystem sollte jedoch vereinfacht werden und keine Accounts ben\"otigen, welche an andere Unternehmen gebunden sind. Die Webapp Waldmeister-Outdoors soll ein eigenst\"andiges Projekt werden, welches keine Vorkonfigurierten Map Eigeschaften beinhaltet, welche von in einem Web-Editor wie ArcGIS online erstellt worden sind.
 
 \subsection{Schlussfolgerungen}
-Waldmeister-Outdoors kann ein Karten Archiv wie maps.zh.ch anbietet stark aufwerten und durch ein Login System erweitert werden. User sollen wie im "Collector for ArcGIS" die Möglichkeit haben neue Objekte wie Flächen und Points of Interest zu erstellen und Positionsabhängige Funktionen wie den Kartenausschnitt zu zentrieren und den eigenen Standort anzuzeigen. Dies soll über GPS Funktionen von internetfähigen (Mobilen) Geräten ermöglicht werden und in der Map reflektiert werden.
+Waldmeister-Outdoors kann ein Karten-Archiv wie maps.zh.ch anbietet stark aufwerten und durch ein Login System erweitert werden. User sollen wie im "Collector for ArcGIS" die M\"oglichkeit haben neue Objekte wie Fl\"achen und Points of Interest zu erstellen und Positionsabh\"angige Funktionen wie den Kartenausschnitt zu zentrieren und den eigenen Standort anzuzeigen. Dies soll \"uber GPS Funktionen von internetf\"ahigen (Mobilen) Ger\"aten erm\"oglicht werden und in der Map reflektiert werden.
 
 \section{Umsetzungskonzept}
 \subsection{L\"osungsans\"atze}
@@ -111,42 +111,42 @@ Damit die App auf mehreren Ger\"aten mit unterschiedlichen Betriebsystemen verwe
  Um die geplanten Funktionalit\"aten wie das Login und das Erstellen von Benutzerfl\"achen umzusetzen, muss die Webapp einer 3-Tier Architektur entsprechen, welche auf Frontend, Backend und einer Datenbank aufbaut. 
 $\newline$
 \subsection{Frontend}
-Der Frontend-Client soll als Webapp realisiert werden. Dafür soll ein modernes Webframwork gew\"ahlt werden, welches zur Erstellung einer Single-Page-Applikation (SPA) eingesetzt wird. Waldmeister-Outdoors soll für Browser von Mobilen und Desktop Geräten optimiert werden, wie zum Beispiel Chrome oder Firefox. 
+Der Frontend-Client soll als Webapp realisiert werden. Daf\"ur soll ein modernes Webframwork gew\"ahlt werden, welches zur Erstellung einer Single-Page-Applikation (SPA) eingesetzt wird. Waldmeister-Outdoors soll f\"ur Browser von Mobilen und Desktop Ger\"aten optimiert werden, wie zum Beispiel Chrome oder Firefox. 
 \subsection{Backend}
-Als Backend soll ein flexibles Framework, welches Micro-Services und API Abfragen in Form von REST-Schnittstellen bereitstellen kann, eingesetzt werden. Django wurde gewählt, da es von vielen Projekten des IFS bereits erfolgreich eingesetzt wurde.
+Als Backend soll ein flexibles Framework, welches Micro-Services und API Abfragen in Form von REST-Schnittstellen bereitstellen kann, eingesetzt werden. Django wurde gew\"ahlt, da es von vielen Projekten des IFS bereits erfolgreich eingesetzt wurde.
 \subsection{Datenbank}
 PostgreSQL ist ein open-source Datenbank Management System. Es ist dank der PostGIS Erweiterung sehr gut geeignet um raumbezogene Daten (Geospacial Data), wie die Daten der Vegetationskundlichen Karte, zu storen und ab zu fragen.
 \subsection{JavaScript Libraries und Node Module}
 Leaflet editable $\newline$
 Damit die User neue Polygone, Punkte und Pfade erfassen k\"onnen, wird die Library "Leaflet editable" verwendet. Es erm\"oglicht, neue Objekte (zum Beispiel Polygone und PoIs) direkt auf der Leaflet Map zu zeichnen, oder bestehende Objekte zu editieren. $\newline$
 Vuetify $\newline$
-Vuetify ist ein Node Module welches als offzielle Material-Design-Extension von VueJS behandelt wird. Es stellt es viele UI - Komponenten bereit, welche in einer VueJS Applikation verwendet werden können.  $\newline$
+Vuetify ist ein Node Module welches als offzielle Material-Design-Extension von VueJS behandelt wird. Es stellt es viele UI - Komponenten bereit, welche in einer VueJS Applikation verwendet werden k\"onnen.  $\newline$
 $\newline$
-Eine vollständige Liste der Node Module befindet sich in der Datei package.json im Ordner client.
+Eine vollst\"andige Liste der Node Module befindet sich in der Datei package.json im Ordner client.
 \subsection{Python Pakete}
-Die wichtigsten Python Pakete sind Django 2.0, welches das Grundgerüst des Backend-Servers darstellt. Django verwendet als Server das Python Paket Djangorestframework 3.8.2 um API Requests des Frontends zu beantworten. $\newline$
-Eine komplette Liste der Verwendeten Python Pakete wird in der file Requirements.txt des backends geführt.
+Die wichtigsten Python Pakete sind Django 2.0, welches das Grundger\"ust des Backend-Servers darstellt. Django verwendet als Server das Python Paket Djangorestframework 3.8.2 um API Requests des Frontends zu beantworten. $\newline$
+Eine komplette Liste der Verwendeten Python Pakete wird in der file Requirements.txt des backends gef\"uhrt.
 \subsection{Werkzeuge und Tools}
-Als IDE bzw. Texteditor wurde das Programm Sublime 2 verwendet, welches die beiden Linter Eslint (für JavaScript Code) und flake8 (für Python Code) unterstützt. Entwickelt wurde auf einer lokalen Node und Python Umgebung, bzw. in dockerisierter Form, um das deployment zu testen.
+Als IDE bzw. Texteditor wurde das Programm Sublime 2 verwendet, welches die beiden Linter Eslint (f\"ur JavaScript Code) und flake8 (f\"ur Python Code) unterst\"utzt. Entwickelt wurde auf einer lokalen Node und Python Umgebung, bzw. in dockerisierter Form, um das deployment zu testen.
 \subsection{Deployment}
 Das Projekt soll auf einem HSR Server deployt werden, damit es per URL im Internet erreichbar ist.
 
 \section{Resultate}
 \subsection{Zielerreichung}
 User k\"onnen mittels der Webapp Waldmeister-Outdoors die Vegetationskundliche Karte erforschen und diese mit Ihrem momentanen Standort abgleichen. Dar\"uber hinaus k\"onnen sie, nachdem sie sich registriert haben, private und \"offentliche Benutzerfl\"achen auf einem mobilen Ger\"at erfassen und sie auf einem zentralen Server hinterlegen. Somit k\"onnen sie pers\"onliche Orte und Fl\"achen erstellen, welche f\"ur Sie im Arbeitsalltag relevant sind und sie zwischen verschiedenen Ger\"aten (Im Feld und im B\"uro) abrufen oder mit anderen Personen teilen. Erstellte Benutzerfl\"achen k\"onnen zu einem sp\"ateren Zeitpunkt oder von einem anderen Ger\"at aus editiert oder gel\"oscht werden.$\newline$
-Ebenfalls erreicht wurde die Geolocation auf der Karte zu repräsentieren. Dies ist im Arbeitsalltag eine grosse Hilfe, und dient zur schnellen Orientierung und Auffindung von bestimmten eingetragenen Fl\"achen und Orten im Feld. Die GPS-Position wird mit einem gesetzten Intervall von fünf Sekunden erneuert, und die erhaltenen Koordinaten werden auf der Map als Element, bestehend aus zwei Circles, dargestellt. $\newline$
+Ebenfalls erreicht wurde die Geolocation auf der Karte zu repr\"asentieren. Dies ist im Arbeitsalltag eine grosse Hilfe, und dient zur schnellen Orientierung und Auffindung von bestimmten eingetragenen Fl\"achen und Orten im Feld. Die GPS-Position wird mit einem gesetzten Intervall von f\"unf Sekunden erneuert, und die erhaltenen Koordinaten werden auf der Map als Element, bestehend aus zwei Circles, dargestellt. $\newline$
 Die Webapp kann sowohl auf Desktop Browsern wie von mobilen Ger\"aten verwendet werden und verh\"alt sich dank VueJS responsive auf eine \"Anderung des Viewports, zum Beispiel wenn der Screen eines mobilen Ger\"ats w\"ahrend der Verwendung gedreht wird. $\newline$
 Layer und deren Label k\"onnen ein - und ausgeblendet werden, was zur \"Ubersicht beitragen kann. $\newline$
 Alle Benutzeraccounts und deren Fl\"achen sind im Django Backend ersichtlich und k\"onnen als Superuser ver\"andert oder gel\"oscht werden. Wird ein Benutzer aus der Datenbank gel\"oscht, werden alle von ihm erstellten Benutzerfl\"achen ebenfalls automatisch gel\"oscht. Alle Passw\"orter von Benutzeraccounts werden gehasht in der Datenbank gespeichert. $\newline$
-Die Webapp wurde auf dem IFS Server als Dockerimage deployt und ist im Internet erreichbar unter https://waldmeistermap.sifs0003.infs.ch/ .
+Die Webapp wurde auf dem IFS Server als Dockerimage deployt und ist im Internet erreichbar unter \href{https://waldmeistermap.sifs0003.infs.ch/}{Waldmeister-Outdoors} .
 
 \subsection{Ausblick}
-Als Wichtigste Punkte zur Weiterentwicklung der Webapp ist die Implementierung einer Vegetationslayer-API, welche das dynamische Laden von Waldstandortsflächen des Clients ermöglicht. $\newline$ $\newline$
-Anpassungen an des UI und weitere Funktionen im Frontend welche die Zusammenarbeit im Team verbessert sollten ebenfalls realisiert werden. $\newline$ $\newline$
-Genauere Ausführungen zur Weiterentwicklung befinden sich im Kapitel 4.9.2 der Projektdokumentation.
+Als Wichtigste Punkte zur Weiterentwicklung der Webapp ist die Implementierung einer Vegetationslayer-API, welche das dynamische Laden von Waldstandortsfl\"achen des Clients erm\"oglicht. $\newline$
+Anpassungen an des UI und weitere Funktionen im Frontend welche die Zusammenarbeit im Team verbessert sollten ebenfalls realisiert werden. $\newline$
+Genauere Ausf\"uhrungen zur Weiterentwicklung befinden sich im Kapitel 4.9.2 der Projektdokumentation.
 
 \subsection{Pers\"onliche Berichte}
-Während der Entwicklung wurde ein Update für das Ubuntu Basisimage veröffentlicht, welche die benötigten Libraries von Gdal änderte. Gdal (GDAL - Geospatial Data Abstraction Library) setzt diese dafür ein, Geodaten zwischen verschiedenen Formaten zu konvertieren. Die verwendete Version (welche im Dockerfile definiert wird) muss jedoch der Version der Hostmachine von Docker entsprechen. Dieses Update kam zu einem überraschenden Zeitpunkt, und der Build konnte während dieser Zeit nicht ausgeführt werden, bis dass Problem gefunden und behoben wurde. Das Problem wurde erst bemerkt, als das Build von Travis ausgeführt wurde, da die lokale Entwicklung des Build davon nicht beeinträchtig waren (da in der lokalen Entwicklung kein Ubuntu eingesetzt wurde). Travis ist hier eine grosse Hilfe ein Build auf einem anderen Computer zu testen, bevor die Version live auf dem produktiven Server deployt wird, was in diesem Fall zu einem Unterbruch des Services geführt hätte.
+W\"ahrend der Entwicklung wurde ein Update f\"ur das Ubuntu Basisimage ver\"offentlicht, welche die ben\"otigten Libraries von Gdal \"anderte. Gdal (GDAL - Geospatial Data Abstraction Library) setzt diese daf\"ur ein, Geodaten zwischen verschiedenen Formaten zu konvertieren. Die verwendete Version (welche im Dockerfile definiert wird) muss jedoch der Version der Hostmachine von Docker entsprechen. Dieses Update kam zu einem \"uberraschenden Zeitpunkt, und der Build konnte w\"ahrend dieser Zeit nicht ausgef\"uhrt werden, bis dass Problem gefunden und behoben wurde. Das Problem wurde erst bemerkt, als das Build von Travis ausgef\"uhrt wurde, da die lokale Entwicklung des Build davon nicht beeintr\"achtig waren (da in der lokalen Entwicklung kein Ubuntu eingesetzt wurde). Travis ist hier eine grosse Hilfe ein Build auf einem anderen Computer zu testen, bevor die Version live auf dem produktiven Server deployt wird, was in diesem Fall zu einem Unterbruch des Services gef\"uhrt h\"atte.
 
 \clearpage
 \pagebreak
@@ -155,9 +155,9 @@ Während der Entwicklung wurde ein Update für das Ubuntu Basisimage veröffentlich
 \chapter{Teil 2 - SW-Projektdokumentation}
 \section{Anforderungsspezifikation}
 \subsection{Use-Cases}
-W\"ahrend der Feldforschung kann es sehr hilfreich sein, auf bereits kartierte Waldfl\"achen Zugriff zu haben, um sich am Standort zu orientieren. Dieses Material ist oft in einem Kantonalen Portal z.B. https://maps.zh.ch erh\"altlich, es ist jedoch nur selten kompatibel mit mobilen Ger\"aten, interagieren nicht mit dem GPS des Smartphones oder die Websiten sind schwer zu navigieren. "Waldmeister - Outdoors" soll einem gezielten Zweck dienen und nicht mit Kartenmaterial \"uberladen werden. Der Zugriff auf die Vegetationskundlichen Karten sollte vereinfacht und die Navigation beschleunigt werden. $\newline$
-Der \"uber GPS ermittelte eigene Standort soll auf der Karte eingetragen werden und beim Laden der Map soll auf diesen Kartenausschnitt  zentriert werden. Diese Funktion des Zentrieren kann jedoch beim Erforschen von Waldstandorten, welche sich nicht in unmittelbarer Nähe befinden als störend empfunden werden. Daher sollte diese Funktion deaktivierbar sein, oder nur einmalig beim Laden der Map ausgeführt werden. $\newline$
-Durch einen Abruf in der Datenbank kann ermittelt werden, ob sich der Benutzer zu diesem Zeitpunkt gerade innerhalb eines Waldstandorts befindet, falls sich die ermittelte Position des Geräts innerhalb eines Polygons befindet, welches in der Vegetationskarte gespeichert ist. Dies soll dem User auf der Map jederzeit mittgeteilt werden, auch wenn er sich zum Zeitpunkt nicht auf dem Kartenausschnitt sichtbar ist.
+W\"ahrend der Feldforschung kann es sehr hilfreich sein, auf bereits kartierte Waldfl\"achen Zugriff zu haben, um sich am Standort zu orientieren. Dieses Material ist oft in einem Kantonalen Portal z.B. \href{https://maps.zh.ch}{maps.zh.ch} erh\"altlich, es ist jedoch nur selten kompatibel mit mobilen Ger\"aten, interagieren nicht mit dem GPS des Smartphones oder die Websiten sind schwer zu navigieren. "Waldmeister - Outdoors" soll einem gezielten Zweck dienen und nicht mit Kartenmaterial \"uberladen werden. Der Zugriff auf die Vegetationskundlichen Karten sollte vereinfacht und die Navigation beschleunigt werden. $\newline$
+Der \"uber GPS ermittelte eigene Standort soll auf der Karte eingetragen werden und beim Laden der Map soll auf diesen Kartenausschnitt  zentriert werden. Diese Funktion des Zentrieren kann jedoch beim Erforschen von Waldstandorten, welche sich nicht in unmittelbarer N\"ahe befinden als st\"orend empfunden werden. Daher sollte diese Funktion deaktivierbar sein, oder nur einmalig beim Laden der Map ausgef\"uhrt werden. $\newline$
+Durch einen Abruf in der Datenbank kann ermittelt werden, ob sich der Benutzer zu diesem Zeitpunkt gerade innerhalb eines Waldstandorts befindet, falls sich die ermittelte Position des Ger\"ats innerhalb eines Polygons befindet, welches in der Vegetationskarte gespeichert ist. Dies soll dem User auf der Map jederzeit mittgeteilt werden, auch wenn er sich zum Zeitpunkt nicht auf dem Kartenausschnitt sichtbar ist.
 
 \subsection{Use Case - Diagramm}
 Das Diagram \ref{fig:uc1} zeigt auf, welche M\"oglichkeiten ein User hat, mit dem Werkzeug zu interagieren. Ein User, welcher sich nicht registriert, kann keine Fl\"achen generieren oder editieren und kann auch keine privaten Fl\"achen sehen. Er kann jedoch die Vegetationskundliche Karte und \"offentliche Fl\"achen aller anderen User sehen. $\newline$
@@ -171,8 +171,8 @@ Nachdem er sich registriert und eingeloggt hat, kann er Fl\"achen erstellen und 
 
 \subsection{Must-Haves}
 Als must-haves werden funktionale Anforderungen beschrieben, welche zentrale Funktionen beschreiben, welche ein User mit der Applikation durchf\"uhren m\"ochte. Dazu geh\"oren die Navigation der Map und das Erstellen und Editieren von Benutzerfl\"achen. Ein Login, bzw Registrierungsvorgang ist dabei unerl\"asslich, damit sich User authentifizieren k\"onnen, auf welches Kartenmaterial sie Zugriff haben. Bei Benutzerfl\"achen wird hierbei unter pers\"onlichen (privaten) und \"offentlichen Benutzerfl\"achen unterschieden. $\newline$
-API-Abfragen sollen wo möglich geschützt werden und Benutzerflächen, welche von einem User erstellt wurden, sollen nicht von anderen Usern verändert oder gelöscht werden können. $\newline$
-Das Projekt soll per Docker-Container auf dem IFS Server deployt werden und per Link für Jedermann zugänglich sein.
+API-Abfragen sollen wo m\"oglich gesch\"utzt werden und Benutzerfl\"achen, welche von einem User erstellt wurden, sollen nicht von anderen Usern ver\"andert oder gel\"oscht werden k\"onnen. $\newline$
+Das Projekt soll per Docker-Container auf dem IFS Server deployt werden und per Link f\"ur Jedermann zug\"anglich sein.
 
 \subsection{Optional}
 Als optionale Anforderung wurde die Automatische Anzeige des Waldstandorttyps bezeichnet. Neben der Map, welche alle Waldstandorte am geografisch korrekten Ort darstellt, ist eine ortsbasierte Anzeige des momentanen Waldstandortstypen hilfreich bei der Arbeit im Feld. Diese Anzeige besteht daraus, die GPS Position des Ger\"ats zu verwenden, um in einer Datenbank zu ermitteln, ob der ermittelte Punkt innerhalb eines bekannten Waldstandorts liegt.
@@ -315,17 +315,38 @@ $\newline$
 Dies bewirkt, dass eine Komponente nicht direkt einen Wert oder Zustand im Store ver\"andern kann, sondern dies einen Event aufruft. Dieser informiert den Store welchen State es \"uber eine Mutation zu ver\"andern gilt.
 
 \subsection{Docker}
-Docker wird dazu verwendet, um die fertige Webapp plattformunabh\"angig laufen zu lassen. Es wird sowohl beim lokalen builden der Webapp verwendet, sowie auch in der deployten Form, auf einem Linux-basierten Server. Docker garantiert, dass sich alle ben\"otigten Systeme gleich verhalten, da sie in einer virtualisierten Form (einem Docker-Container) laufen.
+Docker wird dazu verwendet, um die Webapp laufen zu lassen. Es wird sowohl beim lokalen builden der Webapp verwendet, sowie auch in der deployten Form auf dem produktiven Server,. Docker stellt sicher, dass sich die Applikation auf allen Betriebsystemen gleich verhaltet, zum Beispiel einem Linux-basierten Server, da die Installation in einer virtualisierten Form (einem Docker-Container) l\"auft.
 \pagebreak
 
 \section{Design}
 \subsection{Architektur}
 Als Frontend folgt Vue.JS einer Variation des Model-View-Controller-Entwurfmusters, dem Model - View - ViewModel Muster. Wie auch das MVC folgt MVVM dient es der Trennung von Darstellung und der Logik der Benutzerschnittstelle. Dies erlaubt dem nutzenden Entwickler, die Struktur der Anwendung nach eigenen Anspr\"uchen zu richten. Vue setzt Stores seinen eigenen Vue Store ein. Stores enthalten den Applikationszustand und die Applikationslogik. Verglichen mit dem MVC-Pattern entsprechen sie am ehesten dem Model. $\newline$
-Wie die meisten SPAs bezieht VueJS dynamische Daten über eine REST-Schnittstelle, welche Requests an das Backend schickt, welches die benötigten Daten bereitstellt.
+Wie die meisten SPAs bezieht VueJS dynamische Daten \"uber eine REST-Schnittstelle, welche Requests an das Backend schickt, welches die ben\"otigten Daten bereitstellt.
 
 \subsection{Package Struktur}
-Der Source-Code von "Waldmeister-Outdoors" ist auf GitHub unter "https://github.com/dschmide/Waldmeister-Outdoors" erh\"atlich. Die Paket-Struktur des Projekts ist in die Teile "backen", "client", "Dokumentation" und "secured-local-nginx" aufgeteilt.
+Der Source-Code von "Waldmeister-Outdoors" ist auf GitHub unter \href{https://github.com/dschmide/Waldmeister-Outdoors}{Waldmeister Outdoors} erh\"atlich. Die Paket-Struktur des Projekts ist in die Teile "backen", "client" und "secured-local-nginx" aufgeteilt. Die Dokumentation befindet sich ebenfalls in diesem Repo, wurde aber bei der Package Struktur weggelassen.
 $\newline$
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.6\textwidth]{client}
+    \caption{Package-Struktur, Client}
+    \label{fig:ps1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.6\textwidth]{backend}
+    \caption{Package-Struktur, Backend}
+    \label{fig:ps2}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.4\textwidth]{nginx}
+    \caption{Package-Struktur, nginx}
+    \label{fig:ps4}
+\end{figure}
 
 \subsection{Sequenz-Diagramm}
 Die folgenden Sequenzdiagramme geben detaillierten Einblick in den Ablauf des Registrierung - und Loginvorgangs, sowie das Laden der Public und Private Areas und deren Darstellung im Client. $\newline$
@@ -373,7 +394,7 @@ Das Komponentendiagramm zeigt die Beziehungen zwischen verschiedenen Komponenten
 
 \subsection{UI Design}
 \subsubsection{Mockups}
-Die Mockups wurden vor der Implementation erstellt, um Screendesign und Layout klarer zu definieren, bevor es um die technische Implementation von "Waldmeister - Outdoors" ging. In den Abbildungen 1 bis 9 kann man den Arbeitsschritt Einloggen und Erstellen einer neuen Fl\"ache und eines Points of Interests (POI) sehen. Zus\"atzlich sieht der User seine eigene Location auf der Map eingetragen und hat \"uber das Menu "My Places" Zugriff auf eine Liste seiner erstellten Fl\"achen. Ein Kontextmenu gibt bei der Anzeige eines ausgew\"ahlten Objekts zus\"atzliche Informationen.
+Die Mockups wurden vor der Implementation erstellt, um Screendesign und Layout klarer zu definieren, bevor es um die technische Implementation von "Waldmeister - Outdoors" ging. In den folgenden Abbildungen Eins bis Neun kann man den Arbeitsschritt Einloggen und Erstellen einer neuen Fl\"ache und eines Points of Interests (POI) sehen. Zus\"atzlich sieht der User seine eigene Location auf der Map eingetragen und hat \"uber das Menu "My Places" Zugriff auf eine Liste seiner erstellten Fl\"achen. Ein Kontextmenu gibt bei der Anzeige eines ausgew\"ahlten Objekts zus\"atzliche Informationen.
 
 \pagebreak
 
@@ -486,18 +507,18 @@ Benutzerfl\"achen werden blau dargestellt und haben ein gef\"arbtes Label, damit
     \caption{Benutzerfl\"achen mit Labels}
     \label{fig:userareslabels}
 \end{figure}
-
+$\newline$
 Die Geolocation wird als blauer "Circle" dargestellt. Die Gr\"osse des Kreises repr\"asentiert die Genauigkeit der Berechnung der Geolocation in Metern. $\newline$
 
 \begin{figure}[H]
 \centering
     \includegraphics[width=1\textwidth]{geolocation}
-    \caption{Geolocation mit Circle}
+    \caption{Geolocation auf der Map als Circle sichtbar}
     \label{fig:geoloc1}
 \end{figure}
-
+$\newline$
 Die Buttons welche den Zeichungsmodus starten oder beenden oder Ebenen ein- und ausblenden sind in der oberen linken Ecke, unterhalb der Zoombuttons vertikal aufgereiht. Der Zeichnungsbutton ist mit "Add" beschriftet und wechselt auf "Edit" solange der Zeichnugsmodus aktiviert ist. Die Buttons zum Ein- und Ausblenden von Ebenen sind mit "Veg" und "Areas" beschriftet, haben aber l\"angere Tooltips, welche die Funktion genauer beschreiben. $\newline$
-
+$\newline$
 Die "Save" Dialogbox wird nur angezeigt, wenn eine gezeichnete Fl\"ache durch einen Klick auf den ersten gezeichneten Eckpunkt geschlossen wird. Durch den "Save" Button innerhalb der Dialogbox werden die Werte f\"ur Label und Public \"ubernommen und das gezeichnete Polygon wird per REST Schnittstelle an den Server geschickt, damit es in der Datenbank gespeichert wird.
 
 \subsection{Geolocation}
@@ -516,7 +537,7 @@ Die API Dokumentation wurde mit dem Python Package Swagger implementiert und kan
 Benutzeraccounts werden vom Python Package Djoser erstellt. Dieses Package beinhaltet unter anderem die URL /WaldmeisterMap/auth/users/create/, welches mit den Attributen "email, username, password" einen neuen User in der Datenbank registriert. Nach der erfolgreichen Registrierung kann \"uber die URL /WaldmeisterMap/auth/token/create/ ein JWT Token vom Server angefordert werden. Dieser Request hat die Attribute "username, password". Stimmen die Werte mit einem existierenden Account in der Datenbank \"uberein, wird dem Client als Antwort ein JWT Token geliefert, welches der Client mit darauffolgenden Requests mitschicken kann, damit der Server den User mit einem registrierten User in der Datenbank verkn\"upfen kann. JWT Tokens laufen nach einer bestimmten Zeit ab oder z.B. wenn der Django Server sich neu initialisiert. Ein JWT Token kann \"uber die URL /WaldmeisterMap/auth/jwt/refresh/ erneuert werden, in dem das existierende Token im POST Request mitgeschickt wird.
 $\newline$
 Benutzerfl\"achen werden \"uber die URL /WaldmeisterMap/api/areas/ als GET Request abgefragt. Der Request liefert anhand vom eingeloggten oder nicht eingeloggten Usern \"offentliche Fl\"achen, bzw. auch die privaten Fl\"achen des authentifizierten Users, welche unter seinem Account in der Datenbank gespeichert sind. \"Uber die gleiche URL kann mit einem POST Request eine neue Benutzerfl\"ache in der Datenbank erstellt werden. \"Uber die URLs /WaldmeisterMap/api/areas/id kann auf eine spezifische, existierende Benutzerfl\"ache die Requests GET, DELETE, PATCH und PUT ausgef\"uhrt werden, um diese bestehende Benutzerfl\"ache zu bearbeiten, bzw. zu l\"oschen. Sie wird \"uber die URL-Endung "id" referenziert.$\newline$
-Über die API kann auch abgefragt werden, ob sich die ermittelte GPS Position des Geräts zu diesem Zeitpunkt gerade innerhalb eines Waldstandorts befindet, welcher in der Datenbank eingetragen ist.
+\"Uber die API kann auch abgefragt werden, ob sich die ermittelte GPS Position des Ger\"ats zu diesem Zeitpunkt gerade innerhalb eines Waldstandorts befindet, welcher in der Datenbank eingetragen ist.
 
 \begin{figure}[H]
 \centering
@@ -540,12 +561,12 @@ Benutzerfl\"achen werden \"uber die URL /WaldmeisterMap/api/areas/ als GET Reque
 \end{figure}
 
 \subsection{Database}
-Die Benutzerfl\"achen und Vegetationsflächen werden von Django durch ein Django-Dabatase-Model beschrieben und haben die Attribute "label, public, polygon und creator".   $\newline$
+Die Benutzerfl\"achen und Vegetationsfl\"achen werden von Django durch ein Django-Dabatase-Model beschrieben und haben die Attribute "label, public, polygon und creator".   $\newline$
 "Label" ist ein Feld, welches aus Charakteren und Ziffern besteht. $\newline$
 Das Feld 'public' ist ein Boolean Wert, welcher bestimmt, ob eine Fl\"ache \"offentlich oder privat gehandhabt wird. $\newline$
 'polygon' beinhaltet die Geometrie, die Art der Fl\"ache und das Format, in welcher sie in der Datenbank gespeichert wird. Die Geometrie ist Teil des polygon field und beinhaltet ein Array, welches Punkte in Longitude / Latitude Paaren enth\"alt, welche die Eckpunkte des Polygons beschreiben. Dies k\"onnen beliebig viele sein und im Falle eines Multipolygons kann dieses Feld auch mehrere Arrays beinhalten, welche wiederum ein einzelnes Polygon beschreiben. \"Uberschneiden sich mehrere Polygone entstehen "Inseln", welche nicht zu der Fl\"ache des Multipolygons geh\"oren.$\newline$
 Also Koordinatensystem wird das System WGS84 mit der SRID 4326 verwendet. \cite{srid}  $\newline$
-Vegetationsflächen werden in der Datenbank als Multipolygone und einem Kürzel nach EK72 in der Form von Zahlen und Charakteren gespeichert.
+Vegetationsfl\"achen werden in der Datenbank als Multipolygone und einem K\"urzel nach EK72 in der Form von Zahlen und Charakteren gespeichert.
  $\newline$
  Die Django Datenbank Modells befinden sich im Ordner "restful_api" des backends in der Datei models.py
 
@@ -573,12 +594,13 @@ Damit Jasmin die Tests ausf\"uhren kann, muss der Code von Webpack zuerst kompil
 
 \subsection{Linter}
 Linter werden als Werkzeuge eingesetzt, welche w\"ahrend der Entwicklung eine statische von Analyse Quellcode ausf\"uhren. $\newline$
-Beim Linten von Code wird dieser auf gewisse Qualit\"atskontrollen oder Linting-Regeln gepr\"uft. Linter helfen Enwicklern, Code auf h\"oherem Qualit\"atsstandard zu schreiben, reduzieren die Anzahl Bugs, Syntax-Errors oder schlechte Formatierungen welche im Source-Code vorkommen. Dadurch wird auch die Lesbarkeit und Wartbarkeit des Codes erhöht. Vor allem bei Teamarbeiten ist das Einsetzen und Durchsetzen von Styleguides sehr wichtig. Durch das Einsetzen von Lintern sparen Entwickler Zeit und Code-Reviews k\"onnen schneller durchgef\"uhrt werden.
+Beim Linten von Code wird dieser auf gewisse Qualit\"atskontrollen oder Linting-Regeln gepr\"uft. Linter helfen Enwicklern, Code auf h\"oherem Qualit\"atsstandard zu schreiben, reduzieren die Anzahl Bugs, Syntax-Errors oder schlechte Formatierungen welche im Source-Code vorkommen. Dadurch wird auch die Lesbarkeit und Wartbarkeit des Codes erh\"oht. Vor allem bei Teamarbeiten ist das Einsetzen und Durchsetzen von Styleguides sehr wichtig. Durch das Einsetzen von Lintern sparen Entwickler Zeit und Code-Reviews k\"onnen schneller durchgef\"uhrt werden.
+
 \subsubsection{Eslint}
 Eslint ist ein Code-Linting Tool f\"ur JavaScript, welches daf\"ur eingesetzt wird gewisse Regeln und Styleguides w\"ahrend der Entwicklung des Projekts zu \"uberpr\"ufen. Eslint (in Kombination mit einem Texteditor wie Sublime), macht auf Codestellen aufmerksam, welche nicht den Konfigurationen entsprechen. Eingesetzt wurde der AirBnB Styleguide. Das Frontend, Entwickelt mit Vue.JS ist mit JavaScript erstellt. Daher kann das gesamte Frontend mit ESLint gelintet werden.
 
-\subsubsection{flake8}
-Flake8 ist Linter für Python Projekte, welches dafür eingesetzt wird Code-Guidelines für Python Quellcode
+\subsubsection{Flake8}
+Flake8 ist Linter f\"ur Python Projekte, welches daf\"ur eingesetzt wird Code-Guidelines f\"ur Python Quellcode einzuhalten. Fehler und Warnungen werden bereits bei der Erstellung des Sourcecodes im Editor angezeigt.
 
 \subsection{Continuous Integration}
 \subsubsection{Travis}
@@ -606,6 +628,7 @@ Nachdem das Projekt erfolgreich gebuildet worden ist, werden die erstellten Dock
     \label{fig:t3}
 \end{figure}
 
+\pagebreak
 \section{Manuelle Tests}
 \subsection{User-Szenario}
 Das User-Szenario ist ein m\"oglicher Interaktionsablauf eines Users, welcher die Webapp "Waldmeister-Outdoors" verwendet. Es ist in die verschiedenen Schritte eingeteilt, welcher der User durchf\"uhrt. $\newline$
@@ -636,33 +659,29 @@ Aufruf der URL $\newline$
 Erwartet: Laden der Webapp$\newline$
 Erf\"ullt: Ja/Nein$\newline$
 $\newline$
-
 Testfall B:$\newline$
 Pan und Zoom der Map$\newline$
-Erwartet: Kartenausschnitt bewegt sich durch drag & drop, zoomen durch Mousewheel (Gesture bei mobilen Geräten) oder Zoom Buttons
-Erf\"ullt: Ja/Nein
+Erwartet: Kartenausschnitt bewegt sich durch drag & drop, zoomen durch Mousewheel (Gesture bei mobilen Ger\"aten) oder Zoom Buttons
+Erf\"ullt: Ja/Nein$\newline$
 $\newline$
-
 Testfall C:$\newline$
 Registrierung und Login$\newline$
 Erwartet: Registrierung durch Eingabe eines noch nicht verwendeten Usernamens und Passworts, Login durch die selben Informationen
-Erf\"ullt: Ja/Nein
+Erf\"ullt: Ja/Nein$\newline$
 $\newline$
-
 Testfall D:$\newline$
-Erstellen von Benutzerflächen$\newline$
-Erwartet: Erstellung einer beliebigen Benutzerfläche durch aktivieren des "Add" buttons. Eckpunkte des Polygons bezeichnen. Durch erneute auswahl eines bereits existierenden Eckpunkts wird die Fläche geschlossen und Dialogbox zum speichern der Fläche öffnet sich.
-Erf\"ullt: Ja/Nein
+Erstellen von Benutzerfl\"achen$\newline$
+Erwartet: Erstellung einer beliebigen Benutzerfl\"ache durch aktivieren des "Add" buttons. Eckpunkte des Polygons bezeichnen. Durch erneute auswahl eines bereits existierenden Eckpunkts wird die Fl\"ache geschlossen und Dialogbox zum speichern der Fl\"ache \"offnet sich.
+Erf\"ullt: Ja/Nein$\newline$
 $\newline$
-
 Testfall D:$\newline$
-Updaten einer existierenden Benutzerfläche$\newline$
-Erwartet: Updaten einer exisierenden Benutzerfläche, in dem im eingeloggtem Zustand eine eigene Benutzerfläche (öffentlich oder privat) angewählt wird. Ändern der Eckpunkte der Benutzerfläche durch drag & drop. Klick der Schaltfläche "Upd" öffnet Dialogbox "Update". User kann der Fläche ein neues Label geben oder Schaltfläche privat / öffentlich wechseln. Durch klick auf "Update" wird die Fläche und das Label neu gezeichnet.
-Erf\"ullt: Ja/Nein
+Updaten einer existierenden Benutzerfl\"ache$\newline$
+Erwartet: Updaten einer exisierenden Benutzerfl\"ache, in dem im eingeloggtem Zustand eine eigene Benutzerfl\"ache (\"offentlich oder privat) angew\"ahlt wird. \"Andern der Eckpunkte der Benutzerfl\"ache durch drag & drop. Klick der Schaltfl\"ache "Upd" \"offnet Dialogbox "Update". User kann der Fl\"ache ein neues Label geben oder Schaltfl\"ache privat / \"offentlich wechseln. Durch klick auf "Update" wird die Fl\"ache und das Label neu gezeichnet.
+Erf\"ullt: Ja/Nein$\newline$
 $\newline$
 
 \subsection{Reproduktion und Auswertung}
-Falls ein Testfall von einem Testuser nicht korrekt ausgeführt wurde, sollte der Zustand welcher nach dem Testfall vorliegt reproduziert werden, in dem alle Interaktionen, welche der User tatsächlich ausgeführt hat, festgehalten werden. Falls es sich um einem Bug haltet sollte ein issue erfasst werden. Falls der Fehler nicht durch einen Bug verursacht wurde, sollte es als negative User Experience festgehalten werden. Führt der Testfall in vielen Fällen zu einer negativen User Experience, sollte das Applikationsdesign verändert werden, Buttons, Labels oder Hints angepasst werden.
+Falls ein Testfall von einem Testuser nicht korrekt ausgef\"uhrt wurde, sollte der Zustand welcher nach dem Testfall vorliegt reproduziert werden, in dem alle Interaktionen, welche der User tats\"achlich ausgef\"uhrt hat, festgehalten werden. Falls es sich um einem Bug haltet sollte ein issue erfasst werden. Falls der Fehler nicht durch einen Bug verursacht wurde, sollte es als negative User Experience festgehalten werden. F\"uhrt der Testfall in vielen F\"allen zu einer negativen User Experience, sollte das Applikationsdesign ver\"andert werden, Buttons, Labels oder Hints angepasst werden.
 
 \pagebreak
 \section{Resultate und Weiterentwicklung}
@@ -672,11 +691,11 @@ Ebenfalls wurde erreicht die Geolocation auf der Karte darzustellen. Dies ist im
 Die Webapp kann sowohl auf Desktop Browsern wie von mobilen Ger\"aten verwendet werden und verh\"alt sich dank Vue.js responsive auf eine \"Anderung des Viewports, zum Beispiel wenn der Screen eines mobilen Ger\"ats w\"ahrend der Verwendung gedreht wird. $\newline$
 Der Vegetationslayer und Benutzerfl\"achen-Layer und deren Label k\"onnen ein - und ausgeblendet werden, was zur \"Ubersicht beitragen kann. $\newline$
 Alle Benutzeraccounts und deren Fl\"achen sind im Django Backend ersichtlich und k\"onnen als Superuser ver\"andert oder gel\"oscht werden. Wird ein Benutzer aus der Datenbank gel\"oscht, werden alle von ihm erstellten Benutzerfl\"achen ebenfalls automatisch gel\"oscht. Alle Passw\"orter von Benutzeraccounts werden verschl\"usselt in der Datenbank gespeichert. $\newline$
-Zur automatischen Bestimmung des Ortabh\"angigen Waldstandorttyps wurde eine separate API entwickelt. Der Client schickt die Koordinaten an denen er sich befindet als Argumente im API Request mit, und erh\"alt vom Backend eine Response, welche beinhaltet ob an diesem Ort ein Waldstandort eingetragen ist. Der Server berechnet dies anhand der Geometrien (Polygone) des Vegetationslayers. Befindet sich der Punkt innerhalb eines Polygons, wird der Waldstandortstyp zur\"uck an den Client geschickt. Dies funktioniert auch, wenn der User sich ausserhalb der sichtbaren Map befindet, da diese Berechnung auf dem ganzen Datensatz des Vegetationslayers ausgef\"uhrt wird, nicht nur auf den Waldflächen welche momentan auf dem Kartenausschnitt des Frontends angezeigt werden.
+Zur automatischen Bestimmung des Ortabh\"angigen Waldstandorttyps wurde eine separate API entwickelt. Der Client schickt die Koordinaten an denen er sich befindet als Argumente im API Request mit, und erh\"alt vom Backend eine Response, welche beinhaltet ob an diesem Ort ein Waldstandort eingetragen ist. Der Server berechnet dies anhand der Geometrien (Polygone) des Vegetationslayers. Befindet sich der Punkt innerhalb eines Polygons, wird der Waldstandortstyp zur\"uck an den Client geschickt. Dies funktioniert auch, wenn der User sich ausserhalb der sichtbaren Map befindet, da diese Berechnung auf dem ganzen Datensatz des Vegetationslayers ausgef\"uhrt wird, nicht nur auf den Waldfl\"achen welche momentan auf dem Kartenausschnitt des Frontends angezeigt werden.
 
 \subsection{M\"oglichkeiten der Weiterentwicklung}
-\subsubsection{Vegetationsflächen per API Requests}
-Es wird noch ein statisches GeoJSON verwendet, welches die Vegetationsflächen beinhaltet, welche auf der Map zu jedem Zeitpunkt dargestellt werden. Dies beschränkt sich nicht auf dem momentanen Kartenausschnitt und führt zu einer erhöhten Ladezeit beim Aufruf der Webseite, da das JSON (ca. 1mb gross) als statische Datei an den Client geschickt wird. Besonders für mobile Geräte ist es sinnvoll, dies dynamisch zu gestalten und nur die benötigten Vegetationsflächen des Kartenausschnitts per API-Request an den Client zu schicken.
+\subsubsection{Vegetationsfl\"achen per API Requests}
+Es wird noch ein statisches GeoJSON verwendet, welches die Vegetationsfl\"achen beinhaltet, welche auf der Map zu jedem Zeitpunkt dargestellt werden. Dies beschr\"ankt sich nicht auf dem momentanen Kartenausschnitt und f\"uhrt zu einer erh\"ohten Ladezeit beim Aufruf der Webseite, da das JSON (ca. 1mb gross) als statische Datei an den Client geschickt wird. Besonders f\"ur mobile Ger\"ate ist es sinnvoll, dies dynamisch zu gestalten und nur die ben\"otigten Vegetationsfl\"achen des Kartenausschnitts per API-Request an den Client zu schicken.
 
 \subsubsection{Auflistung der Benutzerfl\"achen}
 Um die Lokalisierung von bereits erstellten Benutzerfl\"achen zu erleichtern, w\"are es von Vorteil, diese in einer geordneten Liste darzustellen, z.B. in alphabetischer Reihenfolge oder nach ihrem Erstellungsdatum. Klickt der User auf eine dieser Listeneintr\"age, w\"urde die Map auf die Lage dieser Fl\"ache fokussieren. $\newline$
@@ -685,7 +704,7 @@ Eine solche Auflistung w\"are als aufklappbares Menu denkbar, welches sich \"ube
 \subsubsection{Plus Codes}
 Plus Codes k\"onnen verwendet werden, um Koordinaten in eine Zeichenfolge umzuwandeln. Es wird dazu verwendet, einem Ort auf der Welt gewissermassen eine Adresse zu geben, \"ahnlich wie eine Strassenadresse. Statt einen Punkt in geografische Breite und L\"ange zu beschreiben, ist die Zeichenfolge lediglich 7 oder 11 stellig (Eine Stelle ist dabei immer das namengebende + oder - Zeichen, welches die Zeichenkette auch von internationalen Postleitzahlen abhebt). Je nachdem, ob der Code einen Ort lokal oder weltweit beschreibt, k\"onnen die vier ersten Ziffern weggelassen werden, da es ersichtlich ist, um welche weltweite Region (ca. 100 Kilometern) es sich handelt. Dies funktioniert \"ahnlich wie eine Vorwahl bei Telefonnummern, welche regional nicht ben\"otigt wird. Die vollst\"andige Zeichenfolge beschreibt einen Ort auf dem Planeten mit einer Genauigkeit von 14 auf 14 Metern. Es kann jedoch ein weiteres Zeichen angeh\"angt werden, um die Genaugkeit auf drei auf drei Meter zu erh\"ohen. Plus Codes beschreiben immer eine Fl\"ache, keinen genauen Punkt.$\newline$
 Plus Codes k\"onnen offline en- oder dekodiert werden.  \cite{PluCo} $\newline$
-Sie basieren auf Open Location Code (OLC), ein open-source Projekt, welches von Google in Z\"urich entwickelt wurde. Das Projekt ist auf Github gehostet unter https://github.com/google/open-location-code. Es existieren Libraries f\"ur JavaScript wie auch für Python. $\newline$
+Sie basieren auf Open Location Code (OLC), ein open-source Projekt, welches von Google in Z\"urich entwickelt wurde. Das Projekt ist auf Github gehostet unter \href{https://github.com/google/open-location-code}{open location code}. Es existieren Libraries f\"ur JavaScript wie auch f\"ur Python. $\newline$
 "Waldmeister - Outdoors" kann diese Codes gebrauchen, damit Experten unter sich einfacher Geolocations austauschen k\"onnen. Die Webapp kann jeder Fl\"ache einen solchen Code zuweisen, nachdem die Benutzerfl\"ache vom User erstellt wurde. Der Code repr\"asentiert das geometrische Zentrum der Benutzerfl\"ache, welches von Leaflet berechnet wird.
 
 \subsubsection{Gruppen}
@@ -698,21 +717,25 @@ Orte, sogenannte Points of Interests (PoI), k\"onnten Teammitglieder oder andere
 Zu Orten, bzw auch Fl\"achen k\"onnte ein Bild hochgeladen werden, um die Stelle genauer zu kennzeichnen, oder um mit anderen Experten \"uber den Standort zu diskutieren.
 
 \subsubsection{Export von erfassten Benutzerfl\"achen}
-Um die Handhabung von erhobenen Daten zu erleichtern, w\"are die M\"oglichkeit erwünscht, alle erstellten Benutzerfl\"achen eines Users (oder einer Gruppe) in einem speziellen Format zu exportieren, damit sie auf alternativen Wegen ausgetauscht und verschickt werden k\"onnen.
+Um die Handhabung von erhobenen Daten zu erleichtern, w\"are die M\"oglichkeit erw\"unscht, alle erstellten Benutzerfl\"achen eines Users (oder einer Gruppe) in einem speziellen Format zu exportieren, damit sie auf alternativen Wegen ausgetauscht und verschickt werden k\"onnen.
 
 \subsubsection{GUI Verbesserungen}
-Das Frontend von Waldmeister-Outdoors kann vorallem innerhalb der Map Komponente von VueJS verbessert werden. Labels, welche zu Waldstandorte auf dem Vegetationslayer oder Benutzerflächen angezeigt werden sollten Zoom-Abhängig ein und aus-geblendet werden. Dies hat neben Performanzvorteilen auch Vorteile der Übersicht, da sich die Labels bei kleinen Zoomstufen überlagern und unlesbar werden. Obwohl sich die Waldstandorte des Vegetationslayers nicht überlagern, sollten auch sie zu grösseren Flächen zusammengefasst werden, bzw. ausgeblendet werden, wenn die Geometrien der Polygone sich zu nahe beinander befinden.
+Das Frontend von Waldmeister-Outdoors kann vorallem innerhalb der Map Komponente von VueJS verbessert werden. Labels, welche zu Waldstandorte auf dem Vegetationslayer oder Benutzerfl\"achen angezeigt werden sollten Zoom-Abh\"angig ein und aus-geblendet werden. Dies hat neben Performanzvorteilen auch Vorteile der \"Ubersicht, da sich die Labels bei kleinen Zoomstufen \"uberlagern und unlesbar werden. Obwohl sich die Waldstandorte des Vegetationslayers nicht \"uberlagern, sollten auch sie zu gr\"osseren Fl\"achen zusammengefasst werden, bzw. ausgeblendet werden, wenn die Geometrien der Polygone sich zu nahe beinander befinden.
 
-
+\pagebreak
 \section{Projektmanagement}
-\subsection{Entwicklungswerkzeuge}
-Als Texteditor, bzw. IDE wurde Sublime eingesetzt welches Linter für JavaScript und Python unterstützt. Sublime ist open-source und stützt sich auf viele Pakete, welche im integrierten Package-Manager heruntergeladen und konfiguriert werden können. $\newline$
-GitHub wurde Verwendet um eine Versionierung des Programmcodes zu ermöglichen. Issues werden auf GitHub erstellt.
 
 \subsection{Prozessmodell}
-Scrum wurde eingesetzt um bei der Entwicklung des Projekts agil vorzugehen. Scrum und agile Development erhöhen die Transparenz während der Entwicklungszeit und ermöglichen dem Kunden oder Auftragsgeber flexibler Anpassungen am Projekt vorzunehmen.
-In der Entwicklungszeit wurde Scrum in sehr vereinfachter Form umgesetzt. Sprints wurden in 1 oder 2 wöchentlichen Abständen Reviewt und die Fortschritte (Was wurde erreicht, wo gab es Probleme, was sind die nächsten Schritte) wurden per Mail dokumentiert. Beschlussprotokolle wurden auf das HSR Wiki eingetragen. $\newline$
-Der Product Backlog wurde auf GitHub auf einem Projektboard nachgeführt, auf welchem alle projektrelevanten Issues aufgeführt sind.
+Als Prozessmodell wurde Scrum eingesetzt.
+Dieses Prozessmodell ist Agil. Agile Development erh\"oht die Transparenz w\"ahrend der Entwicklungszeit und erm\"oglichen dem Kunden bzw. dem Auftraggeber flexibler Anpassungen am Projekt vorzunehmen. \cite{Scrum}
+Da Aufgrund des Fortschritts und des gew\"unschten Ergebnisses die Priorit\"aten flexibel anpassbar sein m\"ussen, ist die F\"ahigkeit zur agilen Entwicklung auch in diesem Projekt von zentraler Bedeutung.
+Scrum ist in Sprint-Zyklen gegliedert, welche zwischen 2 bis 4 Wochen dauern. Pro Zyklus findet eine Planung, eine Umsetzungsphase und ein Review statt. Ferner wird anschliessend in der Retrospektive der Prozess selbst unter die Lupe genommen und optimiert.
+$\newline$
+Im Projekt wurde Scrum hingegen in sehr vereinfachter Form umgesetzt, da nur ein Entwickler und ein Stakeholder beteiligt waren.
+Die Sprintdauer betrug ein bis zwei Wochen. Am Ende eine Sprints wurde in einem pers\"onlichen Meeting mit dem Advisor die erreichten Sprintziele gemeinsam \"uberpr\"uft und die n\"achsten Arbeiten f\"ur den n\"achsten Sprint geplant. Der Statusbericht wurde jeweils per Mail zusammengefasst und dokumentiert. Die dabei jeweils get\"atigten Beschl\"usse wurden im HSR Wiki protokolliert (\href{https://wiki.hsr.ch/StefanKeller/wiki.cgi?PA2_FS18_Schmider_Aufgabenstellung_2}{Wiki}). 
+Bei den Reviews konnte dank Continuous Integration mittels Travis und Continuous Delivery auf Portainer jeweils das aktuelle potentiell auslieferbare Produktinkrement direkt in der Produktivumgebung pr\"asentiert werden.$\newline$
+Das Product Backlog (Anforderungskatalog), sowie die zu erledigenden Aufgaben und Bugs wurden auf GitHub als Projektboard gef\"uhrt. 
+\href{https://github.com/dschmide/Waldmeister-Outdoors/projects/1}{Projektboard}
 
 \subsection{Meilensteinplanung}
 Meilensteine beschreiben Wichtige geplante Daten im Projektablauf. Im Projekt "Waldmeister-Outdoors" wurden folgende Meilensteine definiert: $\newline$
@@ -737,6 +760,10 @@ $\newline$
 \end{figure}
 \pagebreak
 
+\subsection{Entwicklungswerkzeuge}
+Als Texteditor, bzw. IDE wurde Sublime eingesetzt welches Linter f\"ur JavaScript und Python unterst\"utzt. Sublime ist open-source und st\"utzt sich auf viele Pakete, welche im integrierten Package-Manager heruntergeladen und konfiguriert werden k\"onnen. $\newline$
+GitHub wurde Verwendet um eine Versionierung des Programmcodes zu erm\"oglichen. Issues werden auf GitHub erstellt.
+
 \subsection{Git, GitHub}
 Git wurde zur Versionenkontrolle des Projekts verwendet. Versionenkontrolle erlaubt es, verschiedene Versionen eines Projekts zu haben und zeigt die \"Anderungen, welche im Code \"uber Zeit gemacht wurden. Git erlaubt es auch, \"Anderungen r\"uckg\"angig zu machen und ist vorallem bei gr\"osseren Projekten von unerl\"asslichem Nutzen. Bei Git, anstelle eines zentralen Servers, welcher die aktuellste Version hostet, haben bei Git alle beteiligten Entwickler die gesamte "version history" des Projekts auf all Ihren Ger\"aten, statt nur die aktuellste Version, welche sie Lokal gespeichert haben. User haben jederzeit Zugriff auf alle Versionen aller Dateien im Git-Repository. Mehrere Entwickler k\"onnen gleichzeitig an einem Projekt arbeiten, ohne sich gegenseitig zu st\"oren, und haben keine Angst, die von einem Kollegen vorgenommenen \"Anderungen zu verlieren. In Git sind die M\"oglichkeiten der Zusammenarbeit unbegrenzt. Git ist gratis und open-source. $\newline$
 Github ist ein Remote Server f\"ur Git Projekte, welcher gleichzeitig ein Community Hub f\"ur Entwickler ist. Auf Github k\"onnen Repositories mit einem grafischen web Interface bearbeitet werden, und Entwickler k\"onnen sich \"uber Projekte informieren und teilnehmen.
@@ -753,15 +780,15 @@ Mit den Projektboards auf GitHub k\"onnen Softwareprojekte organisiert und Aspek
 Notizen und Issues k\"onnen Bugs, Features, Aufgabenerinnerungen oder Tasks welche in der Planungsphase anfallen, m\"ussen daher nicht direkt mit der Codebase zu tun haben. Neben Repository-weiten Projektboards gibt es auch Organisations-weite Projektboards, welche Probleme und Anfragen von allen Repositories beinhalten, die zu einer Organisation geh\"ort.
 
 \subsection{Issues}
-W\"ahrend dem Projekt und insbesondere w\"ahrend der Projektplanungsphase werden Issues erfasst, welche geplante Schritte, Funktionen oder Arbeitsschritte beschreiben. Issues sind in die Kategorien "To Do", "In Progress", "Ready to Review" und "Done and Reviewed" unterteilt. Issues können während der Entwicklung mehrmals Ihre Kategorie wechseln, zum Beispiel bei einem Review wieder in die Kategorie "To Do" eingeteilt werden. Issues haben einen "Label", welche sie einer Gruppierung wie "Bug", "Must Have" oder "Dokumentation" zuordnen. $\newline$
-Issues sind auch einem Meilenstein zugeordnet, damit in der Projektübersicht ersichtlich ist, welche Meilensteine abgeschlossen oder "overdue" sind.
+W\"ahrend dem Projekt und insbesondere w\"ahrend der Projektplanungsphase werden Issues erfasst, welche geplante Schritte, Funktionen oder Arbeitsschritte beschreiben. Issues sind in die Kategorien "To Do", "In Progress", "Ready to Review" und "Done and Reviewed" unterteilt. Issues k\"onnen w\"ahrend der Entwicklung mehrmals Ihre Kategorie wechseln, zum Beispiel bei einem Review wieder in die Kategorie "To Do" eingeteilt werden. Issues haben einen "Label", welche sie einer Gruppierung wie "Bug", "Must Have" oder "Dokumentation" zuordnen. $\newline$
+Issues sind auch einem Meilenstein zugeordnet, damit in der Projekt\"ubersicht ersichtlich ist, welche Meilensteine abgeschlossen oder "overdue" sind.
 
 \subsection{Releases}
 Als Release wird das Deployment der Webapp auf den Produktions Server bezeichnet. Grunds\"atzlich wird die Webapp auf einem Lokalen Testserver entwickelt und getestet. Bei einem Release wird die Lauff\"ahige Webapp auf das Livesystem portiert und \"offentlichen Usern zug\"anglich gemacht. 
 
 
 \subsection{Zeitplan}
-Eine grobe Planung wurde Anfangs April festgehalten. Es wurde eine Meilensteinplanung sowie eine Aufwandschätzung und ein Projektplan als Gantt-Diagramm festgehalten. Issues wurden am Anfang des Projekt bereits einige definiert, wurden jedoch laufend im GitHub Projektboard auf dem neusten Stand gehalten.
+Eine grobe Planung wurde Anfangs April festgehalten. Es wurde eine Meilensteinplanung sowie eine Aufwandsch\"atzung und ein Projektplan als Gantt-Diagramm festgehalten. Issues wurden am Anfang des Projekt bereits einige definiert, wurden jedoch laufend im GitHub Projektboard auf dem neusten Stand gehalten.
 
 
 \subsection{Risiken}
@@ -774,8 +801,8 @@ Eine grobe Planung wurde Anfangs April festgehalten. Es wurde eine Meilensteinpl
 Beschreibung                     & \multicolumn{4}{l|}{Wirkt sich negativ auf Design und Programmcode aus.}                                                                                                                                                                                                                                      \\ \hline
 Schadenspotential                & \multicolumn{4}{l|}{30h}                                                                                                                                                                                                                                                                                      \\ \hline
 Eintrittswahrscheindlichkeit     & \multicolumn{4}{l|}{80\%}                                                                                                                                                                                                                                                                                     \\ \hline
-Auswirkung                       & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}VueJS wird als Frontend Framework eingesetzt. Es Umfasst die \\ ganze visuelle Darstellung der Webapplikation und ist dafür \\ zuständig, dass die Navigation und Aufruf der API Requests \\ korrekt ausgeführt wird.\end{tabular}}                            \\ \hline
-Vorbeugung                       & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}Vue kann an vielen Orten eingesetzt werden um visuelle oder \\ funktionelle Anforderungen zu übernehmen. Mittels JavaScript \\ Libraries wie Vuetify kann bei der visuellen Darstellung auf \\ Vorgefertigte Komponenten zurückgegriffen werden.\end{tabular}} \\ \hline
+Auswirkung                       & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}VueJS wird als Frontend Framework eingesetzt. Es Umfasst die \\ ganze visuelle Darstellung der Webapplikation und ist daf\"ur \\ zust\"andig, dass die Navigation und Aufruf der API Requests \\ korrekt ausgef\"uhrt wird.\end{tabular}}                            \\ \hline
+Vorbeugung                       & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}Vue kann an vielen Orten eingesetzt werden um visuelle oder \\ funktionelle Anforderungen zu \"ubernehmen. Mittels JavaScript \\ Libraries wie Vuetify kann bei der visuellen Darstellung auf \\ Vorgefertigte Komponenten zur\"uckgegriffen werden.\end{tabular}} \\ \hline
 \end{tabular}
 \caption{VueJS Risiken}
 \label{my-label}
@@ -790,8 +817,8 @@ Vorbeugung                       & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{
 Beschreibung                      & \multicolumn{4}{l|}{Wirkt sich negativ auf Performance und Security aus}                                                                                                                                                                                                                                                                                                                                                                                          \\ \hline
 Schadenspotential                 & \multicolumn{4}{l|}{20h}                                                                                                                                                                                                                                                                                                                                                                                                                                          \\ \hline
 Eintrittswahrscheindlichkeit      & \multicolumn{4}{l|}{80\%}                                                                                                                                                                                                                                                                                                                                                                                                                                         \\ \hline
-Auswirkung                        & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}Das Django-Backend basiert auf Python. Das Frontend fragt\\ Informationen zu Login und Benutzerflächen beim Backend\\ ab. Rest-Schnittstellen und Serializer werden vom Backend\\ bereitgestellt und müssen korrekt funktionieren, damit keine \\ Sicherheitslücken entstehen. Bei einer falschen Konfiguration\\ des Backends können auch geschwindigkeitsrelevante Probleme\\ beim Frontend auftreten.\end{tabular}} \\ \hline
-Vorbeugung                        & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}Python Pakete verwenden, welche die Authorisierung\\ von Usern korrekt ausführen und die geschwindigkeitsrelevante\\ API Abfragen in realen Umgebungen testen und ggf. \\ verbessern. Auf Tutorial und Guides setzen um das API\\ zu erstellen.\end{tabular}}                                                                                                                                                         \\ \hline
+Auswirkung                        & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}Das Django-Backend basiert auf Python. Das Frontend fragt\\ Informationen zu Login und Benutzerfl\"achen beim Backend\\ ab. Rest-Schnittstellen und Serializer werden vom Backend\\ bereitgestellt und m\"ussen korrekt funktionieren, damit keine \\ Sicherheitsl\"ucken entstehen. Bei einer falschen Konfiguration\\ des Backends k\"onnen auch geschwindigkeitsrelevante Probleme\\ beim Frontend auftreten.\end{tabular}} \\ \hline
+Vorbeugung                        & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}Python Pakete verwenden, welche die Authorisierung\\ von Usern korrekt ausf\"uhren und die geschwindigkeitsrelevante\\ API Abfragen in realen Umgebungen testen und ggf. \\ verbessern. Auf Tutorial und Guides setzen um das API\\ zu erstellen.\end{tabular}}                                                                                                                                                         \\ \hline
 \end{tabular}
 \caption{Django / Python Risiko}
 \label{my-label}
@@ -803,11 +830,11 @@ Vorbeugung                        & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@
 \begin{tabular}{|l|l|l|l|l|}
 \hline
 \multicolumn{5}{|l|}{R03: Fehlende Erfahrung mit Leaflet \& Leaflet Editable}                                                                                                                                                                                                                                                                                                                                                                              \\ \hline
-Beschreibung                         & \multicolumn{4}{l|}{Wirkt sich negativ auf Usability und Funktionalität aus}                                                                                                                                                                                                                                                                                                                                        \\ \hline
+Beschreibung                         & \multicolumn{4}{l|}{Wirkt sich negativ auf Usability und Funktionalit\"at aus}                                                                                                                                                                                                                                                                                                                                        \\ \hline
 Schadenspotential                    & \multicolumn{4}{l|}{30h}                                                                                                                                                                                                                                                                                                                                                                                            \\ \hline
 Eintrittswahrscheindlichkeit         & \multicolumn{4}{l|}{70\%}                                                                                                                                                                                                                                                                                                                                                                                           \\ \hline
-Auswirkung                           & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}Ein Grossteil der User-Interaktion findet beim Frontend\\ auf dem Map Objekt statt. Das Erstellen, bzw. Bearbeiten\\ von Benutzerflächen wird von Leaflet Editable bereitgestellt,\\ muss jedoch korrekt implementiert werden, damit die\\ Zusammenarbeit mit dem Backend korrekt funktioniert.\end{tabular}}                                                        \\ \hline
-Vorbeugung                           & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}Leaflet Beispiele verwenden um Benutzerflächen und \\ GeoJSON Layer korrekt darzustellen. \\ Leaflet-editable Code korrekt implementieren damit beim \\ Aufruf von API Abfragen keine Fehler passieren.\\ Bestehende Features testen bevor neue Features \\ implementiert werden. Codebase oft Refaktorisieren.\\ Zusammenarbeit mit VueJS überprüfen.\end{tabular}} \\ \hline
+Auswirkung                           & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}Ein Grossteil der User-Interaktion findet beim Frontend\\ auf dem Map Objekt statt. Das Erstellen, bzw. Bearbeiten\\ von Benutzerfl\"achen wird von Leaflet Editable bereitgestellt,\\ muss jedoch korrekt implementiert werden, damit die\\ Zusammenarbeit mit dem Backend korrekt funktioniert.\end{tabular}}                                                        \\ \hline
+Vorbeugung                           & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}Leaflet Beispiele verwenden um Benutzerfl\"achen und \\ GeoJSON Layer korrekt darzustellen. \\ Leaflet-editable Code korrekt implementieren damit beim \\ Aufruf von API Abfragen keine Fehler passieren.\\ Bestehende Features testen bevor neue Features \\ implementiert werden. Codebase oft Refaktorisieren.\\ Zusammenarbeit mit VueJS \"uberpr\"ufen.\end{tabular}} \\ \hline
 \end{tabular}
 \caption{Risiko Leaflet & Leaflet-editable}
 \label{my-label}
@@ -817,21 +844,22 @@ Vorbeugung                           & \multicolumn{4}{l|}{\begin{tabular}[c]{@{
 \centering
 \begin{tabular}{|l|l|l|l|l|}
 \hline
-\multicolumn{5}{|l|}{R04: Leistung von mobilen Geräten schwächer}                                                                                                                                                                                                                                                                                                               \\ \hline
+\multicolumn{5}{|l|}{R04: Leistung von mobilen Ger\"aten schw\"acher}                                                                                                                                                                                                                                                                                                               \\ \hline
 Beschreibung                      & \multicolumn{4}{l|}{Wirkt sich negativ auf Usability aus}                                                                                                                                                                                                                                                                                   \\ \hline
 Schadenspotential                 & \multicolumn{4}{l|}{15h}                                                                                                                                                                                                                                                                                                                    \\ \hline
 Eintrittswahrscheindlichkeit      & \multicolumn{4}{l|}{80\%}                                                                                                                                                                                                                                                                                                                   \\ \hline
-Auswirkung                        & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}Mobile Geräte haben Schwierigkeiten viele Objekte\\ auf der Leaflet Map darzustellen. Waldstandortsflächen\\ des Vegetationslayers können das Gerät überfordern,\\ auch wenn die Darstellung und Usability bei\\ Desktopgeräten gewährleistet ist.\end{tabular}}                             \\ \hline
-Vorbeugung                        & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}Anzahl an Objekten, welche auf der Leaflet Map \\ dargestellt werden reduzieren. Flächen welche nicht\\ im Kartenausschnitt sichtbar sind nicht laden um\\ das Mobile Gerät nicht zu überfordern.\\ Komplexität (Genauigkeit) der Polygone des \\ Vegetationslayers reduzieren\end{tabular}} \\ \hline
+Auswirkung                        & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}Mobile Ger\"ate haben Schwierigkeiten viele Objekte\\ auf der Leaflet Map darzustellen. Waldstandortsfl\"achen\\ des Vegetationslayers k\"onnen das Ger\"at \"uberfordern,\\ auch wenn die Darstellung und Usability bei\\ Desktopger\"aten gew\"ahrleistet ist.\end{tabular}}                             \\ \hline
+Vorbeugung                        & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}Anzahl an Objekten, welche auf der Leaflet Map \\ dargestellt werden reduzieren. Fl\"achen welche nicht\\ im Kartenausschnitt sichtbar sind nicht laden um\\ das Mobile Ger\"at nicht zu \"uberfordern.\\ Komplexit\"at (Genauigkeit) der Polygone des \\ Vegetationslayers reduzieren\end{tabular}} \\ \hline
 \end{tabular}
-\caption{Risiko Leistung Mobile Geräte}
+\caption{Risiko Leistung Mobile Ger\"ate}
 \label{my-label}
 \end{table}
 
 \subsection{Zusammenfassung Risiken}
-Aus den Risiken gehen Schadenspotentiale hervor, welche in der Projektplanung berücksichtigt werden müssen. Da die Risiken aus Technologien hervorgehen, ist vorhersehbar in welchem Projektabschnitt sie auftreten könnten. Neben einer Reservezeit werden diese Risiken vorallem dazu verwendet den jeweiligen Meilensteinen mehr Zeit zuzurechnen. $\newline$
+Aus den Risiken gehen Schadenspotentiale hervor, welche in der Projektplanung ber\"ucksichtigt werden m\"ussen. Da die Risiken aus Technologien hervorgehen, ist vorhersehbar in welchem Projektabschnitt sie auftreten k\"onnten. Neben einer Reservezeit werden diese Risiken vorallem dazu verwendet den jeweiligen Meilensteinen mehr Zeit zuzurechnen. $\newline$
 Risiko 1: $\newline$
 30h * 0.8 = 24h$\newline$
+$\newline$
 Risiko 2:$\newline$
 20h * 0.8 = 16h$\newline$
 $\newline$
@@ -843,12 +871,12 @@ Risiko 4:$\newline$
 $\newline$
 Total: 73 Stunden$\newline$
 $\newline$
-Um diesen Risiken vorzubeugen wurde vor den Sprints abgeklärt und getestet wie relevant die Risiken bei der Implementation sein werden. Falls die Risiken bei der Abklärung auftauchen wurden die Sprints in kleinere Teile zerlegt bzw. mehr Zeit eingeplant.
+Um diesen Risiken vorzubeugen wurde vor den Sprints abgekl\"art und getestet wie relevant die Risiken bei der Implementation sein werden. Falls die Risiken bei der Abkl\"arung auftauchen wurden die Sprints in kleinere Teile zerlegt bzw. mehr Zeit eingeplant.
 
 
 \section{Projektmonitoring}
 \subsection{Soll-Ist-Zeitvergleich}
-Die 180 geplanten Stunden seit 11.4. wurden auf 9 Wochen aufgeteilt, damit die Abgabe am 8.6. erfolgen kann. Dadurch ergibt sich einen durchschnittlichen Aufwand von 20 Stunden pro Woche. Tatsächlich gearbeitet wurden 238 Stunden (Durchschnittlich 26 Stunden pro Woche). Mehr Zeit kamen vor allem beim Deployment und der Entwicklung der Features auf. Die Risiken wurden korrekt abgeschätzt, wobei am meisten zusätzliche Zeit bei Django / Python und Leaflet Editable aufgewendet wurde.
+Die 180 geplanten Stunden seit 11.4. wurden auf 9 Wochen aufgeteilt, damit die Abgabe am 8.6. erfolgen kann. Dadurch ergibt sich einen durchschnittlichen Aufwand von 20 Stunden pro Woche. Tats\"achlich gearbeitet wurden 238 Stunden (Durchschnittlich 26 Stunden pro Woche). Mehr Zeit kamen vor allem beim Deployment und der Entwicklung der Features auf. Die Risiken wurden korrekt abgesch\"atzt, wobei am meisten zus\"atzliche Zeit bei Django / Python und Leaflet Editable aufgewendet wurde.
 \subsection{Code Statistics}
 Das Projekt umfasst 11954 Lines of Code. Analysiert wurde das lokale Projektfolder, ohne Node Modules, Dokumentation und statischen Files. Es wurde das Node Package Cloc verwendet um diese Codestatistik zu generieren. (Stand 6.6.2018)
 
@@ -866,7 +894,7 @@ Mit "manage.py migrate" kann die Datenbank auf den neusten Stand gebracht werden
 Die App kann im Browser unter der angezeigten Adresse des Vue-Servers aufgerufen werden. $\newline$
 $\newline$
 Alternativ kann das Projekt mit dem Befehl "docker-compose build" in Dockercontainern gebuildet und mit "docker-compose up" ausgef\"uhrt werden. $\newline$
-Das Projekt ist im Internet unter https://waldmeistermap.sifs0003.infs.ch/#/ deployt.
+Das Projekt ist im Internet unter \href{https://waldmeistermap.sifs0003.infs.ch/}{waldmeister-outdoors} deployt.
 
 \subsection{Tutorial, Handbuch}
 Registrierung: $\newline$
@@ -881,8 +909,22 @@ Fl\"ache Bearbeiten:$\newline$
 Um eine bereits erstellte Fl\"ache zu bearbeiten und zu ver\"andern muss die zu \"andernde Fl\"ache angew\"ahlt werden, w\"ahrend der User, welcher die Fl\"ache erstellt hat, eingeloggt ist. Nur der User, der die Benutzerfl\"ache erstellt hat, kann diese Ver\"andern oder Updaten. Im Bearbeitungsmodus kann der User die Eckpunkte des Polygons beliebig verschieben. Durch einen Klick auf die Schaltfl\"ache "Upd" (Update), \"offnet sich die Dialogbox, um der Benutzerfl\"ache einen neuen Namen zu geben, oder Ihren Zustand von \"offentlich oder privat zu wechseln.
 $\newline$
 $\newline$
-Fläche Löschen: $\newline$
-Im eingeloggten Zustand auf eine mit diesem User erstellte Benutzerfläche klicken. Durch Klick auf den Button "Del" am linken Rand der Map wird die ausgewählte Fläche gelöscht.
+Fl\"ache L\"oschen: $\newline$
+Im eingeloggten Zustand auf eine mit diesem User erstellte Benutzerfl\"ache klicken. Durch Klick auf den Button "Del" am linken Rand der Map wird die ausgew\"ahlte Fl\"ache gel\"oscht.
+
+\subsection{Projektrelevante Links}
+Projekt Wiki$\newline$
+\href{https://wiki.hsr.ch/StefanKeller/wiki.cgi?PA2_FS18_Schmider_Aufgabenstellung_2 }{Projekt Wiki HSR}$\newline$$\newline$
+Github und Github Projekt $\newline$
+\href{https://github.com/dschmide/Waldmeister}{GitHub} $\newline$
+\href{https://github.com/dschmide/Waldmeister/projects/1}{Projektseite} $\newline$ $\newline$
+Gis-Browser Kanton Z\"urich $\newline$
+\href{https://maps.zh.ch?topic=WaldVKZH&scale=18634&x=2706590.13&y=1251180.39&srid=2056}{Gis Browser}$\newline$ $\newline$
+Giswiki Koordinatensystem$\newline$
+\href{https://giswiki.hsr.ch/Koordinatensystem}{Koordinatensystem} $\newline$ $\newline$
+Native Waldmeister App f\"ur Android und iOS Ger\"ate $\newline$
+\href{https://itunes.apple.com/bn/app/waldmeister/id825753160?mt=8}{Appstore} $\newline$
+\href{https://play.google.com/store/apps/details?id=bgu\_schmider.waldmeister}{Playstore} $\newline
 
 
 
