@@ -67,14 +67,16 @@ Die Website ist darauf ausgelegt, dass sie im Chrome Browser verwendet wird, da 
 Als Testger\"ate werden ein Apple iPad und iPhone verwendet, ein Android Galaxy S5 und mehrere Macbook Pro und Air Laptops (ca. Baujahr 2010 - 2016). $\newline$
 
 \subsection{Vorgehen, Aufbau der Arbeit}
-Es wurde eine Full-Stack Webapp aufbauend aus Frontend, Backend und Datenbank erstellt. Nach der Festlegung des Frontends wurde ein geeignetes Backend eruiert und die Datenbankanbindung für das Backend festgelegt. Als Frontend Framework wurde VueJS zur Erstellung von Single-Page-Applikationen gewählt. Als Backend kommt Django zum Einsatz, welches sich eignet um API Abfragen für das Frontend bereitzustellen. PostgreSQL wurde als Datenbank gewählt. $\newline$
-
-Vorgehen: Was wurde gemacht? In welchen Teilschritten? Risiken der Arbeit? Wer war involviert (Durchführung, Entscheide usw.)? Details in anderen Kapiteln.Einführung in die Problem- und Aufgabenstellung. Übersicht über die übrigen Teile der Abgabe.
+Es wurde eine Full-Stack Webapp aufbauend aus Frontend, Backend und Datenbank erstellt. Nach der Festlegung des Frontends wurde ein geeignetes Backend eruiert und die Datenbankanbindung für das Backend festgelegt. $\newline$
+Als Frontend Framework wurde VueJS zur Erstellung von Single-Page-Applikationen gewählt. Als Backend kommt Django zum Einsatz, welches sich eignet um API Abfragen für das Frontend bereitzustellen. PostgreSQL wurde als Datenbank gewählt. $\newline$
+Als erstes wurde das Loginsystem erstellt und im Frontend die verschiedenen Single-File-Komponenten entwickelt, damit User einen Account Registrieren und sich gegenüber dem Backend authentifizieren können. $\newline$
+Nachdem die Map Komponente erstellt wurde, konnten per API Abfragen die Benutzerflächen geladen werden, welche im eingeloggtem bzw. nicht-eingeloggtem Zustand angezeigt werden. $\newline$
+Danach wurden die Features implementiert und das Docker-Deployment vervollständigt.
 
 \pagebreak
 \section{Stand der Technik}
 \subsection{GIS-Browser}
-Ein GIS-Browser, wie er von den verschiedenen Kanton in der Schweiz eingesetzt wird, ist ein read-only Archiv, bestehend aus \"offentlich zug\"anglichen Daten. 
+Ein GIS-Browser, wie er von den verschiedenen Kanton in der Schweiz eingesetzt wird, ist ein read-only Archiv, bestehend aus \"offentlich zug\"anglichen Daten. Es können verschidene Overlays ausgewählt werden, welche auf der Karte dargestellt werden, darunter auch die Vegetationskundliche Karte, auf welche in der Waldmeister-Outdoors Applikation zurückgegriffen wird. 
 
 \subsection{Collector for ArcGIS}
 Technologien von ESRI (Environmental Systems Research Institute) und insbesondere ArcGIS online (GIS; Geografisches Informationssystem) wurden recherchiert, um einen funktionierenden Prototypen mit offline-caching zu erstellen. Hintergrundkarten (in Form eines Tile-Layers) k\"onnen auf dem Ger\"at zwischengespeichert werden. Die Erstellung von editierbaren Vektorlayern funktioniert auch im offline Betrieb und k\"onnen sp\"ater, sobald wieder eine stabile Internetverbindung besteht, synchronisiert werden. Dieses Verhalten kann bei einer Webapp durch Service-Worker rekreiert werden.$\newline$
@@ -705,20 +707,12 @@ Das Frontend von Waldmeister-Outdoors kann vorallem innerhalb der Map Komponente
 \section{Projektmanagement}
 \subsection{Entwicklungswerkzeuge}
 Als Texteditor, bzw. IDE wurde Sublime eingesetzt welches Linter für JavaScript und Python unterstützt. Sublime ist open-source und stützt sich auf viele Pakete, welche im integrierten Package-Manager heruntergeladen und konfiguriert werden können. $\newline$
-GitHub wurde Verwendet um eine Versionierung des Programmcodes zu ermöglichen. Issues werden auf GitHub erstellt
+GitHub wurde Verwendet um eine Versionierung des Programmcodes zu ermöglichen. Issues werden auf GitHub erstellt.
 
 \subsection{Prozessmodell}
 Scrum wurde eingesetzt um bei der Entwicklung des Projekts agil vorzugehen. Scrum und agile Development erhöhen die Transparenz während der Entwicklungszeit und ermöglichen dem Kunden oder Auftragsgeber flexibler Anpassungen am Projekt vorzunehmen.
 In der Entwicklungszeit wurde Scrum in sehr vereinfachter Form umgesetzt. Sprints wurden in 1 oder 2 wöchentlichen Abständen Reviewt und die Fortschritte (Was wurde erreicht, wo gab es Probleme, was sind die nächsten Schritte) wurden per Mail dokumentiert. Beschlussprotokolle wurden auf das HSR Wiki eingetragen. $\newline$
 Der Product Backlog wurde auf GitHub auf einem Projektboard nachgeführt, auf welchem alle projektrelevanten Issues aufgeführt sind.
-
-Docker-Deployment bei Sprintende (als Testsystem ?)
-
-
-\subsubsection{GitHub}
-
-\subsection{Zeitplan}
-Eine grobe Planung wurde Anfangs April festgehalten. Es wurde eine Meilensteinplanung sowie eine Aufwandschätzung und ein Projektplan als Gantt-Diagramm festgehalten. Issues wurden am Anfang des Projekt bereits einige definiert, wurden jedoch laufend im GitHub Projektboard auf dem neusten Stand gehalten.
 
 \subsection{Meilensteinplanung}
 Meilensteine beschreiben Wichtige geplante Daten im Projektablauf. Im Projekt "Waldmeister-Outdoors" wurden folgende Meilensteine definiert: $\newline$
@@ -743,12 +737,31 @@ $\newline$
 \end{figure}
 \pagebreak
 
+\subsection{Git, GitHub}
+Git wurde zur Versionenkontrolle des Projekts verwendet. Versionenkontrolle erlaubt es, verschiedene Versionen eines Projekts zu haben und zeigt die \"Anderungen, welche im Code \"uber Zeit gemacht wurden. Git erlaubt es auch, \"Anderungen r\"uckg\"angig zu machen und ist vorallem bei gr\"osseren Projekten von unerl\"asslichem Nutzen. Bei Git, anstelle eines zentralen Servers, welcher die aktuellste Version hostet, haben bei Git alle beteiligten Entwickler die gesamte "version history" des Projekts auf all Ihren Ger\"aten, statt nur die aktuellste Version, welche sie Lokal gespeichert haben. User haben jederzeit Zugriff auf alle Versionen aller Dateien im Git-Repository. Mehrere Entwickler k\"onnen gleichzeitig an einem Projekt arbeiten, ohne sich gegenseitig zu st\"oren, und haben keine Angst, die von einem Kollegen vorgenommenen \"Anderungen zu verlieren. In Git sind die M\"oglichkeiten der Zusammenarbeit unbegrenzt. Git ist gratis und open-source. $\newline$
+Github ist ein Remote Server f\"ur Git Projekte, welcher gleichzeitig ein Community Hub f\"ur Entwickler ist. Auf Github k\"onnen Repositories mit einem grafischen web Interface bearbeitet werden, und Entwickler k\"onnen sich \"uber Projekte informieren und teilnehmen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{github}
+    \caption{Git und Github Operationen}
+    \label{fig:mesh1}
+\end{figure}
+
+\subsection{Projektboards}
+Mit den Projektboards auf GitHub k\"onnen Softwareprojekte organisiert und Aspekte priorisiert werden. Projektboards k\"onnen f\"ur spezifische Funktionen, umfassende Roadmaps oder sogar Release-Checklisten erstellt werden. Projektboards bestehen aus Themen, Pull-Requests und Notizen, die in Spalten als Karten kategorisiert werden, zum Beispiel "To Do", "In Progress", "Ready to Review" und "Done". Notizen und Issues k\"onnen innerhalb einer Karte dargestellt werden und wechseln w\"ahrend ihrer Entwicklung die Karten / Spalten bis sie in der Karte "Done" bleiben. Dies kann sogar automatisiert werden. \cite{githubauto} $\newline$ 
+Notizen und Issues k\"onnen Bugs, Features, Aufgabenerinnerungen oder Tasks welche in der Planungsphase anfallen, m\"ussen daher nicht direkt mit der Codebase zu tun haben. Neben Repository-weiten Projektboards gibt es auch Organisations-weite Projektboards, welche Probleme und Anfragen von allen Repositories beinhalten, die zu einer Organisation geh\"ort.
+
 \subsection{Issues}
 W\"ahrend dem Projekt und insbesondere w\"ahrend der Projektplanungsphase werden Issues erfasst, welche geplante Schritte, Funktionen oder Arbeitsschritte beschreiben. Issues sind in die Kategorien "To Do", "In Progress", "Ready to Review" und "Done and Reviewed" unterteilt. Issues können während der Entwicklung mehrmals Ihre Kategorie wechseln, zum Beispiel bei einem Review wieder in die Kategorie "To Do" eingeteilt werden. Issues haben einen "Label", welche sie einer Gruppierung wie "Bug", "Must Have" oder "Dokumentation" zuordnen. $\newline$
-Issues sind auch einem Meilenstein zugeordnet, damit sie 
+Issues sind auch einem Meilenstein zugeordnet, damit in der Projektübersicht ersichtlich ist, welche Meilensteine abgeschlossen oder "overdue" sind.
 
 \subsection{Releases}
 Als Release wird das Deployment der Webapp auf den Produktions Server bezeichnet. Grunds\"atzlich wird die Webapp auf einem Lokalen Testserver entwickelt und getestet. Bei einem Release wird die Lauff\"ahige Webapp auf das Livesystem portiert und \"offentlichen Usern zug\"anglich gemacht. 
+
+
+\subsection{Zeitplan}
+Eine grobe Planung wurde Anfangs April festgehalten. Es wurde eine Meilensteinplanung sowie eine Aufwandschätzung und ein Projektplan als Gantt-Diagramm festgehalten. Issues wurden am Anfang des Projekt bereits einige definiert, wurden jedoch laufend im GitHub Projektboard auf dem neusten Stand gehalten.
 
 
 \subsection{Risiken}
@@ -837,7 +850,7 @@ Um diesen Risiken vorzubeugen wurde vor den Sprints abgeklärt und getestet wie r
 \subsection{Soll-Ist-Zeitvergleich}
 Die 180 geplanten Stunden seit 11.4. wurden auf 9 Wochen aufgeteilt, damit die Abgabe am 8.6. erfolgen kann. Dadurch ergibt sich einen durchschnittlichen Aufwand von 20 Stunden pro Woche. Tatsächlich gearbeitet wurden 238 Stunden (Durchschnittlich 26 Stunden pro Woche). Mehr Zeit kamen vor allem beim Deployment und der Entwicklung der Features auf. Die Risiken wurden korrekt abgeschätzt, wobei am meisten zusätzliche Zeit bei Django / Python und Leaflet Editable aufgewendet wurde.
 \subsection{Code Statistics}
-
+Das Projekt umfasst 11954 Lines of Code. Analysiert wurde das lokale Projektfolder, ohne Node Modules, Dokumentation und statischen Files. Es wurde das Node Package Cloc verwendet um diese Codestatistik zu generieren. (Stand 6.6.2018)
 
 \section{Softwaredokumentation}
 \subsection{Installation}
@@ -851,7 +864,7 @@ Github Repo klonen $\newline$ $\newline$
 Damit Django die PostgreSQL Datenbank verwenden kann, m\"ussen die Werte in der settings.py angepasst werden, oder eine Datenbank mit dem Namen dschwaldmeister, user Postgres und Port 5432 erstellt werden. Von PostgreSQL soll auch die Extension postgis erzeugt werden. $\newline$
 Mit "manage.py migrate" kann die Datenbank auf den neusten Stand gebracht werden, damit sie verwendet werden kann. $\newline$
 Die App kann im Browser unter der angezeigten Adresse des Vue-Servers aufgerufen werden. $\newline$
-
+$\newline$
 Alternativ kann das Projekt mit dem Befehl "docker-compose build" in Dockercontainern gebuildet und mit "docker-compose up" ausgef\"uhrt werden. $\newline$
 Das Projekt ist im Internet unter https://waldmeistermap.sifs0003.infs.ch/#/ deployt.
 
@@ -859,11 +872,14 @@ Das Projekt ist im Internet unter https://waldmeistermap.sifs0003.infs.ch/#/ dep
 Registrierung: $\newline$
 Um einen neuen Benutzer zu registrieren, muss ein bereits eingeloggter User sich ausloggen. Danach kann mit der Schaltfl\"ache "Register" ein neuer Account erstellt werden. Username und Passwort werden ben\"otigt, Email ist optional und kann leer gelassen werden.
 $\newline$
+$\newline$
 Fl\"ache Erstellen:$\newline$
 Ein eingeloggter User hat die M\"oglichkeit eine Neue Benutzerfl\"ache zu erstellen. Um dies zu tun, muss er auf die Schaltfl\"ache "Add" auf der linken Seite, unterhalb der Zoom Buttons klicken. Im Editiermodus kann er durch Klicks auf die Map neue Eckpunkte zu einem Polygon hinzuf\"ugen. Er kann die Fl\"ache schliessen, in dem er auf den ersten erstellten Eckpunkt klickt. Es \"offnet sich eine Dialogbox, in welchem der User der erstellten Fl\"ache einen Namen geben kann, welcher auf der Map erscheint. In dieser Dialogbox kann der User auch entscheiden, ob die Fl\"ache \"offentlich (f\"ur alle sichtbar) oder privat dargestellt werden soll (nur f\"ur den User sichtbar, welcher die Fl\"ache erstellt hat).
 $\newline$
+$\newline$
 Fl\"ache Bearbeiten:$\newline$
 Um eine bereits erstellte Fl\"ache zu bearbeiten und zu ver\"andern muss die zu \"andernde Fl\"ache angew\"ahlt werden, w\"ahrend der User, welcher die Fl\"ache erstellt hat, eingeloggt ist. Nur der User, der die Benutzerfl\"ache erstellt hat, kann diese Ver\"andern oder Updaten. Im Bearbeitungsmodus kann der User die Eckpunkte des Polygons beliebig verschieben. Durch einen Klick auf die Schaltfl\"ache "Upd" (Update), \"offnet sich die Dialogbox, um der Benutzerfl\"ache einen neuen Namen zu geben, oder Ihren Zustand von \"offentlich oder privat zu wechseln.
+$\newline$
 $\newline$
 Fläche Löschen: $\newline$
 Im eingeloggten Zustand auf eine mit diesem User erstellte Benutzerfläche klicken. Durch Klick auf den Button "Del" am linken Rand der Map wird die ausgewählte Fläche gelöscht.
