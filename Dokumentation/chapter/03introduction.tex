@@ -4,7 +4,7 @@
 \section{Problemstellung}
 Je nach Untergrund, Bodeneigenschaften, Gel\"ande sowie Klima gedeihen in der Schweiz unterschiedliche Typen von W\"aldern. Seit einigen Jahrzehnten werden diese Typen von Experten erhoben und kartiert. Es wurden dabei verschiedene typisierte Waldstandorte festgelegt. Aktuell werden Karten, die im Auftrag der Kantone von Experten angefertigt wurden, nur in grossen Intervallen revidiert, wobei sie oft auch nicht fl\"achendeckend vorhanden sind (z.B. in den Kantonen GR, VS, BE).
 Einer der Gr\"unde daf\"ur sind u.a. die hohen Kosten, die eine Analyse im Feld mit sich bringt.
-Zudem ist die Erfassung und Nachf\"uhrung der Karten gepr\"agt von analogen Vorg\"angen, da die vorhandenen
+Zudem ist die Erfassung und Nachf\"uhrung dieser Vegetationskundlichen Karten gepr\"agt von analogen Vorg\"angen, da die vorhandenen
 technischen Ger\"ate und Programme f\"ur den Einsatz im Feld ungeeignet sind.
 Daher muss von Hand Niedergeschriebenes im B\"uro oder von staatlichen Institutionen digitalisiert werden, bevor es an den
 Arbeitgeber geschickt werden und sp\"ater auf kantonal isolierten Plattformen publiziert werden kann.
@@ -13,7 +13,7 @@ Arbeitgeber geschickt werden und sp\"ater auf kantonal isolierten Plattformen pu
 Die Erfassung und Publikation von Waldstandorten sollte vereinfacht und beschleunigt werden. Dabei
 sollen digitale Technologien eingesetzt werden wie Smartphone, GPS und Internet. Diese neuen
 Instrumente sollen entsprechend geschulten Nutzern die Erfassung von Waldstandorten erm\"oglichen sowie \"offentliche und private Informationen in Form von Fl\"achen und Punkten. Auf einer Basis - Karte wird mittels GPS die eigene
-Position angezeigt. Dar\"uber werden umliegende, bereits erfasste Waldstandorte, \"offentliche Fl\"achen anderer sowie die eigenen, privaten Fl\"achen dargestellt. Diese Fl\"achen k\"onnen Waldstandorte beschreiben oder aber zus\"atzliche Informationen \"uber den Standort beinhalten, z.B. eine speziell gekennzeichnete Beobachtungsfl\"ache.
+Position angezeigt. Dar\"uber werden umliegende, bereits erfasste Waldstandorte, \"offentliche Benutzerfl\"achen anderer sowie die eigenen, privaten Benutzerfl\"achen dargestellt. Diese Benutzerfl\"achen k\"onnen Waldstandorte beschreiben oder aber zus\"atzliche Informationen \"uber den Standort beinhalten, z.B. eine speziell gekennzeichnete Beobachtungsfl\"ache.
 
 \begin{figure}[H]
 \centering
@@ -30,8 +30,8 @@ ist, wird dar\"uber hinaus der Informationsaustausch unter allen Beteiligten erl
 
 \begin{figure}[H]
 \centering
-    \includegraphics[width=0.3\textwidth]{esri-Waldvegetation2}
-    \caption{ESRI Webapp Collector for ArcGIS}
+    \includegraphics[width=0.4\textwidth]{collectorapp}
+    \caption{Collector App mit ArcGIS Map}
     \label{fig:es1}
 \end{figure}
 
@@ -86,8 +86,8 @@ Die Map und deren Inhalt wird im online Tool \href{https://geodata4edu.hsr.ch/}{
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{esriprototyp}
-    \caption{Prototyp mit ArcGIS online}
+    \includegraphics[width=0.5\textwidth]{collectorapp}
+    \caption{Collector for ArcGIS App (iOS)}
     \label{fig:mesh1}
 \end{figure}
 
@@ -118,7 +118,7 @@ Als Backend soll ein flexibles Framework, welches Micro-Services und API Abfrage
 PostgreSQL ist ein open-source Datenbank Management System. Es ist dank der PostGIS Erweiterung sehr gut geeignet um raumbezogene Daten (Geospacial Data), wie die Daten der Vegetationskundlichen Karte, zu storen und ab zu fragen.
 \subsection{JavaScript Libraries und Node Module}
 Leaflet editable $\newline$
-Damit die User neue Polygone, Punkte und Pfade erfassen k\"onnen, wird die Library "Leaflet editable" verwendet. Es erm\"oglicht, neue Objekte (zum Beispiel Polygone und PoIs) direkt auf der Leaflet Map zu zeichnen, oder bestehende Objekte zu editieren. $\newline$
+Damit die User neue Polygone, Punkte und Pfade erfassen k\"onnen, wird die Library "Leaflet editable" verwendet. Es erm\"oglicht, neue Objekte (zum Beispiel Polygone und PoIs) direkt auf der Leaflet Map zu zeichnen, oder bestehende Objekte zu editieren. $\newline$ $\newline$
 Vuetify $\newline$
 Vuetify ist ein Node Module welches als offzielle Material-Design-Extension von VueJS behandelt wird. Es stellt es viele UI - Komponenten bereit, welche in einer VueJS Applikation verwendet werden k\"onnen.  $\newline$
 $\newline$
@@ -131,6 +131,7 @@ Als IDE bzw. Texteditor wurde das Programm Sublime 2 verwendet, welches die beid
 \subsection{Deployment}
 Das Projekt soll auf einem HSR Server deployt werden, damit es per URL im Internet erreichbar ist.
 
+\pagebreak
 \section{Resultate}
 \subsection{Zielerreichung}
 User k\"onnen mittels der Webapp Waldmeister-Outdoors die Vegetationskundliche Karte erforschen und diese mit Ihrem momentanen Standort abgleichen. Dar\"uber hinaus k\"onnen sie, nachdem sie sich registriert haben, private und \"offentliche Benutzerfl\"achen auf einem mobilen Ger\"at erfassen und sie auf einem zentralen Server hinterlegen. Somit k\"onnen sie pers\"onliche Orte und Fl\"achen erstellen, welche f\"ur Sie im Arbeitsalltag relevant sind und sie zwischen verschiedenen Ger\"aten (Im Feld und im B\"uro) abrufen oder mit anderen Personen teilen. Erstellte Benutzerfl\"achen k\"onnen zu einem sp\"ateren Zeitpunkt oder von einem anderen Ger\"at aus editiert oder gel\"oscht werden.$\newline$
@@ -195,7 +196,7 @@ Die Waldvegetationsfl\"achen sind in der Datenbank als Modell bestehend aus Poly
     \label{fig:cd1}
 \end{figure}
 
-
+\pagebreak
 \section{Technologien}
 \subsection{Django}
 Als Server zur Verwaltung der User und der Daten, welche die User generieren und ben\"otigen, kommt Django zum Einsatz. Es ist ein Open-Source Webframework, welches das Python Gegenst\"uck zu Ruby-On-Rails darstellt. Im Kern folgt es dem Model-View-Controller Prinzip, obwohl es eine eigene Namensgebung verwendet. \cite{django1} In diesem Projekt verwendet Django eine PostgreSQL Datenbank um Daten persistent zu machen. Django wird ebenfalls dazu verwendet, um User einen Account zu geben, damit nur sie selbst Zugriff auf Ihre privaten Benutzerfl\"achen haben, oder um \"offentlich erstellte Benutzerfl\"achen mit anderen zu teilen. Zur Authentifizierung wird ein JWT eingesetzt. $\newline$
@@ -467,9 +468,21 @@ Die Mockups wurden vor der Implementation erstellt, um Screendesign und Layout k
 \subsection{Vue Komponenten}
 Die Applikation "Waldmeister - Outdoors" setzt sich aus den Komponenten Register, Login, About, der WaldmeisterMap und einem Page Header zusammen. Dar\"uber hinaus bildet die Komponente "App.vue" die Basis, um den Page Header und Router-View Komponenten zu laden. $\newline$
 
-\subsubsection{Vue Map Komponente}
-Die Komponente WaldmeisterMap ist die Vue Komponente, auf welcher die Leaflet Map und darauf die Layer Vegetationskarte (als geoJSON) und der Layer f\"ur die Benutzerfl\"achen (als Polygone) dargestellt werden. Das Leaflet Map Objekt beinhaltet auch die Kontrollbuttons, welche mit der Map assoziiert sind. Durch die Buttons 'Veg' und 'UAs' in der oberen linken Ecke der Map k\"onnen die GeoJSON bzw die Benutzerfl\"achen ein - und ausgeschaltet werden. Dadurch werden die Layer, auf welchen sich die Polygone befinden gecleart und alle erstellten Labels von der Map gel\"oscht. Bet\"atigt der User den Button noch einmal, werden sie erneut erstellt. Sie sind standardm\"assig eingeschaltet und werden daher auch erstellt, wenn das Map Objekt auf die Page gemountet wird (beim Laden der WaldmeisterMap Komponente). Damit Label und Polygone der verschiedenen Layer separat ein- und ausgeschaltet werden k\"onnen, werden sie zuerst in Gruppen unterteilt, bevor diese Gruppen auf die Map hinzugef\"ugt werden.$\newline$
-Oberhalb dieser zwei Buttons befindet sich der "Add" Button, welcher es dem User erm\"oglicht, eine neue Benutzerfl\"ache auf der Map einzutragen. Er kann, w\"ahrend er im Zeichnungsmodus ist, per click event dem Polygon einen neuen Eckpunkt anh\"angen. Klickt der User w\"ahrend des Zeichnungsmodus auf den ersten erstellten Eckpunkt, schliesst sich das Polygon und der User wird per Dialogbox aufgefordert, dem erstellten Objekt die ben\"otigten Attribute zuzuweisen (label, public). Dr\"uckt er in diesem Dialog auf "Save" wird die Fl\"ache an den Server geschickt und in der Datenbank gespeichert. $\newline$
+\subsubsection{WaldmeisterMap Komponente}
+Die Komponente WaldmeisterMap ist die Vue Komponente, auf welcher die Leaflet Map dargestellt wird. Auf der WaldmeisterMap befinden sich folgende Layer (erster Layer = unterste Ebene):
+$\newline$
+\begin{enumerate}
+\item Hintergrundkarte als Tile Layer
+\item Vegetationslayer
+\item Benutzerfl\"achen
+\end{enumerate}
+$\newline$
+Als Hintergrundkarte werden die map tiles von Stamen Design verwendet. $\newline$
+Auf dem Vegetationslayer werden alle Waldstandorte der Vegetationskundlichen Karte dargestellt. Die Daten der Vegetationskundlichen Karte wurden vom Kanton Z\"urich bezogen. Der Vegetationslayer ist ein read-only Layer und kann daher nicht bearbeitet werden. $\newline$
+Oberhalb des Vegetationslayer werden die Benutzerfl\"achen dargestellt. Alle Fl\"achen, welche von Benutzern mithilfe der Webapp erstellt wurden, befinden sich auf diesem Layer. Die Fl\"achen auf diesem Layer k\"onnen vom User, welcher die Benutzerfl\"ache erstellt hat, bearbeitet werden.
+Das Leaflet Map Objekt beinhaltet auch die Kontrollbuttons, welche mit der Map assoziiert sind. Durch die Buttons 'Veg' und 'UAs' in der oberen linken Ecke der Map k\"onnen die GeoJSON bzw die Benutzerfl\"achen ein - und ausgeschaltet werden. Dadurch werden die Layer, auf welchen sich die Polygone befinden gecleart und alle erstellten Labels von der Map gel\"oscht. Bet\"atigt der User den Button noch einmal, werden sie erneut erstellt. Sie sind standardm\"assig eingeschaltet und werden daher gezeichnet, wenn das Map Objekt auf die Page gemountet wird (beim Laden der WaldmeisterMap Komponente). Damit Label und Polygone der verschiedenen Layer separat ein- und ausgeschaltet werden k\"onnen, werden sie zuerst in Gruppen unterteilt, bevor diese Gruppen auf die Map hinzugef\"ugt werden.$\newline$
+Auf der linken Seite der Map  sich der "Add" Button, welcher es dem User erm\"oglicht, eine neue Benutzerfl\"ache auf der Map einzutragen. Er kann, w\"ahrend er im Zeichnungsmodus ist, per Klick auf der Map einem erzeugten Polygon weitere Eckpunkte anh\"angen. Klickt der User w\"ahrend des Zeichnungsmodus auf den ersten erstellten Eckpunkt, schliesst sich das Polygon. Der User wird per Dialogbox aufgefordert, dem erstellten Objekt die ben\"otigten Attribute zuzuweisen (label, public). Dr\"uckt er in diesem Dialog auf "Save" wird die Fl\"ache an den Server geschickt und in der Datenbank gespeichert. $\newline$
+Unterhalb des "Add" Buttons erscheinen bei Auswahl einer erstellten Benutzerfl\"ache die Buttons "Delete" und "Update". Sie erm\"oglichen das Bearbeiten oder L\"oschen der ausgew\"ahlten Benutzerfl\"ache, falls sie vom eingeloggten User erstellt wurde.
 
 \subsubsection{Registrierung und Login}
 Registrierung und Login wurden als separate Single-File-Komponenten aufgebaut, damit sie vom Vue-Router dargestellt werden k\"onnen. Sie beinhalten die Felder Username, Passwort und bei der Registrierung auch ein Email Feld, welches optional ist. Bei der erfolgreichen Registrierung wird von Djoser ein Benutzer angelegt und sein Passwort im verschl\"usselten Zustand hinterlegt. Loggt sich der Benutzer mit den korrekten Daten ein, erh\"alt er vom Server ein JWT (JSON Web Token), welches von Djoser basierend auf dem hinterlegten Accounts erstellt wird. Der Vue-Client Server hinterlegt dieses Token im Vue Store, damit es in verschiedenen Komponenten verwendet werden kann. Um sich dem Server gegen\"uber zu authentifizieren wird es bei einem Request mitgeschickt. Loggt er sich aus, wird dieses Token aus dem Store gel\"oscht. Der User kann sich erneut oder unter einem anderen Benutzernamen und Passwort einloggen. $\newline$
@@ -600,7 +613,7 @@ Beim Linten von Code wird dieser auf gewisse Qualit\"atskontrollen oder Linting-
 Eslint ist ein Code-Linting Tool f\"ur JavaScript, welches daf\"ur eingesetzt wird gewisse Regeln und Styleguides w\"ahrend der Entwicklung des Projekts zu \"uberpr\"ufen. Eslint (in Kombination mit einem Texteditor wie Sublime), macht auf Codestellen aufmerksam, welche nicht den Konfigurationen entsprechen. Eingesetzt wurde der AirBnB Styleguide. Das Frontend, Entwickelt mit Vue.JS ist mit JavaScript erstellt. Daher kann das gesamte Frontend mit ESLint gelintet werden.
 
 \subsubsection{Flake8}
-Flake8 ist Linter f\"ur Python Projekte, welches daf\"ur eingesetzt wird Code-Guidelines f\"ur Python Quellcode einzuhalten. Fehler und Warnungen werden bereits bei der Erstellung des Sourcecodes im Editor angezeigt.
+Flake8 ist ein Linter f\"ur Python Projekte, welches daf\"ur eingesetzt wird Code-Guidelines f\"ur Python Quellcode einzuhalten. Fehler und Warnungen werden bereits bei der Erstellung des Sourcecodes im Editor angezeigt.
 
 \subsection{Continuous Integration}
 \subsubsection{Travis}
@@ -674,7 +687,7 @@ Erstellen von Benutzerfl\"achen$\newline$
 Erwartet: Erstellung einer beliebigen Benutzerfl\"ache durch aktivieren des "Add" buttons. Eckpunkte des Polygons bezeichnen. Durch erneute auswahl eines bereits existierenden Eckpunkts wird die Fl\"ache geschlossen und Dialogbox zum speichern der Fl\"ache \"offnet sich.
 Erf\"ullt: Ja/Nein$\newline$
 $\newline$
-Testfall D:$\newline$
+Testfall E:$\newline$
 Updaten einer existierenden Benutzerfl\"ache$\newline$
 Erwartet: Updaten einer exisierenden Benutzerfl\"ache, in dem im eingeloggtem Zustand eine eigene Benutzerfl\"ache (\"offentlich oder privat) angew\"ahlt wird. \"Andern der Eckpunkte der Benutzerfl\"ache durch drag & drop. Klick der Schaltfl\"ache "Upd" \"offnet Dialogbox "Update". User kann der Fl\"ache ein neues Label geben oder Schaltfl\"ache privat / \"offentlich wechseln. Durch klick auf "Update" wird die Fl\"ache und das Label neu gezeichnet.
 Erf\"ullt: Ja/Nein$\newline$
@@ -691,7 +704,7 @@ Ebenfalls wurde erreicht die Geolocation auf der Karte darzustellen. Dies ist im
 Die Webapp kann sowohl auf Desktop Browsern wie von mobilen Ger\"aten verwendet werden und verh\"alt sich dank Vue.js responsive auf eine \"Anderung des Viewports, zum Beispiel wenn der Screen eines mobilen Ger\"ats w\"ahrend der Verwendung gedreht wird. $\newline$
 Der Vegetationslayer und Benutzerfl\"achen-Layer und deren Label k\"onnen ein - und ausgeblendet werden, was zur \"Ubersicht beitragen kann. $\newline$
 Alle Benutzeraccounts und deren Fl\"achen sind im Django Backend ersichtlich und k\"onnen als Superuser ver\"andert oder gel\"oscht werden. Wird ein Benutzer aus der Datenbank gel\"oscht, werden alle von ihm erstellten Benutzerfl\"achen ebenfalls automatisch gel\"oscht. Alle Passw\"orter von Benutzeraccounts werden verschl\"usselt in der Datenbank gespeichert. $\newline$
-Zur automatischen Bestimmung des Ortabh\"angigen Waldstandorttyps wurde eine separate API entwickelt. Der Client schickt die Koordinaten an denen er sich befindet als Argumente im API Request mit, und erh\"alt vom Backend eine Response, welche beinhaltet ob an diesem Ort ein Waldstandort eingetragen ist. Der Server berechnet dies anhand der Geometrien (Polygone) des Vegetationslayers. Befindet sich der Punkt innerhalb eines Polygons, wird der Waldstandortstyp zur\"uck an den Client geschickt. Dies funktioniert auch, wenn der User sich ausserhalb der sichtbaren Map befindet, da diese Berechnung auf dem ganzen Datensatz des Vegetationslayers ausgef\"uhrt wird, nicht nur auf den Waldfl\"achen welche momentan auf dem Kartenausschnitt des Frontends angezeigt werden.
+Zur automatischen Bestimmung des Ortabh\"angigen Waldstandorttyps wurde eine separate API entwickelt. Der Client schickt die Koordinaten, an denen er sich befindet, als Argumente im API Request mit, und erh\"alt vom Backend eine Response, welche beinhaltet, ob an diesem Ort ein Waldstandort eingetragen ist. Der Server berechnet dies anhand der Geometrien (Polygone) des Vegetationslayers. Befindet sich der Punkt innerhalb eines Polygons, wird der Waldstandortstyp zur\"uck an den Client geschickt. Dies funktioniert auch, wenn der User sich ausserhalb der sichtbaren Map befindet, da diese Berechnung auf dem ganzen Datensatz des Vegetationslayers ausgef\"uhrt wird, nicht nur auf den Waldfl\"achen welche momentan auf dem Kartenausschnitt des Frontends angezeigt werden.
 
 \subsection{M\"oglichkeiten der Weiterentwicklung}
 \subsubsection{Vegetationsfl\"achen per API Requests}
@@ -880,6 +893,7 @@ Die 180 geplanten Stunden seit 11.4. wurden auf 9 Wochen aufgeteilt, damit die A
 \subsection{Code Statistics}
 Das Projekt umfasst 11954 Lines of Code. Analysiert wurde das lokale Projektfolder, ohne Node Modules, Dokumentation und statischen Files. Es wurde das Node Package Cloc verwendet um diese Codestatistik zu generieren. (Stand 6.6.2018)
 
+\pagebreak
 \section{Softwaredokumentation}
 \subsection{Installation}
 Um die App zu verwenden, sollte die Anleitung auf GitHub (Readme) verwendet werden, oder die .yml config Datei, um das Projekt auf einer Linux Machine zu builden. $\newline$
@@ -918,6 +932,8 @@ Projekt Wiki$\newline$
 Github und Github Projekt $\newline$
 \href{https://github.com/dschmide/Waldmeister}{GitHub} $\newline$
 \href{https://github.com/dschmide/Waldmeister/projects/1}{Projektseite} $\newline$ $\newline$
+Dockerhub $\newline$
+\href{https://hub.docker.com/r/waldmeister/map-api/}{Dockerhub} $\newline$ $\newline$
 Gis-Browser Kanton Z\"urich $\newline$
 \href{https://maps.zh.ch?topic=WaldVKZH&scale=18634&x=2706590.13&y=1251180.39&srid=2056}{Gis Browser}$\newline$ $\newline$
 Giswiki Koordinatensystem$\newline$
